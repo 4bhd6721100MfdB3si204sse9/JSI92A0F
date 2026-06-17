@@ -27,6 +27,13 @@ def move_pending(
     files = _manifest_files(manifest_path, source)
     if not files:
         files = sorted(source.glob("*.json"))
+    if not files:
+        existing_pending = _manifest_files(manifest_path, pending)
+        if existing_pending:
+            for path in existing_pending[:batch_limit(limit)]:
+                _reject_placeholder_brief(path)
+            print(f"pending={len(existing_pending[:batch_limit(limit)])} existing_manifest={manifest_path}")
+            return existing_pending[:batch_limit(limit)]
 
     for path in files[:batch_limit(limit)]:
         _reject_placeholder_brief(path)

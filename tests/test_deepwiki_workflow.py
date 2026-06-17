@@ -133,6 +133,30 @@ class DeepWikiWorkflowTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 move_pending(source, pending, manifest_path=state)
 
+    def test_move_pending_accepts_existing_pending_manifest(self):
+        real_brief = {
+            "candidate": {
+                "chain": "bsc",
+                "address": "0x238a358808379702088667322f80ac48bad5e6c4",
+                "name": "Real Target",
+            }
+        }
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "deepwiki_briefs"
+            pending = root / "deepwiki_pending"
+            state = root / "state" / "latest_deepwiki_briefs.json"
+            source.mkdir()
+            pending.mkdir()
+            (pending / "real.json").write_text(json.dumps(real_brief))
+            state.parent.mkdir()
+            state.write_text(json.dumps([str(pending / "real.json")]))
+
+            moved = move_pending(source, pending, manifest_path=state)
+
+        self.assertEqual([path.name for path in moved], ["real.json"])
+
     def test_deepwiki_triage_routes_needs_live_context(self):
         with tempfile.TemporaryDirectory() as tmp:
             old_env = dict(os.environ)
