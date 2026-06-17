@@ -1,0 +1,92 @@
+{
+  "candidate": {
+    "address": "0x22af7297243c4eef12e2d5a4f888b92e56bf127c",
+    "category": "fresh contract",
+    "chain": "bsc",
+    "entity_type": "unknown_protocol",
+    "external_id": "bsc:0x22af7297243c4eef12e2d5a4f888b92e56bf127c",
+    "name": "0x22af7297243c4eef12e2d5a4f888b92e56bf127c",
+    "source": "bsc_chain_scanner",
+    "url": "https://bscscan.com/address/0x22af7297243c4eef12e2d5a4f888b92e56bf127c"
+  },
+  "deepwiki_focus": {
+    "gate_question": "Does this exact current protocol, with current live state, allow an unprivileged attacker to extract funds or rewards beyond entitlement?",
+    "local_questions": [
+      "What exact live contract holds or controls the funds/rewards?",
+      "Which public selectors can move, mint, claim, redeem, release, or sweep value?",
+      "Can an unprivileged caller gain more than their entitlement?"
+    ],
+    "proof_route": "recon_bravo_then_corecritical",
+    "why_this_candidate_matters": "Candidate has live value at risk near $441,830 and matches Sentinel fund/reward extraction surfaces."
+  },
+  "live_evidence": {
+    "deployer_address": "",
+    "funding_cluster_id": "",
+    "tags": [
+      "bluechip_token_balance",
+      "fresh_contract_large_balance",
+      "fresh_contract_large_token_balance",
+      "high_token_balance",
+      "high_total_balance",
+      "known_asset_balance",
+      "token_funded_contract",
+      "unknown_protocol"
+    ],
+    "verified_source": null
+  },
+  "rank": 9,
+  "raw_scored_row": {
+    "address": "0x22af7297243c4eef12e2d5a4f888b92e56bf127c",
+    "category": "fresh contract",
+    "chain": "bsc",
+    "created_at_ms": null,
+    "deployer_address": "",
+    "entity_type": "unknown_protocol",
+    "external_id": "bsc:0x22af7297243c4eef12e2d5a4f888b92e56bf127c",
+    "fdv_usd": 0.0,
+    "funding_cluster_id": "",
+    "liquidity_usd": 0.0,
+    "name": "0x22af7297243c4eef12e2d5a4f888b92e56bf127c",
+    "next_action": "recon_bravo_then_corecritical",
+    "price_change_24h_pct": 0.0,
+    "reasons": [
+      "value_at_risk>=250000:441830",
+      "chain_weight:bsc:10",
+      "unknown_protocol:10"
+    ],
+    "score": 36,
+    "source": "bsc_chain_scanner",
+    "tags": [
+      "bluechip_token_balance",
+      "fresh_contract_large_balance",
+      "fresh_contract_large_token_balance",
+      "high_token_balance",
+      "high_total_balance",
+      "known_asset_balance",
+      "token_funded_contract",
+      "unknown_protocol"
+    ],
+    "tvl_usd": 441829.58728378185,
+    "url": "https://bscscan.com/address/0x22af7297243c4eef12e2d5a4f888b92e56bf127c",
+    "verified_source": null,
+    "volume24h_usd": 0.0
+  },
+  "schema_version": "sentinel-candidate-brief-v1",
+  "score": {
+    "next_action": "recon_bravo_then_corecritical",
+    "reasons": [
+      "value_at_risk>=250000:441830",
+      "chain_weight:bsc:10",
+      "unknown_protocol:10"
+    ],
+    "value": 36
+  },
+  "value_at_risk": {
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "price_change_24h_pct": 0.0,
+    "tvl_usd": 441829.58728378185,
+    "usd": 441829.58728378185,
+    "volume24h_usd": 0.0
+  }
+}

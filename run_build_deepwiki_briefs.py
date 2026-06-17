@@ -18,10 +18,16 @@ def build_briefs(
     rows: list[dict[str, Any]],
     output_dir: str | Path,
     limit: int,
+    clean_output: bool = True,
 ) -> list[Path]:
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
+    if clean_output:
+        for stale in output.glob("*.json"):
+            stale.unlink()
     selected = select_rows(rows, limit)
+    if not selected:
+        raise ValueError("no eligible DeepWiki candidate rows found")
     written: list[Path] = []
 
     for index, row in enumerate(selected, start=1):
@@ -108,15 +114,30 @@ def main(argv: list[str] | None = None) -> int:
 
     input_path = Path(args.input) if args.input else None
     if args.latest or input_path is None:
-        input_path = find_latest_scored_run(args.runs_dir)
+        input_path = find_latest_eligible_scored_run(args.runs_dir, args.limit)
         if input_path is None:
-            raise FileNotFoundError(f"no candidates_scored.json found under {args.runs_dir}")
+            raise FileNotFoundError(f"no eligible candidates_scored.json found under {args.runs_dir}")
 
     rows = load_scored_rows(input_path)
     limit = batch_limit(args.limit)
     written = build_briefs(rows, args.output, limit)
     print(f"briefs={len(written)} input={input_path} output={args.output}")
     return 0
+
+
+def find_latest_eligible_scored_run(runs_dir: str | Path, limit: int = 25) -> Path | None:
+    root = Path(runs_dir)
+    if not root.exists():
+        return None
+    scored_files = [
+        run_dir / "candidates_scored.json"
+        for run_dir in root.iterdir()
+        if (run_dir / "candidates_scored.json").is_file()
+    ]
+    for path in sorted(scored_files, key=lambda item: (item.stat().st_mtime, item.parent.name), reverse=True):
+        if select_rows(load_scored_rows(path), batch_limit(limit)):
+            return path
+    return None
 
 
 def _sort_key(row: dict[str, Any]) -> tuple[int, int]:
