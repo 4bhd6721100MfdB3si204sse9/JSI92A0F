@@ -1,0 +1,1082 @@
+{
+  "closed_project_clusters": [
+    {
+      "deployer_addresses": [
+        "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "funder_addresses": [
+        "0xcccccccccccccccccccccccccccccccccccccccc"
+      ],
+      "id": "closed-yield-cluster-001",
+      "project_addresses": [
+        "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      ],
+      "treasury_addresses": [
+        "0xdddddddddddddddddddddddddddddddddddddddd"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "address": "0x238a358808379702088667322f80ac48bad5e6c4",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0x238a358808379702088667322f80ac48bad5e6c4",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0x238a358808379702088667322f80ac48bad5e6c4",
+      "native_balance_usd": 9489.615300992114,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 55,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_native_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "known_asset_balance",
+              "stablecoin_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 10913645.442681834,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_native_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "known_asset_balance",
+            "stablecoin_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 9489615300992115331400,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_native_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 9489.615300992114,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x9996874dbd891c3ecd601eab79d51f92e92d50ee",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0x9996874dbd891c3ecd601eab79d51f92e92d50ee",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0x9996874dbd891c3ecd601eab79d51f92e92d50ee",
+      "native_balance_usd": 0.0,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 55,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "known_asset_balance",
+              "stablecoin_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 12282260.78592958,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "known_asset_balance",
+            "stablecoin_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 0,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 0.0,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0xe56e24748407a2a29183a90040ac5e018d9ea5aa",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0xe56e24748407a2a29183a90040ac5e018d9ea5aa",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0xe56e24748407a2a29183a90040ac5e018d9ea5aa",
+      "native_balance_usd": 0.0025,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 45,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 2884964.913853865,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 2500000000000000,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 0.0025,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x778121b464151fe5d931587c457e48fcaaa0dc7a",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0x778121b464151fe5d931587c457e48fcaaa0dc7a",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0x778121b464151fe5d931587c457e48fcaaa0dc7a",
+      "native_balance_usd": 0.0,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 45,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "known_asset_balance",
+              "stablecoin_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 1180236.3234668097,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "known_asset_balance",
+            "stablecoin_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 0,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 0.0,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df",
+      "native_balance_usd": 15799.577128228684,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 45,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_native_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "known_asset_balance",
+              "stablecoin_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 9944702.234649805,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_native_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "known_asset_balance",
+            "stablecoin_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 15799577128228684555731,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_native_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 15799.577128228684,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x172fcd41e0913e95784454622d1c3724f546f849",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0x172fcd41e0913e95784454622d1c3724f546f849",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0x172fcd41e0913e95784454622d1c3724f546f849",
+      "native_balance_usd": 0.0,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 45,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "known_asset_balance",
+              "stablecoin_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 6133434.283127496,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "known_asset_balance",
+            "stablecoin_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 0,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 0.0,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0xf2688fb5b81049dfb7703ada5e770543770612c4",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0xf2688fb5b81049dfb7703ada5e770543770612c4",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0xf2688fb5b81049dfb7703ada5e770543770612c4",
+      "native_balance_usd": 0.0,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 45,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "bluechip_token_balance",
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "known_asset_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 1598132.9913560029,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "bluechip_token_balance",
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "known_asset_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 0,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "bluechip_token_balance",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 0.0,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x1c3865814acbba11e7196df0b46c024472503196",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0x1c3865814acbba11e7196df0b46c024472503196",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0x1c3865814acbba11e7196df0b46c024472503196",
+      "native_balance_usd": 0.0,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 45,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 2961686.139323951,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 0,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 0.0,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x22af7297243c4eef12e2d5a4f888b92e56bf127c",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0x22af7297243c4eef12e2d5a4f888b92e56bf127c",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0x22af7297243c4eef12e2d5a4f888b92e56bf127c",
+      "native_balance_usd": 0.0,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 36,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "bluechip_token_balance",
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "known_asset_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 441829.58728378185,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "bluechip_token_balance",
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "known_asset_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 0,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "bluechip_token_balance",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 0.0,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x26deb24a2623cf54452ab5183e2c34551831d54d",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0x26deb24a2623cf54452ab5183e2c34551831d54d",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0x26deb24a2623cf54452ab5183e2c34551831d54d",
+      "native_balance_usd": 0.0,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 36,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "known_asset_balance",
+              "stablecoin_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 343088.56290871673,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "known_asset_balance",
+            "stablecoin_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 0,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 0.0,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x07964f135f276412b3182a3b2407b8dd45000000",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0x07964f135f276412b3182a3b2407b8dd45000000",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0x07964f135f276412b3182a3b2407b8dd45000000",
+      "native_balance_usd": 86.20634471692226,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 36,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "known_asset_balance",
+              "stablecoin_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 299103.50555511354,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "known_asset_balance",
+            "stablecoin_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 86206344716922255153,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 86.20634471692226,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x759dc7505798d67b9dc9c3cc03253471b9940140",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0x759dc7505798d67b9dc9c3cc03253471b9940140",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0x759dc7505798d67b9dc9c3cc03253471b9940140",
+      "native_balance_usd": 0.0,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 36,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 493282.711191008,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 0,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 0.0,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x7f9bd73e51e66e0b2c7a87db0ca530a11eb7a7e9",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "contract_name": "0x7f9bd73e51e66e0b2c7a87db0ca530a11eb7a7e9",
+      "contract_type": "",
+      "deployer_address": "",
+      "funder_addresses": [],
+      "liquidity_usd": 0.0,
+      "name": "0x7f9bd73e51e66e0b2c7a87db0ca530a11eb7a7e9",
+      "native_balance_usd": 0.0,
+      "price_change_24h_pct": 0.0,
+      "raw": {
+        "metadata": {
+          "category": "fresh contract",
+          "liquidity_usd": 0.0,
+          "metadata": {
+            "category": "fresh contract",
+            "deployer_address": "",
+            "entity_type": "unknown_protocol",
+            "fdv_usd": 0.0,
+            "funding_cluster_id": "",
+            "liquidity_usd": 0.0,
+            "next_action": "recon_bravo_then_corecritical",
+            "price_change_24h_pct": 0.0,
+            "score": 36,
+            "source": "bsc_chain_scanner",
+            "tags": [
+              "fresh_contract_large_balance",
+              "fresh_contract_large_token_balance",
+              "high_token_balance",
+              "high_total_balance",
+              "token_funded_contract",
+              "unknown_protocol"
+            ],
+            "tvl_usd": 284725.1219351862,
+            "verified_source": null,
+            "volume24h_usd": 0.0
+          },
+          "price_change_24h_pct": 0.0,
+          "tags": [
+            "fresh_contract_large_balance",
+            "fresh_contract_large_token_balance",
+            "high_token_balance",
+            "high_total_balance",
+            "token_funded_contract",
+            "unknown_protocol"
+          ],
+          "volume24h_usd": 0.0
+        },
+        "native_wei": 0,
+        "source_code": {
+          "message": "NOTOK",
+          "result": "You are using a deprecated V1 endpoint, switch to Etherscan API V2 using https://docs.etherscan.io/v2-migration",
+          "status": "0"
+        },
+        "token_transfers": [],
+        "transactions": []
+      },
+      "selectors": [],
+      "source_excerpt": "",
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "token_funded_contract",
+        "unknown_protocol"
+      ],
+      "token_balances": [],
+      "treasury_addresses": [],
+      "tx_count_24h": 0,
+      "url": "",
+      "value_at_risk_usd": 0.0,
+      "verified_source": null,
+      "volume24h_usd": 0.0
+    }
+  ]
+}
