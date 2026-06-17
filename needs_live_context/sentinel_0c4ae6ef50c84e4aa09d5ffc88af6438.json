@@ -1,0 +1,102 @@
+{
+  "attacker_path_hypothesis": {
+    "actor": "unprivileged external user",
+    "call_sequence": [
+      "STEP 1 (recon): Recover ABI or selectors from BSCScan source or transaction calldata",
+      "STEP 2 (recon): Check EIP-1967 proxy slot for implementation address",
+      "STEP 3 (recon): Identify any public withdraw(), sweep(), claim(), redeem(), or rescue() selector",
+      "STEP 4 (conditional proof): If such a selector exists with no caller check, call it with attacker address as recipient"
+    ],
+    "expected_gain": "Up to ~$12.28M in stablecoins if a public value-moving function with no access control exists \u2014 unconfirmed pending live context",
+    "preconditions": [
+      "Contract holds ~$12.28M in stablecoins confirmed by chain scanner",
+      "Source code and selectors are unknown \u2014 hypothesis is conditional on live context",
+      "No access control or weak access control on a withdraw/sweep/claim function"
+    ]
+  },
+  "candidate": {
+    "address": "0x9996874dbd891c3ecd601eab79d51f92e92d50ee",
+    "chain": "bsc",
+    "entity_type": "unknown_protocol",
+    "name": "0x9996874dbd891c3ecd601eab79d51f92e92d50ee",
+    "next_action": "recon_bravo_then_corecritical",
+    "score": 55,
+    "source_file": "bsc_chain_scanner"
+  },
+  "deepwiki_source_url": "https://deepwiki.com/search/-deepwiki-sentinel-candidate-t_e8700816-dfcf-488e-b649-375d353f643d?mode=deep",
+  "deepwiki_verdict": "needs_live_context",
+  "live_context_required": [
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=contract&action=getsourcecode&address=0x9996874dbd891c3ecd601eab79d51f92e92d50ee&apikey=<KEY>'",
+      "name": "source_code_and_abi",
+      "reason": "verified_source is null \u2014 no ABI, no function signatures, no selectors are known. Without this, no value-moving path can be identified."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=txlist&address=0x9996874dbd891c3ecd601eab79d51f92e92d50ee&sort=desc&apikey=<KEY>'",
+      "name": "transaction_calldata_for_selector_recovery",
+      "reason": "If source is unverified, recent transaction methodIds can recover public selectors used by depositors, admins, and withdrawal callers."
+    },
+    {
+      "command_or_source": "cast storage 0x9996874dbd891c3ecd601eab79d51f92e92d50ee 0x360894a13ba1a3210667c828492db98dca3e2076 --rpc-url <BSC_RPC>",
+      "name": "eip1967_proxy_slot_check",
+      "reason": "Contract may be a proxy. If implementation slot is populated, the real logic and selectors live elsewhere and may have been recently changed."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=contract&action=getcontractcreation&contractaddresses=0x9996874dbd891c3ecd601eab79d51f92e92d50ee&apikey=<KEY>'",
+      "name": "deployer_address_and_funding_trace",
+      "reason": "deployer_address is empty in the brief. Deployer identity is needed to check for closed-project cluster links, which would elevate score and change next_action to investigate_redeploy_funding_cluster."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=tokentx&address=0x9996874dbd891c3ecd601eab79d51f92e92d50ee&sort=desc&apikey=<KEY>'",
+      "name": "token_balance_breakdown",
+      "reason": "Tags confirm stablecoin_balance and known_asset_balance but do not identify which tokens, amounts, or depositors. Needed to confirm live custody and identify the depositor set."
+    },
+    {
+      "command_or_source": "cast call 0x9996874dbd891c3ecd601eab79d51f92e92d50ee 'owner()(address)' --rpc-url <BSC_RPC>",
+      "name": "owner_admin_role_check",
+      "reason": "No owner or admin is known. If owner is an EOA with no timelock, admin-triggered extraction is a separate risk class; if there is no owner, public access control gaps become the primary surface."
+    }
+  ],
+  "local_proof_required": {
+    "expected_assertions": [
+      "attacker stablecoin balance increases",
+      "contract stablecoin balance decreases by matching amount",
+      "no revert due to access control"
+    ],
+    "setup": [
+      "Fork BSC at current block",
+      "Confirm stablecoin balance at 0x9996874dbd891c3ecd601eab79d51f92e92d50ee",
+      "Load ABI or recovered selectors",
+      "Identify withdraw/sweep/claim/redeem entrypoints"
+    ],
+    "test_type": "fork",
+    "transaction_sequence": [
+      "vm.prank(attacker)",
+      "target.call(abi.encodeWithSelector(<value_moving_selector>, attacker))",
+      "assertGt(stablecoin.balanceOf(attacker), 0)"
+    ]
+  },
+  "paid_scope_match": "fund_extraction",
+  "rejection_reason": "",
+  "schema_version": "sentinel-triage-v1",
+  "source_or_selector_basis": [
+    {
+      "evidence": "verified_source is null; no transaction methodIds present in brief; no ABI available",
+      "selector_or_function": "unknown \u2014 no selectors recovered",
+      "why_it_matters": "Without selectors, it is impossible to determine whether any public value-moving path exists. This is the primary blocker for all exploit hypotheses."
+    },
+    {
+      "evidence": "discovery_source tag is token_funded_contract, meaning the scanner found this contract as a recipient of large ERC20 transfers, not via contract creation scan",
+      "selector_or_function": "token_funded_contract (ERC20 transfer log discovery)",
+      "why_it_matters": "Confirms real stablecoin value is held. The funding mechanism (ERC20 transfer) is consistent with a deposit vault, escrow, or distributor \u2014 all high-value exploit surfaces if access control is absent."
+    }
+  ],
+  "suspected_exploit_families": [
+    "missing access control on value-moving functions",
+    "unauthorized withdrawal or sweep",
+    "phantom accounting where shares or debt are created without matching assets",
+    "proxy or implementation mismatch that exposes live funds"
+  ],
+  "verdict": "NEEDS_LIVE_CONTEXT",
+  "why_this_target_matters": "Fresh BSC contract holding ~$12.28M in stablecoins (token_funded_contract, stablecoin_balance, known_asset_balance). No source verification status, no deployer, no selectors, and no transaction history are present in the brief. The value is real and large; the exploit surface is entirely unknown. The pipeline routed this to recon_bravo_then_corecritical rather than reverse_engineer_unverified_funded_contract because verified_source is null (not explicitly False) and entity_type is unknown_protocol (not unverified_contract), so the unverified-contract scoring branch was not triggered. Live context is required before any exploit hypothesis can be formed."
+}
