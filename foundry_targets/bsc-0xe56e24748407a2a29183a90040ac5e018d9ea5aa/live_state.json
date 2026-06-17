@@ -1,0 +1,169 @@
+{
+  "candidate": {
+    "address": "0xe56e24748407a2a29183a90040ac5e018d9ea5aa",
+    "category": "",
+    "chain": "bsc",
+    "entity_type": "",
+    "hard_gates": {
+      "attacker_controls_trigger": false,
+      "concrete_fund_or_reward_gain": false,
+      "current_live_target_only": true,
+      "exact_code_path_or_selector_exists": false,
+      "gain_is_beyond_entitlement": false,
+      "live_state_supports_preconditions": false,
+      "not_admin_governance_or_key_compromise": true,
+      "not_dos_grief_or_liveness_only": true,
+      "not_expected_behavior": true,
+      "not_external_dependency_only": true,
+      "not_known_duplicate": true,
+      "unprivileged_attacker": false
+    },
+    "live_evidence": {
+      "deployer_address": "",
+      "funding_cluster_id": "",
+      "tags": [],
+      "verified_source": null
+    },
+    "live_preconditions": [
+      {
+        "command": "cast code 0xe56e24748407a2a29183a90040ac5e018d9ea5aa --rpc-url $BSC_RPC | heimdall decompile --stdin",
+        "name": "bytecode_decompilation_and_selector_extraction",
+        "reason": "verified_source is null and no decompiled output was provided. No function signatures, access control modifiers, or value-moving selectors can be assessed. This is the primary blocker for all downstream hard gates.",
+        "status": "MISSING"
+      },
+      {
+        "command": "https://bscscan.com/address/0xe56e24748407a2a29183a90040ac5e018d9ea5aa#tokentxns",
+        "name": "token_holdings_breakdown",
+        "reason": "TVL of ~$2.88M is reported but specific token identities are unknown. Real-asset backing (USDT/USDC/WBNB) vs. self-issued token cannot be confirmed without on-chain balanceOf calls.",
+        "status": "MISSING"
+      },
+      {
+        "command": "cast storage 0xe56e24748407a2a29183a90040ac5e018d9ea5aa 0x360894a13ba1a3210667c828492db98dca3e2076 --rpc-url $BSC_RPC",
+        "name": "proxy_and_implementation_check",
+        "reason": "EIP-1967 and EIP-897 implementation slots have not been read. If a proxy with a recently changed implementation holds live funds, this is a separate high-priority surface.",
+        "status": "MISSING"
+      },
+      {
+        "command": "https://bscscan.com/address/0xe56e24748407a2a29183a90040ac5e018d9ea5aa#internaltx",
+        "name": "deployer_address_and_funding_trace",
+        "reason": "deployer_address is empty. Deployer identity and funding source are required to assess rug-redeploy or closed-project custody patterns.",
+        "status": "MISSING"
+      },
+      {
+        "command": "https://bscscan.com/address/0xe56e24748407a2a29183a90040ac5e018d9ea5aa#internaltx",
+        "name": "recent_transaction_history_and_called_selectors",
+        "reason": "Zero volume24h_usd and zero liquidity_usd. No transaction history has been reviewed to determine which selectors have been invoked or whether any sweep/claim/withdraw pattern is already in use.",
+        "status": "MISSING"
+      }
+    ],
+    "local_proof_required": {
+      "expected_assertions": [],
+      "reject_if_assertion_fails": "",
+      "setup": [],
+      "test_file_to_add": "",
+      "test_type": "fork",
+      "transaction_sequence": []
+    },
+    "name": "proof_gate_4d868f1c4bb245a7b951ec25f717c1f1",
+    "next_action": "",
+    "paid_scope_match": "fund_extraction",
+    "schema_version": "foundry-materialized-target-v1",
+    "score": 0,
+    "source": "",
+    "source_file": "proof_gate_results/proof_gate_4d868f1c4bb245a7b951ec25f717c1f1.json",
+    "value_at_risk": {
+      "liquidity_usd": 0,
+      "tvl_usd": 0,
+      "usd": 0.0
+    }
+  },
+  "discovery_limitations": [
+    "Mappings and private structs are not globally enumerable without known keys.",
+    "Known keys should be recovered from events, calldata, public getters, and source logic.",
+    "Run the Foundry fork test and Snapshot script against a real RPC URL to confirm current live values."
+  ],
+  "materialized_at": "2026-06-17T13:05:59.466788+00:00",
+  "raw_candidate_payload": {
+    "active_target": {
+      "address": "0xe56e24748407a2a29183a90040ac5e018d9ea5aa",
+      "chain": "bsc",
+      "live_context_is_current": false,
+      "live_context_source": "deepwiki_briefs/003-bsc-0xe56e24748407a2a29183a90040ac5e018d9ea5aa.json"
+    },
+    "attacker_path": {
+      "actor": "unknown \u2014 cannot be specified without selector recon",
+      "attacker_inputs": [],
+      "call_sequence": [],
+      "state_after": [],
+      "state_before": []
+    },
+    "deepwiki_source_url": "https://deepwiki.com/search/-deepwiki-sentinel-exact-proof_c7379c81-22b7-42d0-8715-7307ea6194a0?mode=deep",
+    "extraction_analysis": {
+      "asset_or_reward": "unknown \u2014 token identity unconfirmed",
+      "attacker_gain": "unknown \u2014 no unguarded selector identified",
+      "victim_or_protocol_loss": "unknown",
+      "why_gain_exceeds_entitlement": "cannot be assessed without selector and access-control information"
+    },
+    "gate_question": "Does this exact current protocol, with current live state, allow an unprivileged attacker to extract funds or rewards beyond entitlement?",
+    "hard_gates": {
+      "attacker_controls_trigger": false,
+      "concrete_fund_or_reward_gain": false,
+      "current_live_target_only": true,
+      "exact_code_path_or_selector_exists": false,
+      "gain_is_beyond_entitlement": false,
+      "live_state_supports_preconditions": false,
+      "not_admin_governance_or_key_compromise": true,
+      "not_dos_grief_or_liveness_only": true,
+      "not_expected_behavior": true,
+      "not_external_dependency_only": true,
+      "not_known_duplicate": true,
+      "unprivileged_attacker": false
+    },
+    "live_preconditions": [
+      {
+        "command": "cast code 0xe56e24748407a2a29183a90040ac5e018d9ea5aa --rpc-url $BSC_RPC | heimdall decompile --stdin",
+        "name": "bytecode_decompilation_and_selector_extraction",
+        "reason": "verified_source is null and no decompiled output was provided. No function signatures, access control modifiers, or value-moving selectors can be assessed. This is the primary blocker for all downstream hard gates.",
+        "status": "MISSING"
+      },
+      {
+        "command": "https://bscscan.com/address/0xe56e24748407a2a29183a90040ac5e018d9ea5aa#tokentxns",
+        "name": "token_holdings_breakdown",
+        "reason": "TVL of ~$2.88M is reported but specific token identities are unknown. Real-asset backing (USDT/USDC/WBNB) vs. self-issued token cannot be confirmed without on-chain balanceOf calls.",
+        "status": "MISSING"
+      },
+      {
+        "command": "cast storage 0xe56e24748407a2a29183a90040ac5e018d9ea5aa 0x360894a13ba1a3210667c828492db98dca3e2076 --rpc-url $BSC_RPC",
+        "name": "proxy_and_implementation_check",
+        "reason": "EIP-1967 and EIP-897 implementation slots have not been read. If a proxy with a recently changed implementation holds live funds, this is a separate high-priority surface.",
+        "status": "MISSING"
+      },
+      {
+        "command": "https://bscscan.com/address/0xe56e24748407a2a29183a90040ac5e018d9ea5aa#internaltx",
+        "name": "deployer_address_and_funding_trace",
+        "reason": "deployer_address is empty. Deployer identity and funding source are required to assess rug-redeploy or closed-project custody patterns.",
+        "status": "MISSING"
+      },
+      {
+        "command": "https://bscscan.com/address/0xe56e24748407a2a29183a90040ac5e018d9ea5aa#internaltx",
+        "name": "recent_transaction_history_and_called_selectors",
+        "reason": "Zero volume24h_usd and zero liquidity_usd. No transaction history has been reviewed to determine which selectors have been invoked or whether any sweep/claim/withdraw pattern is already in use.",
+        "status": "MISSING"
+      }
+    ],
+    "local_proof_required": {
+      "expected_assertions": [],
+      "reject_if_assertion_fails": "",
+      "setup": [],
+      "test_file_to_add": "",
+      "test_type": "fork",
+      "transaction_sequence": []
+    },
+    "paid_scope_match": "fund_extraction",
+    "rejection_reason": "Five hard gates fail simultaneously: live_state_supports_preconditions, unprivileged_attacker, attacker_controls_trigger, exact_code_path_or_selector_exists, concrete_fund_or_reward_gain, and gain_is_beyond_entitlement are all false. The root cause is a single upstream blocker: verified_source is null and no bytecode decompilation output was supplied as live context. Without at least one confirmed public selector that moves value, no attacker path can be specified, no entitlement comparison can be made, and no fork proof can be scaffolded. The ~$2.88M TVL clears the value threshold and the candidate satisfies triage rules 1 and 4 (funds on-chain, unverified deployment), so this is not a permanent rejection. The candidate must re-enter the gate after recon_bravo completes: bytecode decompilation, selector extraction, token identity confirmation, proxy slot reads, and deployer trace. If recon surfaces an unguarded value-moving selector with confirmed real-asset backing, the candidate should be re-submitted with that live context attached.",
+    "schema_version": "proof-gate-v1",
+    "verdict": "REJECT"
+  },
+  "schema_version": "live-state-materialization-v1",
+  "source_file": "proof_gate_results/proof_gate_4d868f1c4bb245a7b951ec25f717c1f1.json"
+}
