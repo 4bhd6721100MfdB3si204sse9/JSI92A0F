@@ -35,7 +35,7 @@ STAGES = {
     ),
     "7": Stage(output_globs=("proof_gate_submissions/*.json",), remaining_globs=("needs_local_proof/*.json", "deepwiki_candidates/*.json")),
     "8": Stage(
-        output_globs=("proof_gate_results/*.json", "proof_gate_results/*.md", "local_proof_queue/*.md"),
+        output_globs=("local_proof_queue/*.md",),
         remaining_globs=("proof_gate_submissions/*.json",),
         final_message="DeepWiki proof-gate results are staged. Materialize Foundry targets before writing reports.",
     ),

@@ -12,6 +12,7 @@ from bot_runtime import batch_limit
 
 
 DEFAULT_INPUT_DIRS = ["proof_gate_results", "deepwiki_candidates", "needs_local_proof", "deepwiki_briefs"]
+MATERIALIZABLE_VERDICTS = {"NEEDS_LOCAL_PROOF", "HIGH_CONFIDENCE_CANDIDATE"}
 
 
 def materialize_targets(input_dirs: list[str], output_dir: str, limit: int) -> list[Path]:
@@ -22,6 +23,8 @@ def materialize_targets(input_dirs: list[str], output_dir: str, limit: int) -> l
 
     for path in candidates[:batch_limit(limit)]:
         payload = _load_payload(path)
+        if not _is_materializable(payload, path):
+            continue
         candidate = normalize_candidate(payload, path)
         if not candidate["address"]:
             continue
@@ -35,7 +38,7 @@ def materialize_targets(input_dirs: list[str], output_dir: str, limit: int) -> l
 
 
 def normalize_candidate(payload: dict[str, Any], source: Path) -> dict[str, Any]:
-    candidate = payload.get("candidate") if isinstance(payload.get("candidate"), dict) else {}
+    candidate = _payload_dict(payload, "candidate", "candidate_context")
     active_target = payload.get("active_target") if isinstance(payload.get("active_target"), dict) else {}
     raw_row = payload.get("raw_scored_row") if isinstance(payload.get("raw_scored_row"), dict) else {}
     score = payload.get("score") if isinstance(payload.get("score"), dict) else {}
@@ -121,6 +124,21 @@ def _candidate_files(input_dirs: list[str]) -> list[Path]:
 
 def _load_payload(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _is_materializable(payload: dict[str, Any], path: Path) -> bool:
+    if path.parent.name in {"deepwiki_briefs", "deepwiki_candidates"}:
+        return True
+    verdict = str(payload.get("verdict") or payload.get("deepwiki_verdict") or "").upper()
+    return verdict in MATERIALIZABLE_VERDICTS
+
+
+def _payload_dict(payload: dict[str, Any], *keys: str) -> dict[str, Any]:
+    for key in keys:
+        value = payload.get(key)
+        if isinstance(value, dict):
+            return value
+    return {}
 
 
 def _foundry_toml(candidate: dict[str, Any]) -> str:
@@ -333,4 +351,3 @@ def _env_prefix(chain: str) -> str:
 
 if __name__ == "__main__":
     sys.exit(main())
-

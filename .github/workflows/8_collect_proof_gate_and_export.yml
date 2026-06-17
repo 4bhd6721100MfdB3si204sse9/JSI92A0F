@@ -37,7 +37,15 @@ jobs:
       - name: Collect proof-gate responses
         run: python3 run_collect_deepwiki_results.py --stage proof_gate
       - name: Export local proof queue
-        run: python3 run_export_local_proof_queue.py
+        run: python3 run_export_local_proof_queue.py --allow-empty
+      - name: Check local proof queue
+        id: proof_queue
+        run: |
+          if compgen -G "local_proof_queue/*.md" > /dev/null; then
+            echo "has_queue=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_queue=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Commit outputs
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -51,7 +59,7 @@ jobs:
             git push origin master
           fi
       - name: Verify chain complete
-        if: inputs.chain_next == 'true'
+        if: inputs.chain_next == 'true' && steps.proof_queue.outputs.has_queue == 'true'
         env:
           PAT_TOKEN: ${{ secrets.PAT_JSON || secrets.PAT_TOKEN }}
         run: python3 workflow_chain.py advance --stage 8 --next-workflow 9_materialize_foundry_target.yml --smoke-limit "${{ inputs.smoke_limit }}"

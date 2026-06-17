@@ -75,6 +75,47 @@ class FoundryMaterializerTest(unittest.TestCase):
             self.assertIn("forge test", (target / "README.md").read_text())
             self.assertIn("TARGET_ADDRESS", (target / ".env.example").read_text())
 
+    def test_materialize_targets_skips_rejected_proof_gate_result(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            input_dir = Path(tmp) / "proof_gate_results"
+            output_dir = Path(tmp) / "foundry_targets"
+            input_dir.mkdir()
+            (input_dir / "rejected.json").write_text(
+                json.dumps(
+                    {
+                        "verdict": "REJECT",
+                        "candidate_context": {
+                            "chain": "bsc",
+                            "address": "0x238a358808379702088667322f80ac48bad5e6c4",
+                        },
+                    }
+                )
+            )
+
+            with self.assertRaises(FileNotFoundError):
+                materialize_targets([str(input_dir)], str(output_dir), limit=5)
+
+    def test_materialize_targets_accepts_candidate_context_for_proof_gate_result(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            input_dir = Path(tmp) / "proof_gate_results"
+            output_dir = Path(tmp) / "foundry_targets"
+            input_dir.mkdir()
+            (input_dir / "candidate.json").write_text(
+                json.dumps(
+                    {
+                        "verdict": "NEEDS_LOCAL_PROOF",
+                        "candidate_context": {
+                            "chain": "bsc",
+                            "address": "0x238a358808379702088667322f80ac48bad5e6c4",
+                        },
+                    }
+                )
+            )
+
+            written = materialize_targets([str(input_dir)], str(output_dir), limit=5)
+
+        self.assertEqual(written[0].name, "bsc-0x238a358808379702088667322f80ac48bad5e6c4")
+
 
 if __name__ == "__main__":
     unittest.main()

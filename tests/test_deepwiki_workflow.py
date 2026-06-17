@@ -239,6 +239,54 @@ class DeepWikiWorkflowTest(unittest.TestCase):
         self.assertIn("Local Proof Queue Item", content)
         self.assertIn("prove corecritical", content)
 
+    def test_export_local_proof_queue_skips_rejected_gate_results(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            input_dir = Path(tmp) / "proof_gate_results"
+            output_dir = Path(tmp) / "local_proof_queue"
+            input_dir.mkdir()
+            (input_dir / "rejected.json").write_text(
+                json.dumps(
+                    {
+                        "verdict": "REJECT",
+                        "candidate_context": {
+                            "chain": "bsc",
+                            "address": "0x238a358808379702088667322f80ac48bad5e6c4",
+                        },
+                    }
+                )
+            )
+
+            with self.assertRaises(FileNotFoundError):
+                export_queue([str(input_dir)], str(output_dir), limit=10)
+
+    def test_export_local_proof_queue_parses_markdown_json_and_candidate_context(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            input_dir = Path(tmp) / "proof_gate_results"
+            output_dir = Path(tmp) / "local_proof_queue"
+            input_dir.mkdir()
+            (input_dir / "candidate.md").write_text(
+                """DeepWiki response:
+
+```json
+{
+  "verdict": "NEEDS_LOCAL_PROOF",
+  "candidate_context": {
+    "chain": "bsc",
+    "address": "0x238a358808379702088667322f80ac48bad5e6c4"
+  },
+  "hard_gates": {"unprivileged_attacker": true}
+}
+```
+"""
+            )
+
+            written = export_queue([str(input_dir)], str(output_dir), limit=10)
+            content = written[0].read_text()
+
+        self.assertIn("- verdict: `NEEDS_LOCAL_PROOF`", content)
+        self.assertIn("- chain: `bsc`", content)
+        self.assertIn("- address: `0x238a358808379702088667322f80ac48bad5e6c4`", content)
+
     def test_submitted_filenames_reads_existing_submissions(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
