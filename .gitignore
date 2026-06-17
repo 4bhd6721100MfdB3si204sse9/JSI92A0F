@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.idea/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+key.json
+pat.json
+pat_json
+KEY_JSON
+PAT_JSON
+temp_repo/

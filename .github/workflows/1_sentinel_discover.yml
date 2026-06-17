@@ -1,0 +1,62 @@
+name: 1 Sentinel Discover
+
+on:
+  workflow_dispatch:
+    inputs:
+      source:
+        description: "Sentinel source"
+        required: false
+        default: "all"
+      smoke_limit:
+        description: "Optional small-run limit"
+        required: false
+        default: ""
+      chain_next:
+        description: "Verify output and dispatch next workflow"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    env:
+      BOT_SMOKE_LIMIT: ${{ inputs.smoke_limit }}
+      SENTINEL_LIMIT: ${{ inputs.smoke_limit || '100' }}
+      SENTINEL_ETHEREUM_EXPLORER_API_KEYS: ${{ secrets.SENTINEL_ETHEREUM_EXPLORER_API_KEYS }}
+      SENTINEL_ETHEREUM_EXPLORER_API_KEY: ${{ secrets.SENTINEL_ETHEREUM_EXPLORER_API_KEY }}
+      SENTINEL_ETHEREUM_RPC_URLS: ${{ secrets.SENTINEL_ETHEREUM_RPC_URLS }}
+      SENTINEL_ETHEREUM_RPC_URL: ${{ secrets.SENTINEL_ETHEREUM_RPC_URL }}
+      SENTINEL_ETHEREUM_NATIVE_PRICE_USD: ${{ secrets.SENTINEL_ETHEREUM_NATIVE_PRICE_USD }}
+      SENTINEL_BSC_EXPLORER_API_KEYS: ${{ secrets.SENTINEL_BSC_EXPLORER_API_KEYS }}
+      SENTINEL_BSC_EXPLORER_API_KEY: ${{ secrets.SENTINEL_BSC_EXPLORER_API_KEY }}
+      SENTINEL_BSC_RPC_URLS: ${{ secrets.SENTINEL_BSC_RPC_URLS }}
+      SENTINEL_BSC_RPC_URL: ${{ secrets.SENTINEL_BSC_RPC_URL }}
+      SENTINEL_BSC_NATIVE_PRICE_USD: ${{ secrets.SENTINEL_BSC_NATIVE_PRICE_USD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run Sentinel discovery
+        run: python3 -m sentinel discover --source "${{ inputs.source }}" --limit "$SENTINEL_LIMIT" --output runs
+      - name: Commit outputs
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No discovery changes to commit"
+          else
+            git commit -m "Auto-update: sentinel discovery"
+            git pull --rebase origin master
+            git push origin master
+          fi
+      - name: Verify and advance chain
+        if: inputs.chain_next == 'true'
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_JSON || secrets.PAT_TOKEN }}
+        run: python3 workflow_chain.py advance --stage 1 --next-workflow 2_refresh_live_targets.yml --smoke-limit "${{ inputs.smoke_limit }}"

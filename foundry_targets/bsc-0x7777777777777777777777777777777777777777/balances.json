@@ -1,0 +1,19 @@
+{
+  "chain": "bsc",
+  "liquidity_usd": 0.0,
+  "native_balance": {
+    "source": "fill by running script/Snapshot.s.sol or live enrichment",
+    "usd_estimate": null,
+    "wei": null
+  },
+  "target": "0x7777777777777777777777777777777777777777",
+  "tvl_usd": 90000.0,
+  "value_at_risk": {
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "price_change_24h_pct": 0.0,
+    "tvl_usd": 90000.0,
+    "usd": 90000.0,
+    "volume24h_usd": 0.0
+  }
+}

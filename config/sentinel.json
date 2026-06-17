@@ -1,0 +1,164 @@
+{
+  "min_value_usd": 200000,
+  "min_bot_value_usd": 200000,
+  "min_unverified_value_usd": 200000,
+  "min_spike_value_usd": 200000,
+  "min_cluster_value_usd": 200000,
+  "mainstream_value_usd": 100000000,
+  "queue_threshold": 35,
+  "bot_contract_weight": 18,
+  "unverified_contract_weight": 20,
+  "unknown_protocol_weight": 10,
+  "price_spike_24h_pct": 100,
+  "price_spike_weight": 18,
+  "sudden_spike_weight": 18,
+  "prior_project_closed_weight": 18,
+  "same_deployer_closed_project_weight": 22,
+  "funding_from_closed_project_weight": 24,
+  "suspected_rug_redeploy_weight": 28,
+  "proxy_change_live_funds_weight": 26,
+  "reward_pool_claimability_weight": 24,
+  "bridge_escrow_weight": 24,
+  "approval_router_weight": 22,
+  "vault_share_asset_weight": 24,
+  "lending_oracle_liquidation_weight": 24,
+  "fresh_days": 14,
+  "chain_weights": {
+    "bsc": 10,
+    "binance": 10,
+    "ethereum": 5,
+    "base": 8,
+    "arbitrum": 7,
+    "optimism": 6,
+    "polygon": 7,
+    "avalanche": 7,
+    "linea": 7,
+    "scroll": 7,
+    "mantle": 7,
+    "blast": 7
+  },
+  "surface_keywords": {
+    "bridge": 18,
+    "vault": 15,
+    "staking": 14,
+    "stake": 14,
+    "farm": 13,
+    "reward": 13,
+    "claim": 12,
+    "presale": 12,
+    "router": 11,
+    "lending": 16,
+    "borrow": 16,
+    "liquidation": 16,
+    "oracle": 15,
+    "strategy": 14,
+    "restaking": 15,
+    "launchpad": 11,
+    "airdrop": 9,
+    "bot": 16,
+    "mev": 18,
+    "arbitrage": 16,
+    "sniper": 14,
+    "liquidator": 15,
+    "keeper": 12,
+    "executor": 12,
+    "flashloan": 18,
+    "sandwich": 18,
+    "unverified": 14,
+    "migrator": 14,
+    "treasury": 10
+  },
+  "sources": {
+    "dexscreener_profiles": {
+      "enabled": true,
+      "url": "https://api.dexscreener.com/token-profiles/latest/v1"
+    },
+    "dexscreener_boosts": {
+      "enabled": true,
+      "url": "https://api.dexscreener.com/token-boosts/latest/v1"
+    },
+    "defillama_protocols": {
+      "enabled": true,
+      "url": "https://api.llama.fi/protocols"
+    },
+    "ethereum_chain_scanner": {
+      "enabled": true,
+      "recent_blocks": 250,
+      "first_run_blocks": 10000,
+      "max_contracts": 50,
+      "max_token_contracts": 20,
+      "max_transfer_recipients": 50,
+      "transfer_log_chunk_size": 100,
+      "remembered_contracts_per_run": 25,
+      "state_path": "state/ethereum_chain_scanner.json",
+      "target_min_value_usd": 200000,
+      "high_tx_count": 50,
+      "native_price_usd": 3500
+    },
+    "bsc_chain_scanner": {
+      "enabled": true,
+      "recent_blocks": 250,
+      "first_run_blocks": 10000,
+      "max_contracts": 50,
+      "max_token_contracts": 20,
+      "max_transfer_recipients": 50,
+      "transfer_log_chunk_size": 100,
+      "remembered_contracts_per_run": 25,
+      "state_path": "state/bsc_chain_scanner.json",
+      "target_min_value_usd": 200000,
+      "high_tx_count": 50,
+      "native_price_usd": 600
+    },
+    "explorer_snapshot": {
+      "enabled": false,
+      "path": "examples/explorer_snapshot.json"
+    },
+    "explorer_live": {
+      "enabled": false,
+      "path": "examples/live_targets.json"
+    }
+  },
+  "live_explorers": {
+    "bsc": {
+      "api_key": "",
+      "source_code_url": "https://api.bscscan.com/api?module=contract&action=getsourcecode&address={address}&apikey={api_key}",
+      "txlist_url": "https://api.bscscan.com/api?module=account&action=txlist&address={address}&apikey={api_key}",
+      "tokentx_url": "https://api.bscscan.com/api?module=account&action=tokentx&address={address}&apikey={api_key}",
+      "rpc_url": "",
+      "native_price_usd": 1
+    },
+    "ethereum": {
+      "api_key": "",
+      "source_code_url": "https://api.etherscan.io/api?module=contract&action=getsourcecode&address={address}&apikey={api_key}",
+      "txlist_url": "https://api.etherscan.io/api?module=account&action=txlist&address={address}&apikey={api_key}",
+      "tokentx_url": "https://api.etherscan.io/api?module=account&action=tokentx&address={address}&apikey={api_key}",
+      "rpc_url": "",
+      "native_price_usd": 1
+    },
+    "base": {
+      "api_key": "",
+      "source_code_url": "https://api.basescan.org/api?module=contract&action=getsourcecode&address={address}&apikey={api_key}",
+      "txlist_url": "https://api.basescan.org/api?module=account&action=txlist&address={address}&apikey={api_key}",
+      "tokentx_url": "https://api.basescan.org/api?module=account&action=tokentx&address={address}&apikey={api_key}",
+      "rpc_url": "",
+      "native_price_usd": 1
+    }
+  },
+  "closed_project_clusters": [
+    {
+      "id": "closed-yield-cluster-001",
+      "deployer_addresses": [
+        "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "funder_addresses": [
+        "0xcccccccccccccccccccccccccccccccccccccccc"
+      ],
+      "treasury_addresses": [
+        "0xdddddddddddddddddddddddddddddddddddddddd"
+      ],
+      "project_addresses": [
+        "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      ]
+    }
+  ]
+}

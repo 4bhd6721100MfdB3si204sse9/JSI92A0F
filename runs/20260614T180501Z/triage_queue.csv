@@ -1,0 +1,5 @@
+score,next_action,name,chain,address,category,liquidity_usd,tvl_usd,volume24h_usd,source,url,reasons
+89,recon_bravo_then_corecritical,QuietBridge,base,0x2222222222222222222222222222222222222222,bridge,120000.0,1900000.0,30000.0,sample,,value_at_risk>=1000000:1900000;chain_weight:base:8;surface:bridge:18;fresh_pair<=3d:3;latest_boost;high_liquidity_to_fdv:0.21
+77,recon_bravo_then_corecritical,FastReward Staking,bsc,0x1111111111111111111111111111111111111111,staking,850000.0,0.0,125000.0,sample,,value_at_risk>=250000:850000;chain_weight:bsc:10;surface:vault:15;fresh_pair<=3d:1;latest_profile;high_liquidity_to_fdv:0.20
+21,watch_mainstream,Large Known Lending,ethereum,,lending,0.0,400000000.0,0.0,defillama_protocols,,value_at_risk>=10000000:400000000;chain_weight:ethereum:5;surface:lending:16;mainstream_dampener>=100000000
+15,drop_low_value,Tiny Meme Pool,polygon,0x3333333333333333333333333333333333333333,meme,4000.0,0.0,0.0,sample,,value_below_minimum:4000;chain_weight:polygon:7;latest_profile

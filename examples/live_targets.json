@@ -1,0 +1,30 @@
+{
+  "targets": [
+    {
+      "address": "0x5555555555555555555555555555555555555555",
+      "chain": "bsc",
+      "label": "Unverified Funded Treasury"
+    },
+    {
+      "address": "0x6666666666666666666666666666666666666666",
+      "chain": "base",
+      "label": "Unknown Spike Vault",
+      "liquidity_usd": 180000,
+      "price_change_24h_pct": 420,
+      "tags": [
+        "unknown_protocol",
+        "sudden_price_spike"
+      ]
+    },
+    {
+      "address": "0x7777777777777777777777777777777777777777",
+      "chain": "bsc",
+      "label": "New Yield Migrator"
+    },
+    {
+      "address": "0x4444444444444444444444444444444444444444",
+      "chain": "bsc",
+      "label": "DexPathExecutor Bot"
+    }
+  ]
+}

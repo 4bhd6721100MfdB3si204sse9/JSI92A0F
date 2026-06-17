@@ -1,0 +1,86 @@
+{
+  "candidate": {
+    "address": "0x5555555555555555555555555555555555555555",
+    "category": "treasury",
+    "chain": "bsc",
+    "entity_type": "unverified_contract",
+    "external_id": "bsc:0x5555555555555555555555555555555555555555",
+    "name": "Unverified Funded Treasury",
+    "source": "explorer_snapshot",
+    "url": ""
+  },
+  "deepwiki_focus": {
+    "gate_question": "Does this exact current protocol, with current live state, allow an unprivileged attacker to extract funds or rewards beyond entitlement?",
+    "local_questions": [
+      "Which selectors are used by depositors, admins, and withdrawal callers?",
+      "Does proxy/storage reconstruction show a public value-moving path?",
+      "What exact live contract holds or controls the funds/rewards?",
+      "Which public selectors can move, mint, claim, redeem, release, or sweep value?",
+      "Can an unprivileged caller gain more than their entitlement?"
+    ],
+    "proof_route": "reverse_engineer_unverified_funded_contract",
+    "why_this_candidate_matters": "A funded unverified contract can hide value-moving selectors, proxy behavior, or privileged withdrawal paths with live value at risk."
+  },
+  "live_evidence": {
+    "deployer_address": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "funding_cluster_id": "",
+    "tags": [
+      "unknown_protocol",
+      "unverified_contract"
+    ],
+    "verified_source": false
+  },
+  "rank": 2,
+  "raw_scored_row": {
+    "address": "0x5555555555555555555555555555555555555555",
+    "category": "treasury",
+    "chain": "bsc",
+    "created_at_ms": null,
+    "deployer_address": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "entity_type": "unverified_contract",
+    "external_id": "bsc:0x5555555555555555555555555555555555555555",
+    "fdv_usd": 0.0,
+    "funding_cluster_id": "",
+    "liquidity_usd": 0.0,
+    "name": "Unverified Funded Treasury",
+    "next_action": "reverse_engineer_unverified_funded_contract",
+    "price_change_24h_pct": 0.0,
+    "reasons": [
+      "value_at_risk>=250000:665000",
+      "unverified_contract:20",
+      "chain_weight:bsc:10",
+      "surface:unverified:14",
+      "unknown_protocol:10"
+    ],
+    "score": 70,
+    "source": "explorer_snapshot",
+    "tags": [
+      "unknown_protocol",
+      "unverified_contract"
+    ],
+    "tvl_usd": 665000.0,
+    "url": "",
+    "verified_source": false,
+    "volume24h_usd": 0.0
+  },
+  "schema_version": "sentinel-candidate-brief-v1",
+  "score": {
+    "next_action": "reverse_engineer_unverified_funded_contract",
+    "reasons": [
+      "value_at_risk>=250000:665000",
+      "unverified_contract:20",
+      "chain_weight:bsc:10",
+      "surface:unverified:14",
+      "unknown_protocol:10"
+    ],
+    "value": 70
+  },
+  "value_at_risk": {
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "price_change_24h_pct": 0.0,
+    "tvl_usd": 665000.0,
+    "usd": 665000.0,
+    "volume24h_usd": 0.0
+  }
+}

@@ -1,0 +1,141 @@
+[
+  {
+    "source": "sample",
+    "entity_type": "protocol",
+    "external_id": "bsc:0x1111111111111111111111111111111111111111",
+    "name": "FastReward Staking",
+    "chain": "bsc",
+    "address": "0x1111111111111111111111111111111111111111",
+    "category": "staking",
+    "liquidity_usd": 850000,
+    "tvl_usd": 0,
+    "volume24h_usd": 125000,
+    "fdv_usd": 4200000,
+    "created_at_ms": 1781300000000,
+    "tags": ["latest_profile", "pancakeswap"],
+    "raw": {
+      "description": "staking rewards and claim vault"
+    }
+  },
+  {
+    "source": "sample",
+    "entity_type": "protocol",
+    "external_id": "base:0x2222222222222222222222222222222222222222",
+    "name": "QuietBridge",
+    "chain": "base",
+    "address": "0x2222222222222222222222222222222222222222",
+    "category": "bridge",
+    "liquidity_usd": 120000,
+    "tvl_usd": 1900000,
+    "volume24h_usd": 30000,
+    "fdv_usd": 9000000,
+    "created_at_ms": 1781200000000,
+    "tags": ["latest_boost"],
+    "raw": {
+      "description": "cross-chain bridge vault"
+    }
+  },
+  {
+    "source": "defillama_protocols",
+    "entity_type": "protocol",
+    "external_id": "ethereum:blue-chip",
+    "name": "Large Known Lending",
+    "chain": "ethereum",
+    "category": "lending",
+    "tvl_usd": 400000000,
+    "tags": ["defillama"],
+    "raw": {
+      "description": "large established lending protocol"
+    }
+  },
+  {
+    "source": "sample",
+    "entity_type": "bot_contract",
+    "external_id": "bsc:0x4444444444444444444444444444444444444444",
+    "name": "DexPathExecutor Bot",
+    "chain": "bsc",
+    "address": "0x4444444444444444444444444444444444444444",
+    "category": "mev executor",
+    "liquidity_usd": 0,
+    "tvl_usd": 18000,
+    "volume24h_usd": 320000,
+    "tags": ["verified_bot_contract", "high_tx_count", "flashloan_user", "dex_path_executor"],
+    "raw": {
+      "description": "verified bot contract using flashloan arbitrage and repeated DEX path execution",
+      "behavior": "flashloan swap callback executor profit sweep"
+    }
+  },
+  {
+    "source": "sample",
+    "entity_type": "unverified_contract",
+    "external_id": "bsc:0x5555555555555555555555555555555555555555",
+    "name": "Unverified Funded Treasury",
+    "chain": "bsc",
+    "address": "0x5555555555555555555555555555555555555555",
+    "category": "unverified treasury",
+    "liquidity_usd": 0,
+    "tvl_usd": 640000,
+    "volume24h_usd": 0,
+    "verified_source": false,
+    "deployer_address": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "tags": ["unverified_contract", "unknown_protocol"],
+    "raw": {
+      "description": "unverified contract holding user funds with unknown withdrawal logic"
+    }
+  },
+  {
+    "source": "sample",
+    "entity_type": "unknown_protocol",
+    "external_id": "base:0x6666666666666666666666666666666666666666",
+    "name": "Unknown Spike Vault",
+    "chain": "base",
+    "address": "0x6666666666666666666666666666666666666666",
+    "category": "vault",
+    "liquidity_usd": 180000,
+    "tvl_usd": 0,
+    "volume24h_usd": 950000,
+    "fdv_usd": 1600000,
+    "price_change_24h_pct": 420,
+    "verified_source": true,
+    "tags": ["unknown_protocol", "sudden_price_spike", "latest_profile"],
+    "raw": {
+      "description": "unknown protocol with sudden liquidity and price expansion"
+    }
+  },
+  {
+    "source": "sample",
+    "entity_type": "unknown_protocol",
+    "external_id": "bsc:0x7777777777777777777777777777777777777777",
+    "name": "New Yield Migrator",
+    "chain": "bsc",
+    "address": "0x7777777777777777777777777777777777777777",
+    "category": "migrator vault",
+    "liquidity_usd": 90000,
+    "tvl_usd": 0,
+    "volume24h_usd": 210000,
+    "verified_source": false,
+    "deployer_address": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "funding_cluster_id": "closed-yield-cluster-001",
+    "tags": [
+      "unknown_protocol",
+      "prior_project_closed",
+      "same_deployer_closed_project",
+      "funding_from_closed_project",
+      "suspected_rug_redeploy"
+    ],
+    "raw": {
+      "description": "new deployment funded by wallet cluster linked to a closed project"
+    }
+  },
+  {
+    "source": "sample",
+    "entity_type": "protocol",
+    "external_id": "polygon:low",
+    "name": "Tiny Meme Pool",
+    "chain": "polygon",
+    "address": "0x3333333333333333333333333333333333333333",
+    "category": "meme",
+    "liquidity_usd": 4000,
+    "tags": ["latest_profile"]
+  }
+]

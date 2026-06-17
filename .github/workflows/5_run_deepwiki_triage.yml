@@ -1,0 +1,56 @@
+name: 5 Run DeepWiki Triage
+
+on:
+  workflow_dispatch:
+    inputs:
+      smoke_limit:
+        description: "Optional small-run limit"
+        required: false
+        default: ""
+      chain_next:
+        description: "Verify output and dispatch next workflow"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    env:
+      BOT_SMOKE_LIMIT: ${{ inputs.smoke_limit }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Build pending prompt queue
+        run: python3 run_generate_deepwiki_pending.py
+      - name: Submit DeepWiki triage prompts
+        run: python3 run_deepwiki_submit.py --stage triage
+      - name: Commit outputs
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No DeepWiki triage changes to commit"
+          else
+            git commit -m "Auto-update: DeepWiki triage submissions"
+            git pull --rebase origin master
+            git push origin master
+          fi
+      - name: Verify and advance chain
+        if: inputs.chain_next == 'true'
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_JSON || secrets.PAT_TOKEN }}
+        run: python3 workflow_chain.py advance --stage 5 --same-workflow 5_run_deepwiki_triage.yml --next-workflow 6_collect_deepwiki_triage.yml --smoke-limit "${{ inputs.smoke_limit }}"

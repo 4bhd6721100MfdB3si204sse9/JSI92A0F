@@ -1,0 +1,97 @@
+{
+  "closed_project_clusters": [
+    {
+      "id": "closed-yield-cluster-001",
+      "deployer_addresses": [
+        "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      ],
+      "funder_addresses": [
+        "0xcccccccccccccccccccccccccccccccccccccccc"
+      ],
+      "treasury_addresses": [
+        "0xdddddddddddddddddddddddddddddddddddddddd"
+      ],
+      "project_addresses": [
+        "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "chain": "bsc",
+      "address": "0x5555555555555555555555555555555555555555",
+      "name": "Unverified Funded Treasury",
+      "contract_type": "treasury",
+      "verified_source": false,
+      "native_balance_usd": 210000,
+      "token_balances": [
+        {
+          "token": "USDT",
+          "usd": 455000
+        }
+      ],
+      "deployer_address": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "tx_count_24h": 12,
+      "selectors": [
+        "0x2e1a7d4d",
+        "0x3ccfd60b"
+      ]
+    },
+    {
+      "chain": "base",
+      "address": "0x6666666666666666666666666666666666666666",
+      "name": "Unknown Spike Vault",
+      "contract_type": "vault",
+      "verified_source": true,
+      "liquidity_usd": 220000,
+      "volume24h_usd": 980000,
+      "price_change_24h_pct": 420,
+      "tx_count_24h": 140,
+      "tags": [
+        "latest_profile"
+      ]
+    },
+    {
+      "chain": "bsc",
+      "address": "0x7777777777777777777777777777777777777777",
+      "name": "New Yield Migrator",
+      "contract_type": "migrator vault",
+      "verified_source": false,
+      "value_at_risk_usd": 220000,
+      "deployer_address": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "funder_addresses": [
+        "0xcccccccccccccccccccccccccccccccccccccccc"
+      ],
+      "tx_count_24h": 44
+    },
+    {
+      "chain": "bsc",
+      "address": "0x4444444444444444444444444444444444444444",
+      "name": "DexPathExecutor Bot",
+      "contract_type": "mev executor",
+      "verified_source": true,
+      "native_balance_usd": 220000,
+      "tx_count_24h": 830,
+      "selectors": [
+        "0x414bf389",
+        "0xfa461e33"
+      ],
+      "dex_paths": [
+        "PancakeSwapV2",
+        "PancakeSwapV3"
+      ],
+      "tags": [
+        "router"
+      ]
+    },
+    {
+      "chain": "polygon",
+      "address": "0x9999999999999999999999999999999999999999",
+      "name": "Small Verified Helper",
+      "contract_type": "helper",
+      "verified_source": true,
+      "native_balance_usd": 250,
+      "tx_count_24h": 2
+    }
+  ]
+}

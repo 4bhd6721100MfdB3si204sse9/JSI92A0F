@@ -1,0 +1,56 @@
+name: 8 Collect Proof Gate And Export
+
+on:
+  workflow_dispatch:
+    inputs:
+      smoke_limit:
+        description: "Optional small-run limit"
+        required: false
+        default: ""
+      chain_next:
+        description: "Verify output and finish chain"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    env:
+      BOT_SMOKE_LIMIT: ${{ inputs.smoke_limit }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Collect proof-gate responses
+        run: python3 run_collect_deepwiki_results.py --stage proof_gate
+      - name: Export local proof queue
+        run: python3 run_export_local_proof_queue.py
+      - name: Commit outputs
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No proof gate export changes to commit"
+          else
+            git commit -m "Auto-update: local proof queue"
+            git pull --rebase origin master
+            git push origin master
+          fi
+      - name: Verify chain complete
+        if: inputs.chain_next == 'true'
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_JSON || secrets.PAT_TOKEN }}
+        run: python3 workflow_chain.py advance --stage 8 --next-workflow 9_materialize_foundry_target.yml --smoke-limit "${{ inputs.smoke_limit }}"

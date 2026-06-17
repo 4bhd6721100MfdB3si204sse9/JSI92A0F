@@ -1,0 +1,761 @@
+[
+  {
+    "address": "",
+    "category": "Bridge",
+    "chain": "ethereum",
+    "created_at_ms": null,
+    "external_id": "layerzero-v2",
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "name": "LayerZero V2",
+    "next_action": "watch_mainstream",
+    "reasons": [
+      "value_at_risk>=10000000:7583345774",
+      "chain_weight:ethereum:5",
+      "surface:bridge:18",
+      "mainstream_dampener>=100000000"
+    ],
+    "score": 23,
+    "source": "defillama_protocols",
+    "tags": [
+      "defillama",
+      "multi_chain"
+    ],
+    "tvl_usd": 7583345774.156277,
+    "url": "https://layerzero.network/",
+    "volume24h_usd": 0.0
+  },
+  {
+    "address": "",
+    "category": "Lending",
+    "chain": "ethereum",
+    "created_at_ms": null,
+    "external_id": "aave-v3",
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "name": "Aave V3",
+    "next_action": "watch_mainstream",
+    "reasons": [
+      "value_at_risk>=10000000:11828950643",
+      "chain_weight:ethereum:5",
+      "surface:lending:16",
+      "mainstream_dampener>=100000000"
+    ],
+    "score": 21,
+    "source": "defillama_protocols",
+    "tags": [
+      "defillama",
+      "multi_chain"
+    ],
+    "tvl_usd": 11828950643.181353,
+    "url": "https://aave.com",
+    "volume24h_usd": 0.0
+  },
+  {
+    "address": "5WaGJjGvjZGwM7suNCyu1Vv8K96TccttSFjAkaFpump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781457671000,
+    "external_id": "solana:8XYXuUAmUoCb4gq4y4BbooR6bYciBHn1apxZCkwh1RHg",
+    "fdv_usd": 83105.0,
+    "liquidity_usd": 20267.74,
+    "name": "UFC White House",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:20268",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "high_liquidity_to_fdv:0.24",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "pumpswap"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/8xyxuuamuocb4gq4y4bboor6bycibhn1apxzckwh1rhg",
+    "volume24h_usd": 191581.76
+  },
+  {
+    "address": "GvD4XDRdxTGj5Ao27sZLXKhJVHKrUKAsJEz95uurpump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781459547000,
+    "external_id": "solana:GnWsxSzaj4sMvoLPXVCK8t4o9azYcQgQoWZiqpzLc5tP",
+    "fdv_usd": 3567.01,
+    "liquidity_usd": 0.0,
+    "name": "TCGData",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/gnwsxszaj4smvolpxvck8t4o9azycqgqowziqpzlc5tp",
+    "volume24h_usd": 56806.57
+  },
+  {
+    "address": "DncsoEwGbdXg3wcnSAfJzfUe7hSYTiu5eNeMA6DVpump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781458931000,
+    "external_id": "solana:HqqYVjmuic1NGqUAeffjHmWuaD3Af1jyjcyt2VsCLazW",
+    "fdv_usd": 13762.41,
+    "liquidity_usd": 0.0,
+    "name": "I am a fucking architect",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/hqqyvjmuic1ngquaeffjhmwuad3af1jyjcyt2vsclazw",
+    "volume24h_usd": 47925.99
+  },
+  {
+    "address": "0xc5892430fb4385db4BFe0a908af7fFC48567F104",
+    "category": "WETH",
+    "chain": "ethereum",
+    "created_at_ms": 1781457023000,
+    "external_id": "ethereum:0x3F860b3575c59664159f53CdF20568119f6A9369",
+    "fdv_usd": 17248.0,
+    "liquidity_usd": 7691.5,
+    "name": "Wokius Maximus",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:7692",
+      "chain_weight:ethereum:5",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "high_liquidity_to_fdv:0.45",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "uniswap",
+      "v2"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/ethereum/0x3f860b3575c59664159f53cdf20568119f6a9369",
+    "volume24h_usd": 17859.65
+  },
+  {
+    "address": "Bux9NcSfxwtZQY4th2a1mTrezTRVvquxE195KY2ipump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781460284000,
+    "external_id": "solana:88Y3pNbjq6zFkPU8oz9VvxG4Uax7fvjNECd7dQ4kDvFu",
+    "fdv_usd": 9767.02,
+    "liquidity_usd": 0.0,
+    "name": "sims",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/88y3pnbjq6zfkpu8oz9vvxg4uax7fvjnecd7dq4kdvfu",
+    "volume24h_usd": 32944.73
+  },
+  {
+    "address": "0xB300d35e90634d74E4189d3690bAb1F9119132E8",
+    "category": "WETH",
+    "chain": "ethereum",
+    "created_at_ms": 1781459639000,
+    "external_id": "ethereum:0x8Ed1e4f5cD983073cA26a8593311BC02C22a0224",
+    "fdv_usd": 4587.0,
+    "liquidity_usd": 2802.09,
+    "name": "Buongiorno",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:2802",
+      "chain_weight:ethereum:5",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "high_liquidity_to_fdv:0.61",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "uniswap",
+      "v2"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/ethereum/0x8ed1e4f5cd983073ca26a8593311bc02c22a0224",
+    "volume24h_usd": 10246.31
+  },
+  {
+    "address": "99vvNXSCY6Lqg5fhSwzskqoj89cC58UnhXELJGnVpump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781459772000,
+    "external_id": "solana:BqFw5NgFBnoLpaz2nT5bDceNYfJP5i3TwSgV1gVoKA4x",
+    "fdv_usd": 2049.81,
+    "liquidity_usd": 0.0,
+    "name": "michaelseacrest15",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/bqfw5ngfbnolpaz2nt5bdcenyfjp5i3twsgv1gvoka4x",
+    "volume24h_usd": 53854.96
+  },
+  {
+    "address": "AcG66EWynoBCEoPPVLJh5YRvX4fhT84TiwiAJonpump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781439823000,
+    "external_id": "solana:HU52vAVveHuyMFLLEiMRVHS5LQ8h4g1Lb5VbWPhHiicK",
+    "fdv_usd": 6766.66,
+    "liquidity_usd": 0.0,
+    "name": "Dreaming Big",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/hu52vavvehuymflleimrvhs5lq8h4g1lb5vbwphhiick",
+    "volume24h_usd": 26456.41
+  },
+  {
+    "address": "0x7c452A9DAD32Af24d1aA54d9E718659b553Bc710",
+    "category": "WETH",
+    "chain": "ethereum",
+    "created_at_ms": 1781458091000,
+    "external_id": "ethereum:0x11135Cf209a4620269CFDcd7Dd175e257A5be230",
+    "fdv_usd": 5881.0,
+    "liquidity_usd": 5665.17,
+    "name": "TaoOS",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:5665",
+      "chain_weight:ethereum:5",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "high_liquidity_to_fdv:0.96",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "uniswap",
+      "v2"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/ethereum/0x11135cf209a4620269cfdcd7dd175e257a5be230",
+    "volume24h_usd": 21586.02
+  },
+  {
+    "address": "CkJZvvWbwmiDepzrk71pq6gMXBfRVfUkhXR61iz3pump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781391428000,
+    "external_id": "solana:9Zch6oAZQF69tTPA4ZyWYEoiusJ8b2X2r5TDqFCEraiZ",
+    "fdv_usd": 96327.0,
+    "liquidity_usd": 21436.84,
+    "name": "Religion",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:21437",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "high_liquidity_to_fdv:0.22",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "pumpswap"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/9zch6oazqf69ttpa4zywyeoiusj8b2x2r5tdqfceraiz",
+    "volume24h_usd": 50305.4
+  },
+  {
+    "address": "EzLupfmJGDrVKyJfQd8vwJsUHd9LFF66JALzdX1ppump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781459201000,
+    "external_id": "solana:6LiTQzaLeSm9eREtK7GGcFf3bz4VgCY3x4CMJgMmKwB7",
+    "fdv_usd": 3670.31,
+    "liquidity_usd": 0.0,
+    "name": "BABY KINS",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "fresh_pair<=3d:0",
+      "latest_boost",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_boosts",
+    "tags": [
+      "latest_boost",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/6litqzalesm9eretk7ggcff3bz4vgcy3x4cmjgmmkwb7",
+    "volume24h_usd": 42041.79
+  },
+  {
+    "address": "ETZB4WBqqzX29ofp4sRHLdw9paM9Kvne4c2WvJH2pump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781212698000,
+    "external_id": "solana:JGHtKJKB6pBzYKRkRrPDmdvr4vwnhGpx5o1GMH9g3d4",
+    "fdv_usd": 17880.48,
+    "liquidity_usd": 0.0,
+    "name": "Highway on Solana",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "fresh_pair<=3d:2",
+      "latest_boost",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_boosts",
+    "tags": [
+      "latest_boost",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/jghtkjkb6pbzykrkrrpdmdvr4vwnhgpx5o1gmh9g3d4",
+    "volume24h_usd": 25832.95
+  },
+  {
+    "address": "8T7UGfH67Rn82w4nSSZtc3aB4GeNNASrZhdsUFDypump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781442703000,
+    "external_id": "solana:EZ1UGwUsL3hjizuUBCcQHHkDuNjwxi7bcQSYsNhnsGUq",
+    "fdv_usd": 17149.0,
+    "liquidity_usd": 10507.34,
+    "name": "LiquidPool",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:10507",
+      "fresh_pair<=3d:0",
+      "latest_boost",
+      "high_liquidity_to_fdv:0.61",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_boosts",
+    "tags": [
+      "latest_boost",
+      "pumpswap"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/ez1ugwusl3hjizuubccqhhkdunjwxi7bcqsysnhnsguq",
+    "volume24h_usd": 470779.66
+  },
+  {
+    "address": "HMKTGAvaScJawgjmMZKxghuc58QABg6H5KGq1biapump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781456929000,
+    "external_id": "solana:7nt7zDNkz56cztGkM6cJxwq72tGofRLW4SgF6vD61kCn",
+    "fdv_usd": 28349.0,
+    "liquidity_usd": 11841.31,
+    "name": "PumpTown",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:11841",
+      "fresh_pair<=3d:0",
+      "latest_boost",
+      "high_liquidity_to_fdv:0.42",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_boosts",
+    "tags": [
+      "latest_boost",
+      "pumpswap"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/7nt7zdnkz56cztgkm6cjxwq72tgofrlw4sgf6vd61kcn",
+    "volume24h_usd": 164143.49
+  },
+  {
+    "address": "9WqxyfDkVhvPxQHLZFKRGRmKGgnuVbR1So2n7gtupump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781457538000,
+    "external_id": "solana:3PiSsFYv1RaEDgVq6KfjWiybnqjxVp9Zf7KCLmLRGuiT",
+    "fdv_usd": 2765.79,
+    "liquidity_usd": 0.0,
+    "name": "QUOKKA",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "fresh_pair<=3d:0",
+      "latest_boost",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_boosts",
+    "tags": [
+      "latest_boost",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/3pissfyv1raedgvq6kfjwiybnqjxvp9zf7kclmlrguit",
+    "volume24h_usd": 1180.23
+  },
+  {
+    "address": "FSA7iqBeeENna2LUmZyqCYce7op2jBc9ztXLKdM6bonk",
+    "category": "USD1",
+    "chain": "solana",
+    "created_at_ms": 1781448379000,
+    "external_id": "solana:7w9WKA7boFchyAJuAjuanzHBsRuMahBQb8iu9WTHe3Uz",
+    "fdv_usd": 132557.0,
+    "liquidity_usd": 30272.97,
+    "name": "Fight House",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:30273",
+      "fresh_pair<=3d:0",
+      "latest_boost",
+      "high_liquidity_to_fdv:0.23",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_boosts",
+    "tags": [
+      "latest_boost",
+      "raydium",
+      "CPMM"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/7w9wka7bofchyajuajuanzhbsrumahbqb8iu9wthe3uz",
+    "volume24h_usd": 726348.77
+  },
+  {
+    "address": "SPCXwBHVrKpRqMRawL3NNvt1sXP2Yf3edwRbta53N69",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781272970000,
+    "external_id": "solana:5QPHhqpAw3CZ5aNbnHQGzjXjM7eNnrkA6hwtzhmXJ2dR",
+    "fdv_usd": 1517449.0,
+    "liquidity_usd": 94633.39,
+    "name": "SPCX69",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:94633",
+      "fresh_pair<=3d:2",
+      "latest_boost",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_boosts",
+    "tags": [
+      "latest_boost",
+      "pumpswap"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/5qphhqpaw3cz5anbnhqgzjxjm7ennrka6hwtzhmxj2dr",
+    "volume24h_usd": 937449.47
+  },
+  {
+    "address": "",
+    "category": "Liquid Staking",
+    "chain": "ethereum",
+    "created_at_ms": null,
+    "external_id": "lido",
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "name": "Lido",
+    "next_action": "watch_mainstream",
+    "reasons": [
+      "value_at_risk>=10000000:14822733001",
+      "chain_weight:ethereum:5",
+      "surface:staking:14",
+      "mainstream_dampener>=100000000"
+    ],
+    "score": 19,
+    "source": "defillama_protocols",
+    "tags": [
+      "defillama",
+      "multi_chain"
+    ],
+    "tvl_usd": 14822733000.528246,
+    "url": "https://lido.fi/",
+    "volume24h_usd": 0.0
+  },
+  {
+    "address": "",
+    "category": "CEX",
+    "chain": "ethereum",
+    "created_at_ms": null,
+    "external_id": "bybit",
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "name": "Bybit",
+    "next_action": "watch_mainstream",
+    "reasons": [
+      "value_at_risk>=10000000:13904893251",
+      "chain_weight:ethereum:5",
+      "surface:stake:14",
+      "mainstream_dampener>=100000000"
+    ],
+    "score": 19,
+    "source": "defillama_protocols",
+    "tags": [
+      "defillama",
+      "multi_chain"
+    ],
+    "tvl_usd": 13904893251.48631,
+    "url": "https://www.bybit.com",
+    "volume24h_usd": 0.0
+  },
+  {
+    "address": "",
+    "category": "Staking Pool",
+    "chain": "ethereum",
+    "created_at_ms": null,
+    "external_id": "ssv-network",
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "name": "SSV Network",
+    "next_action": "watch_mainstream",
+    "reasons": [
+      "value_at_risk>=10000000:12224474246",
+      "chain_weight:ethereum:5",
+      "surface:staking:14",
+      "mainstream_dampener>=100000000"
+    ],
+    "score": 19,
+    "source": "defillama_protocols",
+    "tags": [
+      "defillama"
+    ],
+    "tvl_usd": 12224474245.662563,
+    "url": "https://ssv.network/",
+    "volume24h_usd": 0.0
+  },
+  {
+    "address": "",
+    "category": "Bridge",
+    "chain": "bitcoin",
+    "created_at_ms": null,
+    "external_id": "wbtc",
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "name": "WBTC",
+    "next_action": "watch_mainstream",
+    "reasons": [
+      "value_at_risk>=10000000:7317939832",
+      "surface:bridge:18",
+      "mainstream_dampener>=100000000"
+    ],
+    "score": 18,
+    "source": "defillama_protocols",
+    "tags": [
+      "defillama"
+    ],
+    "tvl_usd": 7317939831.579144,
+    "url": "https://wbtc.network/",
+    "volume24h_usd": 0.0
+  },
+  {
+    "address": "7jF7tjSKLambtJMiAyCXfaj8nVrqF3UfJxgWP9tKLGwT",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": null,
+    "external_id": "solana:J83LRw1Bs8ac44AKqivF8G4p7mWWwsKS3H5CPqLbAof3",
+    "fdv_usd": 12398.15,
+    "liquidity_usd": 0.0,
+    "name": "ANDY",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "latest_boost",
+      "low_value_score_cap"
+    ],
+    "score": 10,
+    "source": "dexscreener_boosts",
+    "tags": [
+      "latest_boost",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/j83lrw1bs8ac44akqivf8g4p7mwwwsks3h5cpqlbaof3",
+    "volume24h_usd": 3837.7
+  },
+  {
+    "address": "aqQRs3UJmHs7ktoLo46HZAzvG9P3oCoZ41nENqFbory",
+    "category": "USDC",
+    "chain": "solana",
+    "created_at_ms": 1768386607000,
+    "external_id": "solana:H1HkFYy8ga3oYBkxK4hTieZFPBSdh8ot5BsbRjJqj79V",
+    "fdv_usd": 1425399.0,
+    "liquidity_usd": 128280.25,
+    "name": "Alpie",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:128280",
+      "latest_boost",
+      "low_value_score_cap"
+    ],
+    "score": 10,
+    "source": "dexscreener_boosts",
+    "tags": [
+      "latest_boost",
+      "meteora",
+      "DYN2"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/h1hkfyy8ga3oybkxk4htiezfpbsdh8ot5bsbrjjqj79v",
+    "volume24h_usd": 168832.19
+  },
+  {
+    "address": "",
+    "category": "CEX",
+    "chain": "ethereum",
+    "created_at_ms": null,
+    "external_id": "binance-cex",
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "name": "Binance CEX",
+    "next_action": "watch_mainstream",
+    "reasons": [
+      "value_at_risk>=10000000:140161946025",
+      "chain_weight:ethereum:5",
+      "mainstream_dampener>=100000000"
+    ],
+    "score": 5,
+    "source": "defillama_protocols",
+    "tags": [
+      "defillama",
+      "multi_chain"
+    ],
+    "tvl_usd": 140161946025.00806,
+    "url": "https://www.binance.com",
+    "volume24h_usd": 0.0
+  },
+  {
+    "address": "",
+    "category": "CEX",
+    "chain": "ethereum",
+    "created_at_ms": null,
+    "external_id": "okx",
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "name": "OKX",
+    "next_action": "watch_mainstream",
+    "reasons": [
+      "value_at_risk>=10000000:21781833454",
+      "chain_weight:ethereum:5",
+      "mainstream_dampener>=100000000"
+    ],
+    "score": 5,
+    "source": "defillama_protocols",
+    "tags": [
+      "defillama",
+      "multi_chain"
+    ],
+    "tvl_usd": 21781833453.538258,
+    "url": "https://www.okx.com",
+    "volume24h_usd": 0.0
+  },
+  {
+    "address": "",
+    "category": "CEX",
+    "chain": "bitcoin",
+    "created_at_ms": null,
+    "external_id": "bitfinex",
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "name": "Bitfinex",
+    "next_action": "watch_mainstream",
+    "reasons": [
+      "value_at_risk>=10000000:16879987165",
+      "mainstream_dampener>=100000000"
+    ],
+    "score": 0,
+    "source": "defillama_protocols",
+    "tags": [
+      "defillama",
+      "multi_chain"
+    ],
+    "tvl_usd": 16879987165.274368,
+    "url": "https://www.bitfinex.com",
+    "volume24h_usd": 0.0
+  },
+  {
+    "address": "",
+    "category": "CEX",
+    "chain": "bitcoin",
+    "created_at_ms": null,
+    "external_id": "robinhood",
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "name": "Robinhood",
+    "next_action": "watch_mainstream",
+    "reasons": [
+      "value_at_risk>=10000000:11301131022",
+      "mainstream_dampener>=100000000"
+    ],
+    "score": 0,
+    "source": "defillama_protocols",
+    "tags": [
+      "defillama",
+      "multi_chain"
+    ],
+    "tvl_usd": 11301131021.719408,
+    "url": "https://robinhood.com",
+    "volume24h_usd": 0.0
+  }
+]

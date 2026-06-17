@@ -1,0 +1,138 @@
+[
+  {
+    "address": "DncsoEwGbdXg3wcnSAfJzfUe7hSYTiu5eNeMA6DVpump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781458931000,
+    "external_id": "solana:HqqYVjmuic1NGqUAeffjHmWuaD3Af1jyjcyt2VsCLazW",
+    "fdv_usd": 11053.16,
+    "liquidity_usd": 0.0,
+    "name": "I am a fucking architect",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/hqqyvjmuic1ngquaeffjhmwuad3af1jyjcyt2vsclazw",
+    "volume24h_usd": 37302.34
+  },
+  {
+    "address": "0xc5892430fb4385db4BFe0a908af7fFC48567F104",
+    "category": "WETH",
+    "chain": "ethereum",
+    "created_at_ms": 1781457023000,
+    "external_id": "ethereum:0x3F860b3575c59664159f53CdF20568119f6A9369",
+    "fdv_usd": 15623.0,
+    "liquidity_usd": 7316.94,
+    "name": "Wokius Maximus",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:7317",
+      "chain_weight:ethereum:5",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "high_liquidity_to_fdv:0.47",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "uniswap",
+      "v2"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/ethereum/0x3f860b3575c59664159f53cdf20568119f6a9369",
+    "volume24h_usd": 14606.16
+  },
+  {
+    "address": "Bux9NcSfxwtZQY4th2a1mTrezTRVvquxE195KY2ipump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781460284000,
+    "external_id": "solana:88Y3pNbjq6zFkPU8oz9VvxG4Uax7fvjNECd7dQ4kDvFu",
+    "fdv_usd": 6238.31,
+    "liquidity_usd": 0.0,
+    "name": "sims",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/88y3pnbjq6zfkpu8oz9vvxg4uax7fvjnecd7dq4kdvfu",
+    "volume24h_usd": 12445.3
+  },
+  {
+    "address": "0xB300d35e90634d74E4189d3690bAb1F9119132E8",
+    "category": "WETH",
+    "chain": "ethereum",
+    "created_at_ms": 1781459639000,
+    "external_id": "ethereum:0x8Ed1e4f5cD983073cA26a8593311BC02C22a0224",
+    "fdv_usd": 11700.0,
+    "liquidity_usd": 4450.18,
+    "name": "Buongiorno",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:4450",
+      "chain_weight:ethereum:5",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "high_liquidity_to_fdv:0.38",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "uniswap",
+      "v2"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/ethereum/0x8ed1e4f5cd983073ca26a8593311bc02c22a0224",
+    "volume24h_usd": 6302.3
+  },
+  {
+    "address": "99vvNXSCY6Lqg5fhSwzskqoj89cC58UnhXELJGnVpump",
+    "category": "SOL",
+    "chain": "solana",
+    "created_at_ms": 1781459772000,
+    "external_id": "solana:BqFw5NgFBnoLpaz2nT5bDceNYfJP5i3TwSgV1gVoKA4x",
+    "fdv_usd": 12763.38,
+    "liquidity_usd": 0.0,
+    "name": "michaelseacrest15",
+    "next_action": "drop_low_value",
+    "reasons": [
+      "value_below_minimum:0",
+      "fresh_pair<=3d:0",
+      "latest_profile",
+      "low_value_score_cap"
+    ],
+    "score": 19,
+    "source": "dexscreener_profiles",
+    "tags": [
+      "latest_profile",
+      "pumpfun"
+    ],
+    "tvl_usd": 0.0,
+    "url": "https://dexscreener.com/solana/bqfw5ngfbnolpaz2nt5bdcenyfjp5i3twsgv1gvoka4x",
+    "volume24h_usd": 37998.3
+  }
+]

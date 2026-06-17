@@ -1,0 +1,44 @@
+name: 9 Materialize Foundry Target
+
+on:
+  workflow_dispatch:
+    inputs:
+      smoke_limit:
+        description: "Optional small-run limit"
+        required: false
+        default: ""
+      chain_next:
+        description: "Reserved for future chained workflows"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    env:
+      BOT_SMOKE_LIMIT: ${{ inputs.smoke_limit }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Materialize Foundry target repos
+        run: python3 run_materialize_foundry_target.py --output foundry_targets
+      - name: Commit outputs
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No Foundry target changes to commit"
+          else
+            git commit -m "Auto-update: materialized Foundry targets"
+            git pull --rebase origin master
+            git push origin master
+          fi
+      - name: Verify materialization
+        run: python3 workflow_chain.py verify --stage 9

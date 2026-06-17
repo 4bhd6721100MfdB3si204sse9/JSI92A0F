@@ -1,0 +1,6 @@
+{
+  "chain": "bsc",
+  "name": "New Yield Migrator",
+  "next_action": "investigate_redeploy_funding_cluster",
+  "target": "0x7777777777777777777777777777777777777777"
+}

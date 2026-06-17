@@ -1,0 +1,61 @@
+name: 3 Enrich Live Targets
+
+on:
+  workflow_dispatch:
+    inputs:
+      smoke_limit:
+        description: "Optional small-run limit"
+        required: false
+        default: ""
+      chain_next:
+        description: "Verify output and dispatch next workflow"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  enrich:
+    runs-on: ubuntu-latest
+    env:
+      BOT_SMOKE_LIMIT: ${{ inputs.smoke_limit }}
+      SENTINEL_LIMIT: ${{ inputs.smoke_limit || '50' }}
+      SENTINEL_LIVE_SNAPSHOT_PATH: state/latest_live_snapshot.json
+      SENTINEL_BSC_EXPLORER_API_KEYS: ${{ secrets.SENTINEL_BSC_EXPLORER_API_KEYS }}
+      SENTINEL_BSC_EXPLORER_API_KEY: ${{ secrets.SENTINEL_BSC_EXPLORER_API_KEY }}
+      SENTINEL_BSC_RPC_URLS: ${{ secrets.SENTINEL_BSC_RPC_URLS }}
+      SENTINEL_BSC_RPC_URL: ${{ secrets.SENTINEL_BSC_RPC_URL }}
+      SENTINEL_ETHEREUM_EXPLORER_API_KEYS: ${{ secrets.SENTINEL_ETHEREUM_EXPLORER_API_KEYS }}
+      SENTINEL_ETHEREUM_EXPLORER_API_KEY: ${{ secrets.SENTINEL_ETHEREUM_EXPLORER_API_KEY }}
+      SENTINEL_ETHEREUM_RPC_URLS: ${{ secrets.SENTINEL_ETHEREUM_RPC_URLS }}
+      SENTINEL_ETHEREUM_RPC_URL: ${{ secrets.SENTINEL_ETHEREUM_RPC_URL }}
+      SENTINEL_BASE_EXPLORER_API_KEYS: ${{ secrets.SENTINEL_BASE_EXPLORER_API_KEYS }}
+      SENTINEL_BASE_EXPLORER_API_KEY: ${{ secrets.SENTINEL_BASE_EXPLORER_API_KEY }}
+      SENTINEL_BASE_RPC_URLS: ${{ secrets.SENTINEL_BASE_RPC_URLS }}
+      SENTINEL_BASE_RPC_URL: ${{ secrets.SENTINEL_BASE_RPC_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Enrich live targets
+        run: python3 -m sentinel discover --source explorer_live --input examples/live_targets.json --limit "$SENTINEL_LIMIT" --output runs
+      - name: Commit outputs
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No enrichment changes to commit"
+          else
+            git commit -m "Auto-update: sentinel live enrichment"
+            git pull --rebase origin master
+            git push origin master
+          fi
+      - name: Verify and advance chain
+        if: inputs.chain_next == 'true'
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_JSON || secrets.PAT_TOKEN }}
+        run: python3 workflow_chain.py advance --stage 3 --next-workflow 4_build_deepwiki_briefs.yml --smoke-limit "${{ inputs.smoke_limit }}"

@@ -1,0 +1,47 @@
+name: 4 Build DeepWiki Briefs
+
+on:
+  workflow_dispatch:
+    inputs:
+      smoke_limit:
+        description: "Optional small-run limit"
+        required: false
+        default: ""
+      chain_next:
+        description: "Verify output and dispatch next workflow"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  briefs:
+    runs-on: ubuntu-latest
+    env:
+      BOT_SMOKE_LIMIT: ${{ inputs.smoke_limit }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build briefs
+        run: python3 run_build_deepwiki_briefs.py --latest --runs-dir runs --output deepwiki_briefs
+      - name: Commit outputs
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No brief changes to commit"
+          else
+            git commit -m "Auto-update: sentinel DeepWiki briefs"
+            git pull --rebase origin master
+            git push origin master
+          fi
+      - name: Verify and advance chain
+        if: inputs.chain_next == 'true'
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_JSON || secrets.PAT_TOKEN }}
+        run: python3 workflow_chain.py advance --stage 4 --next-workflow 5_run_deepwiki_triage.yml --smoke-limit "${{ inputs.smoke_limit }}"

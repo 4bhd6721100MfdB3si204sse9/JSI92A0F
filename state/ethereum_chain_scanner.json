@@ -1,0 +1,164 @@
+{
+  "last_scanned_block": 100,
+  "seen_contracts": {
+    "0x1212121212121212121212121212121212121212": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xtransfer01",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 100,
+      "last_seen_block": 100,
+      "last_value_usd": 240000.0,
+      "max_value_usd": 240000.0,
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "token_funded_contract",
+        "unknown_protocol",
+        "vault_exchange_rate"
+      ],
+      "token_addresses": [
+        "0x8888888888888888888888888888888888888888"
+      ],
+      "updated_at_block": 100
+    },
+    "0x3434343434343434343434343434343434343434": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xtransfer02",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 100,
+      "last_seen_block": 100,
+      "last_value_usd": 250000.0,
+      "max_value_usd": 250000.0,
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unknown_protocol",
+        "vault_exchange_rate"
+      ],
+      "token_addresses": [
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+      ],
+      "updated_at_block": 100
+    },
+    "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": {
+      "created_at_ms": 1735689600000,
+      "deployer": "0x1111111111111111111111111111111111111111",
+      "deployment_tx": "0x01",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 100,
+      "last_seen_block": 100,
+      "last_value_usd": 300000.0,
+      "max_value_usd": 300000.0,
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_deployment",
+        "high_native_balance",
+        "high_total_balance",
+        "unknown_protocol",
+        "unverified_contract"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 100
+    },
+    "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb": {
+      "created_at_ms": 1735689600000,
+      "deployer": "0x2222222222222222222222222222222222222222",
+      "deployment_tx": "0x02",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 100,
+      "last_seen_block": 100,
+      "last_value_usd": 36000.0,
+      "max_value_usd": 36000.0,
+      "tags": [
+        "bot_contract",
+        "dex_path_executor",
+        "flashloan_user",
+        "fresh_deployment",
+        "high_tx_count",
+        "unknown_protocol",
+        "verified_bot_contract"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 100
+    },
+    "0xcccccccccccccccccccccccccccccccccccccccc": {
+      "created_at_ms": 1735689600000,
+      "deployer": "0x3333333333333333333333333333333333333333",
+      "deployment_tx": "0x03",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 100,
+      "last_seen_block": 100,
+      "last_value_usd": 240000.0,
+      "max_value_usd": 240000.0,
+      "tags": [
+        "active_reward_pool",
+        "fresh_contract_large_balance",
+        "fresh_deployment",
+        "high_native_balance",
+        "high_total_balance",
+        "large_claimable_rewards",
+        "reward_pool",
+        "unknown_protocol"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 100
+    },
+    "0xdddddddddddddddddddddddddddddddddddddddd": {
+      "created_at_ms": 1735689600000,
+      "deployer": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "deployment_tx": "0x04",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 100,
+      "last_seen_block": 100,
+      "last_value_usd": 225000.0,
+      "max_value_usd": 225000.0,
+      "tags": [
+        "fresh_contract_funded_by_large_eoa",
+        "fresh_contract_large_balance",
+        "fresh_deployment",
+        "funding_from_closed_project",
+        "high_native_balance",
+        "high_total_balance",
+        "prior_project_closed",
+        "same_deployer_closed_project",
+        "suspected_rug_redeploy",
+        "unknown_protocol",
+        "vault_exchange_rate"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 100
+    },
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": {
+      "created_at_ms": 1735689600000,
+      "deployer": "0x5555555555555555555555555555555555555555",
+      "deployment_tx": "0x05",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 100,
+      "last_seen_block": 100,
+      "last_value_usd": 250000.0,
+      "max_value_usd": 250000.0,
+      "tags": [
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "fresh_deployment",
+        "high_token_balance",
+        "high_total_balance",
+        "unknown_protocol",
+        "vault_exchange_rate"
+      ],
+      "token_addresses": [
+        "0x9999999999999999999999999999999999999999"
+      ],
+      "updated_at_block": 100
+    }
+  }
+}

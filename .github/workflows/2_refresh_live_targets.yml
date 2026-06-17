@@ -1,0 +1,48 @@
+name: 2 Refresh Live Targets
+
+on:
+  workflow_dispatch:
+    inputs:
+      smoke_limit:
+        description: "Optional small-run limit"
+        required: false
+        default: ""
+      chain_next:
+        description: "Verify output and dispatch next workflow"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      BOT_SMOKE_LIMIT: ${{ inputs.smoke_limit }}
+      SENTINEL_LATEST_TARGETS_PATH: state/latest_targets.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Refresh live targets
+        run: python3 -m sentinel refresh-targets --latest --runs-dir runs --output examples/live_targets.json
+      - name: Commit outputs
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No target changes to commit"
+          else
+            git commit -m "Auto-update: sentinel live targets"
+            git pull --rebase origin master
+            git push origin master
+          fi
+      - name: Verify and advance chain
+        if: inputs.chain_next == 'true'
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_JSON || secrets.PAT_TOKEN }}
+        run: python3 workflow_chain.py advance --stage 2 --next-workflow 3_enrich_live_targets.yml --smoke-limit "${{ inputs.smoke_limit }}"

@@ -1,0 +1,42 @@
+{
+  "project_name": "Protocol Sentinel",
+  "source_repo": "maker-deepwiki/maker",
+  "repo_name": "protocol-sentinel",
+  "max_repo": 10,
+  "paid_impact_focus": "fund extraction, protocol value drain, reward extraction, and unfair reward access",
+  "gate_question": "Does this exact current protocol, with current live state, allow an unprivileged attacker to extract funds or rewards beyond entitlement?",
+  "attacker_profile": "unprivileged user, depositor, withdrawer, claimant, borrower, liquidator, bridge user, router user, bot-discovered target user, or receiver contract",
+  "priority_surfaces": [
+    "vaults and share-based pools",
+    "staking and reward-distribution contracts",
+    "lending markets and liquidation paths",
+    "bridges and cross-chain claim or release paths",
+    "migrators, routers, and strategy wrappers",
+    "claim contracts, airdrop distributors, and vesting contracts",
+    "reward managers, fee splitters, and emission controllers",
+    "funded unverified contracts with public selectors",
+    "proxy contracts with live funds or recent implementation changes",
+    "bot-discovered target protocols repeatedly touched before profit sweeps"
+  ],
+  "exploit_families": [
+    "unauthorized withdrawal, redeem, unstake, claim, liquidate, release, sweep, or migrate",
+    "share-price or exchange-rate drift",
+    "rounding that favors the attacker over repeated calls",
+    "phantom accounting where shares, debt, or rewards are created without matching assets",
+    "missing access control on value-moving functions",
+    "allowance, permit, or approval bugs that move user funds",
+    "bridge message validation gaps that unlock escrowed value",
+    "reward index desynchronization or stale accumulator state",
+    "zero-stake, dust-stake, flashloan, or front-run reward capture",
+    "proxy, implementation, or storage mismatch that exposes live funds"
+  ],
+  "reject_classes": [
+    "DoS, griefing, liveness, temporary freeze, UX, gas-only, or style-only issues",
+    "admin-only, governance-only, leaked-key, or malicious owner assumptions",
+    "pure third-party dependency failure without a protocol-controlled value path",
+    "theoretical math issues without live funds, rewards, or reproducible value movement",
+    "market competition, expected arbitrage, or normal public reward competition",
+    "known duplicate or stale context from another protocol"
+  ]
+}
+
