@@ -1,52 +1,6 @@
 {
   "targets": [
     {
-      "address": "0x238a358808379702088667322f80ac48bad5e6c4",
-      "category": "fresh contract",
-      "chain": "bsc",
-      "label": "0x238a358808379702088667322f80ac48bad5e6c4",
-      "liquidity_usd": 0.0,
-      "metadata": {
-        "category": "fresh contract",
-        "deployer_address": "",
-        "entity_type": "unknown_protocol",
-        "fdv_usd": 0.0,
-        "funding_cluster_id": "",
-        "liquidity_usd": 0.0,
-        "next_action": "recon_bravo_then_corecritical",
-        "price_change_24h_pct": 0.0,
-        "score": 55,
-        "source": "bsc_chain_scanner",
-        "tags": [
-          "fresh_contract_large_balance",
-          "fresh_contract_large_token_balance",
-          "high_native_balance",
-          "high_token_balance",
-          "high_total_balance",
-          "known_asset_balance",
-          "stablecoin_balance",
-          "token_funded_contract",
-          "unknown_protocol"
-        ],
-        "tvl_usd": 10913645.442681834,
-        "verified_source": null,
-        "volume24h_usd": 0.0
-      },
-      "price_change_24h_pct": 0.0,
-      "tags": [
-        "fresh_contract_large_balance",
-        "fresh_contract_large_token_balance",
-        "high_native_balance",
-        "high_token_balance",
-        "high_total_balance",
-        "known_asset_balance",
-        "stablecoin_balance",
-        "token_funded_contract",
-        "unknown_protocol"
-      ],
-      "volume24h_usd": 0.0
-    },
-    {
       "address": "0x9996874dbd891c3ecd601eab79d51f92e92d50ee",
       "category": "fresh contract",
       "chain": "bsc",

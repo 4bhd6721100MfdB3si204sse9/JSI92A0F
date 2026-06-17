@@ -28,6 +28,26 @@ BOT_KEYWORDS = (
 DEX_KEYWORDS = ("swap", "router", "uniswap", "sushiswap", "curve", "balancer", "1inch", "pancake")
 REWARD_KEYWORDS = ("reward", "staking", "farm", "claim", "emission", "distributor")
 VAULT_KEYWORDS = ("vault", "strategy", "share", "asset", "yield")
+DEFAULT_KNOWN_PUBLIC_PROTOCOL_KEYWORDS = (
+    "aave",
+    "balancer",
+    "biswap",
+    "compound",
+    "curve",
+    "frax",
+    "lido",
+    "pancake",
+    "pancakeswap",
+    "stargate",
+    "sushiswap",
+    "uniswap",
+    "venus",
+    "yearn",
+)
+DEFAULT_KNOWN_PUBLIC_PROTOCOL_SOURCE_MARKERS = (
+    "copyright (c) 2024 pancakeswap",
+    "pancakeswap infinity",
+)
 ERC20_TRANSFER_TOPIC = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
 CHAIN_ADDRESS_URLS = {
     "ethereum": "https://etherscan.io/address/{address}",
@@ -188,7 +208,8 @@ class EthereumChainScanner:
         deployments = _dedupe_deployments([*deployments, *transfer_recipients, *remembered])
         candidates: list[Candidate] = []
         for deployment in deployments:
-            candidate = self._candidate_from_deployment(deployment)
+            previous_record = state.get("seen_contracts", {}).get(deployment.address.lower(), {})
+            candidate = self._candidate_from_deployment(deployment, previous_record if isinstance(previous_record, dict) else {})
             if candidate is not None:
                 candidates.append(candidate)
                 self._record_candidate(state, candidate)
@@ -357,7 +378,8 @@ class EthereumChainScanner:
         self.state_path.parent.mkdir(parents=True, exist_ok=True)
         self.state_path.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-    def _candidate_from_deployment(self, deployment: Deployment) -> Candidate | None:
+    def _candidate_from_deployment(self, deployment: Deployment, previous_record: dict[str, Any] | None = None) -> Candidate | None:
+        previous_record = previous_record or {}
         balance_wei = self._eth_get_balance(deployment.address)
         source = self._source_code(deployment.address)
         txs = self._txlist(deployment.address)
@@ -368,15 +390,18 @@ class EthereumChainScanner:
         verified = _is_verified(source)
         incoming_funders = self._incoming_funders(txs, deployment.address)
         cluster_match = _cluster_match(deployment.deployer, [funder.address for funder in incoming_funders], self.config)
+        known_public_reason = self._known_public_protocol_reason(deployment.address, contract_name, source_text)
         balance_eth = balance_wei / 10**18
         native_usd = balance_eth * self.native_price_usd if self.native_price_usd else 0.0
         token_usd = sum(holding.value_usd for holding in token_holdings)
         total_usd = native_usd + token_usd
+        previous_value_usd = _float_from_any(previous_record.get("last_value_usd", 0))
         tags = self._tags(
             deployment,
             native_usd,
             token_usd,
             total_usd,
+            previous_value_usd,
             verified,
             contract_name,
             source_text,
@@ -384,6 +409,7 @@ class EthereumChainScanner:
             incoming_funders,
             cluster_match,
             token_holdings,
+            known_public_reason,
         )
         entity_type = self._entity_type(tags, verified)
 
@@ -427,6 +453,7 @@ class EthereumChainScanner:
                 ],
                 "token_balance_usd": token_usd,
                 "total_value_usd": total_usd,
+                "previous_value_usd": previous_value_usd,
                 "incoming_funders": [
                     {"address": funder.address, "value_wei": str(funder.value_wei), "is_eoa": funder.is_eoa}
                     for funder in incoming_funders
@@ -435,6 +462,7 @@ class EthereumChainScanner:
                 "tx_count": len(txs),
                 "verified_source": verified,
                 "contract_name": contract_name,
+                "known_public_protocol_reason": known_public_reason,
             },
         )
 
@@ -444,6 +472,7 @@ class EthereumChainScanner:
         native_usd: float,
         token_usd: float,
         total_usd: float,
+        previous_value_usd: float,
         verified: bool | None,
         contract_name: str,
         source_text: str,
@@ -451,15 +480,20 @@ class EthereumChainScanner:
         incoming_funders: list[Funding],
         cluster_match: dict[str, str],
         token_holdings: list[TokenHolding],
+        known_public_reason: str,
     ) -> list[str]:
         text = f"{contract_name} {source_text}".lower()
         target_min_usd = float(self.source_config.get("target_min_value_usd", self.config.get("min_value_usd", 200_000)) or 200_000)
         high_tx_threshold = int(self.source_config.get("high_tx_count", 50) or 50)
-        tags = ["unknown_protocol"]
+        tags = ["known_public_protocol", "popular_protocol"] if known_public_reason else ["unknown_protocol"]
         if deployment.discovery_source == "erc20_transfer_log":
             tags.append("token_funded_contract")
         else:
             tags.append("fresh_deployment")
+        if not known_public_reason and _is_unfamiliar_contract(deployment.address, contract_name, source_text, verified):
+            tags.append("unfamiliar_contract")
+        if not known_public_reason and verified is None:
+            tags.append("unknown_verification_status")
         if native_usd >= target_min_usd:
             tags.extend(["high_native_balance", "fresh_contract_large_balance"])
         if token_usd >= target_min_usd:
@@ -478,6 +512,19 @@ class EthereumChainScanner:
             tags.append("unverified_contract")
         if len(txs) >= high_tx_threshold:
             tags.append("high_tx_count")
+        if (
+            not known_public_reason
+            and total_usd >= target_min_usd
+            and (verified is False or verified is None or "unfamiliar_contract" in tags)
+        ):
+            tags.extend(["hidden_high_value_contract", "audit_hidden_contract"])
+        if (
+            not known_public_reason
+            and total_usd >= target_min_usd
+            and len(txs) >= high_tx_threshold
+            and (verified is False or verified is None or "unfamiliar_contract" in tags)
+        ):
+            tags.extend(["probable_bot_contract", "high_balance_bot_candidate"])
         if _contains_any(text, BOT_KEYWORDS):
             tags.extend(["bot_contract", "verified_bot_contract"])
         if _contains_any(text, DEX_KEYWORDS):
@@ -492,6 +539,8 @@ class EthereumChainScanner:
             tags.append("vault_exchange_rate")
         if any(funder.is_eoa and _wei_usd(funder.value_wei, self.native_price_usd) >= target_min_usd for funder in incoming_funders):
             tags.append("fresh_contract_funded_by_large_eoa")
+        if _has_immediate_balance_spike(total_usd, previous_value_usd, self.config, self.source_config):
+            tags.extend(["immediate_balance_spike", "balance_spike"])
         if cluster_match.get("deployer_cluster_id"):
             tags.extend(["prior_project_closed", "same_deployer_closed_project", "suspected_rug_redeploy"])
         if cluster_match.get("funder_cluster_id"):
@@ -500,11 +549,30 @@ class EthereumChainScanner:
 
     def _entity_type(self, tags: list[str], verified: bool | None) -> str:
         tag_set = set(tags)
-        if "bot_contract" in tag_set or "dex_path_executor" in tag_set and "high_tx_count" in tag_set:
+        if "known_public_protocol" in tag_set:
+            return "known_protocol"
+        if "bot_contract" in tag_set or "probable_bot_contract" in tag_set or "dex_path_executor" in tag_set and "high_tx_count" in tag_set:
             return "bot_contract"
         if verified is False and ("high_native_balance" in tag_set or "high_token_balance" in tag_set or "high_total_balance" in tag_set):
             return "unverified_contract"
         return "unknown_protocol"
+
+    def _known_public_protocol_reason(self, address: str, contract_name: str, source_text: str) -> str:
+        address_lc = address.lower()
+        known_addresses = _known_public_protocol_addresses(self.config, self.chain)
+        if address_lc in known_addresses:
+            return f"known_public_protocol_address:{address_lc}"
+
+        name_text = contract_name.lower()
+        for keyword in _known_public_protocol_keywords(self.config):
+            if keyword and keyword in name_text:
+                return f"known_public_protocol_name:{keyword}"
+
+        lowered_source = source_text.lower()
+        for marker in _known_public_protocol_source_markers(self.config):
+            if marker and marker in lowered_source:
+                return f"known_public_protocol_source_marker:{marker}"
+        return ""
 
     def _eth_get_balance(self, address: str) -> int:
         return int(str(self._rpc("eth_getBalance", [address, "latest"])), 16)
@@ -865,6 +933,56 @@ def _known_token(chain: str, token: str, native_price_usd: float) -> dict[str, A
     if resolved.get("price_usd") == "native":
         resolved["price_usd"] = native_price_usd
     return resolved
+
+
+def _known_public_protocol_addresses(config: dict[str, Any], chain: str) -> set[str]:
+    raw = config.get("known_public_protocol_addresses", {})
+    values: list[Any]
+    if isinstance(raw, dict):
+        values = list(raw.get(chain, [])) + list(raw.get(chain.lower(), []))
+    elif isinstance(raw, list):
+        values = raw
+    else:
+        values = []
+    return {str(value).lower().strip() for value in values if str(value).strip()}
+
+
+def _known_public_protocol_keywords(config: dict[str, Any]) -> tuple[str, ...]:
+    values = config.get("known_public_protocol_keywords", DEFAULT_KNOWN_PUBLIC_PROTOCOL_KEYWORDS)
+    if not isinstance(values, list):
+        return DEFAULT_KNOWN_PUBLIC_PROTOCOL_KEYWORDS
+    return tuple(str(value).lower().strip() for value in values if str(value).strip())
+
+
+def _known_public_protocol_source_markers(config: dict[str, Any]) -> tuple[str, ...]:
+    values = config.get("known_public_protocol_source_markers", DEFAULT_KNOWN_PUBLIC_PROTOCOL_SOURCE_MARKERS)
+    if not isinstance(values, list):
+        return DEFAULT_KNOWN_PUBLIC_PROTOCOL_SOURCE_MARKERS
+    return tuple(str(value).lower().strip() for value in values if str(value).strip())
+
+
+def _is_unfamiliar_contract(address: str, contract_name: str, source_text: str, verified: bool | None) -> bool:
+    if verified is False or verified is None:
+        return True
+    normalized_name = contract_name.lower().strip()
+    if not normalized_name or normalized_name == address.lower():
+        return True
+    return not source_text.strip()
+
+
+def _has_immediate_balance_spike(
+    total_usd: float,
+    previous_value_usd: float,
+    config: dict[str, Any],
+    source_config: dict[str, Any],
+) -> bool:
+    min_spike_usd = float(source_config.get("balance_spike_min_usd", config.get("balance_spike_min_usd", 200_000)) or 200_000)
+    multiplier = float(source_config.get("balance_spike_multiplier", config.get("balance_spike_multiplier", 5)) or 5)
+    if total_usd < min_spike_usd:
+        return False
+    if previous_value_usd <= 0:
+        return True
+    return total_usd >= previous_value_usd * multiplier and total_usd - previous_value_usd >= min_spike_usd
 
 
 def _contains_any(text: str, needles: Iterable[str]) -> bool:

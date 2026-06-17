@@ -15,6 +15,7 @@ def score_candidate(candidate: Candidate, config: dict[str, Any]) -> ScoredCandi
     is_unverified_contract = entity_type == "unverified_contract" or candidate.verified_source is False
     is_unknown_protocol = entity_type in {"unknown_protocol", "protocol"}
     tags = set(candidate.tags)
+    is_known_public_protocol = entity_type == "known_protocol" or bool({"known_public_protocol", "popular_protocol"}.intersection(tags))
 
     min_value = float(config.get("min_value_usd", 50_000))
     min_bot_value = float(config.get("min_bot_value_usd", 10_000))
@@ -103,6 +104,26 @@ def score_candidate(candidate: Candidate, config: dict[str, Any]) -> ScoredCandi
         unknown_weight = int(config.get("unknown_protocol_weight", 10))
         score += unknown_weight
         reasons.append(f"unknown_protocol:{unknown_weight}")
+    if "unfamiliar_contract" in tags:
+        weight = int(config.get("unfamiliar_contract_weight", 12))
+        score += weight
+        reasons.append(f"unfamiliar_contract:{weight}")
+    if "unknown_verification_status" in tags:
+        weight = int(config.get("unknown_verification_status_weight", 8))
+        score += weight
+        reasons.append(f"unknown_verification_status:{weight}")
+    if "hidden_high_value_contract" in tags or "audit_hidden_contract" in tags:
+        weight = int(config.get("hidden_high_value_contract_weight", 18))
+        score += weight
+        reasons.append(f"hidden_high_value_contract:{weight}")
+    if "probable_bot_contract" in tags or "high_balance_bot_candidate" in tags:
+        weight = int(config.get("probable_bot_contract_weight", 14))
+        score += weight
+        reasons.append(f"probable_bot_contract:{weight}")
+    if "immediate_balance_spike" in tags or "balance_spike" in tags:
+        weight = int(config.get("balance_spike_weight", 20))
+        score += weight
+        reasons.append(f"balance_spike:{weight}")
     if "prior_project_closed" in tags:
         weight = int(config.get("prior_project_closed_weight", 18))
         score += weight
@@ -161,11 +182,19 @@ def score_candidate(candidate: Candidate, config: dict[str, Any]) -> ScoredCandi
     if mainstream_source and value >= mainstream_value and not fresh_or_launch:
         score = max(score - 35, 0)
         reasons.append(f"mainstream_dampener>={mainstream_value:.0f}")
+    if is_known_public_protocol:
+        score = min(score, int(config.get("known_public_protocol_score_cap", 19)))
+        reasons.append("known_public_protocol_quarantine")
+        return ScoredCandidate(candidate=candidate, score=score, reasons=reasons, next_action="watch_known_protocol")
 
     if is_bot_contract:
         low_value_floor = min_bot_value
     elif _has_cluster_risk(tags):
         low_value_floor = min_cluster_value
+    elif candidate.source in {"bsc_chain_scanner", "ethereum_chain_scanner"} and (is_unknown_protocol or is_unverified_contract):
+        low_value_floor = float(
+            config.get("chain_scanner_min_value_usd", config.get("unknown_protocol_min_value_usd", min_value)) or min_value
+        )
     elif is_unverified_contract:
         low_value_floor = min_unverified_value
     elif _has_price_spike(candidate, config) and is_unknown_protocol:
@@ -190,16 +219,18 @@ def score_candidate(candidate: Candidate, config: dict[str, Any]) -> ScoredCandi
         next_action = "lending_oracle_liquidation_check"
     elif _has_cluster_risk(tags) and value >= min_cluster_value and score >= int(config.get("queue_threshold", 35)):
         next_action = "investigate_redeploy_funding_cluster"
-    elif is_unverified_contract and value >= min_unverified_value and score >= int(config.get("queue_threshold", 35)):
-        next_action = "reverse_engineer_unverified_funded_contract"
-    elif _has_price_spike(candidate, config) and is_unknown_protocol and value >= min_spike_value and score >= int(config.get("queue_threshold", 35)):
-        next_action = "price_spike_recon_then_source_check"
     elif is_bot_contract and value >= min_bot_value and score >= int(config.get("queue_threshold", 35)):
         next_action = "trace_bot_contract_then_target_protocols"
     elif is_bot_contract and value < min_bot_value:
         next_action = "watch_bot_contract"
+    elif is_unverified_contract and value >= min_unverified_value and score >= int(config.get("queue_threshold", 35)):
+        next_action = "reverse_engineer_unverified_funded_contract"
+    elif _has_price_spike(candidate, config) and is_unknown_protocol and value >= min_spike_value and score >= int(config.get("queue_threshold", 35)):
+        next_action = "price_spike_recon_then_source_check"
     elif mainstream_source and value >= mainstream_value and not fresh_or_launch:
         next_action = "watch_mainstream"
+    elif candidate.source in {"bsc_chain_scanner", "ethereum_chain_scanner"} and is_unknown_protocol and not _has_unknown_chain_recon_signal(tags):
+        next_action = "watch"
     elif value >= min_value and score < int(config.get("queue_threshold", 35)):
         next_action = "watch"
     elif value < min_value:
@@ -254,3 +285,34 @@ def _has_vault_share_asset_risk(tags: set[str]) -> bool:
 
 def _has_lending_oracle_liquidation_risk(tags: set[str]) -> bool:
     return bool({"stale_oracle", "new_collateral", "thin_liquidity_lending", "liquidation_path"}.intersection(tags))
+
+
+def _has_unknown_chain_recon_signal(tags: set[str]) -> bool:
+    return bool(
+        {
+            "unverified_contract",
+            "unfamiliar_contract",
+            "unknown_verification_status",
+            "hidden_high_value_contract",
+            "audit_hidden_contract",
+            "probable_bot_contract",
+            "high_balance_bot_candidate",
+            "immediate_balance_spike",
+            "balance_spike",
+            "fresh_contract_funded_by_large_eoa",
+            "prior_project_closed",
+            "same_deployer_closed_project",
+            "funding_from_closed_project",
+            "suspected_rug_redeploy",
+            "proxy_impl_changed",
+            "implementation_changed",
+            "live_proxy_funds",
+            "proxy_admin_changed",
+            "active_reward_pool",
+            "large_claimable_rewards",
+            "bridge_escrow",
+            "approval_router",
+            "share_asset_imbalance",
+            "stale_oracle",
+        }.intersection(tags)
+    )

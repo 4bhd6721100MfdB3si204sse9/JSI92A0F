@@ -70,7 +70,7 @@
       "name": "DexPathExecutor Bot",
       "contract_type": "mev executor",
       "verified_source": true,
-      "native_balance_usd": 220000,
+      "native_balance_usd": 320000,
       "tx_count_24h": 830,
       "selectors": [
         "0x414bf389",

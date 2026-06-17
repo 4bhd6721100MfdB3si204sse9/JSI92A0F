@@ -12,7 +12,7 @@ class EthereumChainScannerTest(unittest.TestCase):
         config["sources"]["ethereum_chain_scanner"] = {
             "enabled": True,
             "recent_blocks": 1,
-            "max_contracts": 5,
+            "max_contracts": 6,
             "max_token_contracts": 5,
             "max_transfer_recipients": 5,
             "transfer_log_chunk_size": 1,
@@ -35,6 +35,7 @@ class EthereumChainScannerTest(unittest.TestCase):
         by_address = {candidate.address: candidate for candidate in candidates}
         unverified = by_address["0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]
         bot = by_address["0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"]
+        probable_bot = by_address["0xfafafafafafafafafafafafafafafafafafafafa"]
         reward = by_address["0xcccccccccccccccccccccccccccccccccccccccc"]
         redeploy = by_address["0xdddddddddddddddddddddddddddddddddddddddd"]
         token_heavy = by_address["0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"]
@@ -51,6 +52,13 @@ class EthereumChainScannerTest(unittest.TestCase):
         self.assertIn("high_tx_count", bot.tags)
         self.assertIn("dex_path_executor", bot.tags)
         self.assertIn("flashloan_user", bot.tags)
+
+        self.assertEqual(probable_bot.entity_type, "bot_contract")
+        self.assertFalse(probable_bot.verified_source)
+        self.assertEqual(probable_bot.tvl_usd, 360_000)
+        self.assertIn("hidden_high_value_contract", probable_bot.tags)
+        self.assertIn("probable_bot_contract", probable_bot.tags)
+        self.assertIn("high_balance_bot_candidate", probable_bot.tags)
 
         self.assertIn("reward_pool", reward.tags)
         self.assertIn("large_claimable_rewards", reward.tags)
@@ -75,6 +83,7 @@ class EthereumChainScannerTest(unittest.TestCase):
 
         self.assertEqual(stablecoin_funded.tvl_usd, 250_000)
         self.assertIn("token_funded_contract", stablecoin_funded.tags)
+        self.assertIn("immediate_balance_spike", stablecoin_funded.tags)
         self.assertIn("known_asset_balance", stablecoin_funded.tags)
         self.assertIn("stablecoin_balance", stablecoin_funded.tags)
         self.assertIn("high_token_balance", stablecoin_funded.tags)
@@ -142,10 +151,43 @@ class EthereumChainScannerTest(unittest.TestCase):
         self.assertEqual(stablecoin_funded.url, "https://bscscan.com/address/0x5656565656565656565656565656565656565656")
         self.assertEqual(stablecoin_funded.tvl_usd, 250_000)
         self.assertIn("token_funded_contract", stablecoin_funded.tags)
+        self.assertIn("unfamiliar_contract", stablecoin_funded.tags)
+        self.assertIn("unknown_verification_status", stablecoin_funded.tags)
+        self.assertIn("immediate_balance_spike", stablecoin_funded.tags)
         self.assertIn("known_asset_balance", stablecoin_funded.tags)
         self.assertIn("stablecoin_balance", stablecoin_funded.tags)
         self.assertEqual(stablecoin_funded.raw["token_balances"][0]["symbol"], "USDT")
         self.assertEqual(stablecoin_funded.raw["token_balances"][0]["price_source"], "known_asset")
+
+    def test_bsc_scanner_quarantines_known_public_protocol_without_explorer_key(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        target = "0x238a358808379702088667322f80ac48bad5e6c4"
+        with tempfile.TemporaryDirectory() as tmp:
+            config["sources"]["bsc_chain_scanner"] = {
+                "enabled": True,
+                "recent_blocks": 1,
+                "max_contracts": 1,
+                "max_token_contracts": 5,
+                "max_transfer_recipients": 2,
+                "transfer_log_chunk_size": 1,
+                "target_min_value_usd": 200_000,
+                "native_price_usd": 600,
+                "rpc_urls": ["https://bsc-rpc.example"],
+                "state_path": str(Path(tmp) / "bsc_chain_scanner.json"),
+            }
+            config["known_public_protocol_addresses"] = {"bsc": [target]}
+
+            candidates = load_bsc_chain_candidates(config, limit=2, rpc_call=_fake_known_bsc_rpc, fetch_json=_unexpected_fetch)
+
+        by_address = {candidate.address: candidate for candidate in candidates}
+        known = by_address[target]
+
+        self.assertEqual(known.entity_type, "known_protocol")
+        self.assertIn("known_public_protocol", known.tags)
+        self.assertIn("popular_protocol", known.tags)
+        self.assertNotIn("unknown_protocol", known.tags)
+        self.assertEqual(known.tvl_usd, 250_000)
+        self.assertIn("known_public_protocol_address", known.raw["known_public_protocol_reason"])
 
 
 def _fake_rpc(_url, method, params):
@@ -160,6 +202,7 @@ def _fake_rpc(_url, method, params):
                 {"hash": "0x03", "from": "0x3333333333333333333333333333333333333333", "to": None, "value": "0x0"},
                 {"hash": "0x04", "from": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "to": None, "value": "0x0"},
                 {"hash": "0x05", "from": "0x5555555555555555555555555555555555555555", "to": None, "value": "0x0"},
+                {"hash": "0x06", "from": "0x6666666666666666666666666666666666666666", "to": None, "value": "0x0"},
             ],
         }
     if method == "eth_getTransactionReceipt":
@@ -169,6 +212,7 @@ def _fake_rpc(_url, method, params):
             "0x03": "0xcccccccccccccccccccccccccccccccccccccccc",
             "0x04": "0xdddddddddddddddddddddddddddddddddddddddd",
             "0x05": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+            "0x06": "0xfafafafafafafafafafafafafafafafafafafafa",
         }
         return {"contractAddress": receipts[params[0]]}
     if method == "eth_getBalance":
@@ -178,6 +222,7 @@ def _fake_rpc(_url, method, params):
             "0xcccccccccccccccccccccccccccccccccccccccc": 80 * 10**18,
             "0xdddddddddddddddddddddddddddddddddddddddd": 75 * 10**18,
             "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee": 0,
+            "0xfafafafafafafafafafafafafafafafafafafafa": 120 * 10**18,
             "0x1212121212121212121212121212121212121212": 0,
             "0x3434343434343434343434343434343434343434": 0,
         }
@@ -283,6 +328,39 @@ def _fake_bsc_rpc(_url, method, params):
     raise AssertionError(f"unexpected bsc rpc method {method}")
 
 
+def _fake_known_bsc_rpc(_url, method, params):
+    target = "0x238a358808379702088667322f80ac48bad5e6c4"
+    if method == "eth_blockNumber":
+        return "0xc8"
+    if method == "eth_getBlockByNumber":
+        return {"timestamp": "0x67748580", "transactions": []}
+    if method == "eth_getLogs":
+        return [
+            {
+                "address": "0x55d398326f99059ff775485246999027b3197955",
+                "topics": [
+                    "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                    _topic("0xffffffffffffffffffffffffffffffffffffffff"),
+                    _topic(target),
+                ],
+                "transactionHash": "0xbsc-transfer-pancake",
+                "blockNumber": "0xc8",
+            }
+        ]
+    if method == "eth_getCode":
+        if params[0] == target:
+            return "0x6000"
+        return "0x"
+    if method == "eth_getBalance":
+        return "0x0"
+    if method == "eth_call":
+        token = params[0]["to"]
+        if token == "0x55d398326f99059ff775485246999027b3197955":
+            return hex(250_000 * 10**18)
+        return "0x0"
+    raise AssertionError(f"unexpected known bsc rpc method {method}")
+
+
 def _unexpected_fetch(url):
     raise AssertionError(f"unexpected fetch {url}")
 
@@ -290,6 +368,8 @@ def _unexpected_fetch(url):
 def _fake_explorer(url):
     if "getsourcecode" in url:
         if "aaaaaaaa" in url:
+            return {"result": [{"ContractName": "", "SourceCode": ""}]}
+        if "fafafa" in url:
             return {"result": [{"ContractName": "", "SourceCode": ""}]}
         if "bbbbbbbb" in url:
             return {
@@ -324,6 +404,13 @@ def _fake_explorer(url):
             return {
                 "result": [
                     {"from": "0xcccccccccccccccccccccccccccccccccccccccc", "to": "0xdddddddddddddddddddddddddddddddddddddddd", "value": "70000000000000000000"}
+                ]
+            }
+        if "fafafa" in url:
+            return {
+                "result": [
+                    {"from": "0x7777777777777777777777777777777777777777", "to": "0xfafafafafafafafafafafafafafafafafafafafa", "value": "0"},
+                    {"from": "0x8888888888888888888888888888888888888888", "to": "0xfafafafafafafafafafafafafafafafafafafafa", "value": "0"},
                 ]
             }
         return {"result": []}

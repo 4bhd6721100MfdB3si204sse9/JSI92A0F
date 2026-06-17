@@ -10,3 +10,6 @@ pat_json
 KEY_JSON
 PAT_JSON
 temp_repo/
+foundry_targets/**/cache/
+foundry_targets/**/out/
+foundry_targets/**/broadcast/

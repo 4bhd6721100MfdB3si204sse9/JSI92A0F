@@ -104,7 +104,7 @@ def _sort_key(row: dict[str, Any]) -> tuple[int, int]:
 
 
 def _is_low_priority(row: dict[str, Any]) -> bool:
-    return str(row.get("next_action", "")) in {"drop_low_value", "watch_mainstream", "watch", "watch_bot_contract"}
+    return str(row.get("next_action", "")) in {"drop_low_value", "watch_mainstream", "watch", "watch_bot_contract", "watch_known_protocol"}
 
 
 def _target_row(row: dict[str, Any]) -> dict[str, Any]:

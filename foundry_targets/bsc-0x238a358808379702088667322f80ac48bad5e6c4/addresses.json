@@ -1,0 +1,10 @@
+{
+  "bscscan": "https://bscscan.com/address/0x238a358808379702088667322f80ac48bad5e6c4",
+  "chain": "bsc",
+  "contract_name": "Vault",
+  "owner": "0xfa206DAB60c014bEb6833004D8848910165e6047",
+  "owner_bscscan": "https://bscscan.com/address/0xfa206DAB60c014bEb6833004D8848910165e6047",
+  "owner_label": "GnosisSafeProxy / Safe owner contract",
+  "target": "0x238a358808379702088667322f80aC48bAd5e6c4",
+  "target_label": "Pancakeswap: Infinity Vault"
+}

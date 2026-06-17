@@ -11,7 +11,7 @@ from bot_runtime import batch_limit
 from sentinel.targets import TARGET_ACTIONS, find_latest_scored_run, load_scored_rows
 
 
-LOW_PRIORITY_ACTIONS = {"drop_low_value", "watch_mainstream", "watch", "watch_bot_contract"}
+LOW_PRIORITY_ACTIONS = {"drop_low_value", "watch_mainstream", "watch", "watch_bot_contract", "watch_known_protocol"}
 
 
 def build_briefs(

@@ -61,6 +61,34 @@ class ScoringTest(unittest.TestCase):
 
         self.assertEqual(scored.next_action, "watch_mainstream")
 
+    def test_known_public_protocol_is_quarantined_not_recon(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        candidate = candidate_from_dict(
+            {
+                "source": "bsc_chain_scanner",
+                "entity_type": "known_protocol",
+                "external_id": "bsc:0x238a358808379702088667322f80ac48bad5e6c4",
+                "name": "Pancakeswap: Infinity Vault",
+                "chain": "bsc",
+                "category": "vault",
+                "tvl_usd": 184_000_000,
+                "verified_source": True,
+                "tags": [
+                    "known_public_protocol",
+                    "popular_protocol",
+                    "high_token_balance",
+                    "stablecoin_balance",
+                    "vault_exchange_rate",
+                ],
+            }
+        )
+
+        scored = score_candidate(candidate, config)
+
+        self.assertEqual(scored.next_action, "watch_known_protocol")
+        self.assertLess(scored.score, config["queue_threshold"])
+        self.assertIn("known_public_protocol_quarantine", scored.reasons)
+
     def test_bot_contract_with_activity_is_trace_queued(self):
         config = json.loads(Path("config/sentinel.json").read_text())
         candidate = candidate_from_dict(
@@ -71,7 +99,7 @@ class ScoringTest(unittest.TestCase):
                 "name": "Flashloan Arbitrage Executor",
                 "chain": "bsc",
                 "category": "mev bot",
-                "tvl_usd": 220_000,
+                "tvl_usd": 320_000,
                 "tags": ["verified_bot_contract", "flashloan_user", "dex_path_executor"],
                 "raw": {
                     "behavior": "flashloan swap callback profit sweep"
@@ -83,6 +111,26 @@ class ScoringTest(unittest.TestCase):
 
         self.assertGreaterEqual(scored.score, config["queue_threshold"])
         self.assertEqual(scored.next_action, "trace_bot_contract_then_target_protocols")
+
+    def test_bot_contract_below_300k_is_watch_only(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        candidate = candidate_from_dict(
+            {
+                "source": "test",
+                "entity_type": "bot_contract",
+                "external_id": "bsc:mid-bot",
+                "name": "Flashloan Arbitrage Executor",
+                "chain": "bsc",
+                "category": "mev bot",
+                "tvl_usd": 250_000,
+                "tags": ["verified_bot_contract", "flashloan_user", "dex_path_executor"],
+            }
+        )
+
+        scored = score_candidate(candidate, config)
+
+        self.assertEqual(scored.next_action, "watch_bot_contract")
+        self.assertLess(scored.score, config["queue_threshold"])
 
     def test_low_value_bot_contract_is_watch_only(self):
         config = json.loads(Path("config/sentinel.json").read_text())
@@ -145,6 +193,132 @@ class ScoringTest(unittest.TestCase):
 
         self.assertGreaterEqual(scored.score, config["queue_threshold"])
         self.assertEqual(scored.next_action, "price_spike_recon_then_source_check")
+
+    def test_chain_scanner_unknown_without_unfamiliar_or_spike_signal_is_watch(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        candidate = candidate_from_dict(
+            {
+                "source": "bsc_chain_scanner",
+                "entity_type": "unknown_protocol",
+                "external_id": "bsc:verified-known-shape",
+                "name": "Verified Treasury",
+                "chain": "bsc",
+                "category": "treasury",
+                "tvl_usd": 5_000_000,
+                "verified_source": True,
+                "tags": ["unknown_protocol", "high_total_balance", "stablecoin_balance"],
+            }
+        )
+
+        scored = score_candidate(candidate, config)
+
+        self.assertEqual(scored.next_action, "watch")
+
+    def test_chain_scanner_unverified_below_value_floor_is_watch(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        candidate = candidate_from_dict(
+            {
+                "source": "bsc_chain_scanner",
+                "entity_type": "unverified_contract",
+                "external_id": "bsc:small-unverified",
+                "name": "Unverified Funded Contract",
+                "chain": "bsc",
+                "category": "unverified treasury",
+                "tvl_usd": 250_000,
+                "verified_source": False,
+                "tags": ["unknown_protocol", "unverified_contract", "high_total_balance"],
+            }
+        )
+
+        scored = score_candidate(candidate, config)
+
+        self.assertEqual(scored.next_action, "watch")
+        self.assertLess(scored.score, config["queue_threshold"])
+
+    def test_chain_scanner_unfamiliar_balance_spike_is_recon_queue(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        candidate = candidate_from_dict(
+            {
+                "source": "bsc_chain_scanner",
+                "entity_type": "unknown_protocol",
+                "external_id": "bsc:unfamiliar-spike",
+                "name": "0xabc",
+                "chain": "bsc",
+                "category": "fresh contract",
+                "tvl_usd": 1_500_000,
+                "verified_source": None,
+                "tags": [
+                    "unknown_protocol",
+                    "unfamiliar_contract",
+                    "unknown_verification_status",
+                    "immediate_balance_spike",
+                    "high_total_balance",
+                    "stablecoin_balance",
+                ],
+            }
+        )
+
+        scored = score_candidate(candidate, config)
+
+        self.assertGreaterEqual(scored.score, config["queue_threshold"])
+        self.assertEqual(scored.next_action, "recon_bravo_then_corecritical")
+
+    def test_chain_scanner_hidden_unknown_at_300k_is_recon_queue(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        candidate = candidate_from_dict(
+            {
+                "source": "bsc_chain_scanner",
+                "entity_type": "unknown_protocol",
+                "external_id": "bsc:hidden-unknown",
+                "name": "0xhidden",
+                "chain": "bsc",
+                "category": "fresh contract",
+                "tvl_usd": 300_000,
+                "verified_source": None,
+                "tags": [
+                    "unknown_protocol",
+                    "unfamiliar_contract",
+                    "unknown_verification_status",
+                    "hidden_high_value_contract",
+                    "high_total_balance",
+                ],
+            }
+        )
+
+        scored = score_candidate(candidate, config)
+
+        self.assertGreaterEqual(scored.score, config["queue_threshold"])
+        self.assertEqual(scored.next_action, "recon_bravo_then_corecritical")
+
+    def test_chain_scanner_high_balance_probable_bot_is_trace_queued(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        candidate = candidate_from_dict(
+            {
+                "source": "bsc_chain_scanner",
+                "entity_type": "bot_contract",
+                "external_id": "bsc:probable-bot",
+                "name": "0xprobablebot",
+                "chain": "bsc",
+                "category": "fresh contract",
+                "tvl_usd": 350_000,
+                "verified_source": None,
+                "tags": [
+                    "unknown_protocol",
+                    "unfamiliar_contract",
+                    "unknown_verification_status",
+                    "hidden_high_value_contract",
+                    "probable_bot_contract",
+                    "high_balance_bot_candidate",
+                    "high_tx_count",
+                    "high_total_balance",
+                ],
+            }
+        )
+
+        scored = score_candidate(candidate, config)
+
+        self.assertGreaterEqual(scored.score, config["queue_threshold"])
+        self.assertEqual(scored.next_action, "trace_bot_contract_then_target_protocols")
 
     def test_closed_project_redeploy_cluster_is_investigation_queue(self):
         config = json.loads(Path("config/sentinel.json").read_text())

@@ -1,10 +1,45 @@
 {
   "min_value_usd": 200000,
-  "min_bot_value_usd": 200000,
-  "min_unverified_value_usd": 200000,
+  "min_bot_value_usd": 300000,
+  "min_unverified_value_usd": 300000,
   "min_spike_value_usd": 200000,
   "min_cluster_value_usd": 200000,
   "mainstream_value_usd": 100000000,
+  "chain_scanner_min_value_usd": 300000,
+  "unknown_protocol_min_value_usd": 300000,
+  "balance_spike_min_usd": 200000,
+  "balance_spike_multiplier": 5,
+  "unfamiliar_contract_weight": 12,
+  "unknown_verification_status_weight": 8,
+  "hidden_high_value_contract_weight": 18,
+  "probable_bot_contract_weight": 14,
+  "balance_spike_weight": 20,
+  "known_public_protocol_score_cap": 19,
+  "known_public_protocol_addresses": {
+    "bsc": [
+      "0x238a358808379702088667322f80ac48bad5e6c4"
+    ]
+  },
+  "known_public_protocol_keywords": [
+    "aave",
+    "balancer",
+    "biswap",
+    "compound",
+    "curve",
+    "frax",
+    "lido",
+    "pancake",
+    "pancakeswap",
+    "stargate",
+    "sushiswap",
+    "uniswap",
+    "venus",
+    "yearn"
+  ],
+  "known_public_protocol_source_markers": [
+    "copyright (c) 2024 pancakeswap",
+    "pancakeswap infinity"
+  ],
   "queue_threshold": 35,
   "bot_contract_weight": 18,
   "unverified_contract_weight": 20,
@@ -91,7 +126,7 @@
       "transfer_log_chunk_size": 100,
       "remembered_contracts_per_run": 25,
       "state_path": "state/ethereum_chain_scanner.json",
-      "target_min_value_usd": 200000,
+      "target_min_value_usd": 300000,
       "high_tx_count": 50,
       "native_price_usd": 3500
     },
@@ -105,7 +140,7 @@
       "transfer_log_chunk_size": 100,
       "remembered_contracts_per_run": 25,
       "state_path": "state/bsc_chain_scanner.json",
-      "target_min_value_usd": 200000,
+      "target_min_value_usd": 300000,
       "high_tx_count": 50,
       "native_price_usd": 600
     },
