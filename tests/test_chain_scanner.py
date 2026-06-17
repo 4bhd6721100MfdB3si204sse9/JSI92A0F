@@ -23,12 +23,14 @@ class EthereumChainScannerTest(unittest.TestCase):
             "api_keys": ["explorer-key"],
         }
 
-        candidates = load_ethereum_chain_candidates(
-            config,
-            limit=7,
-            rpc_call=_fake_rpc,
-            fetch_json=_fake_explorer,
-        )
+        with tempfile.TemporaryDirectory() as tmp:
+            config["sources"]["ethereum_chain_scanner"]["state_path"] = str(Path(tmp) / "ethereum_chain_scanner.json")
+            candidates = load_ethereum_chain_candidates(
+                config,
+                limit=7,
+                rpc_call=_fake_rpc,
+                fetch_json=_fake_explorer,
+            )
 
         by_address = {candidate.address: candidate for candidate in candidates}
         unverified = by_address["0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]

@@ -1,5 +1,6 @@
 import json
 import os
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -12,13 +13,17 @@ class LiveAdapterTest(unittest.TestCase):
         self.config = json.loads(Path("config/sentinel.json").read_text())
 
     def test_load_live_targets_reads_target_list(self):
-        targets = load_live_targets("examples/live_targets.json")
+        with tempfile.TemporaryDirectory() as tmp:
+            target_path = _write_fixture_targets(tmp)
+            targets = load_live_targets(str(target_path))
 
         self.assertEqual(len(targets), 4)
         self.assertEqual(targets[0], LiveTarget(chain="bsc", address="0x5555555555555555555555555555555555555555", label="Unverified Funded Treasury"))
 
     def test_build_snapshot_uses_balance_and_explorer_fetchers(self):
-        targets = load_live_targets("examples/live_targets.json")
+        with tempfile.TemporaryDirectory() as tmp:
+            target_path = _write_fixture_targets(tmp)
+            targets = load_live_targets(str(target_path))
         snapshot = build_explorer_snapshot(
             targets,
             self.config,
@@ -34,7 +39,9 @@ class LiveAdapterTest(unittest.TestCase):
         self.assertEqual(contracts["0x6666666666666666666666666666666666666666"]["price_change_24h_pct"], 420)
 
     def test_snapshot_round_trip_produces_expected_candidates(self):
-        targets = load_live_targets("examples/live_targets.json")
+        with tempfile.TemporaryDirectory() as tmp:
+            target_path = _write_fixture_targets(tmp)
+            targets = load_live_targets(str(target_path))
         snapshot = build_explorer_snapshot(
             targets,
             self.config,
@@ -118,6 +125,41 @@ class LiveAdapterTest(unittest.TestCase):
 
         self.assertEqual(snapshot["contracts"][0]["native_balance_usd"], 123)
         self.assertEqual(attempted_rpc_urls, ["https://dead-rpc.example", "https://good-rpc.example"])
+
+
+def _write_fixture_targets(directory: str) -> Path:
+    path = Path(directory) / "live_targets.json"
+    path.write_text(
+        json.dumps(
+            {
+                "targets": [
+                    {
+                        "chain": "bsc",
+                        "address": "0x5555555555555555555555555555555555555555",
+                        "label": "Unverified Funded Treasury",
+                    },
+                    {
+                        "chain": "base",
+                        "address": "0x6666666666666666666666666666666666666666",
+                        "label": "Unknown Spike Vault",
+                        "price_change_24h_pct": 420,
+                    },
+                    {
+                        "chain": "bsc",
+                        "address": "0x7777777777777777777777777777777777777777",
+                        "label": "New Yield Migrator",
+                    },
+                    {
+                        "chain": "bsc",
+                        "address": "0x4444444444444444444444444444444444444444",
+                        "label": "DexPathExecutor Bot",
+                        "tags": ["flashloan_user"],
+                    },
+                ]
+            }
+        )
+    )
+    return path
 
 
 def _fake_explorer_fetch_json(url: str):

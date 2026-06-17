@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 from deepwiki_triage import classify_deepwiki_response, save_deepwiki_response
+from deepwiki_client import DeepWikiClient, _origin_for_url
 from repositories import deepwiki_base_url, load_repository_urls
 from run_deepwiki_submit import _submitted_filenames
 from run_build_deepwiki_briefs import build_briefs, select_rows
@@ -154,6 +155,29 @@ class DeepWikiWorkflowTest(unittest.TestCase):
             names = _submitted_filenames(root)
 
         self.assertEqual(names, {"001-target.json"})
+
+    def test_browser_clipboard_reader_uses_page_origin(self):
+        class FakeDriver:
+            current_url = "https://deepwiki.com/search/example?mode=deep"
+
+            def __init__(self):
+                self.permissions_origin = None
+
+            def execute_cdp_cmd(self, command, payload):
+                self.permissions_origin = payload["origin"]
+
+            def execute_async_script(self, script):
+                return '{"verdict":"NEEDS_LOCAL_PROOF"}'
+
+        client = DeepWikiClient.__new__(DeepWikiClient)
+        client.driver = FakeDriver()
+        client.base_url = "https://deepwiki.com/example/repo"
+
+        self.assertEqual(client._read_browser_clipboard(), '{"verdict":"NEEDS_LOCAL_PROOF"}')
+        self.assertEqual(client.driver.permissions_origin, "https://deepwiki.com")
+
+    def test_origin_for_url_defaults_to_deepwiki(self):
+        self.assertEqual(_origin_for_url("not-a-url"), "https://deepwiki.com")
 
 
 if __name__ == "__main__":
