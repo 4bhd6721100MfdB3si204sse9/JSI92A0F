@@ -1,0 +1,34 @@
+{
+  "active_stage": "1",
+  "manifest_paths": {
+    "candidates_scored": [
+      "runs/github-27756772526-1-stage-1/candidates_scored.json"
+    ],
+    "run_dirs": [
+      "runs/github-27756772526-1-stage-1"
+    ],
+    "triage_queue_csv": [
+      "runs/github-27756772526-1-stage-1/triage_queue.csv"
+    ],
+    "triage_queue_md": [
+      "runs/github-27756772526-1-stage-1/triage_queue.md"
+    ]
+  },
+  "pre_run_archive": "archive/runs/abandoned-github-27756772526-1",
+  "reason": "workflow_1_start",
+  "run_id": "github-27756772526-1",
+  "schema_version": "sentinel-run-state-v1",
+  "stages": {
+    "1": {
+      "outputs": {
+        "candidates_scored": "runs/github-27756772526-1-stage-1/candidates_scored.json",
+        "run_dirs": "runs/github-27756772526-1-stage-1",
+        "triage_queue_csv": "runs/github-27756772526-1-stage-1/triage_queue.csv",
+        "triage_queue_md": "runs/github-27756772526-1-stage-1/triage_queue.md"
+      },
+      "updated_at": "2026-06-18T11:45:40.755698+00:00"
+    }
+  },
+  "started_at": "2026-06-18T11:38:00.668077+00:00",
+  "updated_at": "2026-06-18T11:45:40.755698+00:00"
+}
