@@ -1,9 +1,10 @@
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
 
-from run_materialize_foundry_target import materialize_targets, normalize_candidate
+from run_materialize_foundry_target import main, materialize_targets, normalize_candidate
 
 
 class FoundryMaterializerTest(unittest.TestCase):
@@ -46,21 +47,20 @@ class FoundryMaterializerTest(unittest.TestCase):
 
     def test_materialize_targets_writes_foundry_repo_shape(self):
         with tempfile.TemporaryDirectory() as tmp:
-            input_dir = Path(tmp) / "deepwiki_briefs"
+            input_dir = Path(tmp) / "local_proof_queue"
             output_dir = Path(tmp) / "foundry_targets"
             input_dir.mkdir()
-            (input_dir / "candidate.json").write_text(
-                json.dumps(
-                    {
-                        "candidate": {
-                            "name": "Dex Bot",
-                            "chain": "bsc",
-                            "address": "0x4444444444444444444444444444444444444444",
-                            "entity_type": "bot_contract",
-                        },
-                        "score": {"value": 75, "next_action": "trace_bot_contract_then_target_protocols"},
-                        "value_at_risk": {"usd": 18000},
-                    }
+            (input_dir / "candidate.md").write_text(
+                "\n".join(
+                    [
+                        "# Local Proof Queue Item",
+                        "",
+                        "- verdict: `NEEDS_LOCAL_PROOF`",
+                        "- chain: `bsc`",
+                        "- address: `0x4444444444444444444444444444444444444444`",
+                        "- paid_scope_match: `fund_extraction`",
+                        "",
+                    ]
                 )
             )
 
@@ -115,6 +115,40 @@ class FoundryMaterializerTest(unittest.TestCase):
             written = materialize_targets([str(input_dir)], str(output_dir), limit=5)
 
         self.assertEqual(written[0].name, "bsc-0x238a358808379702088667322f80ac48bad5e6c4")
+
+    def test_materialize_cli_refuses_stale_active_files_during_current_run_without_manifest(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            old_cwd = os.getcwd()
+            os.chdir(tmp)
+            try:
+                Path("local_proof_queue").mkdir()
+                Path("local_proof_queue/candidate.md").write_text(
+                    "\n".join(
+                        [
+                            "# Local Proof Queue Item",
+                            "",
+                            "- verdict: `NEEDS_LOCAL_PROOF`",
+                            "- chain: `bsc`",
+                            "- address: `0x4444444444444444444444444444444444444444`",
+                            "",
+                        ]
+                    )
+                )
+                Path("state").mkdir()
+                Path("state/current_run.json").write_text(
+                    json.dumps(
+                        {
+                            "schema_version": "sentinel-run-state-v1",
+                            "run_id": "current",
+                            "manifest_paths": {},
+                        }
+                    )
+                )
+
+                with self.assertRaises(FileNotFoundError):
+                    main(["--output", "foundry_targets"])
+            finally:
+                os.chdir(old_cwd)
 
 
 if __name__ == "__main__":

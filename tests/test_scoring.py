@@ -89,6 +89,33 @@ class ScoringTest(unittest.TestCase):
         self.assertLess(scored.score, config["queue_threshold"])
         self.assertIn("known_public_protocol_quarantine", scored.reasons)
 
+    def test_popular_protocol_name_hint_without_registry_match_is_not_quarantined(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        candidate = candidate_from_dict(
+            {
+                "source": "bsc_chain_scanner",
+                "entity_type": "unknown_protocol",
+                "external_id": "bsc:fake-uniswap",
+                "name": "Uniswap Rewards Vault",
+                "chain": "bsc",
+                "category": "vault",
+                "tvl_usd": 750_000,
+                "verified_source": True,
+                "tags": [
+                    "unknown_protocol",
+                    "popular_protocol_name_hint",
+                    "possible_protocol_impersonation",
+                    "hidden_high_value_contract",
+                    "immediate_balance_spike",
+                ],
+            }
+        )
+
+        scored = score_candidate(candidate, config)
+
+        self.assertNotEqual(scored.next_action, "watch_known_protocol")
+        self.assertGreaterEqual(scored.score, config["queue_threshold"])
+
     def test_bot_contract_with_activity_is_trace_queued(self):
         config = json.loads(Path("config/sentinel.json").read_text())
         candidate = candidate_from_dict(

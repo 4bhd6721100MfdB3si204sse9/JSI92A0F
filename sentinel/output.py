@@ -6,10 +6,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .models import ScoredCandidate
+from run_state import load_state
 
 
 def write_run(scored: list[ScoredCandidate], output_root: Path) -> Path:
-    run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    run_id = _output_run_id()
     output_root.mkdir(parents=True, exist_ok=True)
     run_dir = allocate_run_dir(output_root, run_id)
 
@@ -18,6 +19,16 @@ def write_run(scored: list[ScoredCandidate], output_root: Path) -> Path:
     write_csv(rows, run_dir / "triage_queue.csv")
     write_markdown(scored, run_dir / "triage_queue.md")
     return run_dir
+
+
+def _output_run_id() -> str:
+    state = load_state()
+    run_id = str(state.get("run_id", "")).strip()
+    if run_id:
+        active_stage = str(state.get("active_stage", "")).strip()
+        suffix = f"-stage-{active_stage}" if active_stage else ""
+        return f"{run_id}{suffix}"
+    return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
 def allocate_run_dir(output_root: Path, run_id: str) -> Path:

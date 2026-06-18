@@ -1,0 +1,42 @@
+name: 10 Archive Completed Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      smoke_limit:
+        description: "Unused, kept for chain compatibility"
+        required: false
+        default: ""
+      chain_next:
+        description: "Reserved for future chained workflows"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify materialization completed
+        run: python3 workflow_chain.py verify --stage 9
+      - name: Archive active run artifacts
+        run: python3 run_hygiene.py archive --reason completed --require-files
+      - name: Commit archive cleanup
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No archive cleanup changes to commit"
+          else
+            git commit -m "Archive completed Sentinel run"
+            git pull --rebase origin master
+            git push origin master
+          fi

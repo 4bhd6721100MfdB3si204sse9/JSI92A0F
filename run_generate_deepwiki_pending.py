@@ -7,6 +7,7 @@ import time
 from pathlib import Path
 
 from bot_runtime import batch_limit
+from run_state import has_current_run, manifest_paths, update_stage
 
 
 PLACEHOLDER_ADDRESS_RE = re.compile(r"^0x([0-9a-f])\1{39}$", re.IGNORECASE)
@@ -24,16 +25,22 @@ def move_pending(
     pending.mkdir(parents=True, exist_ok=True)
     moved: list[Path] = []
 
-    files = _manifest_files(manifest_path, source)
-    if not files:
+    files = manifest_paths("deepwiki_briefs")
+    if files:
+        files = [path for path in files if path.parent == source]
+    if not files and not has_current_run():
+        files = _manifest_files(manifest_path, source)
+    if not files and not has_current_run():
         files = sorted(source.glob("*.json"))
     if not files:
-        existing_pending = _manifest_files(manifest_path, pending)
+        existing_pending = _manifest_files(manifest_path, pending) if not has_current_run() else []
         if existing_pending:
             for path in existing_pending[:batch_limit(limit)]:
                 _reject_placeholder_brief(path)
             print(f"pending={len(existing_pending[:batch_limit(limit)])} existing_manifest={manifest_path}")
-            return existing_pending[:batch_limit(limit)]
+            selected_pending = existing_pending[:batch_limit(limit)]
+            update_stage("5", {"deepwiki_pending": selected_pending})
+            return selected_pending
 
     for path in files[:batch_limit(limit)]:
         _reject_placeholder_brief(path)
@@ -47,6 +54,7 @@ def move_pending(
     if not moved:
         raise FileNotFoundError(f"no DeepWiki brief files found in {source}")
     _write_manifest(manifest_path, moved)
+    update_stage("5", {"deepwiki_pending": moved})
     return moved
 
 

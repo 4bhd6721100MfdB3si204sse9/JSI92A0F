@@ -9,6 +9,7 @@ from typing import Any
 
 from bot_runtime import batch_limit
 from sentinel.targets import TARGET_ACTIONS, find_latest_scored_run, load_scored_rows
+from run_state import has_current_run, latest_path, update_stage
 
 
 LOW_PRIORITY_ACTIONS = {"drop_low_value", "watch_mainstream", "watch", "watch_bot_contract", "watch_known_protocol"}
@@ -42,6 +43,7 @@ def build_briefs(
         json.dumps([str(path) for path in written], indent=2) + "\n",
         encoding="utf-8",
     )
+    update_stage("4", {"deepwiki_briefs": written})
     return written
 
 
@@ -114,7 +116,13 @@ def main(argv: list[str] | None = None) -> int:
 
     input_path = Path(args.input) if args.input else None
     if args.latest or input_path is None:
-        input_path = find_latest_eligible_scored_run(args.runs_dir, args.limit)
+        current_input = latest_path("candidates_scored")
+        if current_input is not None:
+            input_path = current_input
+        elif has_current_run():
+            raise FileNotFoundError("current run has no candidates_scored manifest path")
+        else:
+            input_path = find_latest_eligible_scored_run(args.runs_dir, args.limit)
         if input_path is None:
             raise FileNotFoundError(f"no eligible candidates_scored.json found under {args.runs_dir}")
 

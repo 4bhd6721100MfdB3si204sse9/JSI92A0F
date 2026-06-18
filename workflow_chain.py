@@ -8,7 +8,10 @@ import sys
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Iterable
+
+from run_state import has_current_run, manifest_paths
 
 
 @dataclass(frozen=True)
@@ -16,14 +19,21 @@ class Stage:
     output_globs: tuple[str, ...]
     remaining_globs: tuple[str, ...] = ()
     final_message: str = ""
+    output_keys: tuple[str, ...] = ()
+    remaining_keys: tuple[str, ...] = ()
 
 
 STAGES = {
-    "1": Stage(output_globs=("runs/*/candidates_scored.json",)),
-    "2": Stage(output_globs=("examples/live_targets.json", "state/latest_targets.json")),
-    "3": Stage(output_globs=("runs/*/candidates_scored.json", "state/latest_live_snapshot.json")),
-    "4": Stage(output_globs=("deepwiki_briefs/*.json",)),
-    "5": Stage(output_globs=("deepwiki_submissions/*.json",), remaining_globs=("deepwiki_briefs/*.json",)),
+    "1": Stage(output_globs=("runs/*/candidates_scored.json",), output_keys=("candidates_scored",)),
+    "2": Stage(output_globs=("examples/live_targets.json", "state/latest_targets.json"), output_keys=("live_targets",)),
+    "3": Stage(output_globs=("runs/*/candidates_scored.json", "state/latest_live_snapshot.json"), output_keys=("candidates_scored",)),
+    "4": Stage(output_globs=("deepwiki_briefs/*.json",), output_keys=("deepwiki_briefs",)),
+    "5": Stage(
+        output_globs=("deepwiki_submissions/*.json",),
+        remaining_globs=("deepwiki_briefs/*.json",),
+        output_keys=("deepwiki_submissions",),
+        remaining_keys=("deepwiki_briefs",),
+    ),
     "6": Stage(
         output_globs=(
             "needs_live_context/*.json",
@@ -32,23 +42,37 @@ STAGES = {
             "deepwiki_unknown/*.json",
         ),
         remaining_globs=("deepwiki_submissions/*.json",),
+        output_keys=("needs_live_context", "needs_local_proof", "deepwiki_candidates", "deepwiki_unknown"),
+        remaining_keys=("deepwiki_submissions",),
     ),
-    "7": Stage(output_globs=("proof_gate_submissions/*.json",), remaining_globs=("needs_local_proof/*.json", "deepwiki_candidates/*.json")),
+    "7": Stage(
+        output_globs=("proof_gate_submissions/*.json",),
+        remaining_globs=("needs_local_proof/*.json", "deepwiki_candidates/*.json"),
+        output_keys=("proof_gate_submissions",),
+        remaining_keys=("needs_local_proof", "deepwiki_candidates"),
+    ),
     "8": Stage(
         output_globs=("local_proof_queue/*.md",),
         remaining_globs=("proof_gate_submissions/*.json",),
         final_message="DeepWiki proof-gate results are staged. Materialize Foundry targets before writing reports.",
+        output_keys=("local_proof_queue",),
+        remaining_keys=("proof_gate_submissions",),
     ),
     "9": Stage(
         output_globs=("foundry_targets/*/foundry.toml", "foundry_targets/*/test/LiveStateProof.t.sol"),
         final_message="Foundry target repos are materialized. Run forge tests with live RPC before reporting.",
+        output_keys=("foundry_targets",),
+    ),
+    "10": Stage(
+        output_globs=("archive/runs/*/summary.json",),
+        final_message="Completed run artifacts are archived and active workflow folders are clean.",
     ),
 }
 
 
 def verify_stage(stage_id: str) -> bool:
     stage = STAGES[stage_id]
-    outputs = _matches(stage.output_globs)
+    outputs = _current_manifest_matches(stage.output_keys) or _matches(stage.output_globs)
     if outputs:
         print(f"Stage {stage_id} verified with {len(outputs)} output item(s).")
         for item in outputs[:10]:
@@ -61,7 +85,8 @@ def verify_stage(stage_id: str) -> bool:
 
 
 def has_remaining(stage_id: str) -> bool:
-    remaining = _matches(STAGES[stage_id].remaining_globs)
+    stage = STAGES[stage_id]
+    remaining = _current_remaining(stage.remaining_keys) if has_current_run() else _matches(stage.remaining_globs)
     print(f"Stage {stage_id} remaining input count: {len(remaining)}")
     return bool(remaining)
 
@@ -131,6 +156,37 @@ def _matches(patterns: Iterable[str]) -> list[str]:
     for pattern in patterns:
         found.extend(glob.glob(pattern))
     return sorted(set(found))
+
+
+def _current_manifest_matches(keys: Iterable[str]) -> list[str]:
+    if not has_current_run():
+        return []
+    found: list[str] = []
+    for key in keys:
+        if key == "foundry_targets":
+            found.extend(str(path / "foundry.toml") for path in manifest_paths(key) if (path / "foundry.toml").is_file())
+        else:
+            found.extend(str(path) for path in manifest_paths(key))
+    return sorted(set(found))
+
+
+def _current_remaining(keys: Iterable[str]) -> list[str]:
+    found: list[str] = []
+    for key in keys:
+        paths = manifest_paths(key)
+        if key.endswith("submissions"):
+            found.extend(str(path) for path in paths if _is_uncollected_submission(path))
+        else:
+            found.extend(str(path) for path in paths)
+    return sorted(set(found))
+
+
+def _is_uncollected_submission(path: Path) -> bool:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return False
+    return not bool(payload.get("collected"))
 
 
 if __name__ == "__main__":

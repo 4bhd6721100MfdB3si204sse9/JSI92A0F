@@ -11,6 +11,7 @@ from bot_runtime import batch_limit
 from deepwiki_client import DeepWikiClient
 from deepwiki_prompts import candidate_triage_prompt, load_blueprint, proof_gate_prompt
 from repositories import deepwiki_base_url
+from run_state import has_current_run, manifest_paths, update_stage
 
 
 def submit_pending(stage: str, pending_dir: str, submissions_dir: str, limit: int) -> list[Path]:
@@ -22,11 +23,17 @@ def submit_pending(stage: str, pending_dir: str, submissions_dir: str, limit: in
     pending = Path(pending_dir)
     submissions = Path(submissions_dir)
     submissions.mkdir(parents=True, exist_ok=True)
-    submitted_names = _submitted_filenames(submissions)
-    files = [
-        path for path in sorted(list(pending.glob("*.json")) + list(pending.glob("*.md")))
-        if path.name not in submitted_names
-    ][:batch_limit(limit)]
+    manifest_key = "proof_gate_pending" if stage == "proof_gate" else "deepwiki_pending"
+    submission_key = "proof_gate_submissions" if stage == "proof_gate" else "deepwiki_submissions"
+    current_files = manifest_paths(manifest_key)
+    submitted_names = _submitted_filenames_for_paths(manifest_paths(submission_key)) if has_current_run() else _submitted_filenames(submissions)
+    if current_files:
+        source_files = [path for path in current_files if path.parent == pending]
+    elif has_current_run():
+        source_files = []
+    else:
+        source_files = sorted(list(pending.glob("*.json")) + list(pending.glob("*.md")))
+    files = [path for path in source_files if path.name not in submitted_names][:batch_limit(limit)]
     if not files:
         raise FileNotFoundError(f"no pending files found in {pending}")
 
@@ -57,6 +64,7 @@ def submit_pending(stage: str, pending_dir: str, submissions_dir: str, limit: in
             written.append(output)
     finally:
         client.close()
+    update_stage("7" if stage == "proof_gate" else "5", {submission_key: written})
     return written
 
 
@@ -76,8 +84,12 @@ def main(argv: list[str] | None = None) -> int:
 
 
 def _submitted_filenames(submissions_dir: Path) -> set[str]:
+    return _submitted_filenames_for_paths(submissions_dir.glob("*.json"))
+
+
+def _submitted_filenames_for_paths(paths) -> set[str]:
     names: set[str] = set()
-    for path in submissions_dir.glob("*.json"):
+    for path in paths:
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError):

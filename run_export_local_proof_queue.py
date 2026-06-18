@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from bot_runtime import batch_limit
+from run_state import has_current_run, manifest_paths, update_stage
 
 EXPORTABLE_VERDICTS = {"NEEDS_LOCAL_PROOF", "HIGH_CONFIDENCE_CANDIDATE"}
 
@@ -24,6 +25,7 @@ def export_queue(input_dirs: list[str], output_dir: str, limit: int) -> list[Pat
         written.append(destination)
     if not written:
         raise FileNotFoundError("no staged DeepWiki candidates found for local proof export")
+    update_stage("8", {"local_proof_queue": written})
     return written
 
 
@@ -35,6 +37,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--allow-empty", action="store_true", help="Exit successfully when no proof-ready candidates exist.")
     args = parser.parse_args(argv)
 
+    if manifest_paths("proof_gate_results"):
+        args.input_dir = ["__current_run_proof_gate_results__"]
+    elif has_current_run():
+        args.input_dir = ["__current_run_proof_gate_results__"]
     try:
         written = export_queue(args.input_dir, args.output, args.limit)
     except FileNotFoundError:
@@ -47,6 +53,8 @@ def main(argv: list[str] | None = None) -> int:
 
 
 def _candidate_files(input_dirs: list[str]) -> list[Path]:
+    if input_dirs == ["__current_run_proof_gate_results__"]:
+        return sorted(manifest_paths("proof_gate_results"))
     files: list[Path] = []
     for directory in input_dirs:
         root = Path(directory)

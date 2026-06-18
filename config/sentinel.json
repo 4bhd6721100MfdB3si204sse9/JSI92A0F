@@ -15,6 +15,7 @@
   "probable_bot_contract_weight": 14,
   "balance_spike_weight": 20,
   "known_public_protocol_score_cap": 19,
+  "known_public_protocol_registry": "config/known_public_protocols.json",
   "known_public_protocol_addresses": {
     "bsc": [
       "0x238a358808379702088667322f80ac48bad5e6c4"

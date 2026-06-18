@@ -55,7 +55,9 @@ def generate_live_targets(rows: list[dict[str, Any]], max_targets: int = 50) -> 
 
 def write_live_targets(rows: list[dict[str, Any]], path: str | Path) -> None:
     payload = {"targets": rows}
-    Path(path).write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+    output = Path(path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
     latest_path = os.environ.get("SENTINEL_LATEST_TARGETS_PATH")
     if latest_path:
         latest = Path(latest_path)

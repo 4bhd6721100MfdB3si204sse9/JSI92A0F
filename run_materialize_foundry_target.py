@@ -9,9 +9,10 @@ from pathlib import Path
 from typing import Any
 
 from bot_runtime import batch_limit
+from run_state import has_current_run, manifest_paths, update_stage
 
 
-DEFAULT_INPUT_DIRS = ["proof_gate_results", "deepwiki_candidates", "needs_local_proof", "deepwiki_briefs"]
+DEFAULT_INPUT_DIRS = ["proof_gate_results", "deepwiki_candidates", "needs_local_proof", "local_proof_queue"]
 MATERIALIZABLE_VERDICTS = {"NEEDS_LOCAL_PROOF", "HIGH_CONFIDENCE_CANDIDATE"}
 
 
@@ -34,6 +35,7 @@ def materialize_targets(input_dirs: list[str], output_dir: str, limit: int) -> l
 
     if not written:
         raise FileNotFoundError("no materializable JSON candidates with chain/address found")
+    update_stage("9", {"foundry_targets": written})
     return written
 
 
@@ -106,6 +108,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--limit", type=int, default=10)
     args = parser.parse_args(argv)
 
+    current_queue = manifest_paths("local_proof_queue")
+    current_gate = manifest_paths("proof_gate_results")
+    if current_queue:
+        args.input_dir = ["__current_run_local_proof_queue__"]
+    elif current_gate:
+        args.input_dir = ["__current_run_proof_gate_results__"]
+    elif has_current_run():
+        args.input_dir = ["__current_run_local_proof_queue__"]
     written = materialize_targets(args.input_dir, args.output, args.limit)
     print(f"foundry_targets={len(written)} output={args.output}")
     for path in written:
@@ -114,23 +124,47 @@ def main(argv: list[str] | None = None) -> int:
 
 
 def _candidate_files(input_dirs: list[str]) -> list[Path]:
+    if input_dirs == ["__current_run_local_proof_queue__"]:
+        return sorted(manifest_paths("local_proof_queue"))
+    if input_dirs == ["__current_run_proof_gate_results__"]:
+        return sorted(manifest_paths("proof_gate_results"))
     files: list[Path] = []
     for directory in input_dirs:
         root = Path(directory)
         if root.exists():
             files.extend(root.glob("*.json"))
+            files.extend(root.glob("*.md"))
     return sorted(files)
 
 
 def _load_payload(path: Path) -> dict[str, Any]:
-    return json.loads(path.read_text(encoding="utf-8"))
+    if path.suffix == ".json":
+        return json.loads(path.read_text(encoding="utf-8"))
+    raw = path.read_text(encoding="utf-8")
+    return {
+        "title": path.stem,
+        "raw_markdown": raw,
+        "verdict": _markdown_field(raw, "verdict"),
+        "candidate": {
+            "chain": _markdown_field(raw, "chain"),
+            "address": _markdown_field(raw, "address"),
+        },
+        "paid_scope_match": _markdown_field(raw, "paid_scope_match"),
+    }
 
 
 def _is_materializable(payload: dict[str, Any], path: Path) -> bool:
-    if path.parent.name in {"deepwiki_briefs", "deepwiki_candidates"}:
+    if path.parent.name == "deepwiki_candidates":
+        return True
+    if path.parent.name == "local_proof_queue":
         return True
     verdict = str(payload.get("verdict") or payload.get("deepwiki_verdict") or "").upper()
     return verdict in MATERIALIZABLE_VERDICTS
+
+
+def _markdown_field(raw: str, key: str) -> str:
+    match = re.search(rf"(?im)^\s*-\s*{re.escape(key)}:\s*`?([^`\n]+)`?\s*$", raw)
+    return match.group(1).strip() if match else ""
 
 
 def _payload_dict(payload: dict[str, Any], *keys: str) -> dict[str, Any]:

@@ -12,10 +12,14 @@ from deepwiki_client import DeepWikiClient
 from deepwiki_triage import parse_json_response, save_deepwiki_response
 from deepwiki_prompts import load_blueprint
 from repositories import deepwiki_base_url
+from run_state import has_current_run, manifest_paths, update_stage
 
 
 def collect_results(stage: str, submissions_dir: str, limit: int) -> int:
-    submissions = sorted(Path(submissions_dir).glob("*.json"))
+    submission_key = "proof_gate_submissions" if stage == "proof_gate" else "deepwiki_submissions"
+    submissions = manifest_paths(submission_key)
+    if not submissions and not has_current_run():
+        submissions = sorted(Path(submissions_dir).glob("*.json"))
     pending = [path for path in submissions if not _load_submission(path).get("collected")]
     if not pending:
         print(f"No uncollected submissions in {submissions_dir}")
@@ -28,6 +32,7 @@ def collect_results(stage: str, submissions_dir: str, limit: int) -> int:
     )
     client = DeepWikiClient(base_url, teardown=True)
     count = 0
+    routed_outputs: dict[str, list[Path]] = {}
     try:
         for submission_path in pending[:batch_limit(limit)]:
             submission = _load_submission(submission_path)
@@ -42,15 +47,20 @@ def collect_results(stage: str, submissions_dir: str, limit: int) -> int:
                 continue
 
             if stage == "proof_gate":
-                _save_proof_gate_result(content, url)
+                saved = _save_proof_gate_result(content, url)
+                routed_outputs.setdefault("proof_gate_results", []).append(saved)
             else:
-                save_deepwiki_response(content, url, prefix="sentinel")
+                saved = save_deepwiki_response(content, url, prefix="sentinel")
+                if saved is not None:
+                    routed_outputs.setdefault(Path(saved).parent.name, []).append(Path(saved))
 
             submission["collected"] = True
             _save_submission(submission_path, submission)
             count += 1
     finally:
         client.close()
+    if routed_outputs:
+        update_stage("8" if stage == "proof_gate" else "6", routed_outputs)
     return count
 
 
@@ -91,4 +101,3 @@ def _save_submission(path: Path, payload: dict[str, Any]) -> None:
 
 if __name__ == "__main__":
     sys.exit(main())
-

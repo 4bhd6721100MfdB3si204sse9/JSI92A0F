@@ -42,6 +42,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Archive leftovers and start clean run
+        run: python3 run_hygiene.py start --reason workflow_1_start
       - name: Run Sentinel discovery
         run: python3 -m sentinel discover --source "${{ inputs.source }}" --limit "$SENTINEL_LIMIT" --output runs
       - name: Commit outputs

@@ -157,6 +157,89 @@ class DeepWikiWorkflowTest(unittest.TestCase):
 
         self.assertEqual([path.name for path in moved], ["real.json"])
 
+    def test_move_pending_prefers_current_run_manifest_over_stale_briefs(self):
+        current_brief = {
+            "candidate": {
+                "chain": "bsc",
+                "address": "0x2211221122112211221122112211221122112211",
+                "name": "Current Target",
+            }
+        }
+        stale_brief = {
+            "candidate": {
+                "chain": "bsc",
+                "address": "0x3311331133113311331133113311331133113311",
+                "name": "Stale Target",
+            }
+        }
+
+        with tempfile.TemporaryDirectory() as tmp:
+            old_cwd = os.getcwd()
+            os.chdir(tmp)
+            try:
+                source = Path("deepwiki_briefs")
+                pending = Path("deepwiki_pending")
+                source.mkdir()
+                current_path = source / "current.json"
+                stale_path = source / "stale.json"
+                current_path.write_text(json.dumps(current_brief))
+                stale_path.write_text(json.dumps(stale_brief))
+                Path("state").mkdir()
+                Path("state/current_run.json").write_text(
+                    json.dumps(
+                        {
+                            "schema_version": "sentinel-run-state-v1",
+                            "run_id": "current",
+                            "manifest_paths": {"deepwiki_briefs": [str(current_path)]},
+                        }
+                    )
+                )
+
+                moved = move_pending(source, pending)
+                state = json.loads(Path("state/current_run.json").read_text())
+                pending_exists = (pending / "current.json").exists()
+                stale_exists = (source / "stale.json").exists()
+            finally:
+                os.chdir(old_cwd)
+
+        self.assertEqual([path.name for path in moved], ["current.json"])
+        self.assertTrue(pending_exists)
+        self.assertTrue(stale_exists)
+        self.assertEqual(state["manifest_paths"]["deepwiki_pending"], ["deepwiki_pending/current.json"])
+
+    def test_move_pending_refuses_stale_briefs_during_current_run_without_manifest(self):
+        stale_brief = {
+            "candidate": {
+                "chain": "bsc",
+                "address": "0x3311331133113311331133113311331133113311",
+                "name": "Stale Target",
+            }
+        }
+
+        with tempfile.TemporaryDirectory() as tmp:
+            old_cwd = os.getcwd()
+            os.chdir(tmp)
+            try:
+                source = Path("deepwiki_briefs")
+                pending = Path("deepwiki_pending")
+                source.mkdir()
+                (source / "stale.json").write_text(json.dumps(stale_brief))
+                Path("state").mkdir()
+                Path("state/current_run.json").write_text(
+                    json.dumps(
+                        {
+                            "schema_version": "sentinel-run-state-v1",
+                            "run_id": "current",
+                            "manifest_paths": {},
+                        }
+                    )
+                )
+
+                with self.assertRaises(FileNotFoundError):
+                    move_pending(source, pending)
+            finally:
+                os.chdir(old_cwd)
+
     def test_deepwiki_triage_routes_needs_live_context(self):
         with tempfile.TemporaryDirectory() as tmp:
             old_env = dict(os.environ)

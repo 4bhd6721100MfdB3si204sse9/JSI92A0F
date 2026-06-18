@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import hashlib
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -390,7 +391,9 @@ class EthereumChainScanner:
         verified = _is_verified(source)
         incoming_funders = self._incoming_funders(txs, deployment.address)
         cluster_match = _cluster_match(deployment.deployer, [funder.address for funder in incoming_funders], self.config)
-        known_public_reason = self._known_public_protocol_reason(deployment.address, contract_name, source_text)
+        code = self._eth_get_code(deployment.address)
+        known_public_reason = self._known_public_protocol_reason(deployment.address, code)
+        popular_protocol_hint = self._popular_protocol_hint(contract_name, source_text)
         balance_eth = balance_wei / 10**18
         native_usd = balance_eth * self.native_price_usd if self.native_price_usd else 0.0
         token_usd = sum(holding.value_usd for holding in token_holdings)
@@ -410,6 +413,7 @@ class EthereumChainScanner:
             cluster_match,
             token_holdings,
             known_public_reason,
+            popular_protocol_hint,
         )
         entity_type = self._entity_type(tags, verified)
 
@@ -463,6 +467,7 @@ class EthereumChainScanner:
                 "verified_source": verified,
                 "contract_name": contract_name,
                 "known_public_protocol_reason": known_public_reason,
+                "popular_protocol_hint_reason": popular_protocol_hint,
             },
         )
 
@@ -481,11 +486,14 @@ class EthereumChainScanner:
         cluster_match: dict[str, str],
         token_holdings: list[TokenHolding],
         known_public_reason: str,
+        popular_protocol_hint: str,
     ) -> list[str]:
         text = f"{contract_name} {source_text}".lower()
         target_min_usd = float(self.source_config.get("target_min_value_usd", self.config.get("min_value_usd", 200_000)) or 200_000)
         high_tx_threshold = int(self.source_config.get("high_tx_count", 50) or 50)
         tags = ["known_public_protocol", "popular_protocol"] if known_public_reason else ["unknown_protocol"]
+        if popular_protocol_hint and not known_public_reason:
+            tags.extend(["popular_protocol_name_hint", "possible_protocol_impersonation"])
         if deployment.discovery_source == "erc20_transfer_log":
             tags.append("token_funded_contract")
         else:
@@ -557,21 +565,33 @@ class EthereumChainScanner:
             return "unverified_contract"
         return "unknown_protocol"
 
-    def _known_public_protocol_reason(self, address: str, contract_name: str, source_text: str) -> str:
+    def _known_public_protocol_reason(self, address: str, code: str = "") -> str:
         address_lc = address.lower()
-        known_addresses = _known_public_protocol_addresses(self.config, self.chain)
-        if address_lc in known_addresses:
+        known_entry = _known_public_protocol_entry(self.config, self.chain, address_lc)
+        if known_entry:
+            protocol = str(known_entry.get("protocol", "known")).strip() or "known"
+            component = str(known_entry.get("component", "contract")).strip() or "contract"
+            return f"known_public_protocol_address:{protocol}:{component}:{address_lc}"
+        bytecode_entry = _known_public_protocol_bytecode_entry(self.config, self.chain, code)
+        if bytecode_entry:
+            protocol = str(bytecode_entry.get("protocol", "known")).strip() or "known"
+            component = str(bytecode_entry.get("component", "bytecode")).strip() or "bytecode"
+            runtime_hash = _runtime_bytecode_hash(code)
+            return f"known_public_protocol_bytecode:{protocol}:{component}:{runtime_hash}"
+        if address_lc in _legacy_known_public_protocol_addresses(self.config, self.chain):
             return f"known_public_protocol_address:{address_lc}"
+        return ""
 
+    def _popular_protocol_hint(self, contract_name: str, source_text: str) -> str:
         name_text = contract_name.lower()
         for keyword in _known_public_protocol_keywords(self.config):
             if keyword and keyword in name_text:
-                return f"known_public_protocol_name:{keyword}"
+                return f"popular_protocol_name_hint:{keyword}"
 
         lowered_source = source_text.lower()
         for marker in _known_public_protocol_source_markers(self.config):
             if marker and marker in lowered_source:
-                return f"known_public_protocol_source_marker:{marker}"
+                return f"popular_protocol_source_marker_hint:{marker}"
         return ""
 
     def _eth_get_balance(self, address: str) -> int:
@@ -935,7 +955,59 @@ def _known_token(chain: str, token: str, native_price_usd: float) -> dict[str, A
     return resolved
 
 
-def _known_public_protocol_addresses(config: dict[str, Any], chain: str) -> set[str]:
+def _known_public_protocol_entry(config: dict[str, Any], chain: str, address: str) -> dict[str, Any]:
+    address_lc = address.lower().strip()
+    if not address_lc:
+        return {}
+    for entry in _known_public_protocol_entries(config):
+        if str(entry.get("chain", "")).lower().strip() == chain.lower() and str(entry.get("address", "")).lower().strip() == address_lc:
+            return entry
+    return {}
+
+
+def _known_public_protocol_bytecode_entry(config: dict[str, Any], chain: str, code: str) -> dict[str, Any]:
+    runtime_hash = _runtime_bytecode_hash(code)
+    if not runtime_hash:
+        return {}
+    for entry in _known_public_protocol_entries(config):
+        if str(entry.get("chain", "")).lower().strip() != chain.lower():
+            continue
+        entry_hash = str(entry.get("runtime_bytecode_hash", "")).lower().strip()
+        if entry_hash and entry_hash == runtime_hash:
+            return entry
+    return {}
+
+
+def _runtime_bytecode_hash(code: str) -> str:
+    normalized = str(code or "").lower().strip()
+    if normalized in {"", "0x"}:
+        return ""
+    normalized = normalized.removeprefix("0x")
+    try:
+        raw = bytes.fromhex(normalized)
+    except ValueError:
+        return ""
+    return "sha256:" + hashlib.sha256(raw).hexdigest()
+
+
+def _known_public_protocol_entries(config: dict[str, Any]) -> list[dict[str, Any]]:
+    registry_path = str(config.get("known_public_protocol_registry", "")).strip()
+    entries: list[dict[str, Any]] = []
+    if registry_path:
+        try:
+            payload = json.loads(Path(registry_path).read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            payload = {}
+        raw_entries = payload.get("entries", []) if isinstance(payload, dict) else []
+        if isinstance(raw_entries, list):
+            entries.extend(entry for entry in raw_entries if isinstance(entry, dict))
+    inline_entries = config.get("known_public_protocol_entries", [])
+    if isinstance(inline_entries, list):
+        entries.extend(entry for entry in inline_entries if isinstance(entry, dict))
+    return entries
+
+
+def _legacy_known_public_protocol_addresses(config: dict[str, Any], chain: str) -> set[str]:
     raw = config.get("known_public_protocol_addresses", {})
     values: list[Any]
     if isinstance(raw, dict):

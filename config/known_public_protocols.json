@@ -1,0 +1,280 @@
+{
+  "schema_version": "known-public-protocols-v1",
+  "entries": [
+    {
+      "address": "0xca143ce32fe78f1f7019d7d551a6402fc5350c73",
+      "chain": "bsc",
+      "component": "v2_factory",
+      "confidence": "official",
+      "label": "PancakeSwap V2 Factory",
+      "protocol": "pancakeswap",
+      "reason": "Official PancakeSwap BSC factory; battle-tested public infra, not a fresh audit target.",
+      "source": "pancakeswap_developer_docs",
+      "source_url": "https://developer.pancakeswap.finance/contracts/v2/addresses"
+    },
+    {
+      "address": "0x10ed43c718714eb63d5aa57b78b54704e256024e",
+      "chain": "bsc",
+      "component": "v2_router",
+      "confidence": "official",
+      "label": "PancakeSwap V2 Router",
+      "protocol": "pancakeswap",
+      "reason": "Official PancakeSwap BSC router; route to known-public watch instead of DeepWiki proof flow.",
+      "source": "pancakeswap_developer_docs",
+      "source_url": "https://developer.pancakeswap.finance/contracts/v2/addresses"
+    },
+    {
+      "address": "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+      "chain": "bsc",
+      "component": "v3_factory",
+      "confidence": "official",
+      "label": "PancakeSwap V3 Factory",
+      "protocol": "pancakeswap",
+      "reason": "Official PancakeSwap V3 BSC factory; exact address quarantine only.",
+      "source": "pancakeswap_developer_docs",
+      "source_url": "https://developer.pancakeswap.finance/contracts/v3/addresses"
+    },
+    {
+      "address": "0x41ff9aa7e16b8b1a8a8dc4f0efacd93d02d071c9",
+      "chain": "bsc",
+      "component": "v3_pool_deployer",
+      "confidence": "official",
+      "label": "PancakeSwap V3 Pool Deployer",
+      "protocol": "pancakeswap",
+      "reason": "Official PancakeSwap V3 BSC pool deployer.",
+      "source": "pancakeswap_developer_docs",
+      "source_url": "https://developer.pancakeswap.finance/contracts/v3/addresses"
+    },
+    {
+      "address": "0x1b81d678ffb9c0263b24a97847620c99d213eb14",
+      "chain": "bsc",
+      "component": "v3_swap_router",
+      "confidence": "official",
+      "label": "PancakeSwap V3 SwapRouter",
+      "protocol": "pancakeswap",
+      "reason": "Official PancakeSwap V3 BSC router.",
+      "source": "pancakeswap_developer_docs",
+      "source_url": "https://developer.pancakeswap.finance/contracts/v3/addresses"
+    },
+    {
+      "address": "0x46a15b0b27311cedf172ab29e4f4766fbe7f4364",
+      "chain": "bsc",
+      "component": "v3_nonfungible_position_manager",
+      "confidence": "official",
+      "label": "PancakeSwap V3 NonfungiblePositionManager",
+      "protocol": "pancakeswap",
+      "reason": "Official PancakeSwap V3 BSC position manager.",
+      "source": "pancakeswap_developer_docs",
+      "source_url": "https://developer.pancakeswap.finance/contracts/v3/addresses"
+    },
+    {
+      "address": "0xb048bbc1ee6b733fffcfb9e9cef7375518e25997",
+      "chain": "bsc",
+      "component": "v3_quoter_v2",
+      "confidence": "official",
+      "label": "PancakeSwap V3 QuoterV2",
+      "protocol": "pancakeswap",
+      "reason": "Official PancakeSwap V3 BSC quoter.",
+      "source": "pancakeswap_developer_docs",
+      "source_url": "https://developer.pancakeswap.finance/contracts/v3/addresses"
+    },
+    {
+      "address": "0x238a358808379702088667322f80ac48bad5e6c4",
+      "chain": "bsc",
+      "component": "infinity_vault",
+      "confidence": "verified_label",
+      "label": "PancakeSwap Infinity Vault",
+      "protocol": "pancakeswap",
+      "reason": "Verified public PancakeSwap Infinity vault observed as known protocol infrastructure.",
+      "source": "bscscan_verified_label",
+      "source_url": "https://bscscan.com/address/0x238a358808379702088667322f80ac48bad5e6c4"
+    },
+    {
+      "address": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+      "chain": "ethereum",
+      "component": "v3_factory",
+      "confidence": "official",
+      "label": "Uniswap V3 Factory",
+      "protocol": "uniswap",
+      "reason": "Official Uniswap V3 Ethereum factory.",
+      "source": "uniswap_developer_docs",
+      "source_url": "https://developers.uniswap.org/docs/protocols/v3/deployments"
+    },
+    {
+      "address": "0xe592427a0aece92de3edee1f18e0157c05861564",
+      "chain": "ethereum",
+      "component": "v3_swap_router",
+      "confidence": "official",
+      "label": "Uniswap V3 SwapRouter",
+      "protocol": "uniswap",
+      "reason": "Official Uniswap V3 Ethereum router.",
+      "source": "uniswap_developer_docs",
+      "source_url": "https://developers.uniswap.org/docs/protocols/v3/deployments"
+    },
+    {
+      "address": "0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45",
+      "chain": "ethereum",
+      "component": "v3_swap_router_02",
+      "confidence": "official",
+      "label": "Uniswap SwapRouter02",
+      "protocol": "uniswap",
+      "reason": "Official Uniswap router deployment.",
+      "source": "uniswap_developer_docs",
+      "source_url": "https://developers.uniswap.org/docs/protocols/v3/deployments"
+    },
+    {
+      "address": "0xc36442b4a4522e871399cd717abdd847ab11fe88",
+      "chain": "ethereum",
+      "component": "v3_nonfungible_position_manager",
+      "confidence": "official",
+      "label": "Uniswap V3 NonfungiblePositionManager",
+      "protocol": "uniswap",
+      "reason": "Official Uniswap V3 Ethereum position manager.",
+      "source": "uniswap_developer_docs",
+      "source_url": "https://developers.uniswap.org/docs/protocols/v3/deployments"
+    },
+    {
+      "address": "0x000000000004444c5dc75cb358380d2e3de08a90",
+      "chain": "ethereum",
+      "component": "v4_pool_manager",
+      "confidence": "official",
+      "label": "Uniswap V4 PoolManager",
+      "protocol": "uniswap",
+      "reason": "Official Uniswap V4 Ethereum pool manager.",
+      "source": "uniswap_developer_docs",
+      "source_url": "https://developers.uniswap.org/docs/protocols/v4/deployments"
+    },
+    {
+      "address": "0xbd216513d74c8cf14cf4747e6aaa6420ff64ee9e",
+      "chain": "ethereum",
+      "component": "v4_position_manager",
+      "confidence": "official",
+      "label": "Uniswap V4 PositionManager",
+      "protocol": "uniswap",
+      "reason": "Official Uniswap V4 Ethereum position manager.",
+      "source": "uniswap_developer_docs",
+      "source_url": "https://developers.uniswap.org/docs/protocols/v4/deployments"
+    },
+    {
+      "address": "0x66a9893cc07d91d95644aedd05d03f95e1dba8af",
+      "chain": "ethereum",
+      "component": "universal_router",
+      "confidence": "official",
+      "label": "Uniswap Universal Router",
+      "protocol": "uniswap",
+      "reason": "Official Uniswap Ethereum Universal Router.",
+      "source": "uniswap_developer_docs",
+      "source_url": "https://developers.uniswap.org/docs/protocols/v4/deployments"
+    },
+    {
+      "address": "0x000000000022d473030f116ddee9f6b43ac78ba3",
+      "chain": "ethereum",
+      "component": "permit2",
+      "confidence": "official",
+      "label": "Uniswap Permit2",
+      "protocol": "uniswap",
+      "reason": "Official Uniswap Permit2 deployment.",
+      "source": "uniswap_developer_docs",
+      "source_url": "https://developers.uniswap.org/docs/protocols/v4/deployments"
+    },
+    {
+      "address": "0x2f39d218133afab8f2b819b1066c7e434ad94e9e",
+      "chain": "ethereum",
+      "component": "v3_pool_addresses_provider",
+      "confidence": "official",
+      "label": "Aave V3 Ethereum PoolAddressesProvider",
+      "protocol": "aave",
+      "reason": "Official Aave V3 Ethereum market address provider.",
+      "source": "aave_address_book",
+      "source_url": "https://aave.com/docs/resources/addresses"
+    },
+    {
+      "address": "0x87870bca3f3fd6335c3f4ce8392d69350b4fa4e2",
+      "chain": "ethereum",
+      "component": "v3_pool",
+      "confidence": "official",
+      "label": "Aave V3 Ethereum Pool",
+      "protocol": "aave",
+      "reason": "Official Aave V3 Ethereum Pool contract.",
+      "source": "aave_address_book",
+      "source_url": "https://aave.com/docs/resources/addresses"
+    },
+    {
+      "address": "0x5ffe7fb82894076ecb99a30d6a32e969e6e35e98",
+      "chain": "ethereum",
+      "component": "address_provider",
+      "confidence": "official",
+      "label": "Curve AddressProviderNG",
+      "protocol": "curve",
+      "reason": "Official Curve Address Provider; exact-address public protocol marker.",
+      "source": "curve_technical_docs",
+      "source_url": "https://docs.curve.finance/references/deployed-contracts/"
+    },
+    {
+      "address": "0xf98b45fa17de75fb1ad0e7afd971b0ca00e379fc",
+      "chain": "ethereum",
+      "component": "meta_registry",
+      "confidence": "official",
+      "label": "Curve Meta Registry",
+      "protocol": "curve",
+      "reason": "Curve docs list this as the Ethereum Meta Registry resolved from AddressProvider ID 7.",
+      "source": "curve_technical_docs",
+      "source_url": "https://docs.curve.finance/references/deployed-contracts/"
+    },
+    {
+      "address": "0x6a8cbed756804b16e05e741edabdc5b544ae21bf",
+      "chain": "ethereum",
+      "component": "stableswap_ng_factory",
+      "confidence": "official",
+      "label": "Curve Stableswap-NG Factory",
+      "protocol": "curve",
+      "reason": "Official Curve Stableswap-NG Ethereum factory.",
+      "source": "curve_technical_docs",
+      "source_url": "https://docs.curve.finance/references/deployed-contracts/"
+    },
+    {
+      "address": "0xba12222222228d8ba445958a75a0704d566bf2c8",
+      "chain": "ethereum",
+      "component": "v2_vault",
+      "confidence": "official",
+      "label": "Balancer Vault",
+      "protocol": "balancer",
+      "reason": "Canonical Balancer Vault address; public protocol infrastructure.",
+      "source": "balancer_developer_docs",
+      "source_url": "https://docs.balancer.fi/developer-reference/contracts/deployment-addresses/mainnet.html"
+    },
+    {
+      "address": "0xfd36e2c2a6789db23113685031d7f16329158384",
+      "chain": "bsc",
+      "component": "unitroller",
+      "confidence": "official",
+      "label": "Venus Unitroller",
+      "protocol": "venus",
+      "reason": "Canonical Venus BNB Chain Unitroller/Comptroller proxy; public lending market infrastructure.",
+      "source": "venus_deployed_contracts",
+      "source_url": "https://docs-v4.venus.io/deployed-contracts/deployed-contracts"
+    },
+    {
+      "address": "0xd9e1ce17f2641f24ae83637ab66a2cca9c378b9f",
+      "chain": "ethereum",
+      "component": "v2_router",
+      "confidence": "official",
+      "label": "SushiSwap Router",
+      "protocol": "sushiswap",
+      "reason": "Canonical SushiSwap Ethereum router; exact-address public DEX infrastructure.",
+      "source": "sushiswap_deployment_addresses",
+      "source_url": "https://docs.sushi.com/docs/Developers/Deployment%20Addresses"
+    },
+    {
+      "address": "0x8731d54e9d02c286767d56ac03e8037c07e01e98",
+      "chain": "ethereum",
+      "component": "router",
+      "confidence": "official",
+      "label": "Stargate Router",
+      "protocol": "stargate",
+      "reason": "Canonical Stargate Ethereum router; exact-address public bridge infrastructure.",
+      "source": "stargate_contract_addresses",
+      "source_url": "https://stargateprotocol.gitbook.io/stargate/developers/contract-addresses/mainnet"
+    }
+  ]
+}

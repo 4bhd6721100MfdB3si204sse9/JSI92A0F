@@ -1,4 +1,5 @@
 import json
+import hashlib
 import tempfile
 import unittest
 from pathlib import Path
@@ -188,6 +189,41 @@ class EthereumChainScannerTest(unittest.TestCase):
         self.assertNotIn("unknown_protocol", known.tags)
         self.assertEqual(known.tvl_usd, 250_000)
         self.assertIn("known_public_protocol_address", known.raw["known_public_protocol_reason"])
+
+    def test_bsc_scanner_can_quarantine_known_public_runtime_bytecode_hash(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        runtime_hash = "sha256:" + hashlib.sha256(bytes.fromhex("6000")).hexdigest()
+        with tempfile.TemporaryDirectory() as tmp:
+            config["sources"]["bsc_chain_scanner"] = {
+                "enabled": True,
+                "recent_blocks": 1,
+                "max_contracts": 1,
+                "max_token_contracts": 5,
+                "max_transfer_recipients": 2,
+                "transfer_log_chunk_size": 1,
+                "target_min_value_usd": 200_000,
+                "native_price_usd": 600,
+                "rpc_urls": ["https://bsc-rpc.example"],
+                "state_path": str(Path(tmp) / "bsc_chain_scanner.json"),
+            }
+            config["known_public_protocol_addresses"] = {}
+            config["known_public_protocol_registry"] = ""
+            config["known_public_protocol_entries"] = [
+                {
+                    "chain": "bsc",
+                    "runtime_bytecode_hash": runtime_hash,
+                    "protocol": "known-dex",
+                    "component": "vault",
+                }
+            ]
+
+            candidates = load_bsc_chain_candidates(config, limit=2, rpc_call=_fake_bsc_rpc, fetch_json=_unexpected_fetch)
+
+        known = {candidate.address: candidate for candidate in candidates}["0x5656565656565656565656565656565656565656"]
+
+        self.assertEqual(known.entity_type, "known_protocol")
+        self.assertIn("known_public_protocol", known.tags)
+        self.assertIn("known_public_protocol_bytecode", known.raw["known_public_protocol_reason"])
 
 
 def _fake_rpc(_url, method, params):

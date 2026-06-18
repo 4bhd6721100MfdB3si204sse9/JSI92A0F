@@ -43,3 +43,8 @@ jobs:
           fi
       - name: Verify materialization
         run: python3 workflow_chain.py verify --stage 9
+      - name: Advance to archive cleanup
+        if: inputs.chain_next == 'true'
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_JSON || secrets.PAT_TOKEN }}
+        run: python3 workflow_chain.py advance --stage 9 --next-workflow 10_archive_completed_run.yml --smoke-limit "${{ inputs.smoke_limit }}"

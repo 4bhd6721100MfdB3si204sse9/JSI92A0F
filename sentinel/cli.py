@@ -8,6 +8,7 @@ from .output import write_run
 from .scoring import score_candidate
 from .targets import refresh_live_targets, refresh_live_targets_from_latest_run
 from .sources import load_candidates
+from run_state import has_current_run, latest_path, update_stage
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -52,10 +53,21 @@ def main(argv: list[str] | None = None) -> int:
 
 def run_discover(args: argparse.Namespace) -> int:
     config = json.loads(Path(args.config).read_text())
+    stage = "3" if args.source == "explorer_live" else "1"
+    update_stage(stage, {})
     candidates = load_candidates(args.source, config, args.limit, args.input)
     scored = [score_candidate(candidate, config) for candidate in candidates]
     scored.sort(key=lambda item: item.score, reverse=True)
     run_dir = write_run(scored, Path(args.output))
+    update_stage(
+        stage,
+        {
+            "run_dirs": run_dir,
+            "candidates_scored": run_dir / "candidates_scored.json",
+            "triage_queue_csv": run_dir / "triage_queue.csv",
+            "triage_queue_md": run_dir / "triage_queue.md",
+        },
+    )
     protocol_recon = sum(1 for item in scored if item.next_action == "recon_bravo_then_corecritical")
     bot_trace = sum(1 for item in scored if item.next_action == "trace_bot_contract_then_target_protocols")
     unverified = sum(1 for item in scored if item.next_action == "reverse_engineer_unverified_funded_contract")
@@ -72,11 +84,21 @@ def run_discover(args: argparse.Namespace) -> int:
 def run_refresh_targets(args: argparse.Namespace) -> int:
     if args.input:
         targets = refresh_live_targets(args.input, args.output, max_targets=args.max_targets)
+        update_stage("2", {"live_targets": args.output})
         print(f"targets={len(targets)} output={args.output} input={args.input}")
         return 0
 
     if args.latest or not args.input:
+        current_scored = latest_path("candidates_scored")
+        if current_scored is not None:
+            targets = refresh_live_targets(current_scored, args.output, max_targets=args.max_targets)
+            update_stage("2", {"live_targets": args.output})
+            print(f"targets={len(targets)} output={args.output} current_input={current_scored}")
+            return 0
+        if has_current_run():
+            raise FileNotFoundError("current run has no candidates_scored manifest path")
         latest, targets = refresh_live_targets_from_latest_run(args.runs_dir, args.output, max_targets=args.max_targets)
+        update_stage("2", {"live_targets": args.output})
         print(f"targets={len(targets)} output={args.output} latest_input={latest}")
         return 0
 

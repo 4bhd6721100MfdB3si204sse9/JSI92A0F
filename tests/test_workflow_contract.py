@@ -1,6 +1,11 @@
 import re
 import unittest
+import json
+import os
+import tempfile
 from pathlib import Path
+
+from workflow_chain import has_remaining
 
 
 class WorkflowContractTest(unittest.TestCase):
@@ -36,6 +41,30 @@ class WorkflowContractTest(unittest.TestCase):
         for path in sorted(Path(".github/workflows").glob("[1-7]_*.yml")):
             content = path.read_text()
             self.assertIn("secrets.PAT_JSON", content, path)
+
+    def test_chain_remaining_uses_current_run_manifest_not_stale_globs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            old_cwd = os.getcwd()
+            os.chdir(tmp)
+            try:
+                Path("state").mkdir()
+                Path("deepwiki_briefs").mkdir()
+                Path("deepwiki_briefs/stale.json").write_text("{}")
+                Path("state/current_run.json").write_text(
+                    json.dumps(
+                        {
+                            "schema_version": "sentinel-run-state-v1",
+                            "run_id": "current",
+                            "manifest_paths": {"deepwiki_briefs": ["deepwiki_briefs/current-moved.json"]},
+                        }
+                    )
+                )
+
+                remaining = has_remaining("5")
+            finally:
+                os.chdir(old_cwd)
+
+        self.assertFalse(remaining)
 
 
 if __name__ == "__main__":

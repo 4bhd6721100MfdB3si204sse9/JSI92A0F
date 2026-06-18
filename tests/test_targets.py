@@ -100,6 +100,29 @@ class TargetGeneratorTest(unittest.TestCase):
             self.assertEqual(payload["targets"][0]["address"], "0x5555555555555555555555555555555555555555")
             self.assertEqual(payload["targets"][0]["metadata"]["entity_type"], "unverified_contract")
 
+    def test_refresh_live_targets_creates_output_parent_directory(self):
+        rows = [
+            {
+                "score": 70,
+                "next_action": "reverse_engineer_unverified_funded_contract",
+                "name": "Unverified Funded Treasury",
+                "chain": "bsc",
+                "address": "0x5555555555555555555555555555555555555555",
+                "entity_type": "unverified_contract",
+            }
+        ]
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            input_path = root / "candidates_scored.json"
+            output_path = root / "nested" / "live_targets.json"
+            input_path.write_text(json.dumps(rows))
+
+            targets = refresh_live_targets(input_path, output_path, max_targets=10)
+
+            self.assertEqual(len(targets), 1)
+            self.assertTrue(output_path.is_file())
+
     def test_refresh_latest_run_picks_most_recent_scored_queue(self):
         rows_old = [
             {
@@ -193,6 +216,110 @@ class TargetGeneratorTest(unittest.TestCase):
             self.assertEqual(exit_code, 0)
             payload = json.loads(output_path.read_text())
             self.assertEqual(payload["targets"][0]["label"], "New Target")
+
+    def test_refresh_targets_cli_prefers_current_run_manifest_over_latest_folder(self):
+        rows_current = [
+            {
+                "score": 90,
+                "next_action": "reverse_engineer_unverified_funded_contract",
+                "name": "Current Run Target",
+                "chain": "bsc",
+                "address": "0x3333333333333333333333333333333333333333",
+                "entity_type": "unverified_contract",
+            }
+        ]
+        rows_stale = [
+            {
+                "score": 99,
+                "next_action": "trace_bot_contract_then_target_protocols",
+                "name": "Stale Latest Target",
+                "chain": "bsc",
+                "address": "0x4444444444444444444444444444444444444444",
+                "entity_type": "bot_contract",
+            }
+        ]
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            old_cwd = os.getcwd()
+            os.chdir(tmpdir)
+            try:
+                root = Path("runs")
+                current_run = root / "current"
+                stale_run = root / "stale-newer"
+                current_run.mkdir(parents=True)
+                stale_run.mkdir()
+                current_scored = current_run / "candidates_scored.json"
+                stale_scored = stale_run / "candidates_scored.json"
+                current_scored.write_text(json.dumps(rows_current))
+                stale_scored.write_text(json.dumps(rows_stale))
+                os.utime(current_scored, (1000, 1000))
+                os.utime(stale_scored, (2000, 2000))
+                Path("state").mkdir()
+                Path("state/current_run.json").write_text(
+                    json.dumps(
+                        {
+                            "schema_version": "sentinel-run-state-v1",
+                            "run_id": "current",
+                            "manifest_paths": {"candidates_scored": [str(current_scored)]},
+                        }
+                    )
+                )
+
+                exit_code = main([
+                    "refresh-targets",
+                    "--runs-dir",
+                    str(root),
+                    "--output",
+                    "live_targets.json",
+                ])
+                payload = json.loads(Path("live_targets.json").read_text())
+            finally:
+                os.chdir(old_cwd)
+
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["targets"][0]["label"], "Current Run Target")
+
+    def test_refresh_targets_cli_refuses_latest_fallback_during_current_run_without_manifest(self):
+        rows_stale = [
+            {
+                "score": 99,
+                "next_action": "trace_bot_contract_then_target_protocols",
+                "name": "Stale Latest Target",
+                "chain": "bsc",
+                "address": "0x4444444444444444444444444444444444444444",
+                "entity_type": "bot_contract",
+            }
+        ]
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            old_cwd = os.getcwd()
+            os.chdir(tmpdir)
+            try:
+                root = Path("runs")
+                stale_run = root / "stale"
+                stale_run.mkdir(parents=True)
+                (stale_run / "candidates_scored.json").write_text(json.dumps(rows_stale))
+                Path("state").mkdir()
+                Path("state/current_run.json").write_text(
+                    json.dumps(
+                        {
+                            "schema_version": "sentinel-run-state-v1",
+                            "run_id": "current",
+                            "manifest_paths": {},
+                        }
+                    )
+                )
+
+                with self.assertRaises(FileNotFoundError):
+                    main([
+                        "refresh-targets",
+                        "--runs-dir",
+                        str(root),
+                        "--output",
+                        "live_targets.json",
+                    ])
+            finally:
+                os.chdir(old_cwd)
 
 
 if __name__ == "__main__":
