@@ -1,0 +1,91 @@
+{
+  "attacker_path_hypothesis": {
+    "actor": "unprivileged external user",
+    "call_sequence": [
+      "1. Identify value-moving selector from decompiled bytecode or tx history",
+      "2. Call selector with attacker address as recipient or beneficiary",
+      "3. Observe token transfer to attacker without prior deposit or entitlement"
+    ],
+    "expected_gain": "Up to ~$11.3M in token value if a public unrestricted sweep or withdraw selector exists \u2014 unconfirmed until source/selector evidence is obtained",
+    "preconditions": [
+      "Contract holds ~$11.3M in token value confirmed by live balance check",
+      "At least one public selector exists that moves tokens to a caller-controlled address without ownership or deposit proof",
+      "No timelock, multisig, or access control guards that selector"
+    ]
+  },
+  "candidate": {
+    "address": "0xabe0e16758e0ec57848a092285ace3b384c58d88",
+    "chain": "bsc",
+    "entity_type": "unknown_protocol",
+    "name": "0xabe0e16758e0ec57848a092285ace3b384c58d88",
+    "next_action": "recon_bravo_then_corecritical",
+    "score": 93,
+    "source_file": "deepwiki_briefs/bsc-0xabe0e16758e0ec57848a092285ace3b384c58d88.json"
+  },
+  "deepwiki_source_url": "https://deepwiki.com/search/-deepwiki-sentinel-candidate-t_6cdcca39-376b-4f2b-96d3-c5355e3a7be8?mode=deep",
+  "deepwiki_verdict": "needs_live_context",
+  "live_context_required": [
+    {
+      "command_or_source": "cast etherscan-source --chain bsc 0xabe0e16758e0ec57848a092285ace3b384c58d88 || cast code --rpc-url $BSC_RPC 0xabe0e16758e0ec57848a092285ace3b384c58d88 | heimdall decompile",
+      "name": "contract_source_or_bytecode",
+      "reason": "verified_source is null; without ABI, source, or decompiled bytecode we cannot identify any value-moving selectors or access control patterns."
+    },
+    {
+      "command_or_source": "cast logs --rpc-url $BSC_RPC --address 0xabe0e16758e0ec57848a092285ace3b384c58d88 --from-block earliest || BscScan API: txlist for address",
+      "name": "public_selector_history",
+      "reason": "No transaction history or selector usage is present in the brief. Observed selectors from past txs reveal which value-moving functions have been called and by whom."
+    },
+    {
+      "command_or_source": "cast storage --rpc-url $BSC_RPC 0xabe0e16758e0ec57848a092285ace3b384c58d88 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc && cast storage --rpc-url $BSC_RPC 0xabe0e16758e0ec57848a092285ace3b384c58d88 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103",
+      "name": "proxy_admin_and_implementation_slots",
+      "reason": "No proxy state is recorded. If this is a proxy, the implementation may hold the real value-moving logic and could have been changed after funding."
+    },
+    {
+      "command_or_source": "BscScan API: getcontractcreation?contractaddresses=0xabe0e16758e0ec57848a092285ace3b384c58d88 \u2014 then trace deployer wallet for prior project links",
+      "name": "deployer_address_and_funding_path",
+      "reason": "deployer_address is empty. Deployer identity and funding source are needed to detect closed-project redeployment, rug-redeploy patterns, or migrated custody."
+    },
+    {
+      "command_or_source": "BscScan token holdings API for 0xabe0e16758e0ec57848a092285ace3b384c58d88 || cast call --rpc-url $BSC_RPC <token> 'balanceOf(address)(uint256)' 0xabe0e16758e0ec57848a092285ace3b384c58d88",
+      "name": "token_balance_breakdown",
+      "reason": "TVL is $11.3M but the specific tokens, amounts, and whether they are user deposits vs. protocol-owned reserves are unknown. This determines whether extraction would come from user principal."
+    }
+  ],
+  "local_proof_required": {
+    "expected_assertions": [
+      "attacker token balance after > attacker token balance before",
+      "contract token balance after < contract token balance before",
+      "no prior deposit or entitlement by attacker address"
+    ],
+    "setup": [
+      "Fork BSC at current block with anvil --fork-url $BSC_RPC",
+      "Confirm token balances of 0xabe0e16758e0ec57848a092285ace3b384c58d88 on fork",
+      "Load decompiled or verified ABI into Foundry interface",
+      "Identify candidate value-moving selector"
+    ],
+    "test_type": "fork",
+    "transaction_sequence": [
+      "vm.prank(attacker) \u2014 call identified selector with attacker as recipient",
+      "Assert token balance of attacker increased",
+      "Assert token balance of contract decreased by matching amount"
+    ]
+  },
+  "paid_scope_match": "fund_extraction",
+  "rejection_reason": "",
+  "schema_version": "sentinel-triage-v1",
+  "source_or_selector_basis": [
+    {
+      "evidence": "verified_source is null; no selector history present in brief; category resolved to 'fresh contract' indicating no vault/reward/bot keyword match in any available metadata",
+      "selector_or_function": "unknown \u2014 no source or ABI available",
+      "why_it_matters": "Without at least one confirmed public selector that moves value, no exploit path can be constructed. All families above remain speculative until bytecode or tx history is retrieved."
+    }
+  ],
+  "suspected_exploit_families": [
+    "missing access control on value-moving functions",
+    "unauthorized withdrawal, redeem, or sweep",
+    "proxy, implementation, or storage mismatch that exposes live funds",
+    "phantom accounting where shares or debt are created without matching assets"
+  ],
+  "verdict": "NEEDS_LIVE_CONTEXT",
+  "why_this_target_matters": "Fresh BSC contract holding ~$11.3M in token value with no verified source, no known deployer, no selector history, and no proxy state on record. The combination of hidden_high_value_contract, unknown_verification_status, and fresh_contract_large_token_balance tags at this TVL tier makes it a priority surface for unauthorized withdrawal or sweep paths \u2014 but no code or selector evidence exists yet to form a hypothesis."
+}
