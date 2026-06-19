@@ -15,7 +15,11 @@ def score_candidate(candidate: Candidate, config: dict[str, Any]) -> ScoredCandi
     is_unverified_contract = entity_type == "unverified_contract" or candidate.verified_source is False
     is_unknown_protocol = entity_type in {"unknown_protocol", "protocol"}
     tags = set(candidate.tags)
-    is_known_public_protocol = entity_type == "known_protocol" or bool({"known_public_protocol", "popular_protocol"}.intersection(tags))
+    is_known_public_protocol = (
+        entity_type == "known_protocol"
+        or bool({"known_public_protocol", "popular_protocol", "popular_protocol_name_hint"}.intersection(tags))
+        or _has_known_public_name_or_source(candidate, config)
+    )
 
     min_value = float(config.get("min_value_usd", 50_000))
     min_bot_value = float(config.get("min_bot_value_usd", 10_000))
@@ -316,3 +320,30 @@ def _has_unknown_chain_recon_signal(tags: set[str]) -> bool:
             "stale_oracle",
         }.intersection(tags)
     )
+
+
+def _has_known_public_name_or_source(candidate: Candidate, config: dict[str, Any]) -> bool:
+    text = " ".join(
+        [
+            candidate.name,
+            candidate.category,
+            " ".join(candidate.tags),
+            str(candidate.raw.get("source_excerpt", "")),
+            str(candidate.raw.get("description", "")),
+            str(candidate.raw.get("behavior", "")),
+        ]
+    ).lower()
+    for keyword in _config_text_list(config, "known_public_protocol_keywords"):
+        if keyword and keyword in text:
+            return True
+    for marker in _config_text_list(config, "known_public_protocol_source_markers"):
+        if marker and marker in text:
+            return True
+    return False
+
+
+def _config_text_list(config: dict[str, Any], key: str) -> list[str]:
+    raw = config.get(key, [])
+    if not isinstance(raw, list):
+        return []
+    return [str(value).lower().strip() for value in raw if str(value).strip()]

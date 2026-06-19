@@ -194,28 +194,33 @@ class TargetGeneratorTest(unittest.TestCase):
         ]
 
         with tempfile.TemporaryDirectory() as tmpdir:
-            root = Path(tmpdir)
-            old_run = root / "20260614T000000Z"
-            new_run = root / "20260614T010000Z"
-            old_run.mkdir()
-            new_run.mkdir()
-            (old_run / "candidates_scored.json").write_text(json.dumps(rows_old))
-            (new_run / "candidates_scored.json").write_text(json.dumps(rows_new))
-            os.utime(old_run / "candidates_scored.json", (1000, 1000))
-            os.utime(new_run / "candidates_scored.json", (2000, 2000))
+            old_cwd = os.getcwd()
+            os.chdir(tmpdir)
+            try:
+                root = Path("runs")
+                old_run = root / "20260614T000000Z"
+                new_run = root / "20260614T010000Z"
+                old_run.mkdir(parents=True)
+                new_run.mkdir()
+                (old_run / "candidates_scored.json").write_text(json.dumps(rows_old))
+                (new_run / "candidates_scored.json").write_text(json.dumps(rows_new))
+                os.utime(old_run / "candidates_scored.json", (1000, 1000))
+                os.utime(new_run / "candidates_scored.json", (2000, 2000))
 
-            output_path = root / "live_targets.json"
-            exit_code = main([
-                "refresh-targets",
-                "--runs-dir",
-                str(root),
-                "--output",
-                str(output_path),
-            ])
+                output_path = Path("live_targets.json")
+                exit_code = main([
+                    "refresh-targets",
+                    "--runs-dir",
+                    str(root),
+                    "--output",
+                    str(output_path),
+                ])
+                payload = json.loads(output_path.read_text())
+            finally:
+                os.chdir(old_cwd)
 
-            self.assertEqual(exit_code, 0)
-            payload = json.loads(output_path.read_text())
-            self.assertEqual(payload["targets"][0]["label"], "New Target")
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(payload["targets"][0]["label"], "New Target")
 
     def test_refresh_targets_cli_prefers_current_run_manifest_over_latest_folder(self):
         rows_current = [

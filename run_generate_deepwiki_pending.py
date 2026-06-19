@@ -24,16 +24,17 @@ def move_pending(
     source.mkdir(parents=True, exist_ok=True)
     pending.mkdir(parents=True, exist_ok=True)
     moved: list[Path] = []
+    current_run_active = Path(manifest_path) == Path("state/latest_deepwiki_briefs.json") and has_current_run()
 
     files = manifest_paths("deepwiki_briefs")
     if files:
         files = [path for path in files if path.parent == source]
-    if not files and not has_current_run():
+    if not files and not current_run_active:
         files = _manifest_files(manifest_path, source)
-    if not files and not has_current_run():
+    if not files and not current_run_active:
         files = sorted(source.glob("*.json"))
     if not files:
-        existing_pending = _manifest_files(manifest_path, pending) if not has_current_run() else []
+        existing_pending = _manifest_files(manifest_path, pending) if not current_run_active else []
         if existing_pending:
             for path in existing_pending[:batch_limit(limit)]:
                 _reject_placeholder_brief(path)

@@ -89,7 +89,7 @@ class ScoringTest(unittest.TestCase):
         self.assertLess(scored.score, config["queue_threshold"])
         self.assertIn("known_public_protocol_quarantine", scored.reasons)
 
-    def test_popular_protocol_name_hint_without_registry_match_is_not_quarantined(self):
+    def test_popular_protocol_name_hint_is_quarantined(self):
         config = json.loads(Path("config/sentinel.json").read_text())
         candidate = candidate_from_dict(
             {
@@ -113,8 +113,8 @@ class ScoringTest(unittest.TestCase):
 
         scored = score_candidate(candidate, config)
 
-        self.assertNotEqual(scored.next_action, "watch_known_protocol")
-        self.assertGreaterEqual(scored.score, config["queue_threshold"])
+        self.assertEqual(scored.next_action, "watch_known_protocol")
+        self.assertLess(scored.score, config["queue_threshold"])
 
     def test_bot_contract_with_activity_is_trace_queued(self):
         config = json.loads(Path("config/sentinel.json").read_text())
@@ -139,7 +139,7 @@ class ScoringTest(unittest.TestCase):
         self.assertGreaterEqual(scored.score, config["queue_threshold"])
         self.assertEqual(scored.next_action, "trace_bot_contract_then_target_protocols")
 
-    def test_bot_contract_below_300k_is_watch_only(self):
+    def test_bot_contract_below_50k_is_watch_only(self):
         config = json.loads(Path("config/sentinel.json").read_text())
         candidate = candidate_from_dict(
             {
@@ -149,7 +149,7 @@ class ScoringTest(unittest.TestCase):
                 "name": "Flashloan Arbitrage Executor",
                 "chain": "bsc",
                 "category": "mev bot",
-                "tvl_usd": 250_000,
+                "tvl_usd": 25_000,
                 "tags": ["verified_bot_contract", "flashloan_user", "dex_path_executor"],
             }
         )
@@ -251,7 +251,7 @@ class ScoringTest(unittest.TestCase):
                 "name": "Unverified Funded Contract",
                 "chain": "bsc",
                 "category": "unverified treasury",
-                "tvl_usd": 250_000,
+                "tvl_usd": 25_000,
                 "verified_source": False,
                 "tags": ["unknown_protocol", "unverified_contract", "high_total_balance"],
             }
@@ -259,7 +259,7 @@ class ScoringTest(unittest.TestCase):
 
         scored = score_candidate(candidate, config)
 
-        self.assertEqual(scored.next_action, "watch")
+        self.assertEqual(scored.next_action, "drop_low_value")
         self.assertLess(scored.score, config["queue_threshold"])
 
     def test_chain_scanner_unfamiliar_balance_spike_is_recon_queue(self):

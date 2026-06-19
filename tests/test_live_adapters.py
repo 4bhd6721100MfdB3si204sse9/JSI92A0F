@@ -56,6 +56,38 @@ class LiveAdapterTest(unittest.TestCase):
         self.assertEqual(actions["New Yield Migrator"], "unknown_protocol")
         self.assertEqual(actions["DexPathExecutor Bot"], "bot_contract")
 
+    def test_snapshot_round_trip_preserves_nested_target_value_metadata(self):
+        targets = [
+            LiveTarget(
+                chain="bsc",
+                address="0x8888888888888888888888888888888888888888",
+                label="Nested Metadata Vault",
+                metadata={
+                    "metadata": {
+                        "entity_type": "unknown_protocol",
+                        "tvl_usd": 75_000,
+                        "next_action": "recon_bravo_then_corecritical",
+                        "tags": ["unknown_protocol", "unfamiliar_contract", "hidden_high_value_contract"],
+                    },
+                    "tags": ["balance_spike"],
+                },
+            )
+        ]
+        snapshot = build_explorer_snapshot(
+            targets,
+            self.config,
+            fetch_json=_fake_explorer_fetch_json,
+            fetch_balance=lambda *_args: {"wei": 0, "usd": 0},
+        )
+
+        contract = snapshot["contracts"][0]
+        self.assertEqual(contract["value_at_risk_usd"], 75_000)
+        self.assertEqual(contract["tvl_usd"], 75_000)
+        self.assertIn("balance_spike", contract["tags"])
+        candidates = load_explorer_snapshot_from_snapshot(snapshot, self.config, 25)
+        self.assertEqual(len(candidates), 1)
+        self.assertEqual(candidates[0].entity_type, "unknown_protocol")
+
     def test_chain_explorer_config_accepts_environment_overrides(self):
         old_env = dict(os.environ)
         os.environ["SENTINEL_BSC_EXPLORER_API_KEY"] = "bsc-key"
@@ -200,6 +232,18 @@ def _fake_explorer_fetch_json(url: str):
                         "deployer_address": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
                         "funder_addresses": ["0xcccccccccccccccccccccccccccccccccccccccc"],
                         "treasury_addresses": ["0xdddddddddddddddddddddddddddddddddddddddd"],
+                    }
+                ]
+            }
+        if "888888" in url:
+            return {
+                "result": [
+                    {
+                        "ContractName": "NestedMetadataVault",
+                        "SourceCode": "contract NestedMetadataVault {}",
+                        "ABI": "[]",
+                        "ContractType": "vault",
+                        "verified": True,
                     }
                 ]
             }

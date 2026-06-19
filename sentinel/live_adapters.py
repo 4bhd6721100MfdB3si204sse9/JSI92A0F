@@ -66,31 +66,40 @@ def _fetch_contract_snapshot(
     liquidity_usd = float(source_code.get("liquidity_usd", 0) or 0)
     volume24h_usd = float(source_code.get("volume24h_usd", 0) or 0)
     price_change_24h_pct = float(source_code.get("price_change_24h_pct", 0) or 0)
-    verified_source = _is_verified_source(source_code)
+    metadata = _flatten_target_metadata(target.metadata or {})
+    verified_source = _metadata_value(metadata, "verified_source", _is_verified_source(source_code))
     selectors = _selectors_from_transactions(txs)
-    metadata = dict(target.metadata or {})
+    metadata_liquidity_usd = _metadata_float(metadata, "liquidity_usd")
+    metadata_tvl_usd = _metadata_float(metadata, "tvl_usd")
+    metadata_value_usd = _metadata_float(metadata, "value_at_risk_usd")
+    metadata_token_balances = _metadata_token_balances(metadata)
+    all_token_balances = [*token_balances, *metadata_token_balances]
+    live_value_usd = native_balance_usd + sum(item["usd"] for item in token_balances)
+    carried_value_usd = max(metadata_value_usd, metadata_tvl_usd, metadata_liquidity_usd)
+    value_at_risk_usd = max(live_value_usd, carried_value_usd, liquidity_usd)
     return {
         "chain": target.chain,
         "address": address,
         "name": target.label or source_code.get("name") or source_code.get("ContractName") or address,
         "contract_name": source_code.get("contract_name") or source_code.get("ContractName") or source_code.get("name") or target.label or address,
-        "contract_type": source_code.get("contract_type", ""),
+        "contract_type": source_code.get("contract_type") or source_code.get("ContractType", ""),
         "category": metadata.get("category", source_code.get("category", "")),
-        "url": source_code.get("url", ""),
+        "url": metadata.get("url", source_code.get("url", "")),
         "verified_source": verified_source,
         "source_excerpt": source_code.get("source_excerpt", ""),
-        "deployer_address": source_code.get("deployer_address", ""),
+        "deployer_address": metadata.get("deployer_address", source_code.get("deployer_address", "")),
         "funder_addresses": source_code.get("funder_addresses", []),
         "treasury_addresses": source_code.get("treasury_addresses", []),
         "selectors": selectors,
         "native_balance_usd": native_balance_usd,
-        "token_balances": token_balances,
-        "liquidity_usd": float(metadata.get("liquidity_usd", liquidity_usd) or liquidity_usd),
+        "token_balances": all_token_balances,
+        "liquidity_usd": max(metadata_liquidity_usd, liquidity_usd),
+        "tvl_usd": max(metadata_tvl_usd, value_at_risk_usd),
         "volume24h_usd": float(metadata.get("volume24h_usd", volume24h_usd) or volume24h_usd),
         "price_change_24h_pct": float(metadata.get("price_change_24h_pct", price_change_24h_pct) or price_change_24h_pct),
         "tx_count_24h": len(txs),
         "tags": sorted(set(_source_tags(source_code, txs, token_txs) + list(metadata.get("tags", [])))),
-        "value_at_risk_usd": max(native_balance_usd + sum(item["usd"] for item in token_balances), float(metadata.get("liquidity_usd", liquidity_usd) or liquidity_usd)),
+        "value_at_risk_usd": value_at_risk_usd,
         "raw": {
             "source_code": source_code,
             "transactions": txs,
@@ -189,6 +198,45 @@ def _estimate_token_balances(token_txs: list[dict[str, Any]]) -> list[dict[str, 
         usd = float(tx.get("usdValue") or tx.get("valueUsd") or tx.get("usd") or 0)
         balances[symbol] = balances.get(symbol, 0.0) + usd
     return [{"token": token, "usd": usd} for token, usd in balances.items() if usd > 0]
+
+
+def _flatten_target_metadata(metadata: dict[str, Any]) -> dict[str, Any]:
+    nested = metadata.get("metadata")
+    if not isinstance(nested, dict):
+        return dict(metadata)
+    flat = {**nested, **{key: value for key, value in metadata.items() if key != "metadata"}}
+    tags = [
+        *list(nested.get("tags", [])),
+        *list(metadata.get("tags", [])),
+    ]
+    if tags:
+        flat["tags"] = sorted({str(tag) for tag in tags if str(tag)})
+    return flat
+
+
+def _metadata_float(metadata: dict[str, Any], key: str) -> float:
+    return float(metadata.get(key, 0) or 0)
+
+
+def _metadata_value(metadata: dict[str, Any], key: str, fallback: Any) -> Any:
+    value = metadata.get(key)
+    return fallback if value is None else value
+
+
+def _metadata_token_balances(metadata: dict[str, Any]) -> list[dict[str, Any]]:
+    balances = metadata.get("token_balances", [])
+    if not isinstance(balances, list):
+        return []
+    normalized: list[dict[str, Any]] = []
+    for balance in balances:
+        if not isinstance(balance, dict):
+            continue
+        usd = float(balance.get("usd") or balance.get("value_usd") or balance.get("valueUsd") or 0)
+        if usd <= 0:
+            continue
+        token = str(balance.get("token") or balance.get("symbol") or balance.get("contractAddress") or "TOKEN")
+        normalized.append({"token": token, "usd": usd})
+    return normalized
 
 
 def _selectors_from_transactions(txs: list[dict[str, Any]]) -> list[str]:
