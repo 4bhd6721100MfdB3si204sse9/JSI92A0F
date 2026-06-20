@@ -1,0 +1,95 @@
+{
+  "attacker_path_hypothesis": {
+    "actor": "unprivileged external user",
+    "call_sequence": [
+      "UNKNOWN \u2014 selector recovery required before any call sequence can be specified"
+    ],
+    "expected_gain": "UNKNOWN \u2014 depends on selector discovery; upper bound is the full $14.76M token balance if an unauthenticated sweep or withdraw-all path exists",
+    "preconditions": [
+      "At least one public value-moving selector exists (withdraw, redeem, claim, sweep, or migrate)",
+      "The selector lacks caller authentication or entitlement validation",
+      "The $14.76M token balance is held directly by this contract (not in a child escrow requiring separate unlock)"
+    ]
+  },
+  "candidate": {
+    "address": "0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d",
+    "chain": "bsc",
+    "entity_type": "unknown_protocol",
+    "name": "0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d",
+    "next_action": "recon_bravo_then_corecritical",
+    "score": 93,
+    "source_file": "deepwiki_briefs/022-bsc-0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d.json"
+  },
+  "deepwiki_source_url": "https://deepwiki.com/search/-deepwiki-sentinel-candidate-t_5951f6e9-d85e-4b75-ba2d-6ed16c313bea?mode=deep",
+  "deepwiki_verdict": "needs_live_context",
+  "live_context_required": [
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=contract&action=getsourcecode&address=0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d&apikey={API_KEY}'",
+      "name": "verified_source_and_abi",
+      "reason": "verified_source is null \u2014 the system does not know whether source is available on BSCScan. If verified, the ABI and source reveal all public selectors, access control patterns, proxy shape, and contract type (vault, staking, bridge, distributor, etc.). If unverified, selector recovery from calldata becomes the only path."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=txlist&address=0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d&sort=desc&apikey={API_KEY}' | jq '[.result[].input[0:10]] | unique' ; then resolve each 4-byte prefix via https://www.4byte.directory/api/v1/signatures/?hex_signature={selector}",
+      "name": "selector_recovery_from_calldata",
+      "reason": "No selectors are present in the brief. Recovering 4-byte selectors from recent transaction calldata is the minimum needed to identify value-moving functions (withdraw, redeem, claim, sweep, migrate, etc.) and determine whether any are callable without privilege."
+    },
+    {
+      "command_or_source": "cast storage 0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d 0x360894a13ba1a3210667c828492db98dca3e2076 --rpc-url {BSC_RPC} ; cast storage 0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d 0xb53127684a568b3173ae13b9f8a6016f243e3b8a --rpc-url {BSC_RPC}",
+      "name": "proxy_slot_check",
+      "reason": "unknown_verification_status combined with high token balance is consistent with a proxy-only verified contract whose implementation is unverified or recently changed. EIP-1967 implementation and admin slots must be read to determine whether a storage mismatch or newly reachable implementation exists."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=txlist&address=0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d&sort=asc&page=1&offset=1&apikey={API_KEY}' | jq '.result[0].from'",
+      "name": "deployer_address_and_funding_trace",
+      "reason": "deployer_address is empty. Without the deployer, cluster matching against closed projects is impossible and the funding origin is unknown. The deployer may link to a known rug, a closed yield project, or a repeat offender wallet."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=tokentx&address=0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d&sort=desc&apikey={API_KEY}' | jq '[.result[] | {token: .contractAddress, symbol: .tokenSymbol, decimals: .tokenDecimal}] | unique_by(.token)'",
+      "name": "token_balance_breakdown",
+      "reason": "The $14.76M is attributed to token holdings but the specific tokens, their quantities, and whether they are stablecoins, bluechip assets, or protocol-native tokens are unknown. Token identity determines whether the balance is real user principal or inflated by a worthless protocol token."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=txlist&address=0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d&sort=desc&page=1&offset=50&apikey={API_KEY}'",
+      "name": "recent_transaction_patterns",
+      "reason": "Transaction patterns reveal whether the contract is actively used (deposits, withdrawals, claims), whether a single privileged caller dominates, and whether any failed transactions around value-moving selectors indicate attempted exploitation or access-control enforcement."
+    }
+  ],
+  "local_proof_required": {
+    "expected_assertions": [
+      "NOT YET SPECIFIABLE \u2014 requires selector and source discovery first"
+    ],
+    "setup": [
+      "Fork BSC at current block",
+      "Confirm token balances held by 0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d",
+      "Recover and decode all public selectors from transaction calldata or verified ABI",
+      "Identify proxy implementation address if applicable"
+    ],
+    "test_type": "fork",
+    "transaction_sequence": [
+      "NOT YET SPECIFIABLE \u2014 requires live context collection first"
+    ]
+  },
+  "paid_scope_match": "fund_extraction",
+  "rejection_reason": "",
+  "schema_version": "sentinel-triage-v1",
+  "source_or_selector_basis": [
+    {
+      "evidence": "The brief contains no selectors field and no source excerpt. verified_source is null. No transaction calldata has been decoded.",
+      "selector_or_function": "unknown \u2014 no selectors recovered",
+      "why_it_matters": "Without at least one confirmed public selector, no exploit path can be constructed. Selector recovery is the hard prerequisite for any further triage step."
+    },
+    {
+      "evidence": "The token_funded_contract tag is assigned by the chain scanner when a contract is discovered via ERC20 transfer logs, meaning real token value has already been deposited into this address.",
+      "selector_or_function": "token_funded_contract (tag signal)",
+      "why_it_matters": "Confirms that the $14.76M balance is not a scoring artifact \u2014 real ERC20 transfers into this contract have been observed on-chain. The funds exist and are at risk if any public withdrawal path exists."
+    }
+  ],
+  "suspected_exploit_families": [
+    "missing access control on value-moving functions",
+    "unauthorized withdrawal, redeem, unstake, claim, or sweep",
+    "proxy, implementation, or storage mismatch that exposes live funds",
+    "phantom accounting where shares or rewards are created without matching assets"
+  ],
+  "verdict": "NEEDS_LIVE_CONTEXT",
+  "why_this_target_matters": "A fresh BSC contract holding ~$14.76M in token value with unknown verification status, no recovered selectors, no deployer trace, and no protocol identity. The token_funded_contract tag indicates it was discovered via ERC20 transfer logs, meaning real assets have already moved into it. The hidden_high_value_contract and audit_hidden_contract tags indicate the contract is not publicly documented or attributed. At this value tier, even a single public value-moving selector without access control would be a critical extraction surface. No exploit hypothesis can be formed yet \u2014 all blocking gaps are live-context gaps, not theoretical ones."
+}
