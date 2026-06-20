@@ -1,5 +1,5 @@
 {
-  "active_stage": "6",
+  "active_stage": "7",
   "manifest_paths": {
     "candidates_scored": [
       "runs/github-27861861118-1-stage-1/candidates_scored.json",
@@ -115,6 +115,40 @@
       "needs_live_context/sentinel_92236b3d3d154495ad1ebd473b820879.md",
       "needs_live_context/sentinel_ae5246dbc7b5429dab7c92a216c72ea2.md",
       "needs_live_context/sentinel_7d634a705baf4901ac42732f9e78a01a.json"
+    ],
+    "proof_gate_pending": [
+      "proof_gate_pending/sentinel_3b4fcc4f5ead42259867db2fef07330e.md",
+      "proof_gate_pending/sentinel_4f4bace0dfde4f8dad7986579aeda291.md",
+      "proof_gate_pending/sentinel_5fba96f38c664b9b8d577a6a0b742ccb.md",
+      "proof_gate_pending/sentinel_666186a70d054835a9ad9638a8a0c5fd.md",
+      "proof_gate_pending/sentinel_766464eb1ec74707a47cbcc34264c227.md",
+      "proof_gate_pending/sentinel_a6b26490540a42bab68829356c2f4333.md",
+      "proof_gate_pending/sentinel_a8828162ebb44396ba809a6fdfeff7ed.md",
+      "proof_gate_pending/sentinel_c652ac01b16c48ad983965eb218ee3b4.md",
+      "proof_gate_pending/sentinel_cffb0485ae26495d88a51860d4b27d19.md",
+      "proof_gate_pending/sentinel_d5391e0ea1d548a79574917350e32a9c.md",
+      "proof_gate_pending/sentinel_d71da1580c5842c6adc764a3710049e3.md",
+      "proof_gate_pending/sentinel_e44e5422b8cb4f20b4be3072020bb5df.md",
+      "proof_gate_pending/sentinel_eb2865c85a9448fa826c0dc24df868e7.md",
+      "proof_gate_pending/sentinel_ed6f6fc299134c6196795cd732997e10.md",
+      "proof_gate_pending/sentinel_f0335e9971de4fa3a5458a86d2e34e0b.md"
+    ],
+    "proof_gate_submissions": [
+      "proof_gate_submissions/proof_gate_308a0d101cf64f0c91bbf110a54d9c79.json",
+      "proof_gate_submissions/proof_gate_890c25b622df473889cb01dd298c5f3e.json",
+      "proof_gate_submissions/proof_gate_476fe9d578bc468cbc5e06a0f98735ec.json",
+      "proof_gate_submissions/proof_gate_73bd6011b3b94bd88f6afe43beb81392.json",
+      "proof_gate_submissions/proof_gate_7f3a81faa39d4ed8b0d773d0a8eda0ec.json",
+      "proof_gate_submissions/proof_gate_0ce3c46d3c0c4a8cbc3ae81cf6bb3cb5.json",
+      "proof_gate_submissions/proof_gate_34334f37b7c34636a8ab97d0efc1c99c.json",
+      "proof_gate_submissions/proof_gate_480642f11cc843e09cd316c772629736.json",
+      "proof_gate_submissions/proof_gate_092681ae80924940a05e6086d4662deb.json",
+      "proof_gate_submissions/proof_gate_33c388885af04f0895e9daa1f9cf7026.json",
+      "proof_gate_submissions/proof_gate_313b469c03f94b6095c49aac6eeb2740.json",
+      "proof_gate_submissions/proof_gate_29a0472712e64f82b3760db0a1cca61c.json",
+      "proof_gate_submissions/proof_gate_381292c6f59d4cb1929b3482bc462922.json",
+      "proof_gate_submissions/proof_gate_264a4b08080b4269b687ea537ca913a8.json",
+      "proof_gate_submissions/proof_gate_d9c5a65f69f94bc48f60822e14f5b412.json"
     ],
     "run_dirs": [
       "runs/github-27861861118-1-stage-1",
@@ -280,8 +314,47 @@
         ]
       },
       "updated_at": "2026-06-20T06:24:38.897070+00:00"
+    },
+    "7": {
+      "outputs": {
+        "proof_gate_pending": [
+          "proof_gate_pending/sentinel_3b4fcc4f5ead42259867db2fef07330e.md",
+          "proof_gate_pending/sentinel_4f4bace0dfde4f8dad7986579aeda291.md",
+          "proof_gate_pending/sentinel_5fba96f38c664b9b8d577a6a0b742ccb.md",
+          "proof_gate_pending/sentinel_666186a70d054835a9ad9638a8a0c5fd.md",
+          "proof_gate_pending/sentinel_766464eb1ec74707a47cbcc34264c227.md",
+          "proof_gate_pending/sentinel_a6b26490540a42bab68829356c2f4333.md",
+          "proof_gate_pending/sentinel_a8828162ebb44396ba809a6fdfeff7ed.md",
+          "proof_gate_pending/sentinel_c652ac01b16c48ad983965eb218ee3b4.md",
+          "proof_gate_pending/sentinel_cffb0485ae26495d88a51860d4b27d19.md",
+          "proof_gate_pending/sentinel_d5391e0ea1d548a79574917350e32a9c.md",
+          "proof_gate_pending/sentinel_d71da1580c5842c6adc764a3710049e3.md",
+          "proof_gate_pending/sentinel_e44e5422b8cb4f20b4be3072020bb5df.md",
+          "proof_gate_pending/sentinel_eb2865c85a9448fa826c0dc24df868e7.md",
+          "proof_gate_pending/sentinel_ed6f6fc299134c6196795cd732997e10.md",
+          "proof_gate_pending/sentinel_f0335e9971de4fa3a5458a86d2e34e0b.md"
+        ],
+        "proof_gate_submissions": [
+          "proof_gate_submissions/proof_gate_308a0d101cf64f0c91bbf110a54d9c79.json",
+          "proof_gate_submissions/proof_gate_890c25b622df473889cb01dd298c5f3e.json",
+          "proof_gate_submissions/proof_gate_476fe9d578bc468cbc5e06a0f98735ec.json",
+          "proof_gate_submissions/proof_gate_73bd6011b3b94bd88f6afe43beb81392.json",
+          "proof_gate_submissions/proof_gate_7f3a81faa39d4ed8b0d773d0a8eda0ec.json",
+          "proof_gate_submissions/proof_gate_0ce3c46d3c0c4a8cbc3ae81cf6bb3cb5.json",
+          "proof_gate_submissions/proof_gate_34334f37b7c34636a8ab97d0efc1c99c.json",
+          "proof_gate_submissions/proof_gate_480642f11cc843e09cd316c772629736.json",
+          "proof_gate_submissions/proof_gate_092681ae80924940a05e6086d4662deb.json",
+          "proof_gate_submissions/proof_gate_33c388885af04f0895e9daa1f9cf7026.json",
+          "proof_gate_submissions/proof_gate_313b469c03f94b6095c49aac6eeb2740.json",
+          "proof_gate_submissions/proof_gate_29a0472712e64f82b3760db0a1cca61c.json",
+          "proof_gate_submissions/proof_gate_381292c6f59d4cb1929b3482bc462922.json",
+          "proof_gate_submissions/proof_gate_264a4b08080b4269b687ea537ca913a8.json",
+          "proof_gate_submissions/proof_gate_d9c5a65f69f94bc48f60822e14f5b412.json"
+        ]
+      },
+      "updated_at": "2026-06-20T06:27:46.104192+00:00"
     }
   },
   "started_at": "2026-06-20T05:42:50.295177+00:00",
-  "updated_at": "2026-06-20T06:24:38.897070+00:00"
+  "updated_at": "2026-06-20T06:27:46.104192+00:00"
 }
