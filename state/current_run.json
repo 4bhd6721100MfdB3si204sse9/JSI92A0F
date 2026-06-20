@@ -1,9 +1,36 @@
 {
-  "active_stage": "3",
+  "active_stage": "4",
   "manifest_paths": {
     "candidates_scored": [
       "runs/github-27874520812-1-stage-1/candidates_scored.json",
       "runs/github-27874520812-1-stage-3/candidates_scored.json"
+    ],
+    "deepwiki_briefs": [
+      "deepwiki_briefs/001-bsc-0x6e395da41cf9362d30461d49f23fe57849b18498.json",
+      "deepwiki_briefs/002-bsc-0x7f51bbf34156ba802deb0e38b7671dc4fa32041d.json",
+      "deepwiki_briefs/003-bsc-0xc736ca3d9b1e90af4230bd8f9626528b3d4e0ee0.json",
+      "deepwiki_briefs/004-bsc-0x466d8c952f7dfbb0de428006fa1e2ea3c22d033f.json",
+      "deepwiki_briefs/005-ethereum-0xa250cc729bb3323e7933022a67b52200fe354767.json",
+      "deepwiki_briefs/006-ethereum-0x1d42064fc4beb5f8aaf85f4617ae8b3b5b8bd801.json",
+      "deepwiki_briefs/007-ethereum-0x2078f336fdd260f708bec4a20c82b063274e1b23.json",
+      "deepwiki_briefs/008-ethereum-0xd3d2e2692501a5c9ca623199d38826e513033a17.json",
+      "deepwiki_briefs/009-ethereum-0x7f86bf177dd4f3494b841a37e810a34dd56c829b.json",
+      "deepwiki_briefs/010-bsc-0xe2ce6ab80874fa9fa2aae65d277dd6b8e65c9de0.json",
+      "deepwiki_briefs/011-bsc-0xe4ff7b71e3987748671c70fdc11d56af697ec4d3.json",
+      "deepwiki_briefs/012-bsc-0x172fcd41e0913e95784454622d1c3724f546f849.json",
+      "deepwiki_briefs/013-bsc-0x92b7807bf19b7dddf89b706143896d05228f3121.json",
+      "deepwiki_briefs/014-bsc-0xfd5840cd36d94d7229439859c0112a4185bc0255.json",
+      "deepwiki_briefs/015-bsc-0x26deb24a2623cf54452ab5183e2c34551831d54d.json",
+      "deepwiki_briefs/016-bsc-0x588d7cf062f4edd7c7c7f2d66fd770e03b1ea735.json",
+      "deepwiki_briefs/017-bsc-0x346575fc7f07e6994d76199e41d13dc1575322e1.json",
+      "deepwiki_briefs/018-bsc-0xf07f1760ade617c4f6c71bd7914bc6bd92e5899b.json",
+      "deepwiki_briefs/019-bsc-0x28e2ea090877bf75740558f6bfb36a5ffee9e9df.json",
+      "deepwiki_briefs/020-bsc-0xc0021e0849fadefb98761f40829009905dbd8ee8.json",
+      "deepwiki_briefs/021-bsc-0xcaaf3c41a40103a23eeaa4bba468af3cf5b0e0d8.json",
+      "deepwiki_briefs/022-bsc-0x63844bd4bfad910b1643713302a1cc1ed20d50c3.json",
+      "deepwiki_briefs/023-bsc-0x462b30a53c8552035506e82ce7b6a6c418b0477f.json",
+      "deepwiki_briefs/024-bsc-0x5faf1dfc1e933daaa92cfbd165cbf6acf2d42c3b.json",
+      "deepwiki_briefs/025-bsc-0x9996874dbd891c3ecd601eab79d51f92e92d50ee.json"
     ],
     "live_targets": [
       "examples/live_targets.json"
@@ -49,8 +76,40 @@
         "triage_queue_md": "runs/github-27874520812-1-stage-3/triage_queue.md"
       },
       "updated_at": "2026-06-20T15:07:24.033857+00:00"
+    },
+    "4": {
+      "outputs": {
+        "deepwiki_briefs": [
+          "deepwiki_briefs/001-bsc-0x6e395da41cf9362d30461d49f23fe57849b18498.json",
+          "deepwiki_briefs/002-bsc-0x7f51bbf34156ba802deb0e38b7671dc4fa32041d.json",
+          "deepwiki_briefs/003-bsc-0xc736ca3d9b1e90af4230bd8f9626528b3d4e0ee0.json",
+          "deepwiki_briefs/004-bsc-0x466d8c952f7dfbb0de428006fa1e2ea3c22d033f.json",
+          "deepwiki_briefs/005-ethereum-0xa250cc729bb3323e7933022a67b52200fe354767.json",
+          "deepwiki_briefs/006-ethereum-0x1d42064fc4beb5f8aaf85f4617ae8b3b5b8bd801.json",
+          "deepwiki_briefs/007-ethereum-0x2078f336fdd260f708bec4a20c82b063274e1b23.json",
+          "deepwiki_briefs/008-ethereum-0xd3d2e2692501a5c9ca623199d38826e513033a17.json",
+          "deepwiki_briefs/009-ethereum-0x7f86bf177dd4f3494b841a37e810a34dd56c829b.json",
+          "deepwiki_briefs/010-bsc-0xe2ce6ab80874fa9fa2aae65d277dd6b8e65c9de0.json",
+          "deepwiki_briefs/011-bsc-0xe4ff7b71e3987748671c70fdc11d56af697ec4d3.json",
+          "deepwiki_briefs/012-bsc-0x172fcd41e0913e95784454622d1c3724f546f849.json",
+          "deepwiki_briefs/013-bsc-0x92b7807bf19b7dddf89b706143896d05228f3121.json",
+          "deepwiki_briefs/014-bsc-0xfd5840cd36d94d7229439859c0112a4185bc0255.json",
+          "deepwiki_briefs/015-bsc-0x26deb24a2623cf54452ab5183e2c34551831d54d.json",
+          "deepwiki_briefs/016-bsc-0x588d7cf062f4edd7c7c7f2d66fd770e03b1ea735.json",
+          "deepwiki_briefs/017-bsc-0x346575fc7f07e6994d76199e41d13dc1575322e1.json",
+          "deepwiki_briefs/018-bsc-0xf07f1760ade617c4f6c71bd7914bc6bd92e5899b.json",
+          "deepwiki_briefs/019-bsc-0x28e2ea090877bf75740558f6bfb36a5ffee9e9df.json",
+          "deepwiki_briefs/020-bsc-0xc0021e0849fadefb98761f40829009905dbd8ee8.json",
+          "deepwiki_briefs/021-bsc-0xcaaf3c41a40103a23eeaa4bba468af3cf5b0e0d8.json",
+          "deepwiki_briefs/022-bsc-0x63844bd4bfad910b1643713302a1cc1ed20d50c3.json",
+          "deepwiki_briefs/023-bsc-0x462b30a53c8552035506e82ce7b6a6c418b0477f.json",
+          "deepwiki_briefs/024-bsc-0x5faf1dfc1e933daaa92cfbd165cbf6acf2d42c3b.json",
+          "deepwiki_briefs/025-bsc-0x9996874dbd891c3ecd601eab79d51f92e92d50ee.json"
+        ]
+      },
+      "updated_at": "2026-06-20T15:13:41.347574+00:00"
     }
   },
   "started_at": "2026-06-20T14:47:58.663133+00:00",
-  "updated_at": "2026-06-20T15:07:24.033857+00:00"
+  "updated_at": "2026-06-20T15:13:41.347574+00:00"
 }
