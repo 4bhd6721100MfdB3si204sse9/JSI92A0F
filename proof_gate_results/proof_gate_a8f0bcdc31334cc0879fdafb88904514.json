@@ -1,0 +1,56 @@
+{
+  "active_target": {
+    "address": "0x51c72848c68a965f66fa7a88855f9f7784502a7f",
+    "chain": "ethereum",
+    "live_context_is_current": false,
+    "live_context_source": "none \u2014 no live context file provided"
+  },
+  "attacker_path": {
+    "actor": "unprivileged external user",
+    "attacker_inputs": [],
+    "call_sequence": [],
+    "state_after": [],
+    "state_before": []
+  },
+  "deepwiki_source_url": "https://deepwiki.com/search/-deepwiki-sentinel-exact-proof_65bdcb12-08c8-4853-bb9d-19dc38793bdf?mode=deep",
+  "extraction_analysis": {
+    "asset_or_reward": "unknown \u2014 token composition not enumerated",
+    "attacker_gain": "unknown \u2014 no selector or logic basis",
+    "victim_or_protocol_loss": "unknown \u2014 pool vs. custody pattern not determined",
+    "why_gain_exceeds_entitlement": "cannot be assessed without at least one confirmed public value-moving selector"
+  },
+  "gate_question": "Does this exact current protocol, with current live state, allow an unprivileged attacker to extract funds or rewards beyond entitlement?",
+  "hard_gates": {
+    "attacker_controls_trigger": false,
+    "concrete_fund_or_reward_gain": false,
+    "current_live_target_only": true,
+    "exact_code_path_or_selector_exists": false,
+    "gain_is_beyond_entitlement": false,
+    "live_state_supports_preconditions": false,
+    "not_admin_governance_or_key_compromise": true,
+    "not_dos_grief_or_liveness_only": true,
+    "not_expected_behavior": true,
+    "not_external_dependency_only": true,
+    "not_known_duplicate": true,
+    "unprivileged_attacker": false
+  },
+  "live_preconditions": [
+    "Bytecode decompilation output (Heimdall, Panoramix, or 4byte lookup) must be present and must reveal at least one public selector that moves, releases, claims, or redeems value without caller validation.",
+    "Proxy slot check (EIP-1967 slot 0x360894a...) must be resolved; if a proxy, implementation bytecode must also be decompiled.",
+    "Deployer address and creation transaction must be identified to assess privileged selector retention.",
+    "Token balance breakdown must confirm live user-deposited or pooled value is still present at time of proof attempt.",
+    "Inbound/outbound transaction history must confirm whether funds arrived from many depositors (pool pattern) or a single funder (custody/escrow), determining whether third-party user value is at risk."
+  ],
+  "local_proof_required": {
+    "expected_assertions": [],
+    "reject_if_assertion_fails": "",
+    "setup": [],
+    "test_file_to_add": "",
+    "test_type": "fork",
+    "transaction_sequence": []
+  },
+  "paid_scope_match": "fund_extraction",
+  "rejection_reason": "Six hard gates fail simultaneously. verified_source is null; no ABI, no decompilation output, and no selector list were provided in the candidate brief or live context. exact_code_path_or_selector_exists is false because no function signature has been identified. attacker_controls_trigger is false because no public entry point is known. concrete_fund_or_reward_gain and gain_is_beyond_entitlement are both false because no call sequence can be constructed. live_state_supports_preconditions is false because no live context file was supplied. The $28.7M balance and balance_spike tags are necessary but not sufficient: HUNT_PLAN.md \u00a7Evidence Required demands exact entrypoints that move funds, an entitlement calculation, and an attacker gain calculation before promotion. None of those exist here. Re-submit after completing the five live-context pulls specified in the triage output: bytecode decompilation, proxy slot resolution, deployer identification, token balance enumeration, and transaction history review.",
+  "schema_version": "proof-gate-v1",
+  "verdict": "REJECT"
+}

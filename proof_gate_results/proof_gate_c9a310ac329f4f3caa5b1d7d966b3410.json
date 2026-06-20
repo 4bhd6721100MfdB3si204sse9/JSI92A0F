@@ -1,0 +1,55 @@
+{
+  "active_target": {
+    "address": "0x656341ef90b622c6634e0573772ffb7f3669b9f3",
+    "chain": "ethereum",
+    "live_context_is_current": false,
+    "live_context_source": "none \u2014 no live context was supplied to this gate"
+  },
+  "attacker_path": {
+    "actor": "unprivileged external user",
+    "attacker_inputs": [],
+    "call_sequence": [],
+    "state_after": [],
+    "state_before": []
+  },
+  "deepwiki_source_url": "https://deepwiki.com/search/-deepwiki-sentinel-exact-proof_2b0089a2-6b1d-4fa5-b789-eb45c17999ac?mode=deep",
+  "extraction_analysis": {
+    "asset_or_reward": "unknown \u2014 token identity not confirmed",
+    "attacker_gain": "unknown \u2014 no selector or value-moving path identified",
+    "victim_or_protocol_loss": "unknown",
+    "why_gain_exceeds_entitlement": "cannot be assessed without a confirmed code path"
+  },
+  "gate_question": "Does this exact current protocol, with current live state, allow an unprivileged attacker to extract funds or rewards beyond entitlement?",
+  "hard_gates": {
+    "attacker_controls_trigger": false,
+    "concrete_fund_or_reward_gain": false,
+    "current_live_target_only": true,
+    "exact_code_path_or_selector_exists": false,
+    "gain_is_beyond_entitlement": false,
+    "live_state_supports_preconditions": false,
+    "not_admin_governance_or_key_compromise": true,
+    "not_dos_grief_or_liveness_only": true,
+    "not_expected_behavior": true,
+    "not_external_dependency_only": true,
+    "not_known_duplicate": true,
+    "unprivileged_attacker": false
+  },
+  "live_preconditions": [
+    "At least one public value-moving selector (withdraw, sweep, claim, transfer, etc.) must exist in the contract bytecode \u2014 not yet confirmed",
+    "That selector must lack caller authentication or use a bypassable check \u2014 not yet confirmed",
+    "The reported token balance (~$538B nominal) must be real and not locked by a time-lock, multisig, or external constraint \u2014 not yet confirmed",
+    "The balance must be attributable to user deposits or a reward pool, not a custodial/escrow position that is not extractable by a third party \u2014 not yet confirmed"
+  ],
+  "local_proof_required": {
+    "expected_assertions": [],
+    "reject_if_assertion_fails": "",
+    "setup": [],
+    "test_file_to_add": "",
+    "test_type": "fork",
+    "transaction_sequence": []
+  },
+  "paid_scope_match": "none",
+  "rejection_reason": "Five hard gates fail simultaneously, blocking promotion to NEEDS_LOCAL_PROOF. (1) exact_code_path_or_selector_exists is false: verified_source is null, no ABI exists, and no bytecode decompilation has been run \u2014 no public value-moving selector has been identified. (2) live_state_supports_preconditions is false: no live context was provided to this gate; the triage stage returned NEEDS_LIVE_CONTEXT but that context was never collected. (3) attacker_controls_trigger is false: without a known selector there is no confirmed trigger the attacker can invoke. (4) concrete_fund_or_reward_gain is false: the $538B figure has FDV=0, liquidity=0, and volume=0, which is inconsistent with a live extractable pool; the token identity and real extractable value are unconfirmed. (5) gain_is_beyond_entitlement is false: entitlement cannot be calculated without source or selectors. Per HUNT_PLAN.md Hard Stop, a candidate must not be promoted unless a reproducible path, an unprivileged attacker, and a concrete gain beyond entitlement are all proven. None of those conditions are met. Resubmit after completing the five live-context steps listed in the triage output: bytecode/selector extraction, token balance breakdown, deployer and creation-tx lookup, proxy/implementation check, and recent transaction history.",
+  "schema_version": "proof-gate-v1",
+  "verdict": "REJECT"
+}

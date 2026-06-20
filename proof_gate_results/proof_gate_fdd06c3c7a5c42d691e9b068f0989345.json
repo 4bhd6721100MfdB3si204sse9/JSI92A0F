@@ -1,0 +1,56 @@
+{
+  "active_target": {
+    "address": "0x46d73dee442a7ba2c1c6948a1114acbf69d76ccd",
+    "chain": "ethereum",
+    "live_context_is_current": false,
+    "live_context_source": "none \u2014 candidate brief only"
+  },
+  "attacker_path": {
+    "actor": "unprivileged external user",
+    "attacker_inputs": [],
+    "call_sequence": [],
+    "state_after": [],
+    "state_before": []
+  },
+  "deepwiki_source_url": "https://deepwiki.com/search/-deepwiki-sentinel-exact-proof_fe812cad-946f-4b28-9e40-4a082b4aac99?mode=deep",
+  "extraction_analysis": {
+    "asset_or_reward": "unknown \u2014 token composition not confirmed",
+    "attacker_gain": "unknown \u2014 no callable selector identified",
+    "victim_or_protocol_loss": "unknown",
+    "why_gain_exceeds_entitlement": "cannot be stated \u2014 no entrypoint, no entitlement model, no code path"
+  },
+  "gate_question": "Does this exact current protocol, with current live state, allow an unprivileged attacker to extract funds or rewards beyond entitlement?",
+  "hard_gates": {
+    "attacker_controls_trigger": false,
+    "concrete_fund_or_reward_gain": false,
+    "current_live_target_only": true,
+    "exact_code_path_or_selector_exists": false,
+    "gain_is_beyond_entitlement": false,
+    "live_state_supports_preconditions": false,
+    "not_admin_governance_or_key_compromise": true,
+    "not_dos_grief_or_liveness_only": true,
+    "not_expected_behavior": true,
+    "not_external_dependency_only": true,
+    "not_known_duplicate": true,
+    "unprivileged_attacker": false
+  },
+  "live_preconditions": [
+    "verified source or decompiled bytecode with callable selector list must be obtained",
+    "at least one public value-moving selector (withdraw, sweep, claim, or equivalent) must be identified",
+    "access control state for that selector must be confirmed absent or bypassable by an unprivileged caller",
+    "token balance composition and withdrawability must be confirmed via balanceOf and transfer-path tracing",
+    "proxy implementation slot (EIP-1967: 0x360894a13ba1a3210667c828492db98dca3e2076) must be checked to resolve final code surface"
+  ],
+  "local_proof_required": {
+    "expected_assertions": [],
+    "reject_if_assertion_fails": "",
+    "setup": [],
+    "test_file_to_add": "",
+    "test_type": "fork",
+    "transaction_sequence": []
+  },
+  "paid_scope_match": "fund_extraction",
+  "rejection_reason": "Five hard gates fail simultaneously: live_state_supports_preconditions, unprivileged_attacker, attacker_controls_trigger, exact_code_path_or_selector_exists, concrete_fund_or_reward_gain, and gain_is_beyond_entitlement are all false. The candidate brief supplies only a TVL figure (~$311K) and balance-spike tags; it provides no verified source, no ABI, no decompiled selector list, no proxy implementation address, and no deployer identity. Without at least one confirmed public value-moving selector and a confirmed absence of access control on that selector, the gate question cannot be answered affirmatively. The proof gate does not accept NEEDS_LIVE_CONTEXT as a passing state: a candidate must arrive at this gate with enough source-or-selector evidence to attempt a local proof. This candidate must complete the six live-recon steps listed in the triage brief (bytecode extraction, proxy slot check, token balance composition, deployer trace, transaction history, and access-control slot reads) before it is eligible for re-submission to this gate.",
+  "schema_version": "proof-gate-v1",
+  "verdict": "REJECT"
+}
