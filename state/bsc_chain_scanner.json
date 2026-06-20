@@ -1,5 +1,5 @@
 {
-  "last_scanned_block": 105325443,
+  "last_scanned_block": 105343656,
   "seen_contracts": {
     "0x00000000214b106a4d67113a969ab6e7a56cfb0d": {
       "created_at_ms": null,
@@ -359,6 +359,26 @@
       "token_addresses": [],
       "updated_at_block": 104778621
     },
+    "0x05227ace7d8bac2b9c83b5b959fb3ad1bd70c6aa": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xb7a899815262423d33eb658244ef0ecf6eb11fdb73dcd5c9f084b6f0b579dede",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325445,
+      "last_seen_block": 105325445,
+      "last_value_usd": 417.4740947488932,
+      "max_value_usd": 417.4740947488932,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x713b7903d465b3d317223f920b24eda9f7b16ff9"
+      ],
+      "updated_at_block": 105325443
+    },
     "0x0546c468041e0d8a9036e4c07fb69eb353aa35bb": {
       "created_at_ms": null,
       "deployer": "",
@@ -395,6 +415,44 @@
       "token_addresses": [],
       "updated_at_block": 104715119
     },
+    "0x05ecfe82684b379f76e34510156251dc58c417e5": {
+      "created_at_ms": 1781961443000,
+      "deployer": "0xb1111609d5886c9002e136585c134d4f0fd802ee",
+      "deployment_tx": "0xa991e89fbd3274ddcc6921a50827eb11d2c0bc0394df2a573fd2c3af531327b6",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105340567,
+      "last_seen_block": 105340567,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
+    "0x06307aa8854924754faf08a81e9576cd69f49940": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x3ca607fade1465b90a9106fe954431f01e4ddb7a4e20282972b902b883b015b2",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 4447.226690064128,
+      "max_value_usd": 4447.226690064128,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x20971efc7f458d49ee56a4da407fe436eb87a635"
+      ],
+      "updated_at_block": 105325443
+    },
     "0x065d449ec9d139740343990b7e1cf05fa830e4ba": {
       "created_at_ms": null,
       "deployer": "",
@@ -414,6 +472,24 @@
         "0xaa9964175926e64166a0fc2fd77ecc6b5713ff73"
       ],
       "updated_at_block": 104953484
+    },
+    "0x073b9b6ac8d9816e9ef2dd780e4b30b9b585fd03": {
+      "created_at_ms": 1781962793000,
+      "deployer": "0x7ad0866cf35d217bc927fccc4c010d37e1f38267",
+      "deployment_tx": "0xa44d25267eff2ee476dda9dfafeeb0158231c8f8766874eed55ace9296595a6b",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343567,
+      "last_seen_block": 105343567,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x0740fe9a33bbf8f2c11be03e30e9b01323d2a7df": {
       "created_at_ms": 1781809594000,
@@ -611,22 +687,25 @@
     "0x097fd934ce9124fe6aec6dd325108b34986770d1": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0xcb912132e8d13d8d14b2673c43de7396ff9ab40d722aa006c893aea49028a9d7",
+      "deployment_tx": "0xdf3781d7ed6e418e0e069cfb41751985f342c39da553654b48aa4be6ccdf9984",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104705120,
-      "last_seen_block": 104778622,
-      "last_value_usd": 71917.85579025757,
+      "last_seen_block": 105325445,
+      "last_value_usd": 56186.24195565273,
       "max_value_usd": 71917.85579025757,
       "tags": [
+        "audit_hidden_contract",
+        "hidden_high_value_contract",
+        "high_total_balance",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
         "unknown_verification_status"
       ],
       "token_addresses": [
-        "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+        "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 104778621
+      "updated_at_block": 105325443
     },
     "0x0990ed3bcb148d8216e0deb45e3cfdcd8cb91549": {
       "created_at_ms": 1781707934000,
@@ -748,6 +827,24 @@
       ],
       "updated_at_block": 105005359
     },
+    "0x0b8dd832413ccc034e62317e90efb712576cbc3c": {
+      "created_at_ms": 1781961616000,
+      "deployer": "0x0923a85136eed9ad5e10cab58639bc4f8bcd9950",
+      "deployment_tx": "0x6dfb1460bbc8ba65c451d4937d4d43bc2e30195b00a2ec15b3fc9c63f55890af",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105340953,
+      "last_seen_block": 105340953,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x0b9a6155aa75019492a87a03b37a7dbe95261ed9": {
       "created_at_ms": 1781954207000,
       "deployer": "0x61ec8f9bfc6360756753fea35089e5d2479f8e3b",
@@ -784,6 +881,24 @@
       "token_addresses": [],
       "updated_at_block": 104953484
     },
+    "0x0c0b06434b425a2622ce5124f68ca82c37626923": {
+      "created_at_ms": 1781961371000,
+      "deployer": "0xb8c551acc764fdd1ec72b06ce36811f00a85edf9",
+      "deployment_tx": "0x723f74b1a5d7239d0c68e3499c28e0dc245652e0b15c1f00d44a211d1eb2ac16",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105340407,
+      "last_seen_block": 105340407,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x0c0d995ca15fcc36351f89d153b6bd9253c5cc1b": {
       "created_at_ms": 1781712076000,
       "deployer": "0xf921717e8e8d1428f2c06d27ba417a4666883aa3",
@@ -801,6 +916,24 @@
       ],
       "token_addresses": [],
       "updated_at_block": 104778621
+    },
+    "0x0c73aead5e10438356265c93d8c47567bdce6cec": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x69f1c2a6a156051afbba175bdcf6ec5b74440352d4c302d1dc6f23f8b5c335f1",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x0c86121c0212da2ccc155c82b9acb2865b4e22a0": {
       "created_at_ms": 1781708390000,
@@ -835,6 +968,24 @@
       ],
       "token_addresses": [],
       "updated_at_block": 105280437
+    },
+    "0x0ca63edbf1b9a641a56a15e0229bc2fdeb19fbd7": {
+      "created_at_ms": 1781962274000,
+      "deployer": "0x4d521771bb6d14da40ac70e63c7dbe4423d53310",
+      "deployment_tx": "0x19e358295bf39acfc670006bef756dc23075cf5f53b4e88e6c453a9d5ac1c28f",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342415,
+      "last_seen_block": 105342415,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x0ccbfa9b3f2d1cbf2db99720752a4f4293b490a6": {
       "created_at_ms": null,
@@ -973,6 +1124,24 @@
       ],
       "token_addresses": [],
       "updated_at_block": 0
+    },
+    "0x0f524106c62434630ea895386caef1410fa080b7": {
+      "created_at_ms": 1781961998000,
+      "deployer": "0x0dc1c12c125fa24207cc1fbf371a6f61bf0b70e5",
+      "deployment_tx": "0x3496c290a68635108e2db6f691aaddd6fbc16d78f7b12d4b2bccd399fbf7dd23",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341800,
+      "last_seen_block": 105341800,
+      "last_value_usd": 0.7187398708026311,
+      "max_value_usd": 0.7187398708026311,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x0fce80b9029b95af97c9590890ae3b1de612ac40": {
       "created_at_ms": null,
@@ -1134,12 +1303,12 @@
     "0x11eacd2bedd700a5e21ff70dea4086305100e5e0": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0xe1fa415d071338f85e3dd6dd582a3e4a3136e435ed4f41df6b579c6e1c420dee",
+      "deployment_tx": "0x874eb309f2b0a26b679650e567bfd4c24e62b4911a90f299580eb154136e2da6",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
-      "last_seen_block": 105005360,
-      "last_value_usd": 18013.068348751734,
-      "max_value_usd": 18693.73766191011,
+      "last_seen_block": 105325444,
+      "last_value_usd": 19620.900193731024,
+      "max_value_usd": 19620.900193731024,
       "tags": [
         "token_funded_contract",
         "unfamiliar_contract",
@@ -1149,7 +1318,7 @@
       "token_addresses": [
         "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 105005359
+      "updated_at_block": 105325443
     },
     "0x1232611c8248353dc8d9770a5bcc25acf37a02d4": {
       "created_at_ms": 1781708393000,
@@ -1174,7 +1343,7 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
       "last_seen_block": 104778622,
-      "last_value_usd": 3893332.804926601,
+      "last_value_usd": 3879893.6782445237,
       "max_value_usd": 4213006.290483505,
       "tags": [
         "audit_hidden_contract",
@@ -1191,7 +1360,7 @@
       "token_addresses": [
         "0xe0a281deff5c9d8d67af09d39340e134ac81b82e"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x12d414daadcd0fc3e1d43231d9d16a305c11da48": {
       "created_at_ms": 1781711333000,
@@ -1315,6 +1484,24 @@
       "token_addresses": [],
       "updated_at_block": 0
     },
+    "0x15b147bf7a2c805456d3839d66bc802cbd5ed04e": {
+      "created_at_ms": 1781961407000,
+      "deployer": "0xcaa2b189e28eef3c39c37c30e973aebaa928a879",
+      "deployment_tx": "0x809452e9ad22d6e8db158e69d7c0ba51fb86e8ed5023039a8fa3e99b7a957666",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105340487,
+      "last_seen_block": 105340487,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x15ccc3cdc9e3478f26f8563ec2264ea8da067244": {
       "created_at_ms": 1781809576000,
       "deployer": "0xd9535f52702445ef6b49aa5d8bf8489641420178",
@@ -1408,17 +1595,15 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 105280438,
       "last_seen_block": 105280438,
-      "last_value_usd": 10752604.42333743,
-      "max_value_usd": 10752604.42333743,
+      "last_value_usd": 10776795.995346576,
+      "max_value_usd": 10776795.995346576,
       "tags": [
         "audit_hidden_contract",
-        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
-        "immediate_balance_spike",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -1427,35 +1612,53 @@
       "token_addresses": [
         "0x8773af45b12e8125ed86ffa07cdc875824815989"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x172fcd41e0913e95784454622d1c3724f546f849": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0xb2772deef81587e337951476fd0c52f017ede93afe87eeb77ebb8c2b2d72ccb3",
+      "deployment_tx": "0x12015834cfe11dd71afed8eb14efea6f61e14e4e59b54f3cdb993a51e900a3b3",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104705120,
-      "last_seen_block": 104705120,
-      "last_value_usd": 4950264.767624607,
-      "max_value_usd": 6133434.283127496,
+      "last_seen_block": 105325444,
+      "last_value_usd": 11522213.106506364,
+      "max_value_usd": 11522213.106506364,
       "tags": [
         "audit_hidden_contract",
+        "bluechip_token_balance",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
         "known_asset_balance",
-        "stablecoin_balance",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
         "unknown_verification_status"
       ],
       "token_addresses": [
-        "0x55d398326f99059ff775485246999027b3197955"
+        "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
+    },
+    "0x174b6e71f9df79b72808c5a8cde11a114111069f": {
+      "created_at_ms": 1781962606000,
+      "deployer": "0xe321e360131e34f2c7df6f9dd3119db8bb86bc41",
+      "deployment_tx": "0xbd26aca497bcd81ce70933fe75a0c90508152bf1074fbdcfd3e5944142bc25ad",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343153,
+      "last_seen_block": 105343153,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x17a04d7b223248616637d4e1b50898f4b1fa6fe2": {
       "created_at_ms": 1781782822000,
@@ -1544,10 +1747,10 @@
     "0x1905dbf18c916bf8ec659545de0858d9f20eaeab": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0xfc0ae37f1762e02e727dfc54ff0c5bcd76d0441b539f4f20d007d3fb527915fc",
+      "deployment_tx": "0xad6dc70b47c562e349931711ea05eec1111c340b01e64687c5960d5d08777a51",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
-      "last_seen_block": 105280438,
+      "last_seen_block": 105325444,
       "last_value_usd": 0.0,
       "max_value_usd": 0.0,
       "tags": [
@@ -1557,7 +1760,7 @@
         "unknown_verification_status"
       ],
       "token_addresses": [],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x19850940bc149f155383f0c406074ecbc96f9839": {
       "created_at_ms": 1781954636000,
@@ -1576,6 +1779,24 @@
       ],
       "token_addresses": [],
       "updated_at_block": 105280437
+    },
+    "0x198c4ea9f17f6d0ee46c0850511faa9d6d108c39": {
+      "created_at_ms": 1781962645000,
+      "deployer": "0xfe6d50f52d9556033f3d9f76d63656026c9234c2",
+      "deployment_tx": "0x9d1c3fe893300a1f44cf4ac0fbdd33a7ee5ec3f6e388dacae144bf9119a6d57b",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343239,
+      "last_seen_block": 105343239,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x19d496413781df6d92715efd8e22c5d782957d24": {
       "created_at_ms": 1781954478000,
@@ -1619,8 +1840,8 @@
       "deployment_tx": "0x3892872892858a0f02b243dd391125911450257e1d23602827598f9481de538e",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
-      "last_seen_block": 105280438,
-      "last_value_usd": 1471221.7708098334,
+      "last_seen_block": 104778622,
+      "last_value_usd": 1367540.5679673406,
       "max_value_usd": 1.0921096062579193e+33,
       "tags": [
         "audit_hidden_contract",
@@ -1639,7 +1860,7 @@
       "token_addresses": [
         "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x1ab6cc25262e7cf66444dd1a41acf41ba71ea14c": {
       "created_at_ms": 1781934107000,
@@ -1812,6 +2033,24 @@
       "token_addresses": [],
       "updated_at_block": 104778621
     },
+    "0x1df53179d694e292c4eecb33e3535acbc94ec351": {
+      "created_at_ms": 1781961952000,
+      "deployer": "0xb1111609d5886c9002e136585c134d4f0fd802ee",
+      "deployment_tx": "0x2be014d36fa51cbf4e4875f273bd98119f1bb820c681ac15cfd15815ebb8858b",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341699,
+      "last_seen_block": 105341699,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x1e1ebf170bb49659297b09d9f80abfdc235a85e2": {
       "created_at_ms": null,
       "deployer": "",
@@ -1877,6 +2116,44 @@
         "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d"
       ],
       "updated_at_block": 105005359
+    },
+    "0x1e7d4e7bb120e1a603c96f51865e9e04f4e552e1": {
+      "created_at_ms": 1781961966000,
+      "deployer": "0x79ef3a71a2478cb2376b2d38e776ffe74bbc0324",
+      "deployment_tx": "0xa646cc785f6964d3dd94df3d43459b9145c13bafdc2c7a79e0b11d45f7a23cd3",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341731,
+      "last_seen_block": 105341731,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
+    "0x1ed9e0d7cfcbd28766d3bec25c9f0152920c8740": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x12b19918e030b737d1c8016c49f4788457344855ebebfaf2ba8ab46fda944510",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325445,
+      "last_seen_block": 105325445,
+      "last_value_usd": 510.132195,
+      "max_value_usd": 510.132195,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x55d398326f99059ff775485246999027b3197955"
+      ],
+      "updated_at_block": 105325443
     },
     "0x1f16040505f2a7abd46cb9cdea4ba8fd0becb966": {
       "created_at_ms": 1781933689000,
@@ -1949,6 +2226,24 @@
         "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
       ],
       "updated_at_block": 0
+    },
+    "0x20daca80bd6d24defcfec771f3273e08e38587c3": {
+      "created_at_ms": 1781962138000,
+      "deployer": "0xcf2b0546a15208a4f7445c56b2575dcae965999a",
+      "deployment_tx": "0x4f846329d04a05a705ad1bde51c31d4c9c9a90ebad06472cd81b260a2d2ce511",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342112,
+      "last_seen_block": 105342112,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x21c00ee4ff26ecced1537acfa1e86426988c88a1": {
       "created_at_ms": 1781810404000,
@@ -2152,6 +2447,26 @@
       ],
       "updated_at_block": 104715119
     },
+    "0x22f8326cf3da32e36d3d2df911def876b7be486f": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x1c7947b1413db3d342efff327109061307ba36b79b1e31de3553b26402c5bf5e",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 381.4373623027184,
+      "max_value_usd": 381.4373623027184,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x444045b0ee1ee319a660a5e3d604ca0ffa35acaa"
+      ],
+      "updated_at_block": 105325443
+    },
     "0x23163aa0927ade9ba9aabf40c3aba8d92fe0acf2": {
       "created_at_ms": 1781934024000,
       "deployer": "0xb1111609d5886c9002e136585c134d4f0fd802ee",
@@ -2227,26 +2542,30 @@
     "0x238a358808379702088667322f80ac48bad5e6c4": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0x4b688c2f1894bd5c0c6ab27e07c74bcedfce449ecf40f041aad5bb0807772b25",
+      "deployment_tx": "0x1c7947b1413db3d342efff327109061307ba36b79b1e31de3553b26402c5bf5e",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104705120,
-      "last_seen_block": 105280438,
-      "last_value_usd": 6625256.499025695,
-      "max_value_usd": 39348118.01942365,
+      "last_seen_block": 105325444,
+      "last_value_usd": 39546813.91050221,
+      "max_value_usd": 39546813.91050221,
       "tags": [
+        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "high_native_balance",
         "high_token_balance",
         "high_total_balance",
+        "immediate_balance_spike",
+        "known_asset_balance",
         "known_public_protocol",
         "popular_protocol",
+        "stablecoin_balance",
         "token_funded_contract"
       ],
       "token_addresses": [
-        "0xcf3232b85b43bca90e51d38cc06cc8bb8c8a3e36"
+        "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x23b099e8165f7b374b9dce2c244448fa0b561fb4": {
       "created_at_ms": 1781782611000,
@@ -2392,6 +2711,24 @@
       "token_addresses": [],
       "updated_at_block": 0
     },
+    "0x26a1d389ba669609e03b998f78ace0a66cbe880d": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x69f1c2a6a156051afbba175bdcf6ec5b74440352d4c302d1dc6f23f8b5c335f1",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x26deb24a2623cf54452ab5183e2c34551831d54d": {
       "created_at_ms": null,
       "deployer": "",
@@ -2399,7 +2736,7 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104705120,
       "last_seen_block": 104705120,
-      "last_value_usd": 2.3865056419145736e+43,
+      "last_value_usd": 2.31676954077237e+43,
       "max_value_usd": 2.438243739921305e+43,
       "tags": [
         "audit_hidden_contract",
@@ -2416,27 +2753,37 @@
       "token_addresses": [
         "0xaa036928c9c0df07d525b55ea8ee690bb5a628c1"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x278d858f05b94576c1e6f73285886876ff6ef8d2": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0xdd72db54780f4675f36cada86c63c6907574f14d982416d776d2936f9148c455",
+      "deployment_tx": "0x5e1ca69581fe81001f8f4ad9d4e592412eabfff38df2bb0ba1099772199d0a14",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104705120,
-      "last_seen_block": 105280438,
-      "last_value_usd": 431.72861851835626,
-      "max_value_usd": 709567.6121198522,
+      "last_seen_block": 105325444,
+      "last_value_usd": 814918.6996256559,
+      "max_value_usd": 814918.6996256559,
       "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "known_asset_balance",
+        "stablecoin_balance",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
         "unknown_verification_status"
       ],
       "token_addresses": [
-        "0x405fbc9004d857903bfd6b3357792d71a50726b0"
+        "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x2796e1281d8cf8671a2e2fcd58f5e1ad936e89c6": {
       "created_at_ms": 1781707556000,
@@ -2522,6 +2869,24 @@
       ],
       "updated_at_block": 105280437
     },
+    "0x287b9f19ff084c7c99c07164b6f76116e4487a09": {
+      "created_at_ms": 1781962490000,
+      "deployer": "0x0a3643d9dd3d08dc5eae808b3b1ab2a17dd7ce96",
+      "deployment_tx": "0x74dd525c0498f87fadfc0d292e1da62c37f5d5ea41fe5c2150607def8a39d3b9",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342895,
+      "last_seen_block": 105342895,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x28893ed39d5d5c916c6a7ad6074b4ebef35f59b9": {
       "created_at_ms": 1781809940000,
       "deployer": "0xd9535f52702445ef6b49aa5d8bf8489641420178",
@@ -2543,11 +2908,11 @@
     "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0xfc0ae37f1762e02e727dfc54ff0c5bcd76d0441b539f4f20d007d3fb527915fc",
+      "deployment_tx": "0xd4b0dad4f1abfcfbcac11592a0356aa9c6e10a4ea2ee86d77102bd9d6553a462",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104705120,
-      "last_seen_block": 105280438,
-      "last_value_usd": 10161972.728180785,
+      "last_seen_block": 105325444,
+      "last_value_usd": 17850355.393460665,
       "max_value_usd": 242096401.4462017,
       "tags": [
         "audit_hidden_contract",
@@ -2565,9 +2930,9 @@
         "unknown_verification_status"
       ],
       "token_addresses": [
-        "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d"
+        "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x28eb208722d57f425822cce19070419e9bf10cfd": {
       "created_at_ms": 1781782797000,
@@ -2777,6 +3142,24 @@
       "token_addresses": [],
       "updated_at_block": 104778621
     },
+    "0x2b8b0f2a39e04649536010d94e1acfc8d4a956d0": {
+      "created_at_ms": 1781962257000,
+      "deployer": "0x7a743df12d094668bae6e4dcab653aedd48b26cc",
+      "deployment_tx": "0xda40543c66f64c0324f3b83d07945b715ec0f1f1b936fe3e3d83bc68e5fb945d",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342376,
+      "last_seen_block": 105342376,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x2ca12fa151bf59d20c8f51b1ee02463237ca773b": {
       "created_at_ms": 1781809697000,
       "deployer": "0xd9535f52702445ef6b49aa5d8bf8489641420178",
@@ -2845,6 +3228,44 @@
       "token_addresses": [],
       "updated_at_block": 0
     },
+    "0x2d8b406f157255e12f810d7fba041cfed2d6c4f8": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x411918aecbd31d46e92d9ce265319b2fb2d13015ec3aa6833c0dfd5ece89d864",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325445,
+      "last_seen_block": 105325445,
+      "last_value_usd": 171.12938732477423,
+      "max_value_usd": 171.12938732477423,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x55d398326f99059ff775485246999027b3197955"
+      ],
+      "updated_at_block": 105325443
+    },
+    "0x2df4a67c3d48313a5545f10a27f5c261a4d46e1a": {
+      "created_at_ms": 1781962753000,
+      "deployer": "0xce3e815b85e088f9910e12482478c2865ae46f9f",
+      "deployment_tx": "0x093d4dcc2b54aa5c88ec1386bbdc3c1da702739c47e4b898afc68daa66bae056",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343477,
+      "last_seen_block": 105343477,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x2e6026025a27ca6eef165dd700cc89d39cbcd071": {
       "created_at_ms": null,
       "deployer": "",
@@ -2882,6 +3303,42 @@
       ],
       "token_addresses": [],
       "updated_at_block": 104953484
+    },
+    "0x2e6dd6e14694309c9301d5f8156d785f1ef50c2b": {
+      "created_at_ms": 1781961903000,
+      "deployer": "0xc6119b6f53f5b4fcc50e1f1705e33312f3bcc5ad",
+      "deployment_tx": "0x5de648119839aef68f471e99dd901b84fc27cd296dad5fd0a74c86a596347dd9",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341591,
+      "last_seen_block": 105341591,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
+    "0x2e95d0beee694ecff9427b9ccf9ebdc271f85f91": {
+      "created_at_ms": 1781961915000,
+      "deployer": "0x79ef3a71a2478cb2376b2d38e776ffe74bbc0324",
+      "deployment_tx": "0x6d2be18394bc79d26a2f6ac83c50b7d28dd52cbe903e39e6e97869c5b99acb5a",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341616,
+      "last_seen_block": 105341616,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x2eaa2f7642054519126074de6b22044b87685afd": {
       "created_at_ms": 1781809596000,
@@ -3067,6 +3524,24 @@
       ],
       "updated_at_block": 105280437
     },
+    "0x31436d6eca3e5d79dedcaf3f1bf6af5fa20b948f": {
+      "created_at_ms": 1781961431000,
+      "deployer": "0xb1111609d5886c9002e136585c134d4f0fd802ee",
+      "deployment_tx": "0x84c820a51508fb9316d90aed0313cbe3c77898181422dfae5cc2093da4588b5f",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105340542,
+      "last_seen_block": 105340542,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x31541f4d34e8925e861ae0ce3db7e301bb92f0df": {
       "created_at_ms": 1781932941000,
       "deployer": "0x35a4be484691721feb09e38f79a47de5cf7a59f2",
@@ -3118,6 +3593,26 @@
       ],
       "token_addresses": [],
       "updated_at_block": 104943751
+    },
+    "0x32819f1a656e123b6ab891e08608b850a3b91dff": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x149a37d8eee30c08176aa53f536b527e7c834c0081b55237194e95f570fe27a3",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 49622.837734552806,
+      "max_value_usd": 49622.837734552806,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x55d398326f99059ff775485246999027b3197955"
+      ],
+      "updated_at_block": 105325443
     },
     "0x32a6925fd8d650c0b03fa08ce086943945bd80a8": {
       "created_at_ms": 1781932927000,
@@ -3296,7 +3791,7 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104715120,
       "last_seen_block": 104715120,
-      "last_value_usd": 47068451024.23873,
+      "last_value_usd": 47382119754.988945,
       "max_value_usd": 48596599800.157875,
       "tags": [
         "audit_hidden_contract",
@@ -3313,7 +3808,7 @@
       "token_addresses": [
         "0xf7de7e8a6bd59ed41a4b5fe50278b3b7f31384df"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x3508dca95a64c9378cb07ef6f40553a50905372a": {
       "created_at_ms": null,
@@ -3567,6 +4062,24 @@
       ],
       "updated_at_block": 105005359
     },
+    "0x3b7217e8ec80fcf763802566f1e2f0b1a7b60b8f": {
+      "created_at_ms": 1781961446000,
+      "deployer": "0xb23fcbe01c51587cfeba24e210b63a8d544563e6",
+      "deployment_tx": "0x2d30a2d6ef23e5ac0a8d8257cd837f93ba574793b37c2c18a9de144bc0eb3a5c",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105340574,
+      "last_seen_block": 105340574,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x3bc367866468d4f80096be899b66ab29d03f2717": {
       "created_at_ms": null,
       "deployer": "",
@@ -3586,6 +4099,36 @@
         "0xaec945e04baf28b135fa7c640f624f8d90f1c3a6"
       ],
       "updated_at_block": 104786621
+    },
+    "0x3cd6fb6b0cddd3610f0f4769aa7bb686cd4a4b55": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xaa48584cde781131f34507b31bf046b7fb491df54910a909cc325999152fe434",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 271352.2847510581,
+      "max_value_usd": 271352.2847510581,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x55d398326f99059ff775485246999027b3197955"
+      ],
+      "updated_at_block": 105325443
     },
     "0x3d2bb7e9df6b49b82ec75214aea8feddab78fc5f": {
       "created_at_ms": null,
@@ -3668,6 +4211,35 @@
       ],
       "token_addresses": [],
       "updated_at_block": 104953484
+    },
+    "0x3dbe077e7986657e95e1cc50089f17a5a4af0aae": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x69f1c2a6a156051afbba175bdcf6ec5b74440352d4c302d1dc6f23f8b5c335f1",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 446738.67489789176,
+      "max_value_usd": 446738.67489789176,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "bluechip_token_balance",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c"
+      ],
+      "updated_at_block": 105325443
     },
     "0x3e1d2b55ddbbdf0e648831f4cd8812779a6940b2": {
       "created_at_ms": null,
@@ -3760,6 +4332,24 @@
         "0xd94ed4db825854706287890c37b616ef1e356235"
       ],
       "updated_at_block": 104786621
+    },
+    "0x418f3d0ccd487ab51cfbe2277335ced9ca93226e": {
+      "created_at_ms": 1781961907000,
+      "deployer": "0xc6119b6f53f5b4fcc50e1f1705e33312f3bcc5ad",
+      "deployment_tx": "0xecdc4255646d859d6c68e6f58e95f57ba2988499411501cf2918327d093768c9",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341598,
+      "last_seen_block": 105341598,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x41dce1a4b8fb5e6327701750af6231b7cd0b2a40": {
       "created_at_ms": null,
@@ -4014,6 +4604,36 @@
       ],
       "token_addresses": [],
       "updated_at_block": 104943751
+    },
+    "0x462b30a53c8552035506e82ce7b6a6c418b0477f": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x8012ad4efef105871f624b1750a88f04bcbaae2a39d530ce6e4a39d853609411",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325445,
+      "last_seen_block": 105325445,
+      "last_value_usd": 28649576.204923067,
+      "max_value_usd": 28649576.204923067,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x55d398326f99059ff775485246999027b3197955"
+      ],
+      "updated_at_block": 105325443
     },
     "0x46b3fe436040634392d9f9b4f86541a369cb4344": {
       "created_at_ms": null,
@@ -4779,6 +5399,26 @@
       "token_addresses": [],
       "updated_at_block": 104953484
     },
+    "0x53c133481819e1df5f7c4722e9feb68725349879": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x69f1c2a6a156051afbba175bdcf6ec5b74440352d4c302d1dc6f23f8b5c335f1",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 32782.99947787197,
+      "max_value_usd": 32782.99947787197,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x8b194370825e37b33373e74a41009161808c1488"
+      ],
+      "updated_at_block": 105325443
+    },
     "0x544c779af19ea6a15e7a727312311afc68613419": {
       "created_at_ms": null,
       "deployer": "",
@@ -4905,6 +5545,24 @@
       "token_addresses": [],
       "updated_at_block": 104953484
     },
+    "0x55555522005bcae1c2424d474bfd5ed477749e3e": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x69f1c2a6a156051afbba175bdcf6ec5b74440352d4c302d1dc6f23f8b5c335f1",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x575c0f239ebf129edc646b2874ca8eaf3b7fbf9b": {
       "created_at_ms": null,
       "deployer": "",
@@ -4971,6 +5629,24 @@
       ],
       "updated_at_block": 104786621
     },
+    "0x585b7764f0837bd6d743b451b91639aac2d9773d": {
+      "created_at_ms": 1781961906000,
+      "deployer": "0x79ef3a71a2478cb2376b2d38e776ffe74bbc0324",
+      "deployment_tx": "0x0891c293cc03ff5f96390fceacac2589cb64bc0482b37c09ef5e4a7dadc14d8f",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341596,
+      "last_seen_block": 105341596,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x588d7cf062f4edd7c7c7f2d66fd770e03b1ea735": {
       "created_at_ms": null,
       "deployer": "",
@@ -4978,8 +5654,8 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104715120,
       "last_seen_block": 104715120,
-      "last_value_usd": 14135529282883.162,
-      "max_value_usd": 14147856076581.74,
+      "last_value_usd": 14148619459370.652,
+      "max_value_usd": 14148619459370.652,
       "tags": [
         "audit_hidden_contract",
         "fresh_contract_large_balance",
@@ -4995,7 +5671,7 @@
       "token_addresses": [
         "0x6894cde390a3f51155ea41ed24a33a4827d3063d"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x592ffae7a91032691149f9fcac2d3ae8e9f17374": {
       "created_at_ms": 1781711789000,
@@ -5014,6 +5690,24 @@
       ],
       "token_addresses": [],
       "updated_at_block": 104778621
+    },
+    "0x594ac2f46e4a52a699cd69202c1f91f3f71ed95a": {
+      "created_at_ms": 1781962502000,
+      "deployer": "0x45a1f4fabf695ee9fc43872e489a647045b8b11e",
+      "deployment_tx": "0xb105eed9aa05b984c4e4b278e98ee99749b4bbafbfaa0f7a580668b56026d709",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342922,
+      "last_seen_block": 105342922,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x59d5b2e6c0bffe41d33a565e4fef8751a447b832": {
       "created_at_ms": 1781953870000,
@@ -5162,28 +5856,30 @@
     "0x5bb59bb9371cbec158ed602d5f3cf1ad1c9b4462": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0x8581fd414d9fa460f016b5b1ea2c3c59d3488429467035a6a775413aabce375c",
+      "deployment_tx": "0xb7a55b7ab8d7c7d066c008445c696e3e7f072e95950c639d1142fcd40d8849da",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104943752,
-      "last_seen_block": 104943752,
-      "last_value_usd": 1468937646.8394153,
+      "last_seen_block": 105325444,
+      "last_value_usd": 832046.599580275,
       "max_value_usd": 1491198203.5267785,
       "tags": [
         "audit_hidden_contract",
+        "bluechip_token_balance",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
+        "known_asset_balance",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
         "unknown_verification_status"
       ],
       "token_addresses": [
-        "0xf39e4b21c84e737df08e2c3b32541d856f508e48"
+        "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x5bc2c2eb9ee6de9fef224b91a3afd87ff58454c1": {
       "created_at_ms": 1781954263000,
@@ -5415,6 +6111,24 @@
       "token_addresses": [],
       "updated_at_block": 104778621
     },
+    "0x5f1222ddf70c8dddc6aa78eb78b2ab0cbcd14d3e": {
+      "created_at_ms": 1781962201000,
+      "deployer": "0x40be34b97dafb1810ce82e6b269ceeca663c9b58",
+      "deployment_tx": "0xe9be04ae5512c58fe4b9922086e1b325e65d83e7a42d376a48fe71c5f0370f68",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342253,
+      "last_seen_block": 105342253,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x5f218a9deb5e7a0327395853648656dc30dde04d": {
       "created_at_ms": 1781786549000,
       "deployer": "0x53318c05530ba352810a1706040b71fcd4bb047e",
@@ -5440,17 +6154,15 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 105280438,
       "last_seen_block": 105280438,
-      "last_value_usd": 17371857.743659656,
-      "max_value_usd": 17371857.743659656,
+      "last_value_usd": 17467087.33794096,
+      "max_value_usd": 17467087.33794096,
       "tags": [
         "audit_hidden_contract",
-        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
-        "immediate_balance_spike",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -5459,7 +6171,7 @@
       "token_addresses": [
         "0x8d65744527f55d0b2338350912d5c99a81ddf0e2"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x602c44aff0458737836809a3c4aa8529599e2864": {
       "created_at_ms": 1781954635000,
@@ -5628,8 +6340,8 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104715120,
       "last_seen_block": 104715120,
-      "last_value_usd": 39443094.749981955,
-      "max_value_usd": 39443094.749981955,
+      "last_value_usd": 39453687.45966673,
+      "max_value_usd": 39453687.45966673,
       "tags": [
         "audit_hidden_contract",
         "fresh_contract_large_balance",
@@ -5647,7 +6359,7 @@
       "token_addresses": [
         "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x6394c513109ecfabff3326ad05697f66a9b9feed": {
       "created_at_ms": 1781787145000,
@@ -5937,6 +6649,24 @@
       "token_addresses": [],
       "updated_at_block": 104953484
     },
+    "0x69ede23e48c83714cf60ae0ee3897caba05e4b2f": {
+      "created_at_ms": 1781961961000,
+      "deployer": "0xb1111609d5886c9002e136585c134d4f0fd802ee",
+      "deployment_tx": "0x81717c0db855e39a7c85913ec63bae2da0f4bf361dcc652b4f7c0bb6ce5d0d85",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341719,
+      "last_seen_block": 105341719,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x6ab1c37cd18beb53d4f0d591007c585bf91e952d": {
       "created_at_ms": 1781707754000,
       "deployer": "0x80649081f1dfcfd2fea3f04b2b3609ba180086fd",
@@ -5956,11 +6686,11 @@
     "0x6aba0315493b7e6989041c91181337b662fb1b90": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0x7d7c37a91b898b059e741a3010ab2a9b1ccca80e6347d32137ade0e4052753fc",
+      "deployment_tx": "0x69f1c2a6a156051afbba175bdcf6ec5b74440352d4c302d1dc6f23f8b5c335f1",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
-      "last_seen_block": 104778622,
-      "last_value_usd": 2928557.5091318805,
+      "last_seen_block": 105325444,
+      "last_value_usd": 2930298.8334653135,
       "max_value_usd": 2964793.7688889066,
       "tags": [
         "audit_hidden_contract",
@@ -5973,10 +6703,8 @@
         "unknown_protocol",
         "unknown_verification_status"
       ],
-      "token_addresses": [
-        "0x11cf6bf6d87cb0eb9c294fd6cbfec91ee3a1a7d0"
-      ],
-      "updated_at_block": 105280437
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x6bf5d90542b16c3cec0a6243d71eb908e4ce3fb7": {
       "created_at_ms": 1781954358000,
@@ -6124,6 +6852,46 @@
       ],
       "updated_at_block": 0
     },
+    "0x6ee903d7ee90270338ea833f6f3d0bb08abf93be": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x69f1c2a6a156051afbba175bdcf6ec5b74440352d4c302d1dc6f23f8b5c335f1",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 6668.932453622711,
+      "max_value_usd": 6668.932453622711,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x8b194370825e37b33373e74a41009161808c1488"
+      ],
+      "updated_at_block": 105325443
+    },
+    "0x6f0bc521d142368c58c7e5911b33ac171de75328": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xf40e360795cbbade9f77bd4d10d7ede6df641586d67c9c96abe7eab979884c66",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325445,
+      "last_seen_block": 105325445,
+      "last_value_usd": 314.5932936758038,
+      "max_value_usd": 314.5932936758038,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0xeeca71a751ab52f25a371065d168e0fcc3c8b00d"
+      ],
+      "updated_at_block": 105325443
+    },
     "0x6f3c128f74001d48cd13e7e2ae5c166695b1ea18": {
       "created_at_ms": 1781933300000,
       "deployer": "0xd4bc2cae1ceae16046d31ef4d66b1b0d60b5b123",
@@ -6198,6 +6966,24 @@
       "token_addresses": [],
       "updated_at_block": 104715119
     },
+    "0x70392f964579e56a1a395053500845a8e9ad3d53": {
+      "created_at_ms": 1781962633000,
+      "deployer": "0xc19d1ced026f57202fba8bb938a821356ce470c1",
+      "deployment_tx": "0xa1b047c558cbf1b8ba8f01da08293f3e1d40ac3d8cdc31d67f4a0388432d2f8e",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343212,
+      "last_seen_block": 105343212,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x7039ceaa90b60120e9e28e0a05fbcf5ba3102a0d": {
       "created_at_ms": 1781711642000,
       "deployer": "0xbc5dd79a04c648633e6156daeb9f98a8784f915f",
@@ -6251,6 +7037,26 @@
       ],
       "token_addresses": [],
       "updated_at_block": 104778621
+    },
+    "0x713b7903d465b3d317223f920b24eda9f7b16ff9": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xb7a899815262423d33eb658244ef0ecf6eb11fdb73dcd5c9f084b6f0b579dede",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325445,
+      "last_seen_block": 105325445,
+      "last_value_usd": 375.62320492748734,
+      "max_value_usd": 375.62320492748734,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x713b7903d465b3d317223f920b24eda9f7b16ff9"
+      ],
+      "updated_at_block": 105325443
     },
     "0x713f844f5333aa4b57866666024ff2e93134c47b": {
       "created_at_ms": 1781782184000,
@@ -6419,7 +7225,7 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
       "last_seen_block": 104778622,
-      "last_value_usd": 126124.81123713593,
+      "last_value_usd": 128891.7606540719,
       "max_value_usd": 2.0628517380305217e+33,
       "tags": [
         "audit_hidden_contract",
@@ -6436,7 +7242,7 @@
       "token_addresses": [
         "0x11cf6bf6d87cb0eb9c294fd6cbfec91ee3a1a7d0"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x748f7aae48047c586aad99ee40166c9a386bc589": {
       "created_at_ms": null,
@@ -6642,6 +7448,24 @@
       ],
       "updated_at_block": 104715119
     },
+    "0x76646c393e37a3a97d332ec7891032e7cd7fa9be": {
+      "created_at_ms": 1781962133000,
+      "deployer": "0xcf2b0546a15208a4f7445c56b2575dcae965999a",
+      "deployment_tx": "0x490dc701e862f1676ce6d6108e3a2b7c7d63955fdc86e73016d24afa653fb892",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342100,
+      "last_seen_block": 105342100,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x766f3b1a7fc8b9fc0b6d3dfb6bf533f5de526f9a": {
       "created_at_ms": 1781679700000,
       "deployer": "0x8f222801bc51db0b90c7aa3d631404e5af8aaa3b",
@@ -6804,6 +7628,24 @@
       "token_addresses": [],
       "updated_at_block": 105005359
     },
+    "0x79bc568a173252c328978014365c992d9b677b72": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xb7a899815262423d33eb658244ef0ecf6eb11fdb73dcd5c9f084b6f0b579dede",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325445,
+      "last_seen_block": 105325445,
+      "last_value_usd": 4.932000000000001e-13,
+      "max_value_usd": 4.932000000000001e-13,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x79e1a03e17e2b5c16568c44c9a78eead91ec2a1e": {
       "created_at_ms": 1781787160000,
       "deployer": "0xc7c24f51044ff159fdd1afd112c2c62b9b652bbd",
@@ -6821,6 +7663,36 @@
       ],
       "token_addresses": [],
       "updated_at_block": 104943751
+    },
+    "0x7a3eb6e7ffbf9f8b65afd40c0ab0ac2bab0c5d8e": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xb7a899815262423d33eb658244ef0ecf6eb11fdb73dcd5c9f084b6f0b579dede",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325445,
+      "last_seen_block": 105325445,
+      "last_value_usd": 488391.0601297652,
+      "max_value_usd": 488391.0601297652,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x55d398326f99059ff775485246999027b3197955"
+      ],
+      "updated_at_block": 105325443
     },
     "0x7a6537d69a641f0512b862bcdff70bbce3bf4643": {
       "created_at_ms": 1781707848000,
@@ -6855,6 +7727,24 @@
       ],
       "token_addresses": [],
       "updated_at_block": 105280437
+    },
+    "0x7a970beee2539f94f528525b2172ca9e7cb5f133": {
+      "created_at_ms": 1781962475000,
+      "deployer": "0xaf0ce70d123ca8a2c9ec8f12160e07f28b88c48a",
+      "deployment_tx": "0xf877585d35c5bf365338ab97538fc7ca9420cb6f1a8bd7245764ab34d70b350f",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342860,
+      "last_seen_block": 105342860,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x7aaabe5f42d16c6d2c11689d168f7d11a1c9d1cf": {
       "created_at_ms": 1781933860000,
@@ -7322,6 +8212,42 @@
       "token_addresses": [],
       "updated_at_block": 104953484
     },
+    "0x8505d9a696fc710bfb473558683eeb084b1f0267": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x69f1c2a6a156051afbba175bdcf6ec5b74440352d4c302d1dc6f23f8b5c335f1",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
+    "0x86af8c7a788f78596515c111b5d66ea40e97f266": {
+      "created_at_ms": 1781962358000,
+      "deployer": "0xc1babb61fece1de5793177ab2046dd6e77a9a612",
+      "deployment_tx": "0x2a31756f153fccf3373bffbf7feb6dcc25cd914286162c47609ac88badc380fa",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342602,
+      "last_seen_block": 105342602,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x86e8141140f537c533508c8f78cf62768ac073c6": {
       "created_at_ms": 1781712082000,
       "deployer": "0xe245ef01ae85ee709ab2295e3000f4b3f9fa4bcf",
@@ -7506,6 +8432,24 @@
       ],
       "updated_at_block": 105280437
     },
+    "0x8b3f76bf56b29519e41461186a234ff61bcfbacd": {
+      "created_at_ms": 1781961906000,
+      "deployer": "0x79ef3a71a2478cb2376b2d38e776ffe74bbc0324",
+      "deployment_tx": "0xa90bc95ed9be22f1ff9bb5cdd4517d590bdefcb7a92385c70d9d99f02c5549cf",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341596,
+      "last_seen_block": 105341596,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x8bafe0bdd3eb9ae0539f5b32e771c1a72a189b7f": {
       "created_at_ms": null,
       "deployer": "",
@@ -7620,6 +8564,34 @@
       "token_addresses": [],
       "updated_at_block": 105005359
     },
+    "0x8e50bdc8e8986b260fc3de70fcc6eb2b2d4334ec": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x618f9f8af2d44cf9766bd66484b24ee461e2a159cc93397af1351904f1b7d7ac",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 708360.9899929398,
+      "max_value_usd": 708360.9899929398,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x3a191f10e7d2d0ed57785cf50dd12785225ae7e3"
+      ],
+      "updated_at_block": 105325443
+    },
     "0x8e74006bf3ad4915360b281648ee3b2df78f09ca": {
       "created_at_ms": 1781787160000,
       "deployer": "0xeda39cb86aa6250326001e1fa162623810dc0618",
@@ -7641,30 +8613,28 @@
     "0x8e76ebb1c71939982c9ac267c0eb25f4aa739535": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0x12aefcddbafda6399a4096949d6278ae85cc3562a50b299be99dabc4012f7943",
+      "deployment_tx": "0x168569ccc122940ca508deea8cb5943a75196c5d31a72cdaa13f0e19ec59b3ac",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
-      "last_seen_block": 104778622,
-      "last_value_usd": 328500.75274039357,
+      "last_seen_block": 105325444,
+      "last_value_usd": 61704.249241961516,
       "max_value_usd": 328500.75274039357,
       "tags": [
         "audit_hidden_contract",
-        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
-        "immediate_balance_spike",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
         "unknown_verification_status"
       ],
       "token_addresses": [
-        "0x000ae314e2a2172a039b26378814c252734f556a"
+        "0x40b8129b786d766267a7a118cf8c07e31cdb6fde"
       ],
-      "updated_at_block": 104778621
+      "updated_at_block": 105325443
     },
     "0x8ec186cd1ad51c380bd23fde29f852226647616c": {
       "created_at_ms": null,
@@ -7810,6 +8780,36 @@
       "token_addresses": [],
       "updated_at_block": 104786621
     },
+    "0x916f992df86795f24de6c268cfb9031fbb1155da": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x168569ccc122940ca508deea8cb5943a75196c5d31a72cdaa13f0e19ec59b3ac",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 1770177.058806891,
+      "max_value_usd": 1770177.058806891,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d"
+      ],
+      "updated_at_block": 105325443
+    },
     "0x91e2bf6deb03cbda854f7a6ec48e7074ca0dae4c": {
       "created_at_ms": 1781933797000,
       "deployer": "0x9927d435ef76a431a55d62f6ba6eac1ec3f35527",
@@ -7953,7 +8953,7 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 105005361,
       "last_seen_block": 105005361,
-      "last_value_usd": 38416005.32867914,
+      "last_value_usd": 38299408.4191439,
       "max_value_usd": 38416005.32867914,
       "tags": [
         "audit_hidden_contract",
@@ -7972,7 +8972,7 @@
       "token_addresses": [
         "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x92c5ff8f197f668ba44ecbf4bd16a66853c2ea4e": {
       "created_at_ms": null,
@@ -8212,6 +9212,24 @@
       "token_addresses": [],
       "updated_at_block": 104786621
     },
+    "0x97a7acb7e671b1836419216f772ce72a51626900": {
+      "created_at_ms": 1781962813000,
+      "deployer": "0x71a5dd16e6ba3cf320ded812e8435d1e1a20491b",
+      "deployment_tx": "0x1f32332860cf213cb6333ae45848b4b439b8e951bd330f92c4c84a7798fd46cd",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343611,
+      "last_seen_block": 105343611,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0x983fba698a8f2a58d100583f163535c48d3bbe8a": {
       "created_at_ms": 1781782387000,
       "deployer": "0xc80f59a43bb425d052eee047580c04e3185b2acc",
@@ -8247,6 +9265,26 @@
       ],
       "token_addresses": [],
       "updated_at_block": 105005359
+    },
+    "0x99276c914d63cf2be03ad8fd1b169c51a6bcc765": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xb7a899815262423d33eb658244ef0ecf6eb11fdb73dcd5c9f084b6f0b579dede",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325445,
+      "last_seen_block": 105325445,
+      "last_value_usd": 3332.6558633823975,
+      "max_value_usd": 3332.6558633823975,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+      ],
+      "updated_at_block": 105325443
     },
     "0x994b0649deffa0e8282ef70b37ddb9abaa7873e8": {
       "created_at_ms": 1781934359000,
@@ -8309,7 +9347,7 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104705120,
       "last_seen_block": 104705120,
-      "last_value_usd": 15620726.712965816,
+      "last_value_usd": 15712242.580581922,
       "max_value_usd": 16195868.93716795,
       "tags": [
         "audit_hidden_contract",
@@ -8328,7 +9366,7 @@
       "token_addresses": [
         "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x99997b18733ff4a9d8e0b9c7d9dec59625f87228": {
       "created_at_ms": 1781679732000,
@@ -8349,12 +9387,12 @@
     "0x9999b0cdd35d7f3b281ba02efc0d228486940515": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0xb2772deef81587e337951476fd0c52f017ede93afe87eeb77ebb8c2b2d72ccb3",
+      "deployment_tx": "0x12015834cfe11dd71afed8eb14efea6f61e14e4e59b54f3cdb993a51e900a3b3",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
-      "last_seen_block": 105005361,
-      "last_value_usd": 0.013382553381023354,
-      "max_value_usd": 0.014083441314731333,
+      "last_seen_block": 105325444,
+      "last_value_usd": 0.12104591127010532,
+      "max_value_usd": 0.12104591127010532,
       "tags": [
         "token_funded_contract",
         "unfamiliar_contract",
@@ -8362,9 +9400,9 @@
         "unknown_verification_status"
       ],
       "token_addresses": [
-        "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d"
+        "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 105005359
+      "updated_at_block": 105325443
     },
     "0x999c09cf6d5a2bc8cfa965018758cbc999999999": {
       "created_at_ms": null,
@@ -8442,8 +9480,8 @@
       "deployment_tx": "0xa8af20220433b6d4cc1e6a4666a45978cf7e87b877ab1f7c643366bb1ffcd099",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104943752,
-      "last_seen_block": 105280438,
-      "last_value_usd": 3460539.321538619,
+      "last_seen_block": 104943752,
+      "last_value_usd": 3579876.070121489,
       "max_value_usd": 4599760.199100704,
       "tags": [
         "audit_hidden_contract",
@@ -8462,7 +9500,25 @@
       "token_addresses": [
         "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
+    },
+    "0x9b5ef1b5cc853bf44832bf9b4c16a29f57f74757": {
+      "created_at_ms": 1781961890000,
+      "deployer": "0x70a24cefbdf70c3027c8debf94249d301a70e44d",
+      "deployment_tx": "0xf9e8421231022358ba1da5cb76f0c5c82ae5cb2870f5ccff8644e7bb233245db",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341562,
+      "last_seen_block": 105341562,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x9b80d9f089e2a149d95fe64ebea95df94c72ce81": {
       "created_at_ms": null,
@@ -8471,17 +9527,15 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 105280438,
       "last_seen_block": 105280438,
-      "last_value_usd": 7801968.533536293,
+      "last_value_usd": 7792812.888244902,
       "max_value_usd": 7801968.533536293,
       "tags": [
         "audit_hidden_contract",
-        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
-        "immediate_balance_spike",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -8490,7 +9544,7 @@
       "token_addresses": [
         "0x8d65744527f55d0b2338350912d5c99a81ddf0e2"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0x9bcc8bee2f78c1f50400d7d2caef014847f719dc": {
       "created_at_ms": 1781787041000,
@@ -8555,6 +9609,24 @@
         "0x55d398326f99059ff775485246999027b3197955"
       ],
       "updated_at_block": 105280437
+    },
+    "0x9c930d24deb4507be32a85c201de145198716808": {
+      "created_at_ms": 1781962414000,
+      "deployer": "0x6886ee6430df63f9da85acd2fbc525f022bfb265",
+      "deployment_tx": "0xe3ab930102cd98b961cb82d114a306ceaea3ab23f7e1f704198caa8ecfa72c18",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342725,
+      "last_seen_block": 105342725,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0x9cf437353d08961c9cdb8e83b218955d01bd9235": {
       "created_at_ms": 1781786599000,
@@ -8954,17 +10026,15 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 105280438,
       "last_seen_block": 105280438,
-      "last_value_usd": 10238517.75681375,
-      "max_value_usd": 10238517.75681375,
+      "last_value_usd": 10241281.967040889,
+      "max_value_usd": 10241281.967040889,
       "tags": [
         "audit_hidden_contract",
-        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
-        "immediate_balance_spike",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -8973,7 +10043,7 @@
       "token_addresses": [
         "0x8773af45b12e8125ed86ffa07cdc875824815989"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0xa4d4cf40d4eee090b9454cd914709b45d406d7d4": {
       "created_at_ms": null,
@@ -8994,6 +10064,24 @@
         "0x55d398326f99059ff775485246999027b3197955"
       ],
       "updated_at_block": 104953484
+    },
+    "0xa60325a0c8d5c1dab23a12f7876d130631c7be21": {
+      "created_at_ms": 1781961906000,
+      "deployer": "0x79ef3a71a2478cb2376b2d38e776ffe74bbc0324",
+      "deployment_tx": "0xcac6c4bbbffee136b1a2fc6ba5bc7e67cc942a480583da3ac84f8745e712e94d",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341597,
+      "last_seen_block": 105341597,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0xa6b8bf27137fa7587b8b977a1898ed8d7ba095c6": {
       "created_at_ms": null,
@@ -9087,6 +10175,24 @@
       "token_addresses": [],
       "updated_at_block": 104715119
     },
+    "0xa87d1b1c2e057fa9f16cf32800510d99ed45f2a9": {
+      "created_at_ms": 1781961359000,
+      "deployer": "0xd56b05dcadb952dfd6283b87fca35a1051ebe013",
+      "deployment_tx": "0x81a792863fa1e3abbc8a7c07d60ee9cb38243a2637aca6f6e295a3e2a6cee498",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105340380,
+      "last_seen_block": 105340380,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d": {
       "created_at_ms": null,
       "deployer": "",
@@ -9094,7 +10200,7 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
       "last_seen_block": 104778622,
-      "last_value_usd": 14673003.678753182,
+      "last_value_usd": 14625307.515815286,
       "max_value_usd": 15059848.840812167,
       "tags": [
         "audit_hidden_contract",
@@ -9111,7 +10217,27 @@
       "token_addresses": [
         "0xe0a281deff5c9d8d67af09d39340e134ac81b82e"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
+    },
+    "0xa8adf7099418d75e05cee7b15e8e1935051c8fe3": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x31000caa660394721a2bbb4c6f04b23737e0f1047ac681ffea3e424b4b357086",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325445,
+      "last_seen_block": 105325445,
+      "last_value_usd": 3798.087709335825,
+      "max_value_usd": 3798.087709335825,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0xac51066d7bec65dc4589368da368b212745d63e8"
+      ],
+      "updated_at_block": 105325443
     },
     "0xa8c649cd649d0d94f4273cf3f00f568efc5b7660": {
       "created_at_ms": 1781782317000,
@@ -9263,7 +10389,7 @@
       "token_addresses": [
         "0x71967d91abfbf96796238e70092c85878fc85999"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0xabe27ff613b5efe0bc1f9fcf3c40ce754f983c6c": {
       "created_at_ms": null,
@@ -9572,11 +10698,11 @@
     "0xb300000b72deaeb607a12d5f54773d1c19c7028d": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0xfc0ae37f1762e02e727dfc54ff0c5bcd76d0441b539f4f20d007d3fb527915fc",
+      "deployment_tx": "0x69f1c2a6a156051afbba175bdcf6ec5b74440352d4c302d1dc6f23f8b5c335f1",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
-      "last_seen_block": 105280438,
-      "last_value_usd": 773.8148289744562,
+      "last_seen_block": 105325444,
+      "last_value_usd": 750.585421307575,
       "max_value_usd": 62640.73722206903,
       "tags": [
         "token_funded_contract",
@@ -9584,10 +10710,26 @@
         "unknown_protocol",
         "unknown_verification_status"
       ],
-      "token_addresses": [
-        "0xce24439f2d9c6a2289f741120fe202248b666666"
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
+    "0xb3c208318603091e32a85704ea7c967ad620fe0f": {
+      "created_at_ms": 1781962300000,
+      "deployer": "0xa5d1d4f4f96f2818bad1dc02aaf9617392e58f08",
+      "deployment_tx": "0xd90ddaa31c576255b592bf4544009df9bce9e19b045a0186b914d8f24f32a6b8",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342473,
+      "last_seen_block": 105342473,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
       ],
-      "updated_at_block": 105280437
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0xb40e80acfec7c38ae0f7595cc01d68e98ed31ad6": {
       "created_at_ms": null,
@@ -9699,6 +10841,24 @@
       "token_addresses": [],
       "updated_at_block": 104943751
     },
+    "0xb553236a2d7d87fdfd5ca8b302c00c148c1c3ca4": {
+      "created_at_ms": 1781962366000,
+      "deployer": "0xbc45cefb9a053b8bc514e8e0e7fff120743892dd",
+      "deployment_tx": "0x667fdaf25a75b7a1d1eb4aef1c2b24f6a420e43e3d85b6a906d6d2291c5b238e",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342619,
+      "last_seen_block": 105342619,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xb55c5b0ad424c2693526635d3a073d201a4f103f": {
       "created_at_ms": 1781707988000,
       "deployer": "0x18ed73d6e59123ad649da4213d54ea3c66ff91c9",
@@ -9796,17 +10956,15 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 105280438,
       "last_seen_block": 105280438,
-      "last_value_usd": 6313914.999335602,
-      "max_value_usd": 6313914.999335602,
+      "last_value_usd": 6314275.950559869,
+      "max_value_usd": 6314275.950559869,
       "tags": [
         "audit_hidden_contract",
-        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
-        "immediate_balance_spike",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -9815,7 +10973,25 @@
       "token_addresses": [
         "0xaf44a1e76f56ee12adbb7ba8acd3cbd474888122"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
+    },
+    "0xb70e92f506a43671cd1abf8a76cc0cb9db9fb99b": {
+      "created_at_ms": 1781962760000,
+      "deployer": "0x6e28e7575adc99eb04aa1fa87653a2c1d2298793",
+      "deployment_tx": "0x10d8731452819bfb1b64b8683eaa6a5fabb12708785ecf2778df89f09729094c",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343493,
+      "last_seen_block": 105343493,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0xb74850809e6eef91e8900442827797513a217e72": {
       "created_at_ms": 1781786421000,
@@ -9963,6 +11139,24 @@
       "token_addresses": [],
       "updated_at_block": 104953484
     },
+    "0xb95e9149f081e07eca22ff3778cb667b25ee746b": {
+      "created_at_ms": 1781962118000,
+      "deployer": "0xcf2b0546a15208a4f7445c56b2575dcae965999a",
+      "deployment_tx": "0xe7d3c35034598343b05f338faffeca79c082bbdbfc330641c1ec5a24191ee406",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342068,
+      "last_seen_block": 105342068,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xb970ba2cb65ebe601bf27071eb06a0d9d36a28c1": {
       "created_at_ms": null,
       "deployer": "",
@@ -10082,6 +11276,26 @@
         "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
       ],
       "updated_at_block": 104953484
+    },
+    "0xbbb461d2246fad4eaa7306f369751bf7b72320a1": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x57f9c83c930c9a72a03e38d211489343c294a76a3b7e0e5bd1fdf5cd1d64b2bb",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 2574.4756434991996,
+      "max_value_usd": 2574.4756434991996,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x03f65216f340bac39c8d1911288b1c7ca071e9c3"
+      ],
+      "updated_at_block": 105325443
     },
     "0xbbb4bf6a7024d378529267729ce7d31b0cfe668a": {
       "created_at_ms": null,
@@ -10259,6 +11473,24 @@
       ],
       "updated_at_block": 105280437
     },
+    "0xbf92bc3c54df6c159db95fab69873b4bd35effbb": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x3ca607fade1465b90a9106fe954431f01e4ddb7a4e20282972b902b883b015b2",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xc0021e0849fadefb98761f40829009905dbd8ee8": {
       "created_at_ms": null,
       "deployer": "",
@@ -10266,17 +11498,15 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 105280438,
       "last_seen_block": 105280438,
-      "last_value_usd": 174175895.38803345,
-      "max_value_usd": 174175895.38803345,
+      "last_value_usd": 174270748.5215179,
+      "max_value_usd": 174270748.5215179,
       "tags": [
         "audit_hidden_contract",
-        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
-        "immediate_balance_spike",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -10285,7 +11515,7 @@
       "token_addresses": [
         "0x8d65744527f55d0b2338350912d5c99a81ddf0e2"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0xc095d7bf475e0aabf1ca684db24cddb5b5774d80": {
       "created_at_ms": 1781954022000,
@@ -10323,6 +11553,24 @@
       "token_addresses": [],
       "updated_at_block": 104786621
     },
+    "0xc0f4989aeb560c82ec71b8561b9e85316626b024": {
+      "created_at_ms": 1781962164000,
+      "deployer": "0x0d802706f847f502482708592dcf4a215b8b53b8",
+      "deployment_tx": "0x73b53bf32895bac7efdba2a7279274aa19a326942ef553b7372b44099d89e24f",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342170,
+      "last_seen_block": 105342170,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xc10ee9031f2a0b84766a86b55a8d90f357910fb4": {
       "created_at_ms": null,
       "deployer": "",
@@ -10346,12 +11594,12 @@
     "0xc1faf39ecd3dd4149a04474797f61695da23f93d": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0x05e2b93cac23650c9aa8154c31e221d13e71d948ca45643481dd783d29ce5895",
+      "deployment_tx": "0xdabace046d3d36258c82024a4d221fc3a73aaf346111144c292e94059a70f323",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
-      "last_seen_block": 104943752,
-      "last_value_usd": 12697.619217057978,
-      "max_value_usd": 38641.181724350856,
+      "last_seen_block": 105325445,
+      "last_value_usd": 47936.820905137465,
+      "max_value_usd": 47936.820905137465,
       "tags": [
         "token_funded_contract",
         "unfamiliar_contract",
@@ -10359,9 +11607,9 @@
         "unknown_verification_status"
       ],
       "token_addresses": [
-        "0x9be61a38725b265bc3eb7bfdf17afdfc9d26c130"
+        "0x55d398326f99059ff775485246999027b3197955"
       ],
-      "updated_at_block": 104943751
+      "updated_at_block": 105325443
     },
     "0xc2eff1f1ce35d395408a34ad881dbcd978f40b89": {
       "created_at_ms": null,
@@ -10483,6 +11731,36 @@
       "token_addresses": [],
       "updated_at_block": 105005359
     },
+    "0xc58102fd6ebf241d845ece964131aed8dc4968ac": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x1cf131b8cecde6a92e531b3065f1fb353e5db547ad62a2fd5111b0de3ada037e",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 52224.071602993055,
+      "max_value_usd": 52224.071602993055,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "bluechip_token_balance",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "known_asset_balance",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+      ],
+      "updated_at_block": 105325443
+    },
     "0xc5a1350019fabafe58cb2c3576672b6f7e1fd562": {
       "created_at_ms": null,
       "deployer": "",
@@ -10490,7 +11768,7 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
       "last_seen_block": 104778622,
-      "last_value_usd": 25464.265621342507,
+      "last_value_usd": 25181.31177589143,
       "max_value_usd": 9.43279004375756e+30,
       "tags": [
         "token_funded_contract",
@@ -10501,7 +11779,7 @@
       "token_addresses": [
         "0x5dbde81fce337ff4bcaaee4ca3466c00aecae274"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0xc5ae93e61094012fd8d1a5097ed4a74f5cdc1c05": {
       "created_at_ms": null,
@@ -10694,8 +11972,8 @@
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104715120,
       "last_seen_block": 104715120,
-      "last_value_usd": 98484275.90683433,
-      "max_value_usd": 98484275.90683433,
+      "last_value_usd": 98617618.68380247,
+      "max_value_usd": 98617618.68380247,
       "tags": [
         "audit_hidden_contract",
         "fresh_contract_large_balance",
@@ -10711,7 +11989,27 @@
       "token_addresses": [
         "0xcae117ca6bc8a341d2e7207f30e180f0e5618b9d"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
+    },
+    "0xcad7019d6d84a3294b0494aef02e73bd0f2572eb": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x31000caa660394721a2bbb4c6f04b23737e0f1047ac681ffea3e424b4b357086",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325445,
+      "last_seen_block": 105325445,
+      "last_value_usd": 23960.799636084786,
+      "max_value_usd": 23960.799636084786,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+      ],
+      "updated_at_block": 105325443
     },
     "0xcaedff35cc8677909309ac45169f0dc0022d2299": {
       "created_at_ms": 1781782738000,
@@ -10803,6 +12101,24 @@
       "token_addresses": [],
       "updated_at_block": 104953484
     },
+    "0xccf088583ccac9c7e9f699ffed41511e8c763c2f": {
+      "created_at_ms": 1781962678000,
+      "deployer": "0x5461817b5500f64acb2c97a72e33acd4d85ef7c8",
+      "deployment_tx": "0x9343ec781c88d9b859e9331a6df6a265b1f28de609ea893061855aa9c6b9443f",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343311,
+      "last_seen_block": 105343311,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xcd2c63e5c63d4de3313ee6759680ddb3087eac22": {
       "created_at_ms": null,
       "deployer": "",
@@ -10826,10 +12142,10 @@
     "0xcd8d805a0735d59539abd348e1c9a68eec75737f": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0xfc0ae37f1762e02e727dfc54ff0c5bcd76d0441b539f4f20d007d3fb527915fc",
+      "deployment_tx": "0xd4b0dad4f1abfcfbcac11592a0356aa9c6e10a4ea2ee86d77102bd9d6553a462",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104778622,
-      "last_seen_block": 105280438,
+      "last_seen_block": 105325444,
       "last_value_usd": 0.0,
       "max_value_usd": 0.0,
       "tags": [
@@ -10839,7 +12155,7 @@
         "unknown_verification_status"
       ],
       "token_addresses": [],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
     },
     "0xcd977a43979bcd34813e058501888b715aa95b75": {
       "created_at_ms": null,
@@ -10982,6 +12298,24 @@
       ],
       "token_addresses": [],
       "updated_at_block": 104715119
+    },
+    "0xd019ecd30b0b4a3ca748618673dd21bf9ebeaf2b": {
+      "created_at_ms": 1781962563000,
+      "deployer": "0x813a419ab2e5c78056d37aded27241c52d3e0e65",
+      "deployment_tx": "0xddf9b836b1163fc738c399758089da2bf9832161f131d99cd4148a7f9ab18678",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343056,
+      "last_seen_block": 105343056,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0xd04b52c8acdd4c297f2b56e13ae18fe87f8c08ec": {
       "created_at_ms": 1781782394000,
@@ -11197,6 +12531,24 @@
       ],
       "updated_at_block": 105280437
     },
+    "0xd31beb6fa75ada3918385ea0d46a720d86d32310": {
+      "created_at_ms": 1781961922000,
+      "deployer": "0x79ef3a71a2478cb2376b2d38e776ffe74bbc0324",
+      "deployment_tx": "0xe957c27765035758fdea246dcea73a2f14ba5406c0ae66a9caf705e678dd068f",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341632,
+      "last_seen_block": 105341632,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xd36b6d646ac6e23672e9eedec558164c7f2d6deb": {
       "created_at_ms": null,
       "deployer": "",
@@ -11220,30 +12572,28 @@
     "0xd3cffc6b02a34dfc72f1350339031043a854599f": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0x808b26e8f656ee7a2ac01377261f19d5b52ee6cf5c1b5b87484e23571a9ed4ff",
+      "deployment_tx": "0x1cf131b8cecde6a92e531b3065f1fb353e5db547ad62a2fd5111b0de3ada037e",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104715120,
-      "last_seen_block": 104786622,
-      "last_value_usd": 843277.4669123068,
+      "last_seen_block": 105325444,
+      "last_value_usd": 816996.1028763569,
       "max_value_usd": 843277.4669123068,
       "tags": [
         "audit_hidden_contract",
-        "bluechip_token_balance",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
-        "known_asset_balance",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
         "unknown_verification_status"
       ],
       "token_addresses": [
-        "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+        "0x5dbde81fce337ff4bcaaee4ca3466c00aecae274"
       ],
-      "updated_at_block": 104786621
+      "updated_at_block": 105325443
     },
     "0xd476b490289d993283425b9d002e3ee595dc9045": {
       "created_at_ms": 1781953433000,
@@ -11601,6 +12951,24 @@
       "token_addresses": [],
       "updated_at_block": 104943751
     },
+    "0xda5e050d59c5f4f27c914a49426e20b6348f2110": {
+      "created_at_ms": 1781962676000,
+      "deployer": "0xf804f80c8c5c36039afe413f53d64e3156ebe6a9",
+      "deployment_tx": "0x95dc8528d1e8e2daeb50a7eea0cb9640290544be67ac44337978bdf53cd3ce19",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343306,
+      "last_seen_block": 105343306,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xda70ede707ac53a5f93ace0000a901d5148be743": {
       "created_at_ms": null,
       "deployer": "",
@@ -11693,6 +13061,24 @@
       ],
       "updated_at_block": 104786621
     },
+    "0xdcbfd21d1a89963c2925ed9eb49de7478339cb12": {
+      "created_at_ms": 1781961906000,
+      "deployer": "0x79ef3a71a2478cb2376b2d38e776ffe74bbc0324",
+      "deployment_tx": "0x5cf7dd339c706772580bde3225158792bdc3cc15b3164189484e72b90d2cf0d7",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341597,
+      "last_seen_block": 105341597,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xdcebe733af4a04c2831f067e8ec11f152abaee39": {
       "created_at_ms": 1781933310000,
       "deployer": "0x4562ac9a3815e487ff001b6d0acf19795911a7f0",
@@ -11710,6 +13096,34 @@
       ],
       "token_addresses": [],
       "updated_at_block": 105005359
+    },
+    "0xdd36a2321563d4954ff9cc8f0a4920688f650014": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xc0363f0a27cfee0d750aead3aceef34e69ac6d51787ede12265a5c2b8790b135",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 170426.3107071794,
+      "max_value_usd": 170426.3107071794,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0xc35ef0564751a27b468f791113c686c8eebaa9ca"
+      ],
+      "updated_at_block": 105325443
     },
     "0xdd3d3c05a672b8a1112e158cd2fc6f577c2b6e1f": {
       "created_at_ms": null,
@@ -11794,6 +13208,26 @@
       ],
       "token_addresses": [],
       "updated_at_block": 105005359
+    },
+    "0xdeb3ff53925cf2e7badb25c04424a4917df97f48": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x118dd984d0dd4a2b83140bcfc66c7293016cafa3da32e17669c61208943eaa25",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 1117.8735065883993,
+      "max_value_usd": 1117.8735065883993,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x55d398326f99059ff775485246999027b3197955"
+      ],
+      "updated_at_block": 105325443
     },
     "0xe020e2415bb8365f2d6c065c8c702d62d1765de3": {
       "created_at_ms": 1781707870000,
@@ -12080,21 +13514,19 @@
     "0xe5ce5bc4785cd2a246151364f5a190cee3fdb142": {
       "created_at_ms": null,
       "deployer": "",
-      "deployment_tx": "0x9419f5a6e1ab562729c66240d9e4c26598fa93b4e233f20a4d4438a16036686b",
+      "deployment_tx": "0xaacdf1ae419c76b5943b62b925685dac1efd268dfbe5301ffaf84ad7d49c46a7",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 105005360,
-      "last_seen_block": 105005360,
-      "last_value_usd": 366343.7907641327,
-      "max_value_usd": 366343.7907641327,
+      "last_seen_block": 105325444,
+      "last_value_usd": 368041.04542231525,
+      "max_value_usd": 368041.04542231525,
       "tags": [
         "audit_hidden_contract",
-        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
-        "immediate_balance_spike",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -12103,7 +13535,7 @@
       "token_addresses": [
         "0xa3cfb853339b77f385b994799b015cb04b208fe6"
       ],
-      "updated_at_block": 105005359
+      "updated_at_block": 105325443
     },
     "0xe637055b2f8d42a7158b83bd21a066d8c06c000a": {
       "created_at_ms": 1781708245000,
@@ -12138,6 +13570,26 @@
       ],
       "token_addresses": [],
       "updated_at_block": 104953484
+    },
+    "0xe6b421a4408c82381b226ab5b6f8c4b639044359": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x107977d1a7d977ca5f3ede32a614ffa793f04f5876a5ab4b140c4a63475b762e",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 12899.047086315484,
+      "max_value_usd": 12899.047086315484,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+      ],
+      "updated_at_block": 105325443
     },
     "0xe6b4fc502c0863dfe233a53b399775c7fdff841f": {
       "created_at_ms": null,
@@ -12264,6 +13716,24 @@
         "0x55d398326f99059ff775485246999027b3197955"
       ],
       "updated_at_block": 105005359
+    },
+    "0xeb05f42619543833dc36384fddccd7a025229328": {
+      "created_at_ms": 1781962373000,
+      "deployer": "0x7da836481b4ffd1d3024ea06fc2753d1d86c3235",
+      "deployment_tx": "0x5b7ea861c55695fc1642efa5337799f833c61e9f5c385184427e73c834891d5d",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105342634,
+      "last_seen_block": 105342634,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0xeb5027ac1fb9a81989cec49479154b6f91b1baa6": {
       "created_at_ms": 1781712033000,
@@ -12459,6 +13929,34 @@
       ],
       "updated_at_block": 104786621
     },
+    "0xf07f1760ade617c4f6c71bd7914bc6bd92e5899b": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xc0363f0a27cfee0d750aead3aceef34e69ac6d51787ede12265a5c2b8790b135",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 548163147.6230354,
+      "max_value_usd": 548163147.6230354,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0xc35ef0564751a27b468f791113c686c8eebaa9ca"
+      ],
+      "updated_at_block": 105325443
+    },
     "0xf14017e173362af30db58fd089b72c714de6190c": {
       "created_at_ms": 1781679419000,
       "deployer": "0x83699bfe1e022f707f9b72e2085aea80e34d1f25",
@@ -12541,6 +14039,24 @@
       ],
       "updated_at_block": 105280437
     },
+    "0xf1f26654627b7492bb745d423f07d1acd06f0f3d": {
+      "created_at_ms": 1781962033000,
+      "deployer": "0x36521c81ce8ee60acb540340ca2254260a13d706",
+      "deployment_tx": "0xf10de3f34dfe0d91374628cb9c718ae81e10d04a83540bfa24ea4412b7c9e653",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341878,
+      "last_seen_block": 105341878,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xf2385e11475704b9efe6b79e814aa867c7642024": {
       "created_at_ms": 1781782824000,
       "deployer": "0xbda40c723be7f6e8184d2ba4038a834f237790d8",
@@ -12602,6 +14118,24 @@
       ],
       "token_addresses": [],
       "updated_at_block": 0
+    },
+    "0xf395cbbf0a282615db7b47171317561d33a06b6f": {
+      "created_at_ms": 1781962824000,
+      "deployer": "0x0651778b05c779d31c41e1c2c6353b2c5e3ef669",
+      "deployment_tx": "0xf7ef684a45c41d394b5a459b649f28396bd0cde2238ae00e772b85155fd2f087",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343634,
+      "last_seen_block": 105343634,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0xf3bf5acaaf374ae8efce9f2c25f23a73f10a71f5": {
       "created_at_ms": 1781782611000,
@@ -12691,6 +14225,24 @@
       ],
       "updated_at_block": 104715119
     },
+    "0xf45ecc0b00283c607f2f6e93425e4b9f8e7488d8": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x69f1c2a6a156051afbba175bdcf6ec5b74440352d4c302d1dc6f23f8b5c335f1",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xf4ac417e1e9fe9e410497a5a973cffb716f2fba5": {
       "created_at_ms": 1781679703000,
       "deployer": "0x8f222801bc51db0b90c7aa3d631404e5af8aaa3b",
@@ -12761,6 +14313,24 @@
       "token_addresses": [],
       "updated_at_block": 104943751
     },
+    "0xf59b770466bb45c62ed1f6468b0d5fd288749c42": {
+      "created_at_ms": 1781962762000,
+      "deployer": "0xfc5dc06b1497442b4a082f000dd23b23c0d1d2b7",
+      "deployment_tx": "0x776567c14764068eede74ec2c615cbe16e63ae5a208768b507b2113dd4fae866",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105343497,
+      "last_seen_block": 105343497,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
     "0xf61c790d0a41868c04a4c249be21cfdd13c1180d": {
       "created_at_ms": 1781711546000,
       "deployer": "0xbd0bf17ae6668b663e638c96d9d4910bc5d5d020",
@@ -12819,6 +14389,26 @@
       ],
       "updated_at_block": 105005359
     },
+    "0xf6aef9c57491019fbc94e2caeb3fd98d8152dd5d": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0xe1cb8826d7026d8b8ae27f80be94e4c88c8f489dc73a28e3cb32022a29ae3183",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 40306.899890699315,
+      "max_value_usd": 40306.899890699315,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0x55d398326f99059ff775485246999027b3197955"
+      ],
+      "updated_at_block": 105325443
+    },
     "0xf72c8558b1c7720d613883ee7d7ac8f9d309416f": {
       "created_at_ms": 1781679133000,
       "deployer": "0x5555f75518f5d0e527c65111a42b4db59d1d9555",
@@ -12834,6 +14424,42 @@
       ],
       "token_addresses": [],
       "updated_at_block": 0
+    },
+    "0xf78c3e1adb06d586e99736d70663e8bebf41c040": {
+      "created_at_ms": 1781962061000,
+      "deployer": "0x50e85e54815618e8909510bcec14bdc7311e9221",
+      "deployment_tx": "0x3bee690f43ab6380e3ba3a0d486a687119e6d037e66f1662e5ffc04c8972f6da",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341942,
+      "last_seen_block": 105341942,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
+    },
+    "0xf844ce78638b24895aaf5f3e8c96bd764fd58033": {
+      "created_at_ms": 1781961906000,
+      "deployer": "0x79ef3a71a2478cb2376b2d38e776ffe74bbc0324",
+      "deployment_tx": "0xab411ce871c6b8d39ae613a5ca1628e460e2dd3f4018c33b9d7b4398b9a2b22e",
+      "discovery_source": "contract_creation",
+      "first_seen_block": 105341597,
+      "last_seen_block": 105341597,
+      "last_value_usd": 0.0,
+      "max_value_usd": 0.0,
+      "tags": [
+        "fresh_deployment",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [],
+      "updated_at_block": 105325443
     },
     "0xf8a1afc08ce5a707f8f5389eb1c01b02e09d4b1d": {
       "created_at_ms": 1781782228000,
@@ -13039,18 +14665,16 @@
       "deployment_tx": "0xd102d25dc7241fb9e2901e72873cb6f7bc0baa938a714a39f9a5d864928a61b9",
       "discovery_source": "erc20_transfer_log",
       "first_seen_block": 104715120,
-      "last_seen_block": 105280438,
+      "last_seen_block": 104715120,
       "last_value_usd": 1.3975464060833216e+158,
       "max_value_usd": 1.407195748357775e+158,
       "tags": [
         "audit_hidden_contract",
-        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
-        "immediate_balance_spike",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -13059,7 +14683,27 @@
       "token_addresses": [
         "0xfd5840cd36d94d7229439859c0112a4185bc0255"
       ],
-      "updated_at_block": 105280437
+      "updated_at_block": 105325443
+    },
+    "0xfda4ef2829c5ad5e8434afdbe478841d289b14a5": {
+      "created_at_ms": null,
+      "deployer": "",
+      "deployment_tx": "0x69f1c2a6a156051afbba175bdcf6ec5b74440352d4c302d1dc6f23f8b5c335f1",
+      "discovery_source": "erc20_transfer_log",
+      "first_seen_block": 105325444,
+      "last_seen_block": 105325444,
+      "last_value_usd": 25303.862166834897,
+      "max_value_usd": 25303.862166834897,
+      "tags": [
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "token_addresses": [
+        "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"
+      ],
+      "updated_at_block": 105325443
     },
     "0xfe36b373c186d01628f18bc23cc7ba1d6aacddd9": {
       "created_at_ms": 1781679539000,
