@@ -1,0 +1,105 @@
+{
+  "attacker_path_hypothesis": {
+    "actor": "unprivileged external user",
+    "call_sequence": [
+      "STEP 1 (recon): Recover selectors from bytecode and match against withdraw/claim/sweep/redeem/migrate patterns",
+      "STEP 2 (recon): Check proxy slots; if proxy, fetch implementation and repeat selector recovery",
+      "STEP 3 (recon): Replay recent transactions to identify which selectors are live and what arguments they accept",
+      "STEP 4 (hypothesis only): If a public value-moving selector with no caller check is found, call it with attacker-controlled recipient to drain token balance"
+    ],
+    "expected_gain": "Unknown until selectors are recovered. Upper bound is ~$174M in token value if a public unchecked sweep or withdraw selector exists.",
+    "preconditions": [
+      "Contract holds ~$174M in token value (confirmed by tvl_usd tag evidence)",
+      "At least one public selector exists that moves tokens out of the contract",
+      "The selector either has no access control or uses a broken/missing check"
+    ]
+  },
+  "candidate": {
+    "address": "0xc0021e0849fadefb98761f40829009905dbd8ee8",
+    "chain": "bsc",
+    "entity_type": "unknown_protocol",
+    "name": "0xc0021e0849fadefb98761f40829009905dbd8ee8",
+    "next_action": "recon_bravo_then_corecritical",
+    "score": 93,
+    "source_file": "deepwiki_briefs/020-bsc-0xc0021e0849fadefb98761f40829009905dbd8ee8.json"
+  },
+  "deepwiki_source_url": "https://deepwiki.com/search/-deepwiki-sentinel-candidate-t_740fb18c-c947-42b0-87e5-a39a2c2f3738?mode=deep",
+  "deepwiki_verdict": "needs_live_context",
+  "live_context_required": [
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=contract&action=getsourcecode&address=0xc0021e0849fadefb98761f40829009905dbd8ee8&apikey={api_key}'",
+      "name": "source_code_and_verification_status",
+      "reason": "verified_source is null \u2014 we do not know whether source is available on BSCScan. Source determines whether we can read access control, entitlement logic, or value-moving paths directly."
+    },
+    {
+      "command_or_source": "cast code 0xc0021e0849fadefb98761f40829009905dbd8ee8 --rpc-url $BSC_RPC | python3 -c 'import sys; b=bytes.fromhex(sys.stdin.read().strip()[2:]); [print(b[i+1:i+5].hex()) for i in range(len(b)-4) if b[i]==0x63]'",
+      "name": "bytecode_and_selector_recovery",
+      "reason": "No selectors are known. Bytecode must be fetched and PUSH4 patterns extracted to recover candidate function selectors, then matched against 4byte.directory to identify value-moving functions (withdraw, claim, redeem, sweep, migrate, etc.)."
+    },
+    {
+      "command_or_source": "cast storage 0xc0021e0849fadefb98761f40829009905dbd8ee8 0x360894a13ba1a3210667c828492db98dca3e2076936f06b09f5be69d3edd5a1b --rpc-url $BSC_RPC",
+      "name": "proxy_slot_check",
+      "reason": "Unknown whether this is a proxy. If EIP-1967 implementation slot is populated, the real logic lives elsewhere and the proxy may expose a storage mismatch or newly reachable value-moving code."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=txlist&address=0xc0021e0849fadefb98761f40829009905dbd8ee8&startblock=0&endblock=99999999&sort=asc&apikey={api_key}' | jq '.result[0]'",
+      "name": "deployer_address_and_creation_tx",
+      "reason": "deployer_address is empty. Deployer identity is needed to check for closed-project links, funding cluster membership, and whether the same deployer controls other funded contracts."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=txlist&address=0xc0021e0849fadefb98761f40829009905dbd8ee8&sort=desc&apikey={api_key}'",
+      "name": "recent_transaction_calldata_patterns",
+      "reason": "volume24h_usd and liquidity_usd are both 0. Recent txlist calldata reveals which selectors are actually being called, who the callers are (EOA vs contract), and whether any privileged sweep or withdrawal activity has occurred."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=tokentx&address=0xc0021e0849fadefb98761f40829009905dbd8ee8&sort=desc&apikey={api_key}'",
+      "name": "token_balance_breakdown",
+      "reason": "high_token_balance tag is set but the specific tokens, amounts, and depositor history are unknown. Token identity determines whether the balance is user-deposited principal, protocol-owned liquidity, or an unrelated subsidy."
+    },
+    {
+      "command_or_source": "cast storage 0xc0021e0849fadefb98761f40829009905dbd8ee8 0x0 --rpc-url $BSC_RPC && cast call 0xc0021e0849fadefb98761f40829009905dbd8ee8 'owner()(address)' --rpc-url $BSC_RPC",
+      "name": "owner_admin_slot_check",
+      "reason": "No owner or admin is known. If owner is an EOA with no timelock, privileged functions may be callable by a single key. If owner slot is zero or unset, access control may be absent entirely."
+    }
+  ],
+  "local_proof_required": {
+    "expected_assertions": [
+      "attacker token balance after > attacker token balance before",
+      "contract token balance after < contract token balance before",
+      "no revert on the call from an unprivileged EOA"
+    ],
+    "setup": [
+      "BSC mainnet fork at current block",
+      "Recovered ABI or raw selector list from bytecode analysis",
+      "Attacker EOA with no prior interaction with the contract"
+    ],
+    "test_type": "fork",
+    "transaction_sequence": [
+      "Identify target selector (withdraw/claim/sweep/redeem) from bytecode recovery",
+      "Call selector with attacker address as recipient or beneficiary argument",
+      "Assert token balance of attacker address increased and contract balance decreased"
+    ]
+  },
+  "paid_scope_match": "fund_extraction",
+  "rejection_reason": "",
+  "schema_version": "sentinel-triage-v1",
+  "source_or_selector_basis": [
+    {
+      "evidence": "Tags: hidden_high_value_contract, audit_hidden_contract, unknown_verification_status, fresh_contract_large_token_balance. No source, no ABI, no calldata patterns available in the brief.",
+      "selector_or_function": "(unknown \u2014 no selectors recovered)",
+      "why_it_matters": "Without selectors we cannot confirm or deny the existence of public value-moving paths. Selector recovery is the mandatory first step before any exploit hypothesis can be formed."
+    },
+    {
+      "evidence": "entity_type is unknown_protocol with unknown_verification_status. No proxy tags are present but absence of evidence is not evidence of absence for a hidden contract.",
+      "selector_or_function": "(proxy implementation slot \u2014 unconfirmed)",
+      "why_it_matters": "If the contract is a proxy with a live implementation, the implementation may expose selectors not visible from the proxy bytecode alone, and a storage layout mismatch could expose live funds."
+    }
+  ],
+  "suspected_exploit_families": [
+    "missing access control on value-moving functions",
+    "proxy, implementation, or storage mismatch that exposes live funds",
+    "unauthorized withdrawal, redeem, unstake, claim, liquidate, release, sweep, or migrate"
+  ],
+  "verdict": "NEEDS_LIVE_CONTEXT",
+  "why_this_target_matters": "A fresh, hidden, unverified-status BSC contract holding ~$174M in token value with no public protocol identity, no deployer attribution, no known selectors, and zero trading volume. The combination of large token custody, hidden status, and complete absence of source or selector evidence makes this a high-priority recon target before any proof work. If the contract exposes public value-moving selectors without access control, the value at risk is among the largest in the current queue."
+}

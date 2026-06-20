@@ -1,0 +1,74 @@
+{
+  "attacker_path_hypothesis": {
+    "actor": "unprivileged external user",
+    "call_sequence": [],
+    "expected_gain": "unknown \u2014 blocked by missing source, selectors, and corrupted value signal",
+    "preconditions": [
+      "Contract identity confirmed as non-mainstream",
+      "Verified source or bytecode-derived selectors available",
+      "Real USD value at risk confirmed above threshold after decimal/price normalization"
+    ]
+  },
+  "candidate": {
+    "address": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+    "chain": "bsc",
+    "entity_type": "unknown_protocol",
+    "name": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+    "next_action": "recon_bravo_then_corecritical",
+    "score": 93,
+    "source_file": "explorer_snapshot"
+  },
+  "deepwiki_source_url": "https://deepwiki.com/search/-deepwiki-sentinel-candidate-t_cbb6ce88-40b3-4251-a482-04df4f30438a?mode=deep",
+  "deepwiki_verdict": "needs_live_context",
+  "live_context_required": [
+    {
+      "command_or_source": "cast code 0xfd5840cd36d94d7229439859c0112a4185bc0255 --rpc-url $BSC_RPC; curl 'https://api.bscscan.com/api?module=contract&action=getsourcecode&address=0xfd5840cd36d94d7229439859c0112a4185bc0255&apikey=$BSCSCAN_KEY'",
+      "name": "Confirm contract identity and source verification status",
+      "reason": "verified_source is null (unknown), not false. The address matches Venus vUSDT on BSC. If confirmed as a mainstream audited protocol, this candidate should be rejected under the mainstream-protocol dampening rule. If it is a different contract, source code and ABI are needed before any exploit surface can be assessed."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=tokentx&address=0xfd5840cd36d94d7229439859c0112a4185bc0255&apikey=$BSCSCAN_KEY' | jq '[.result[] | {contractAddress, tokenSymbol, tokenDecimal}] | unique'; then for each token: cast call <token> 'balanceOf(address)(uint256)' 0xfd5840cd36d94d7229439859c0112a4185bc0255 --rpc-url $BSC_RPC",
+      "name": "Resolve actual token holdings and real USD value",
+      "reason": "The tvl_usd of ~1.4e158 is a raw balance integer artifact. The token whose balance produced this number must be identified, its decimals confirmed, and its real market price fetched. Without this, the value-at-risk signal is meaningless."
+    },
+    {
+      "command_or_source": "cast disassemble $(cast code 0xfd5840cd36d94d7229439859c0112a4185bc0255 --rpc-url $BSC_RPC) | grep PUSH4 | awk '{print $3}' | sort -u; or use heimdall-rs: heimdall decompile 0xfd5840cd36d94d7229439859c0112a4185bc0255 --rpc-url $BSC_RPC",
+      "name": "Extract public selectors from bytecode",
+      "reason": "No selectors are present in the candidate brief. Without them, no value-moving function paths can be assessed for unprivileged access."
+    },
+    {
+      "command_or_source": "grep -r 'hidden_high_value_contract\\|unfamiliar_contract\\|audit_hidden_contract\\|unknown_verification_status' sentinel/ config/ runs/ --include='*.py' --include='*.json'",
+      "name": "Resolve origin of non-standard tags",
+      "reason": "Tags hidden_high_value_contract, unfamiliar_contract, audit_hidden_contract, and unknown_verification_status do not appear in sentinel/chain_scanner.py or sentinel/scoring.py. Their source and semantic meaning are unknown, making the score of 93 uninterpretable."
+    },
+    {
+      "command_or_source": "cast storage 0xfd5840cd36d94d7229439859c0112a4185bc0255 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc --rpc-url $BSC_RPC; cast storage 0xfd5840cd36d94d7229439859c0112a4185bc0255 0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103 --rpc-url $BSC_RPC",
+      "name": "Check proxy slots and deployer",
+      "reason": "deployer_address is empty and no proxy state is known. If this is a proxy, the implementation contract is the actual attack surface."
+    }
+  ],
+  "local_proof_required": {
+    "expected_assertions": [],
+    "setup": [
+      "Resolve contract identity and confirm it is not Venus vUSDT or another mainstream audited protocol",
+      "Obtain verified source or decompiled ABI",
+      "Confirm real token holdings and USD value after decimal normalization",
+      "Identify at least one public value-moving selector callable by an unprivileged address"
+    ],
+    "test_type": "fork",
+    "transaction_sequence": []
+  },
+  "paid_scope_match": "none",
+  "rejection_reason": "Insufficient data for triage. The value_at_risk figure is a raw-balance artifact (price_usd=0 caused value_usd=0 but the raw integer leaked into tvl_usd, producing a physically impossible ~1.4e158 USD figure). All market signals are zero. verified_source is null. No source, selectors, deployer, or transaction history is present. The non-standard tags driving the score do not appear in the sentinel Python source and their basis is unresolved. If live context confirms this is Venus vUSDT (a mainstream audited protocol), the candidate should be REJECTED under the mainstream-protocol dampening rule.",
+  "schema_version": "sentinel-triage-v1",
+  "source_or_selector_basis": [
+    {
+      "evidence": "verified_source is null; no ABI, no source excerpt, no transaction-derived selector list present",
+      "selector_or_function": "unknown \u2014 no selectors in candidate brief",
+      "why_it_matters": "Cannot assess any value-moving path without selectors or source. No exploit family can be hypothesized."
+    }
+  ],
+  "suspected_exploit_families": [],
+  "verdict": "NEEDS_LIVE_CONTEXT",
+  "why_this_target_matters": "The candidate holds a large raw token balance on BSC. However, the reported tvl_usd of ~1.4e158 is a data artifact: a raw ERC-20 balance integer was used directly as a USD figure because price_usd resolved to 0 (no DexScreener pair found) and the decimal-normalized value_usd was therefore 0, but the raw balance leaked into the TVL field. The actual USD value at risk is unknown. All market signals (fdv_usd, liquidity_usd, volume24h_usd) are zero. The score of 93 is driven by the corrupted value signal (35 pts) plus tag weights for tags (hidden_high_value_contract, unfamiliar_contract, audit_hidden_contract, unknown_verification_status) that do not appear in the sentinel Python source and originate from an unresolved external enrichment path. No source code, selectors, deployer, or transaction history is present. The address 0xfd5840cd36d94d7229439859c0112a4185bc0255 matches the Venus Protocol vUSDT market on BSC \u2014 a mainstream, audited lending contract \u2014 which if confirmed would trigger the mainstream-protocol dampening rule and result in rejection."
+}
