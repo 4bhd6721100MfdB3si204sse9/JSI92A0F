@@ -1,5 +1,5 @@
 {
-  "active_stage": "5",
+  "active_stage": "6",
   "manifest_paths": {
     "candidates_scored": [
       "runs/github-27921431629-1-stage-1/candidates_scored.json",
@@ -31,6 +31,22 @@
       "deepwiki_briefs/023-bsc-0xa8acdd81f46633b69acb6ec5c16ee7e00cc8938d.json",
       "deepwiki_briefs/024-bsc-0xabe0e16758e0ec57848a092285ace3b384c58d88.json",
       "deepwiki_briefs/025-bsc-0x16d123a248f50775dc7e367f1bc2c47a5fbca9d8.json"
+    ],
+    "deepwiki_candidates": [
+      "deepwiki_candidates/sentinel_ec4bc96b7e044521b89ebd636b877bdf.md",
+      "deepwiki_candidates/sentinel_bce1ed27279d44dc9b08982569300671.md",
+      "deepwiki_candidates/sentinel_e1c93bd6be304da4a660e8cc58f255a1.md",
+      "deepwiki_candidates/sentinel_9b678f3e145f4847b093285a1d377441.md",
+      "deepwiki_candidates/sentinel_c0c1d6ec86d045edac15ada438e165be.md",
+      "deepwiki_candidates/sentinel_592166a4b48c4e7c81b7ae86c3637a76.md",
+      "deepwiki_candidates/sentinel_6a8c4cab48fb4713af02f539ebb5ed6c.md",
+      "deepwiki_candidates/sentinel_0e0e274db6e446dfbef58016f4874d2a.md",
+      "deepwiki_candidates/sentinel_c18efef81c32425188fb060118ad3734.md",
+      "deepwiki_candidates/sentinel_8052dcce27f9429c927fd886e34a1046.md",
+      "deepwiki_candidates/sentinel_c92410401c4d459b84cb6c4733cd7a09.md",
+      "deepwiki_candidates/sentinel_703848b6cf184d5cbc1078e764fe414e.md",
+      "deepwiki_candidates/sentinel_43c96e7469124548801411319ec4b42f.md",
+      "deepwiki_candidates/sentinel_c1601f257cf2438a8a09be45aad39404.md"
     ],
     "deepwiki_pending": [
       "deepwiki_pending/001-bsc-0x6a7054e68b9335c31b75a4c67d2d6b5c819119b1.json",
@@ -88,6 +104,18 @@
     ],
     "live_targets": [
       "examples/live_targets.json"
+    ],
+    "needs_live_context": [
+      "needs_live_context/sentinel_3a1e0d20e1d143008c1eb4d043281e7b.md",
+      "needs_live_context/sentinel_044c17e437e241048267d43c9fb4734e.md",
+      "needs_live_context/sentinel_b552b06ae4d4422ba70c2876b0ed3511.md",
+      "needs_live_context/sentinel_f6cbe69f0f4d4a73b3654fd96597236b.md",
+      "needs_live_context/sentinel_f30c4d36eda74456aabe84ef51f3724b.md",
+      "needs_live_context/sentinel_b28f9e2130924a1092733f325b1d5a6a.md",
+      "needs_live_context/sentinel_2f9cb76958a84276997a9ad03830e2e8.json",
+      "needs_live_context/sentinel_1746aa0097b14f6f96521831760a0d3c.md",
+      "needs_live_context/sentinel_26445ac286b7460f87e7814acaa0fdf0.md",
+      "needs_live_context/sentinel_38c12033e46540ed876ecb1a2527d766.md"
     ],
     "run_dirs": [
       "runs/github-27921431629-1-stage-1",
@@ -221,8 +249,41 @@
         ]
       },
       "updated_at": "2026-06-22T00:52:41.179335+00:00"
+    },
+    "6": {
+      "outputs": {
+        "deepwiki_candidates": [
+          "deepwiki_candidates/sentinel_ec4bc96b7e044521b89ebd636b877bdf.md",
+          "deepwiki_candidates/sentinel_bce1ed27279d44dc9b08982569300671.md",
+          "deepwiki_candidates/sentinel_e1c93bd6be304da4a660e8cc58f255a1.md",
+          "deepwiki_candidates/sentinel_9b678f3e145f4847b093285a1d377441.md",
+          "deepwiki_candidates/sentinel_c0c1d6ec86d045edac15ada438e165be.md",
+          "deepwiki_candidates/sentinel_592166a4b48c4e7c81b7ae86c3637a76.md",
+          "deepwiki_candidates/sentinel_6a8c4cab48fb4713af02f539ebb5ed6c.md",
+          "deepwiki_candidates/sentinel_0e0e274db6e446dfbef58016f4874d2a.md",
+          "deepwiki_candidates/sentinel_c18efef81c32425188fb060118ad3734.md",
+          "deepwiki_candidates/sentinel_8052dcce27f9429c927fd886e34a1046.md",
+          "deepwiki_candidates/sentinel_c92410401c4d459b84cb6c4733cd7a09.md",
+          "deepwiki_candidates/sentinel_703848b6cf184d5cbc1078e764fe414e.md",
+          "deepwiki_candidates/sentinel_43c96e7469124548801411319ec4b42f.md",
+          "deepwiki_candidates/sentinel_c1601f257cf2438a8a09be45aad39404.md"
+        ],
+        "needs_live_context": [
+          "needs_live_context/sentinel_3a1e0d20e1d143008c1eb4d043281e7b.md",
+          "needs_live_context/sentinel_044c17e437e241048267d43c9fb4734e.md",
+          "needs_live_context/sentinel_b552b06ae4d4422ba70c2876b0ed3511.md",
+          "needs_live_context/sentinel_f6cbe69f0f4d4a73b3654fd96597236b.md",
+          "needs_live_context/sentinel_f30c4d36eda74456aabe84ef51f3724b.md",
+          "needs_live_context/sentinel_b28f9e2130924a1092733f325b1d5a6a.md",
+          "needs_live_context/sentinel_2f9cb76958a84276997a9ad03830e2e8.json",
+          "needs_live_context/sentinel_1746aa0097b14f6f96521831760a0d3c.md",
+          "needs_live_context/sentinel_26445ac286b7460f87e7814acaa0fdf0.md",
+          "needs_live_context/sentinel_38c12033e46540ed876ecb1a2527d766.md"
+        ]
+      },
+      "updated_at": "2026-06-22T01:15:06.887173+00:00"
     }
   },
   "started_at": "2026-06-21T23:49:52.115667+00:00",
-  "updated_at": "2026-06-22T00:52:41.179335+00:00"
+  "updated_at": "2026-06-22T01:15:06.887173+00:00"
 }

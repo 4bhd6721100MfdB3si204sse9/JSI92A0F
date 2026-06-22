@@ -1,0 +1,89 @@
+{
+  "attacker_path_hypothesis": {
+    "actor": "unprivileged external user",
+    "call_sequence": [
+      "UNKNOWN \u2014 selector inventory required before call sequence can be specified"
+    ],
+    "expected_gain": "UNKNOWN \u2014 depends on selector surface; upper bound is ~$28.6M in stablecoin/token balance if a public sweep or withdraw path exists without access control",
+    "preconditions": [
+      "Contract holds ~$28.6M in stablecoins or known ERC-20 assets confirmed by on-chain balance query",
+      "At least one public selector exists that transfers, withdraws, redeems, or sweeps tokens",
+      "No caller whitelist, ownership check, or merkle proof guards that selector"
+    ]
+  },
+  "candidate": {
+    "address": "0x462b30a53c8552035506e82ce7b6a6c418b0477f",
+    "chain": "bsc",
+    "entity_type": "unknown_protocol",
+    "name": "0x462b30a53c8552035506e82ce7b6a6c418b0477f",
+    "next_action": "recon_bravo_then_corecritical",
+    "score": 93,
+    "source_file": "deepwiki_briefs/020-bsc-0x462b30a53c8552035506e82ce7b6a6c418b0477f.json"
+  },
+  "deepwiki_source_url": "https://deepwiki.com/search/-deepwiki-sentinel-candidate-t_8efae84c-16e4-4502-b960-e960e07da5c7?mode=deep",
+  "deepwiki_verdict": "needs_live_context",
+  "live_context_required": [
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=contract&action=getsourcecode&address=0x462b30a53c8552035506e82ce7b6a6c418b0477f&apikey=<KEY>'",
+      "name": "verification_and_source",
+      "reason": "verified_source is null \u2014 the pipeline does not yet know whether source is available on BSCScan. Source code or a decompiled ABI is required before any selector or access-control analysis is possible."
+    },
+    {
+      "command_or_source": "cast storage 0x462b30a53c8552035506e82ce7b6a6c418b0477f 0x360894a13ba1a3210667c828492db98dca3e2076 --rpc-url <BSC_RPC>  # EIP-1967 impl slot\ncast storage 0x462b30a53c8552035506e82ce7b6a6c418b0477f 0xb53127684a568b3173ae13b9f8a6016f243e3b42 --rpc-url <BSC_RPC>  # EIP-1967 admin slot",
+      "name": "proxy_slot_check",
+      "reason": "No proxy/admin state is known. If this is an EIP-1967 or EIP-897 proxy, the implementation address determines the actual callable surface and may differ from any verified stub."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=txlist&address=0x462b30a53c8552035506e82ce7b6a6c418b0477f&sort=desc&apikey=<KEY>' | jq '[.result[].methodId] | unique'",
+      "name": "selectors_from_calldata",
+      "reason": "No selectors have been recovered. Transaction calldata is the only way to enumerate public entry points on an unverified or partially verified contract. Value-moving selectors (withdraw, claim, sweep, redeem, migrate) must be identified before any exploit hypothesis can be formed."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=addresstokenbalance&address=0x462b30a53c8552035506e82ce7b6a6c418b0477f&apikey=<KEY>'",
+      "name": "token_balance_breakdown",
+      "reason": "Tags confirm stablecoin_balance and known_asset_balance but do not identify which tokens or amounts. The exact token composition determines whether the value is user-deposited principal (extractable) or protocol-owned subsidy (not in scope)."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=contract&action=getcontractcreation&contractaddresses=0x462b30a53c8552035506e82ce7b6a6c418b0477f&apikey=<KEY>'",
+      "name": "deployer_and_funding_trace",
+      "reason": "deployer_address is empty. Without the deployer, closed-project cluster matching, funding-source attribution, and ownership/admin role identification are all blocked."
+    },
+    {
+      "command_or_source": "curl 'https://api.bscscan.com/api?module=account&action=txlistinternal&address=0x462b30a53c8552035506e82ce7b6a6c418b0477f&sort=desc&apikey=<KEY>'",
+      "name": "recent_internal_transactions",
+      "reason": "Internal transactions reveal delegatecall patterns, value routing, and whether the contract forwards calls to an implementation \u2014 critical for proxy and router surface identification."
+    }
+  ],
+  "local_proof_required": {
+    "expected_assertions": [
+      "BLOCKED \u2014 requires selector inventory from live context step above"
+    ],
+    "setup": [
+      "Fork BSC mainnet at current block",
+      "Confirm token balances at 0x462b30a53c8552035506e82ce7b6a6c418b0477f",
+      "Resolve proxy implementation if applicable",
+      "Enumerate all public selectors from recovered calldata or decompiled bytecode"
+    ],
+    "test_type": "fork",
+    "transaction_sequence": [
+      "BLOCKED \u2014 requires selector inventory from live context step above"
+    ]
+  },
+  "paid_scope_match": "fund_extraction",
+  "rejection_reason": "",
+  "schema_version": "sentinel-triage-v1",
+  "source_or_selector_basis": [
+    {
+      "evidence": "Transaction calldata has not been parsed; verified_source is null; no ABI is available.",
+      "selector_or_function": "unknown \u2014 no selectors recovered",
+      "why_it_matters": "Without at least one confirmed public selector that moves value, no exploit path can be constructed or rejected. This is the primary blocker for advancing beyond NEEDS_LIVE_CONTEXT."
+    }
+  ],
+  "suspected_exploit_families": [
+    "missing access control on value-moving functions",
+    "unauthorized withdrawal, redeem, unstake, claim, liquidate, release, sweep, or migrate",
+    "proxy, implementation, or storage mismatch that exposes live funds"
+  ],
+  "verdict": "NEEDS_LIVE_CONTEXT",
+  "why_this_target_matters": "Fresh BSC contract holding ~$28.6M in stablecoins and known assets with unknown verification status, no recovered selectors, no deployer attribution, and no protocol identity. The combination of hidden_high_value_contract, unknown_verification_status, and stablecoin_balance at this scale is a high-priority recon surface: if the contract is unverified or a proxy with public value-moving selectors, an unprivileged caller may be able to sweep or withdraw without entitlement checks."
+}
