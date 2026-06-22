@@ -1,0 +1,102 @@
+{
+  "candidate": {
+    "address": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+    "category": "fresh contract",
+    "chain": "bsc",
+    "entity_type": "unknown_protocol",
+    "external_id": "bsc:0xfd5840cd36d94d7229439859c0112a4185bc0255",
+    "name": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+    "source": "explorer_snapshot",
+    "url": ""
+  },
+  "deepwiki_focus": {
+    "gate_question": "Does this exact current protocol, with current live state, allow an unprivileged attacker to extract funds or rewards beyond entitlement?",
+    "local_questions": [
+      "What exact live contract holds or controls the funds/rewards?",
+      "Which public selectors can move, mint, claim, redeem, release, or sweep value?",
+      "Can an unprivileged caller gain more than their entitlement?"
+    ],
+    "proof_route": "recon_bravo_then_corecritical",
+    "why_this_candidate_matters": "Candidate has live value at risk near $139,861,855,522,492,756,261,332,643,763,832,571,341,125,984,532,413,280,233,484,903,321,562,842,739,915,095,615,607,743,154,115,414,709,591,937,824,463,447,988,136,556,496,626,305,422,982,169,299,015,667,023,872 and matches Sentinel fund/reward extraction surfaces."
+  },
+  "live_evidence": {
+    "deployer_address": "",
+    "funding_cluster_id": "",
+    "tags": [
+      "audit_hidden_contract",
+      "fresh_contract_large_balance",
+      "fresh_contract_large_token_balance",
+      "hidden_high_value_contract",
+      "high_token_balance",
+      "high_total_balance",
+      "token_funded_contract",
+      "unfamiliar_contract",
+      "unknown_protocol",
+      "unknown_verification_status"
+    ],
+    "verified_source": null
+  },
+  "rank": 10,
+  "raw_scored_row": {
+    "address": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+    "category": "fresh contract",
+    "chain": "bsc",
+    "created_at_ms": null,
+    "deployer_address": "",
+    "entity_type": "unknown_protocol",
+    "external_id": "bsc:0xfd5840cd36d94d7229439859c0112a4185bc0255",
+    "fdv_usd": 0.0,
+    "funding_cluster_id": "",
+    "liquidity_usd": 0.0,
+    "name": "0xfd5840cd36d94d7229439859c0112a4185bc0255",
+    "next_action": "recon_bravo_then_corecritical",
+    "price_change_24h_pct": 0.0,
+    "reasons": [
+      "value_at_risk>=10000000:139861855522492756261332643763832571341125984532413280233484903321562842739915095615607743154115414709591937824463447988136556496626305422982169299015667023872",
+      "chain_weight:bsc:10",
+      "unknown_protocol:10",
+      "unfamiliar_contract:12",
+      "unknown_verification_status:8",
+      "hidden_high_value_contract:18"
+    ],
+    "score": 93,
+    "source": "explorer_snapshot",
+    "tags": [
+      "audit_hidden_contract",
+      "fresh_contract_large_balance",
+      "fresh_contract_large_token_balance",
+      "hidden_high_value_contract",
+      "high_token_balance",
+      "high_total_balance",
+      "token_funded_contract",
+      "unfamiliar_contract",
+      "unknown_protocol",
+      "unknown_verification_status"
+    ],
+    "tvl_usd": 1.3986185552249276e+158,
+    "url": "",
+    "verified_source": null,
+    "volume24h_usd": 0.0
+  },
+  "schema_version": "sentinel-candidate-brief-v1",
+  "score": {
+    "next_action": "recon_bravo_then_corecritical",
+    "reasons": [
+      "value_at_risk>=10000000:139861855522492756261332643763832571341125984532413280233484903321562842739915095615607743154115414709591937824463447988136556496626305422982169299015667023872",
+      "chain_weight:bsc:10",
+      "unknown_protocol:10",
+      "unfamiliar_contract:12",
+      "unknown_verification_status:8",
+      "hidden_high_value_contract:18"
+    ],
+    "value": 93
+  },
+  "value_at_risk": {
+    "fdv_usd": 0.0,
+    "liquidity_usd": 0.0,
+    "price_change_24h_pct": 0.0,
+    "tvl_usd": 1.3986185552249276e+158,
+    "usd": 1.3986185552249276e+158,
+    "volume24h_usd": 0.0
+  }
+}
