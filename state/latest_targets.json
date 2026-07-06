@@ -1,114 +1,10 @@
 {
   "targets": [
     {
-      "address": "0x6a7054e68b9335c31b75a4c67d2d6b5c819119b1",
-      "category": "fresh contract",
-      "chain": "bsc",
-      "label": "0x6a7054e68b9335c31b75a4c67d2d6b5c819119b1",
-      "liquidity_usd": 0.0,
-      "metadata": {
-        "category": "fresh contract",
-        "deployer_address": "",
-        "entity_type": "unknown_protocol",
-        "fdv_usd": 0.0,
-        "funding_cluster_id": "",
-        "liquidity_usd": 0.0,
-        "next_action": "recon_bravo_then_corecritical",
-        "price_change_24h_pct": 0.0,
-        "score": 113,
-        "source": "bsc_chain_scanner",
-        "tags": [
-          "audit_hidden_contract",
-          "balance_spike",
-          "fresh_contract_large_balance",
-          "fresh_contract_large_token_balance",
-          "hidden_high_value_contract",
-          "high_token_balance",
-          "high_total_balance",
-          "immediate_balance_spike",
-          "token_funded_contract",
-          "unfamiliar_contract",
-          "unknown_protocol",
-          "unknown_verification_status"
-        ],
-        "tvl_usd": 100919831.96105786,
-        "verified_source": null,
-        "volume24h_usd": 0.0
-      },
-      "price_change_24h_pct": 0.0,
-      "tags": [
-        "audit_hidden_contract",
-        "balance_spike",
-        "fresh_contract_large_balance",
-        "fresh_contract_large_token_balance",
-        "hidden_high_value_contract",
-        "high_token_balance",
-        "high_total_balance",
-        "immediate_balance_spike",
-        "token_funded_contract",
-        "unfamiliar_contract",
-        "unknown_protocol",
-        "unknown_verification_status"
-      ],
-      "volume24h_usd": 0.0
-    },
-    {
-      "address": "0x6e395da41cf9362d30461d49f23fe57849b18498",
-      "category": "fresh contract",
-      "chain": "bsc",
-      "label": "0x6e395da41cf9362d30461d49f23fe57849b18498",
-      "liquidity_usd": 0.0,
-      "metadata": {
-        "category": "fresh contract",
-        "deployer_address": "",
-        "entity_type": "unknown_protocol",
-        "fdv_usd": 0.0,
-        "funding_cluster_id": "",
-        "liquidity_usd": 0.0,
-        "next_action": "recon_bravo_then_corecritical",
-        "price_change_24h_pct": 0.0,
-        "score": 113,
-        "source": "bsc_chain_scanner",
-        "tags": [
-          "audit_hidden_contract",
-          "balance_spike",
-          "fresh_contract_large_balance",
-          "fresh_contract_large_token_balance",
-          "hidden_high_value_contract",
-          "high_token_balance",
-          "high_total_balance",
-          "immediate_balance_spike",
-          "token_funded_contract",
-          "unfamiliar_contract",
-          "unknown_protocol",
-          "unknown_verification_status"
-        ],
-        "tvl_usd": 30423482861.57768,
-        "verified_source": null,
-        "volume24h_usd": 0.0
-      },
-      "price_change_24h_pct": 0.0,
-      "tags": [
-        "audit_hidden_contract",
-        "balance_spike",
-        "fresh_contract_large_balance",
-        "fresh_contract_large_token_balance",
-        "hidden_high_value_contract",
-        "high_token_balance",
-        "high_total_balance",
-        "immediate_balance_spike",
-        "token_funded_contract",
-        "unfamiliar_contract",
-        "unknown_protocol",
-        "unknown_verification_status"
-      ],
-      "volume24h_usd": 0.0
-    },
-    {
-      "address": "0xa43fe16908251ee70ef74718545e4fe6c5ccec9f",
+      "address": "0xaa390a37006e22b5775a34f2147f81ebd6a63641",
       "category": "fresh contract",
       "chain": "ethereum",
-      "label": "0xa43fe16908251ee70ef74718545e4fe6c5ccec9f",
+      "label": "0xaa390a37006e22b5775a34f2147f81ebd6a63641",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -120,6 +16,266 @@
         "next_action": "recon_bravo_then_corecritical",
         "price_change_24h_pct": 0.0,
         "score": 108,
+        "source": "ethereum_chain_scanner",
+        "tags": [
+          "audit_hidden_contract",
+          "balance_spike",
+          "fresh_contract_large_balance",
+          "fresh_contract_large_token_balance",
+          "hidden_high_value_contract",
+          "high_token_balance",
+          "high_total_balance",
+          "immediate_balance_spike",
+          "token_funded_contract",
+          "unfamiliar_contract",
+          "unknown_protocol",
+          "unknown_verification_status"
+        ],
+        "tvl_usd": 19564452306.838337,
+        "verified_source": null,
+        "volume24h_usd": 0.0
+      },
+      "price_change_24h_pct": 0.0,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x7ff1f30f6e7eec2ff3f0d1b60739115bdf88190f",
+      "category": "fresh contract",
+      "chain": "ethereum",
+      "label": "0x7ff1f30f6e7eec2ff3f0d1b60739115bdf88190f",
+      "liquidity_usd": 0.0,
+      "metadata": {
+        "category": "fresh contract",
+        "deployer_address": "",
+        "entity_type": "unknown_protocol",
+        "fdv_usd": 0.0,
+        "funding_cluster_id": "",
+        "liquidity_usd": 0.0,
+        "next_action": "recon_bravo_then_corecritical",
+        "price_change_24h_pct": 0.0,
+        "score": 108,
+        "source": "ethereum_chain_scanner",
+        "tags": [
+          "audit_hidden_contract",
+          "balance_spike",
+          "fresh_contract_large_balance",
+          "fresh_contract_large_token_balance",
+          "hidden_high_value_contract",
+          "high_token_balance",
+          "high_total_balance",
+          "immediate_balance_spike",
+          "token_funded_contract",
+          "unfamiliar_contract",
+          "unknown_protocol",
+          "unknown_verification_status"
+        ],
+        "tvl_usd": 21556952427.715645,
+        "verified_source": null,
+        "volume24h_usd": 0.0
+      },
+      "price_change_24h_pct": 0.0,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0xc2eab7d33d3cb97692ecb231a5d0e4a649cb539d",
+      "category": "fresh contract",
+      "chain": "ethereum",
+      "label": "0xc2eab7d33d3cb97692ecb231a5d0e4a649cb539d",
+      "liquidity_usd": 0.0,
+      "metadata": {
+        "category": "fresh contract",
+        "deployer_address": "",
+        "entity_type": "unknown_protocol",
+        "fdv_usd": 0.0,
+        "funding_cluster_id": "",
+        "liquidity_usd": 0.0,
+        "next_action": "recon_bravo_then_corecritical",
+        "price_change_24h_pct": 0.0,
+        "score": 108,
+        "source": "ethereum_chain_scanner",
+        "tags": [
+          "audit_hidden_contract",
+          "balance_spike",
+          "fresh_contract_large_balance",
+          "fresh_contract_large_token_balance",
+          "hidden_high_value_contract",
+          "high_token_balance",
+          "high_total_balance",
+          "immediate_balance_spike",
+          "token_funded_contract",
+          "unfamiliar_contract",
+          "unknown_protocol",
+          "unknown_verification_status"
+        ],
+        "tvl_usd": 6900338449.968032,
+        "verified_source": null,
+        "volume24h_usd": 0.0
+      },
+      "price_change_24h_pct": 0.0,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x99cd4ec3f88a45940936f469e4bb72a2a701eeb9",
+      "category": "fresh contract",
+      "chain": "ethereum",
+      "label": "0x99cd4ec3f88a45940936f469e4bb72a2a701eeb9",
+      "liquidity_usd": 0.0,
+      "metadata": {
+        "category": "fresh contract",
+        "deployer_address": "",
+        "entity_type": "unknown_protocol",
+        "fdv_usd": 0.0,
+        "funding_cluster_id": "",
+        "liquidity_usd": 0.0,
+        "next_action": "recon_bravo_then_corecritical",
+        "price_change_24h_pct": 0.0,
+        "score": 108,
+        "source": "ethereum_chain_scanner",
+        "tags": [
+          "audit_hidden_contract",
+          "balance_spike",
+          "fresh_contract_large_balance",
+          "fresh_contract_large_token_balance",
+          "hidden_high_value_contract",
+          "high_token_balance",
+          "high_total_balance",
+          "immediate_balance_spike",
+          "token_funded_contract",
+          "unfamiliar_contract",
+          "unknown_protocol",
+          "unknown_verification_status"
+        ],
+        "tvl_usd": 18107795558.720806,
+        "verified_source": null,
+        "volume24h_usd": 0.0
+      },
+      "price_change_24h_pct": 0.0,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x303d72b77efe73e07aacb9dbe58e794c3df48625",
+      "category": "fresh contract",
+      "chain": "ethereum",
+      "label": "0x303d72b77efe73e07aacb9dbe58e794c3df48625",
+      "liquidity_usd": 0.0,
+      "metadata": {
+        "category": "fresh contract",
+        "deployer_address": "",
+        "entity_type": "unknown_protocol",
+        "fdv_usd": 0.0,
+        "funding_cluster_id": "",
+        "liquidity_usd": 0.0,
+        "next_action": "recon_bravo_then_corecritical",
+        "price_change_24h_pct": 0.0,
+        "score": 98,
+        "source": "ethereum_chain_scanner",
+        "tags": [
+          "audit_hidden_contract",
+          "balance_spike",
+          "fresh_contract_large_balance",
+          "fresh_contract_large_token_balance",
+          "hidden_high_value_contract",
+          "high_token_balance",
+          "high_total_balance",
+          "immediate_balance_spike",
+          "token_funded_contract",
+          "unfamiliar_contract",
+          "unknown_protocol",
+          "unknown_verification_status"
+        ],
+        "tvl_usd": 8076774.407690081,
+        "verified_source": null,
+        "volume24h_usd": 0.0
+      },
+      "price_change_24h_pct": 0.0,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0xc7bbec68d12a0d1830360f8ec58fa599ba1b0e9b",
+      "category": "fresh contract",
+      "chain": "ethereum",
+      "label": "0xc7bbec68d12a0d1830360f8ec58fa599ba1b0e9b",
+      "liquidity_usd": 0.0,
+      "metadata": {
+        "category": "fresh contract",
+        "deployer_address": "",
+        "entity_type": "unknown_protocol",
+        "fdv_usd": 0.0,
+        "funding_cluster_id": "",
+        "liquidity_usd": 0.0,
+        "next_action": "recon_bravo_then_corecritical",
+        "price_change_24h_pct": 0.0,
+        "score": 98,
         "source": "ethereum_chain_scanner",
         "tags": [
           "audit_hidden_contract",
@@ -137,7 +293,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 20478314.893418614,
+        "tvl_usd": 4859933.532162411,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -161,66 +317,10 @@
       "volume24h_usd": 0.0
     },
     {
-      "address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
-      "category": "fresh contract",
-      "chain": "ethereum",
-      "label": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
-      "liquidity_usd": 0.0,
-      "metadata": {
-        "category": "fresh contract",
-        "deployer_address": "",
-        "entity_type": "unknown_protocol",
-        "fdv_usd": 0.0,
-        "funding_cluster_id": "",
-        "liquidity_usd": 0.0,
-        "next_action": "recon_bravo_then_corecritical",
-        "price_change_24h_pct": 0.0,
-        "score": 108,
-        "source": "ethereum_chain_scanner",
-        "tags": [
-          "audit_hidden_contract",
-          "balance_spike",
-          "fresh_contract_large_balance",
-          "fresh_contract_large_token_balance",
-          "hidden_high_value_contract",
-          "high_token_balance",
-          "high_total_balance",
-          "immediate_balance_spike",
-          "known_asset_balance",
-          "stablecoin_balance",
-          "token_funded_contract",
-          "unfamiliar_contract",
-          "unknown_protocol",
-          "unknown_verification_status"
-        ],
-        "tvl_usd": 111901015.05267,
-        "verified_source": null,
-        "volume24h_usd": 0.0
-      },
-      "price_change_24h_pct": 0.0,
-      "tags": [
-        "audit_hidden_contract",
-        "balance_spike",
-        "fresh_contract_large_balance",
-        "fresh_contract_large_token_balance",
-        "hidden_high_value_contract",
-        "high_token_balance",
-        "high_total_balance",
-        "immediate_balance_spike",
-        "known_asset_balance",
-        "stablecoin_balance",
-        "token_funded_contract",
-        "unfamiliar_contract",
-        "unknown_protocol",
-        "unknown_verification_status"
-      ],
-      "volume24h_usd": 0.0
-    },
-    {
-      "address": "0x73d8bd54f7cf5fab43fe4ef40a62d390644946db",
+      "address": "0x278d858f05b94576c1e6f73285886876ff6ef8d2",
       "category": "fresh contract",
       "chain": "bsc",
-      "label": "0x73d8bd54f7cf5fab43fe4ef40a62d390644946db",
+      "label": "0x278d858f05b94576c1e6f73285886876ff6ef8d2",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -231,7 +331,7 @@
         "liquidity_usd": 0.0,
         "next_action": "recon_bravo_then_corecritical",
         "price_change_24h_pct": 0.0,
-        "score": 103,
+        "score": 94,
         "source": "bsc_chain_scanner",
         "tags": [
           "audit_hidden_contract",
@@ -242,108 +342,6 @@
           "high_token_balance",
           "high_total_balance",
           "immediate_balance_spike",
-          "token_funded_contract",
-          "unfamiliar_contract",
-          "unknown_protocol",
-          "unknown_verification_status"
-        ],
-        "tvl_usd": 9991536.394475223,
-        "verified_source": null,
-        "volume24h_usd": 0.0
-      },
-      "price_change_24h_pct": 0.0,
-      "tags": [
-        "audit_hidden_contract",
-        "balance_spike",
-        "fresh_contract_large_balance",
-        "fresh_contract_large_token_balance",
-        "hidden_high_value_contract",
-        "high_token_balance",
-        "high_total_balance",
-        "immediate_balance_spike",
-        "token_funded_contract",
-        "unfamiliar_contract",
-        "unknown_protocol",
-        "unknown_verification_status"
-      ],
-      "volume24h_usd": 0.0
-    },
-    {
-      "address": "0xf92e277deec98f47f091b5c222c5f292f876864c",
-      "category": "fresh contract",
-      "chain": "ethereum",
-      "label": "0xf92e277deec98f47f091b5c222c5f292f876864c",
-      "liquidity_usd": 0.0,
-      "metadata": {
-        "category": "fresh contract",
-        "deployer_address": "",
-        "entity_type": "unknown_protocol",
-        "fdv_usd": 0.0,
-        "funding_cluster_id": "",
-        "liquidity_usd": 0.0,
-        "next_action": "recon_bravo_then_corecritical",
-        "price_change_24h_pct": 0.0,
-        "score": 98,
-        "source": "ethereum_chain_scanner",
-        "tags": [
-          "audit_hidden_contract",
-          "balance_spike",
-          "fresh_contract_large_balance",
-          "hidden_high_value_contract",
-          "high_native_balance",
-          "high_total_balance",
-          "immediate_balance_spike",
-          "token_funded_contract",
-          "unfamiliar_contract",
-          "unknown_protocol",
-          "unknown_verification_status"
-        ],
-        "tvl_usd": 1082156.4979816547,
-        "verified_source": null,
-        "volume24h_usd": 0.0
-      },
-      "price_change_24h_pct": 0.0,
-      "tags": [
-        "audit_hidden_contract",
-        "balance_spike",
-        "fresh_contract_large_balance",
-        "hidden_high_value_contract",
-        "high_native_balance",
-        "high_total_balance",
-        "immediate_balance_spike",
-        "token_funded_contract",
-        "unfamiliar_contract",
-        "unknown_protocol",
-        "unknown_verification_status"
-      ],
-      "volume24h_usd": 0.0
-    },
-    {
-      "address": "0x08bfa22bb3e024cdfeb3eca53c0cb93bf59c4147",
-      "category": "fresh contract",
-      "chain": "ethereum",
-      "label": "0x08bfa22bb3e024cdfeb3eca53c0cb93bf59c4147",
-      "liquidity_usd": 0.0,
-      "metadata": {
-        "category": "fresh contract",
-        "deployer_address": "",
-        "entity_type": "unknown_protocol",
-        "fdv_usd": 0.0,
-        "funding_cluster_id": "",
-        "liquidity_usd": 0.0,
-        "next_action": "recon_bravo_then_corecritical",
-        "price_change_24h_pct": 0.0,
-        "score": 98,
-        "source": "ethereum_chain_scanner",
-        "tags": [
-          "audit_hidden_contract",
-          "balance_spike",
-          "fresh_contract_large_balance",
-          "fresh_contract_large_token_balance",
-          "hidden_high_value_contract",
-          "high_token_balance",
-          "high_total_balance",
-          "immediate_balance_spike",
           "known_asset_balance",
           "stablecoin_balance",
           "token_funded_contract",
@@ -351,7 +349,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 1146164.454299,
+        "tvl_usd": 766590.0879366619,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -375,10 +373,10 @@
       "volume24h_usd": 0.0
     },
     {
-      "address": "0xfff4857a955b2b460c27fd431aa5a85fabca5559",
+      "address": "0x519d281627c9f25636a041416707e6f1f4cf945f",
       "category": "fresh contract",
       "chain": "bsc",
-      "label": "0xfff4857a955b2b460c27fd431aa5a85fabca5559",
+      "label": "0x519d281627c9f25636a041416707e6f1f4cf945f",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -407,7 +405,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 562949.3454519768,
+        "tvl_usd": 500567.34524771955,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -431,10 +429,10 @@
       "volume24h_usd": 0.0
     },
     {
-      "address": "0x8665a78ccc84d6df2acaa4b207d88c6bc9b70ec5",
+      "address": "0x5faf1dfc1e933daaa92cfbd165cbf6acf2d42c3b",
       "category": "fresh contract",
       "chain": "bsc",
-      "label": "0x8665a78ccc84d6df2acaa4b207d88c6bc9b70ec5",
+      "label": "0x5faf1dfc1e933daaa92cfbd165cbf6acf2d42c3b",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -445,36 +443,84 @@
         "liquidity_usd": 0.0,
         "next_action": "recon_bravo_then_corecritical",
         "price_change_24h_pct": 0.0,
-        "score": 94,
+        "score": 93,
         "source": "bsc_chain_scanner",
         "tags": [
           "audit_hidden_contract",
-          "balance_spike",
           "fresh_contract_large_balance",
           "fresh_contract_large_token_balance",
           "hidden_high_value_contract",
           "high_token_balance",
           "high_total_balance",
-          "immediate_balance_spike",
           "token_funded_contract",
           "unfamiliar_contract",
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 722196.7672254929,
+        "tvl_usd": 20622053.283504818,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
       "price_change_24h_pct": 0.0,
       "tags": [
         "audit_hidden_contract",
-        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
-        "immediate_balance_spike",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0xcaaf3c41a40103a23eeaa4bba468af3cf5b0e0d8",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "label": "0xcaaf3c41a40103a23eeaa4bba468af3cf5b0e0d8",
+      "liquidity_usd": 0.0,
+      "metadata": {
+        "category": "fresh contract",
+        "deployer_address": "",
+        "entity_type": "unknown_protocol",
+        "fdv_usd": 0.0,
+        "funding_cluster_id": "",
+        "liquidity_usd": 0.0,
+        "next_action": "recon_bravo_then_corecritical",
+        "price_change_24h_pct": 0.0,
+        "score": 93,
+        "source": "bsc_chain_scanner",
+        "tags": [
+          "audit_hidden_contract",
+          "fresh_contract_large_balance",
+          "fresh_contract_large_token_balance",
+          "hidden_high_value_contract",
+          "high_token_balance",
+          "high_total_balance",
+          "known_asset_balance",
+          "stablecoin_balance",
+          "token_funded_contract",
+          "unfamiliar_contract",
+          "unknown_protocol",
+          "unknown_verification_status"
+        ],
+        "tvl_usd": 27856473.847168975,
+        "verified_source": null,
+        "volume24h_usd": 0.0
+      },
+      "price_change_24h_pct": 0.0,
+      "tags": [
+        "audit_hidden_contract",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -506,12 +552,14 @@
           "hidden_high_value_contract",
           "high_token_balance",
           "high_total_balance",
+          "known_asset_balance",
+          "stablecoin_balance",
           "token_funded_contract",
           "unfamiliar_contract",
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 1.3986185552249276e+158,
+        "tvl_usd": 66783377.33320642,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -523,6 +571,8 @@
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -559,7 +609,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 141223042440.003,
+        "tvl_usd": 67658247294.408714,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -607,7 +657,55 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 50552515863.08859,
+        "tvl_usd": 58141023287.1735,
+        "verified_source": null,
+        "volume24h_usd": 0.0
+      },
+      "price_change_24h_pct": 0.0,
+      "tags": [
+        "audit_hidden_contract",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x6e395da41cf9362d30461d49f23fe57849b18498",
+      "category": "fresh contract",
+      "chain": "bsc",
+      "label": "0x6e395da41cf9362d30461d49f23fe57849b18498",
+      "liquidity_usd": 0.0,
+      "metadata": {
+        "category": "fresh contract",
+        "deployer_address": "",
+        "entity_type": "unknown_protocol",
+        "fdv_usd": 0.0,
+        "funding_cluster_id": "",
+        "liquidity_usd": 0.0,
+        "next_action": "recon_bravo_then_corecritical",
+        "price_change_24h_pct": 0.0,
+        "score": 93,
+        "source": "bsc_chain_scanner",
+        "tags": [
+          "audit_hidden_contract",
+          "fresh_contract_large_balance",
+          "fresh_contract_large_token_balance",
+          "hidden_high_value_contract",
+          "high_token_balance",
+          "high_total_balance",
+          "token_funded_contract",
+          "unfamiliar_contract",
+          "unknown_protocol",
+          "unknown_verification_status"
+        ],
+        "tvl_usd": 37218424923.96726,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -655,7 +753,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 543369673.6653464,
+        "tvl_usd": 672889093.6373423,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -706,7 +804,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 17779108.200756773,
+        "tvl_usd": 12270935.689508488,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -757,7 +855,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 177592761.89223862,
+        "tvl_usd": 227997522.91940027,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -777,10 +875,10 @@
       "volume24h_usd": 0.0
     },
     {
-      "address": "0xcaaf3c41a40103a23eeaa4bba468af3cf5b0e0d8",
+      "address": "0x6a7054e68b9335c31b75a4c67d2d6b5c819119b1",
       "category": "fresh contract",
       "chain": "bsc",
-      "label": "0xcaaf3c41a40103a23eeaa4bba468af3cf5b0e0d8",
+      "label": "0x6a7054e68b9335c31b75a4c67d2d6b5c819119b1",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -805,7 +903,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 39654237.89587965,
+        "tvl_usd": 105308955.35793452,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -853,7 +951,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 69873850.17712557,
+        "tvl_usd": 71618207.66471502,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -903,7 +1001,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 38770872.1295853,
+        "tvl_usd": 43648204.6714727,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -955,7 +1053,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 38467437.80774332,
+        "tvl_usd": 31338580.198379032,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1007,107 +1105,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 28617440.82451677,
-        "verified_source": null,
-        "volume24h_usd": 0.0
-      },
-      "price_change_24h_pct": 0.0,
-      "tags": [
-        "audit_hidden_contract",
-        "fresh_contract_large_balance",
-        "fresh_contract_large_token_balance",
-        "hidden_high_value_contract",
-        "high_token_balance",
-        "high_total_balance",
-        "known_asset_balance",
-        "stablecoin_balance",
-        "token_funded_contract",
-        "unfamiliar_contract",
-        "unknown_protocol",
-        "unknown_verification_status"
-      ],
-      "volume24h_usd": 0.0
-    },
-    {
-      "address": "0x5faf1dfc1e933daaa92cfbd165cbf6acf2d42c3b",
-      "category": "fresh contract",
-      "chain": "bsc",
-      "label": "0x5faf1dfc1e933daaa92cfbd165cbf6acf2d42c3b",
-      "liquidity_usd": 0.0,
-      "metadata": {
-        "category": "fresh contract",
-        "deployer_address": "",
-        "entity_type": "unknown_protocol",
-        "fdv_usd": 0.0,
-        "funding_cluster_id": "",
-        "liquidity_usd": 0.0,
-        "next_action": "recon_bravo_then_corecritical",
-        "price_change_24h_pct": 0.0,
-        "score": 93,
-        "source": "bsc_chain_scanner",
-        "tags": [
-          "audit_hidden_contract",
-          "fresh_contract_large_balance",
-          "fresh_contract_large_token_balance",
-          "hidden_high_value_contract",
-          "high_token_balance",
-          "high_total_balance",
-          "token_funded_contract",
-          "unfamiliar_contract",
-          "unknown_protocol",
-          "unknown_verification_status"
-        ],
-        "tvl_usd": 17233796.150907323,
-        "verified_source": null,
-        "volume24h_usd": 0.0
-      },
-      "price_change_24h_pct": 0.0,
-      "tags": [
-        "audit_hidden_contract",
-        "fresh_contract_large_balance",
-        "fresh_contract_large_token_balance",
-        "hidden_high_value_contract",
-        "high_token_balance",
-        "high_total_balance",
-        "token_funded_contract",
-        "unfamiliar_contract",
-        "unknown_protocol",
-        "unknown_verification_status"
-      ],
-      "volume24h_usd": 0.0
-    },
-    {
-      "address": "0x9996874dbd891c3ecd601eab79d51f92e92d50ee",
-      "category": "fresh contract",
-      "chain": "bsc",
-      "label": "0x9996874dbd891c3ecd601eab79d51f92e92d50ee",
-      "liquidity_usd": 0.0,
-      "metadata": {
-        "category": "fresh contract",
-        "deployer_address": "",
-        "entity_type": "unknown_protocol",
-        "fdv_usd": 0.0,
-        "funding_cluster_id": "",
-        "liquidity_usd": 0.0,
-        "next_action": "recon_bravo_then_corecritical",
-        "price_change_24h_pct": 0.0,
-        "score": 93,
-        "source": "bsc_chain_scanner",
-        "tags": [
-          "audit_hidden_contract",
-          "fresh_contract_large_balance",
-          "fresh_contract_large_token_balance",
-          "hidden_high_value_contract",
-          "high_token_balance",
-          "high_total_balance",
-          "known_asset_balance",
-          "stablecoin_balance",
-          "token_funded_contract",
-          "unfamiliar_contract",
-          "unknown_protocol",
-          "unknown_verification_status"
-        ],
-        "tvl_usd": 16007362.875730516,
+        "tvl_usd": 29915891.77887354,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1157,7 +1155,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 14471605.165076155,
+        "tvl_usd": 15015897.16634241,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1205,7 +1203,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 11464876.879481452,
+        "tvl_usd": 12198949.322288763,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1253,7 +1251,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 10903387.55043506,
+        "tvl_usd": 14642105.297604488,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1273,58 +1271,10 @@
       "volume24h_usd": 0.0
     },
     {
-      "address": "0xa2f464a2462aed49b9b31eb8861bc6b0bbb0483f",
-      "category": "fresh contract",
-      "chain": "bsc",
-      "label": "0xa2f464a2462aed49b9b31eb8861bc6b0bbb0483f",
-      "liquidity_usd": 0.0,
-      "metadata": {
-        "category": "fresh contract",
-        "deployer_address": "",
-        "entity_type": "unknown_protocol",
-        "fdv_usd": 0.0,
-        "funding_cluster_id": "",
-        "liquidity_usd": 0.0,
-        "next_action": "recon_bravo_then_corecritical",
-        "price_change_24h_pct": 0.0,
-        "score": 93,
-        "source": "bsc_chain_scanner",
-        "tags": [
-          "audit_hidden_contract",
-          "fresh_contract_large_balance",
-          "fresh_contract_large_token_balance",
-          "hidden_high_value_contract",
-          "high_token_balance",
-          "high_total_balance",
-          "token_funded_contract",
-          "unfamiliar_contract",
-          "unknown_protocol",
-          "unknown_verification_status"
-        ],
-        "tvl_usd": 10178895.737142086,
-        "verified_source": null,
-        "volume24h_usd": 0.0
-      },
-      "price_change_24h_pct": 0.0,
-      "tags": [
-        "audit_hidden_contract",
-        "fresh_contract_large_balance",
-        "fresh_contract_large_token_balance",
-        "hidden_high_value_contract",
-        "high_token_balance",
-        "high_total_balance",
-        "token_funded_contract",
-        "unfamiliar_contract",
-        "unknown_protocol",
-        "unknown_verification_status"
-      ],
-      "volume24h_usd": 0.0
-    },
-    {
-      "address": "0xd315a9c38ec871068fec378e4ce78af528c76293",
+      "address": "0x1445f32d1a74872ba41f3d8cf4022e9996120b31",
       "category": "fresh contract",
       "chain": "ethereum",
-      "label": "0xd315a9c38ec871068fec378e4ce78af528c76293",
+      "label": "0x1445f32d1a74872ba41f3d8cf4022e9996120b31",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -1353,7 +1303,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 966371.8844518542,
+        "tvl_usd": 274276.55857549666,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1377,10 +1327,66 @@
       "volume24h_usd": 0.0
     },
     {
-      "address": "0xdb6925ea42897ca786a045b252d95aa7370f44b4",
+      "address": "0x278d858f05b94576c1e6f73285886876ff6ef8d2",
       "category": "fresh contract",
       "chain": "ethereum",
-      "label": "0xdb6925ea42897ca786a045b252d95aa7370f44b4",
+      "label": "0x278d858f05b94576c1e6f73285886876ff6ef8d2",
+      "liquidity_usd": 0.0,
+      "metadata": {
+        "category": "fresh contract",
+        "deployer_address": "",
+        "entity_type": "unknown_protocol",
+        "fdv_usd": 0.0,
+        "funding_cluster_id": "",
+        "liquidity_usd": 0.0,
+        "next_action": "recon_bravo_then_corecritical",
+        "price_change_24h_pct": 0.0,
+        "score": 89,
+        "source": "ethereum_chain_scanner",
+        "tags": [
+          "audit_hidden_contract",
+          "balance_spike",
+          "bluechip_token_balance",
+          "fresh_contract_large_balance",
+          "fresh_contract_large_token_balance",
+          "hidden_high_value_contract",
+          "high_token_balance",
+          "high_total_balance",
+          "immediate_balance_spike",
+          "known_asset_balance",
+          "token_funded_contract",
+          "unfamiliar_contract",
+          "unknown_protocol",
+          "unknown_verification_status"
+        ],
+        "tvl_usd": 320711.8486685781,
+        "verified_source": null,
+        "volume24h_usd": 0.0
+      },
+      "price_change_24h_pct": 0.0,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "bluechip_token_balance",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "known_asset_balance",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0x984f1fe18f58c22d17858d489518c5b15c3fd879",
+      "category": "fresh contract",
+      "chain": "ethereum",
+      "label": "0x984f1fe18f58c22d17858d489518c5b15c3fd879",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -1407,7 +1413,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 715731.9423697436,
+        "tvl_usd": 327723.78164773737,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1429,10 +1435,10 @@
       "volume24h_usd": 0.0
     },
     {
-      "address": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+      "address": "0x6026449a55b7eb5c1b1a5e33e02e542bbba719ce",
       "category": "fresh contract",
       "chain": "ethereum",
-      "label": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+      "label": "0x6026449a55b7eb5c1b1a5e33e02e542bbba719ce",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -1443,15 +1449,17 @@
         "liquidity_usd": 0.0,
         "next_action": "recon_bravo_then_corecritical",
         "price_change_24h_pct": 0.0,
-        "score": 88,
+        "score": 89,
         "source": "ethereum_chain_scanner",
         "tags": [
           "audit_hidden_contract",
+          "balance_spike",
           "fresh_contract_large_balance",
           "fresh_contract_large_token_balance",
           "hidden_high_value_contract",
           "high_token_balance",
           "high_total_balance",
+          "immediate_balance_spike",
           "known_asset_balance",
           "stablecoin_balance",
           "token_funded_contract",
@@ -1459,18 +1467,20 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 21513209.180575,
+        "tvl_usd": 450261.5036860865,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
       "price_change_24h_pct": 0.0,
       "tags": [
         "audit_hidden_contract",
+        "balance_spike",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
+        "immediate_balance_spike",
         "known_asset_balance",
         "stablecoin_balance",
         "token_funded_contract",
@@ -1481,10 +1491,62 @@
       "volume24h_usd": 0.0
     },
     {
-      "address": "0x73d8bd54f7cf5fab43fe4ef40a62d390644946db",
+      "address": "0xaaee1a9723aadb7afa2810263653a34ba2c21c7a",
       "category": "fresh contract",
       "chain": "ethereum",
-      "label": "0x73d8bd54f7cf5fab43fe4ef40a62d390644946db",
+      "label": "0xaaee1a9723aadb7afa2810263653a34ba2c21c7a",
+      "liquidity_usd": 0.0,
+      "metadata": {
+        "category": "fresh contract",
+        "deployer_address": "",
+        "entity_type": "unknown_protocol",
+        "fdv_usd": 0.0,
+        "funding_cluster_id": "",
+        "liquidity_usd": 0.0,
+        "next_action": "recon_bravo_then_corecritical",
+        "price_change_24h_pct": 0.0,
+        "score": 89,
+        "source": "ethereum_chain_scanner",
+        "tags": [
+          "audit_hidden_contract",
+          "balance_spike",
+          "fresh_contract_large_balance",
+          "fresh_contract_large_token_balance",
+          "hidden_high_value_contract",
+          "high_token_balance",
+          "high_total_balance",
+          "immediate_balance_spike",
+          "token_funded_contract",
+          "unfamiliar_contract",
+          "unknown_protocol",
+          "unknown_verification_status"
+        ],
+        "tvl_usd": 439325.10656476003,
+        "verified_source": null,
+        "volume24h_usd": 0.0
+      },
+      "price_change_24h_pct": 0.0,
+      "tags": [
+        "audit_hidden_contract",
+        "balance_spike",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "immediate_balance_spike",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0xbdb3ba9ffe392549e1f8658dd2630c141fdf47b6",
+      "category": "fresh contract",
+      "chain": "ethereum",
+      "label": "0xbdb3ba9ffe392549e1f8658dd2630c141fdf47b6",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -1499,28 +1561,34 @@
         "source": "ethereum_chain_scanner",
         "tags": [
           "audit_hidden_contract",
+          "bluechip_token_balance",
           "fresh_contract_large_balance",
           "fresh_contract_large_token_balance",
           "hidden_high_value_contract",
+          "high_native_balance",
           "high_token_balance",
           "high_total_balance",
+          "known_asset_balance",
           "token_funded_contract",
           "unfamiliar_contract",
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 10421284.824932227,
+        "tvl_usd": 15142993.794880696,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
       "price_change_24h_pct": 0.0,
       "tags": [
         "audit_hidden_contract",
+        "bluechip_token_balance",
         "fresh_contract_large_balance",
         "fresh_contract_large_token_balance",
         "hidden_high_value_contract",
+        "high_native_balance",
         "high_token_balance",
         "high_total_balance",
+        "known_asset_balance",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -1557,7 +1625,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 1937021141971.394,
+        "tvl_usd": 1837605913459.1213,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1605,7 +1673,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 733648483282.6434,
+        "tvl_usd": 602020543653.8121,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1653,7 +1721,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 652160912098.5685,
+        "tvl_usd": 466851286580.0652,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1701,7 +1769,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 517110047228.70355,
+        "tvl_usd": 783450802726.456,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1749,7 +1817,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 486749460592.33057,
+        "tvl_usd": 882311365669.1411,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1797,7 +1865,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 344249847751.44586,
+        "tvl_usd": 232146575862.85846,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1845,7 +1913,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 299496894700.7525,
+        "tvl_usd": 177342292678.06482,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1893,7 +1961,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 10015112558.093819,
+        "tvl_usd": 9713130082.38537,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1941,7 +2009,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 2596409718.3050494,
+        "tvl_usd": 2340694715.4858427,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -1961,10 +2029,10 @@
       "volume24h_usd": 0.0
     },
     {
-      "address": "0x99cd4ec3f88a45940936f469e4bb72a2a701eeb9",
+      "address": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
       "category": "fresh contract",
       "chain": "ethereum",
-      "label": "0x99cd4ec3f88a45940936f469e4bb72a2a701eeb9",
+      "label": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -1984,12 +2052,14 @@
           "hidden_high_value_contract",
           "high_token_balance",
           "high_total_balance",
+          "known_asset_balance",
+          "stablecoin_balance",
           "token_funded_contract",
           "unfamiliar_contract",
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 188226923.66795534,
+        "tvl_usd": 25225247.565548,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -2001,6 +2071,8 @@
         "hidden_high_value_contract",
         "high_token_balance",
         "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
         "token_funded_contract",
         "unfamiliar_contract",
         "unknown_protocol",
@@ -2039,7 +2111,59 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 47828642.909686,
+        "tvl_usd": 32391947.104344,
+        "verified_source": null,
+        "volume24h_usd": 0.0
+      },
+      "price_change_24h_pct": 0.0,
+      "tags": [
+        "audit_hidden_contract",
+        "fresh_contract_large_balance",
+        "fresh_contract_large_token_balance",
+        "hidden_high_value_contract",
+        "high_token_balance",
+        "high_total_balance",
+        "known_asset_balance",
+        "stablecoin_balance",
+        "token_funded_contract",
+        "unfamiliar_contract",
+        "unknown_protocol",
+        "unknown_verification_status"
+      ],
+      "volume24h_usd": 0.0
+    },
+    {
+      "address": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+      "category": "fresh contract",
+      "chain": "ethereum",
+      "label": "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
+      "liquidity_usd": 0.0,
+      "metadata": {
+        "category": "fresh contract",
+        "deployer_address": "",
+        "entity_type": "unknown_protocol",
+        "fdv_usd": 0.0,
+        "funding_cluster_id": "",
+        "liquidity_usd": 0.0,
+        "next_action": "recon_bravo_then_corecritical",
+        "price_change_24h_pct": 0.0,
+        "score": 88,
+        "source": "ethereum_chain_scanner",
+        "tags": [
+          "audit_hidden_contract",
+          "fresh_contract_large_balance",
+          "fresh_contract_large_token_balance",
+          "hidden_high_value_contract",
+          "high_token_balance",
+          "high_total_balance",
+          "known_asset_balance",
+          "stablecoin_balance",
+          "token_funded_contract",
+          "unfamiliar_contract",
+          "unknown_protocol",
+          "unknown_verification_status"
+        ],
+        "tvl_usd": 107223468.625675,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -2092,7 +2216,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 83302157.91297622,
+        "tvl_usd": 100725848.75031757,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -2143,7 +2267,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 57817205.568412945,
+        "tvl_usd": 57127216.05561805,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -2191,7 +2315,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 61598043.50766518,
+        "tvl_usd": 76702515.19037843,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -2240,7 +2364,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 15267113.701471092,
+        "tvl_usd": 18282728.594827123,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -2291,7 +2415,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 36544983.118496,
+        "tvl_usd": 24832363.799884997,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -2313,62 +2437,10 @@
       "volume24h_usd": 0.0
     },
     {
-      "address": "0xe3d41d19564922c9952f692c5dd0563030f5f2ef",
-      "category": "fresh contract",
-      "chain": "ethereum",
-      "label": "0xe3d41d19564922c9952f692c5dd0563030f5f2ef",
-      "liquidity_usd": 0.0,
-      "metadata": {
-        "category": "fresh contract",
-        "deployer_address": "",
-        "entity_type": "unknown_protocol",
-        "fdv_usd": 0.0,
-        "funding_cluster_id": "",
-        "liquidity_usd": 0.0,
-        "next_action": "recon_bravo_then_corecritical",
-        "price_change_24h_pct": 0.0,
-        "score": 88,
-        "source": "ethereum_chain_scanner",
-        "tags": [
-          "audit_hidden_contract",
-          "bluechip_token_balance",
-          "fresh_contract_large_balance",
-          "fresh_contract_large_token_balance",
-          "hidden_high_value_contract",
-          "high_token_balance",
-          "high_total_balance",
-          "known_asset_balance",
-          "token_funded_contract",
-          "unfamiliar_contract",
-          "unknown_protocol",
-          "unknown_verification_status"
-        ],
-        "tvl_usd": 31933246.520107828,
-        "verified_source": null,
-        "volume24h_usd": 0.0
-      },
-      "price_change_24h_pct": 0.0,
-      "tags": [
-        "audit_hidden_contract",
-        "bluechip_token_balance",
-        "fresh_contract_large_balance",
-        "fresh_contract_large_token_balance",
-        "hidden_high_value_contract",
-        "high_token_balance",
-        "high_total_balance",
-        "known_asset_balance",
-        "token_funded_contract",
-        "unfamiliar_contract",
-        "unknown_protocol",
-        "unknown_verification_status"
-      ],
-      "volume24h_usd": 0.0
-    },
-    {
-      "address": "0xca8d055d625f5fc29d0891ac0b67c687ed450f51",
+      "address": "0xfa7421f1ed6ad1548316a847e8437af7219a8f18",
       "category": "fresh contract",
       "chain": "bsc",
-      "label": "0xca8d055d625f5fc29d0891ac0b67c687ed450f51",
+      "label": "0xfa7421f1ed6ad1548316a847e8437af7219a8f18",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -2397,7 +2469,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 58785.28509689953,
+        "tvl_usd": 166911.70173589344,
         "verified_source": null,
         "volume24h_usd": 0.0
       },
@@ -2421,10 +2493,10 @@
       "volume24h_usd": 0.0
     },
     {
-      "address": "0x4bce263371ec91da8369fb00a1f344bae2ee5cdb",
+      "address": "0x085f29091ee8a818ede960a89bd578fe4ac8e824",
       "category": "fresh contract",
       "chain": "bsc",
-      "label": "0x4bce263371ec91da8369fb00a1f344bae2ee5cdb",
+      "label": "0x085f29091ee8a818ede960a89bd578fe4ac8e824",
       "liquidity_usd": 0.0,
       "metadata": {
         "category": "fresh contract",
@@ -2453,63 +2525,7 @@
           "unknown_protocol",
           "unknown_verification_status"
         ],
-        "tvl_usd": 221430.3627851625,
-        "verified_source": null,
-        "volume24h_usd": 0.0
-      },
-      "price_change_24h_pct": 0.0,
-      "tags": [
-        "audit_hidden_contract",
-        "balance_spike",
-        "fresh_contract_large_balance",
-        "fresh_contract_large_token_balance",
-        "hidden_high_value_contract",
-        "high_token_balance",
-        "high_total_balance",
-        "immediate_balance_spike",
-        "known_asset_balance",
-        "stablecoin_balance",
-        "token_funded_contract",
-        "unfamiliar_contract",
-        "unknown_protocol",
-        "unknown_verification_status"
-      ],
-      "volume24h_usd": 0.0
-    },
-    {
-      "address": "0xb300000b72deaeb607a12d5f54773d1c19c7028d",
-      "category": "fresh contract",
-      "chain": "bsc",
-      "label": "0xb300000b72deaeb607a12d5f54773d1c19c7028d",
-      "liquidity_usd": 0.0,
-      "metadata": {
-        "category": "fresh contract",
-        "deployer_address": "",
-        "entity_type": "unknown_protocol",
-        "fdv_usd": 0.0,
-        "funding_cluster_id": "",
-        "liquidity_usd": 0.0,
-        "next_action": "recon_bravo_then_corecritical",
-        "price_change_24h_pct": 0.0,
-        "score": 86,
-        "source": "bsc_chain_scanner",
-        "tags": [
-          "audit_hidden_contract",
-          "balance_spike",
-          "fresh_contract_large_balance",
-          "fresh_contract_large_token_balance",
-          "hidden_high_value_contract",
-          "high_token_balance",
-          "high_total_balance",
-          "immediate_balance_spike",
-          "known_asset_balance",
-          "stablecoin_balance",
-          "token_funded_contract",
-          "unfamiliar_contract",
-          "unknown_protocol",
-          "unknown_verification_status"
-        ],
-        "tvl_usd": 62642.77607221169,
+        "tvl_usd": 128408.55197432225,
         "verified_source": null,
         "volume24h_usd": 0.0
       },

@@ -1,8 +1,11 @@
 {
-  "active_stage": "1",
+  "active_stage": "2",
   "manifest_paths": {
     "candidates_scored": [
       "runs/github-28803496787-1-stage-1/candidates_scored.json"
+    ],
+    "live_targets": [
+      "examples/live_targets.json"
     ],
     "run_dirs": [
       "runs/github-28803496787-1-stage-1"
@@ -27,8 +30,14 @@
         "triage_queue_md": "runs/github-28803496787-1-stage-1/triage_queue.md"
       },
       "updated_at": "2026-07-06T15:49:43.168326+00:00"
+    },
+    "2": {
+      "outputs": {
+        "live_targets": "examples/live_targets.json"
+      },
+      "updated_at": "2026-07-06T15:53:22.806336+00:00"
     }
   },
   "started_at": "2026-07-06T15:35:22.177442+00:00",
-  "updated_at": "2026-07-06T15:49:43.168326+00:00"
+  "updated_at": "2026-07-06T15:53:22.806336+00:00"
 }
