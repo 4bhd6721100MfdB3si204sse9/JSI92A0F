@@ -1,20 +1,24 @@
 {
-  "active_stage": "2",
+  "active_stage": "3",
   "manifest_paths": {
     "candidates_scored": [
-      "runs/github-28803496787-1-stage-1/candidates_scored.json"
+      "runs/github-28803496787-1-stage-1/candidates_scored.json",
+      "runs/github-28803496787-1-stage-3/candidates_scored.json"
     ],
     "live_targets": [
       "examples/live_targets.json"
     ],
     "run_dirs": [
-      "runs/github-28803496787-1-stage-1"
+      "runs/github-28803496787-1-stage-1",
+      "runs/github-28803496787-1-stage-3"
     ],
     "triage_queue_csv": [
-      "runs/github-28803496787-1-stage-1/triage_queue.csv"
+      "runs/github-28803496787-1-stage-1/triage_queue.csv",
+      "runs/github-28803496787-1-stage-3/triage_queue.csv"
     ],
     "triage_queue_md": [
-      "runs/github-28803496787-1-stage-1/triage_queue.md"
+      "runs/github-28803496787-1-stage-1/triage_queue.md",
+      "runs/github-28803496787-1-stage-3/triage_queue.md"
     ]
   },
   "pre_run_archive": "archive/runs/github-27921431629-1",
@@ -36,8 +40,17 @@
         "live_targets": "examples/live_targets.json"
       },
       "updated_at": "2026-07-06T15:53:22.806336+00:00"
+    },
+    "3": {
+      "outputs": {
+        "candidates_scored": "runs/github-28803496787-1-stage-3/candidates_scored.json",
+        "run_dirs": "runs/github-28803496787-1-stage-3",
+        "triage_queue_csv": "runs/github-28803496787-1-stage-3/triage_queue.csv",
+        "triage_queue_md": "runs/github-28803496787-1-stage-3/triage_queue.md"
+      },
+      "updated_at": "2026-07-06T15:54:58.545624+00:00"
     }
   },
   "started_at": "2026-07-06T15:35:22.177442+00:00",
-  "updated_at": "2026-07-06T15:53:22.806336+00:00"
+  "updated_at": "2026-07-06T15:54:58.545624+00:00"
 }
