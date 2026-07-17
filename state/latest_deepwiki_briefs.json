@@ -1,8 +1,8 @@
 [
-  "deepwiki_briefs/001-ethereum-0xaa390a37006e22b5775a34f2147f81ebd6a63641.json",
-  "deepwiki_briefs/002-ethereum-0x99cd4ec3f88a45940936f469e4bb72a2a701eeb9.json",
-  "deepwiki_briefs/003-ethereum-0x303d72b77efe73e07aacb9dbe58e794c3df48625.json",
-  "deepwiki_briefs/004-bsc-0x278d858f05b94576c1e6f73285886876ff6ef8d2.json",
-  "deepwiki_briefs/005-bsc-0x519d281627c9f25636a041416707e6f1f4cf945f.json",
-  "deepwiki_briefs/006-bsc-0x5faf1dfc1e933daaa92cfbd165cbf6acf2d42c3b.json"
+  "deepwiki_pending/001-ethereum-0xaa390a37006e22b5775a34f2147f81ebd6a63641.json",
+  "deepwiki_pending/002-ethereum-0x99cd4ec3f88a45940936f469e4bb72a2a701eeb9.json",
+  "deepwiki_pending/003-ethereum-0x303d72b77efe73e07aacb9dbe58e794c3df48625.json",
+  "deepwiki_pending/004-bsc-0x278d858f05b94576c1e6f73285886876ff6ef8d2.json",
+  "deepwiki_pending/005-bsc-0x519d281627c9f25636a041416707e6f1f4cf945f.json",
+  "deepwiki_pending/006-bsc-0x5faf1dfc1e933daaa92cfbd165cbf6acf2d42c3b.json"
 ]
