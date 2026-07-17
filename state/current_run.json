@@ -1,5 +1,5 @@
 {
-  "active_stage": "7",
+  "active_stage": "8",
   "manifest_paths": {
     "candidates_scored": [
       "runs/github-28803496787-1-stage-1/candidates_scored.json",
@@ -46,6 +46,10 @@
     "proof_gate_pending": [
       "proof_gate_pending/sentinel_8cdad855861f4d0b9cf2877352749089.md",
       "proof_gate_pending/sentinel_d37b22ae60cb43f693830a031c3fccc4.md"
+    ],
+    "proof_gate_results": [
+      "proof_gate_results/proof_gate_feba0284c3304971af9128e95c65bda9.md",
+      "proof_gate_results/proof_gate_d4b7f8829fa441dea2e6b78b5a9d0639.md"
     ],
     "proof_gate_submissions": [
       "proof_gate_submissions/proof_gate_fdbc027ec9bf4be1a71bce44a05026fc.json",
@@ -157,8 +161,17 @@
         ]
       },
       "updated_at": "2026-07-17T21:38:57.779012+00:00"
+    },
+    "8": {
+      "outputs": {
+        "proof_gate_results": [
+          "proof_gate_results/proof_gate_feba0284c3304971af9128e95c65bda9.md",
+          "proof_gate_results/proof_gate_d4b7f8829fa441dea2e6b78b5a9d0639.md"
+        ]
+      },
+      "updated_at": "2026-07-17T21:39:36.197297+00:00"
     }
   },
   "started_at": "2026-07-06T15:35:22.177442+00:00",
-  "updated_at": "2026-07-17T21:38:57.779012+00:00"
+  "updated_at": "2026-07-17T21:39:36.197297+00:00"
 }
