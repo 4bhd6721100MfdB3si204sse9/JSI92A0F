@@ -154,10 +154,20 @@ def fetch_defillama_protocols(config: dict[str, Any], limit: int) -> list[Candid
 def fetch_json(url: str) -> Any:
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
     try:
-        with urllib.request.urlopen(request, timeout=20) as response:
+        with urllib.request.urlopen(request, timeout=float(os.environ.get("SENTINEL_FETCH_TIMEOUT_SECONDS", "60"))) as response:
             return json.loads(response.read().decode("utf-8"))
     except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
-        raise RuntimeError(f"fetch failed for {url}: {exc}") from exc
+        raise RuntimeError(f"fetch failed for {_redact_url_secret(url)}: {exc}") from exc
+
+
+def _redact_url_secret(url: str) -> str:
+    parsed = urllib.parse.urlsplit(url)
+    query = urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
+    redacted = [
+        (key, "[REDACTED]" if key.lower() in {"apikey", "api_key", "key", "token"} and value else value)
+        for key, value in query
+    ]
+    return urllib.parse.urlunsplit((parsed.scheme, parsed.netloc, parsed.path, urllib.parse.urlencode(redacted), parsed.fragment))
 
 
 def _balance_fetcher_for(config: dict[str, Any]):

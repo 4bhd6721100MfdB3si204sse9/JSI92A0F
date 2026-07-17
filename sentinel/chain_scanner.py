@@ -4,6 +4,7 @@ import json
 import os
 import hashlib
 import urllib.error
+import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
@@ -187,7 +188,8 @@ class EthereumChainScanner:
         state = self._load_state()
         first_run_blocks = int(self.source_config.get("first_run_blocks", self.source_config.get("recent_blocks", 250)) or 250)
         incremental_blocks = int(self.source_config.get("recent_blocks", 250) or 250)
-        remembered_limit = int(self.source_config.get("remembered_contracts_per_run", 25) or 25)
+        remembered_raw = self.source_config.get("remembered_contracts_per_run", 25)
+        remembered_limit = int(remembered_raw if remembered_raw is not None else 25)
         max_contracts = min(int(self.source_config.get("max_contracts", limit) or limit), limit)
         raw_transfer_limit = self.source_config.get("max_transfer_recipients", max_contracts)
         max_transfer_recipients = int(raw_transfer_limit if raw_transfer_limit is not None else max_contracts)
@@ -210,7 +212,10 @@ class EthereumChainScanner:
         candidates: list[Candidate] = []
         for deployment in deployments:
             previous_record = state.get("seen_contracts", {}).get(deployment.address.lower(), {})
-            candidate = self._candidate_from_deployment(deployment, previous_record if isinstance(previous_record, dict) else {})
+            try:
+                candidate = self._candidate_from_deployment(deployment, previous_record if isinstance(previous_record, dict) else {})
+            except (RuntimeError, TimeoutError, OSError):
+                continue
             if candidate is not None:
                 candidates.append(candidate)
                 self._record_candidate(state, candidate)
@@ -220,6 +225,8 @@ class EthereumChainScanner:
 
     def _recent_deployments(self, first: int, latest: int, max_contracts: int) -> list[Deployment]:
         deployments: list[Deployment] = []
+        max_receipt_checks = int(self.source_config.get("max_deployment_receipt_checks", 250) or 250)
+        receipt_checks = 0
         for block_number in range(latest, first - 1, -1):
             block = self._rpc("eth_getBlockByNumber", [hex(block_number), True])
             if not isinstance(block, dict):
@@ -231,6 +238,9 @@ class EthereumChainScanner:
             for tx in txs:
                 if not isinstance(tx, dict) or tx.get("to") not in ("0x", "", None):
                     continue
+                if receipt_checks >= max_receipt_checks:
+                    return deployments
+                receipt_checks += 1
                 receipt = self._rpc("eth_getTransactionReceipt", [tx.get("hash")])
                 if not isinstance(receipt, dict):
                     continue
@@ -645,7 +655,8 @@ class EthereumChainScanner:
         return result if isinstance(result, list) else []
 
     def _erc20_holdings(self, address: str, token_txs: list[dict[str, Any]], seed_tokens: Iterable[str] = ()) -> list[TokenHolding]:
-        max_tokens = int(self.source_config.get("max_token_contracts", 20) or 20)
+        max_tokens_raw = self.source_config.get("max_token_contracts", 20)
+        max_tokens = int(max_tokens_raw if max_tokens_raw is not None else 20)
         token_meta: dict[str, dict[str, Any]] = {}
         for token in seed_tokens:
             token_address = str(token).lower()
@@ -774,7 +785,15 @@ class EthereumChainScanner:
     def _rpc_call(self, url: str, method: str, params: list[Any]) -> Any:
         payload = {"jsonrpc": "2.0", "id": 1, "method": method, "params": params}
         data = json.dumps(payload).encode("utf-8")
-        request = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
+        request = urllib.request.Request(
+            url,
+            data=data,
+            headers={
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "User-Agent": "protocol-sentinel/0.1 defensive-research",
+            },
+        )
         try:
             with urllib.request.urlopen(request, timeout=20) as response:
                 result = json.loads(response.read().decode("utf-8"))
@@ -787,10 +806,20 @@ class EthereumChainScanner:
     def _fetch_json(self, url: str) -> Any:
         request = urllib.request.Request(url, headers={"User-Agent": "protocol-sentinel/0.1 defensive-research", "Accept": "application/json"})
         try:
-            with urllib.request.urlopen(request, timeout=20) as response:
+            with urllib.request.urlopen(request, timeout=float(os.environ.get("SENTINEL_FETCH_TIMEOUT_SECONDS", "60"))) as response:
                 return json.loads(response.read().decode("utf-8"))
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
-            raise RuntimeError(f"fetch failed for {url}: {exc}") from exc
+            raise RuntimeError(f"fetch failed for {_redact_url_secret(url)}: {exc}") from exc
+
+
+def _redact_url_secret(url: str) -> str:
+    parsed = urllib.parse.urlsplit(url)
+    query = urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
+    redacted = [
+        (key, "[REDACTED]" if key.lower() in {"apikey", "api_key", "key", "token"} and value else value)
+        for key, value in query
+    ]
+    return urllib.parse.urlunsplit((parsed.scheme, parsed.netloc, parsed.path, urllib.parse.urlencode(redacted), parsed.fragment))
 
 
 def _rotation_values(*values: Any) -> list[str]:

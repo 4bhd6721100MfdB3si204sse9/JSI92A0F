@@ -412,6 +412,66 @@ class ScoringTest(unittest.TestCase):
         self.assertGreaterEqual(scored.score, config["queue_threshold"])
         self.assertEqual(scored.next_action, "reward_pool_claimability_check")
 
+    def test_shadow_value_verified_contract_is_recon_queue(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        candidate = candidate_from_dict(
+            {
+                "source": "bsc_chain_scanner",
+                "entity_type": "unknown_protocol",
+                "external_id": "bsc:shadow-vault",
+                "name": "Silent Yield Reward Vault",
+                "chain": "bsc",
+                "category": "reward vault",
+                "tvl_usd": 1_250_000,
+                "verified_source": True,
+                "tags": [
+                    "unknown_protocol",
+                    "under_the_radar",
+                    "low_public_attention",
+                    "no_audit_found",
+                    "not_defillama_top",
+                    "vault",
+                    "reward_pool",
+                    "stablecoin_balance",
+                ],
+            }
+        )
+
+        scored = score_candidate(candidate, config)
+
+        self.assertGreaterEqual(scored.score, config["queue_threshold"])
+        self.assertEqual(scored.next_action, "shadow_value_verified_contract_recon")
+        self.assertIn("shadow_value_verified_contract:30", scored.reasons)
+
+    def test_shadow_value_requires_verified_source(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        candidate = candidate_from_dict(
+            {
+                "source": "bsc_chain_scanner",
+                "entity_type": "unknown_protocol",
+                "external_id": "bsc:shadow-unverified",
+                "name": "Silent Yield Reward Vault",
+                "chain": "bsc",
+                "category": "reward vault",
+                "tvl_usd": 1_250_000,
+                "verified_source": False,
+                "tags": [
+                    "unknown_protocol",
+                    "under_the_radar",
+                    "low_public_attention",
+                    "no_audit_found",
+                    "vault",
+                    "reward_pool",
+                ],
+            }
+        )
+
+        scored = score_candidate(candidate, config)
+
+        self.assertNotEqual(scored.next_action, "shadow_value_verified_contract_recon")
+        self.assertNotIn("shadow_value_verified_contract:30", scored.reasons)
+
+
     def test_bridge_escrow_validation_is_queued(self):
         config = json.loads(Path("config/sentinel.json").read_text())
         candidate = candidate_from_dict(

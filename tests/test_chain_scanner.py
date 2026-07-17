@@ -3,11 +3,41 @@ import hashlib
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
-from sentinel.chain_scanner import load_bsc_chain_candidates, load_ethereum_chain_candidates
+from sentinel.chain_scanner import EthereumChainScanner, load_bsc_chain_candidates, load_ethereum_chain_candidates
 
 
 class EthereumChainScannerTest(unittest.TestCase):
+    def test_rpc_call_sends_defensive_user_agent(self):
+        config = json.loads(Path("config/sentinel.json").read_text())
+        config["sources"]["ethereum_chain_scanner"] = {"rpc_urls": ["https://rpc.example"]}
+        scanner = EthereumChainScanner("ethereum", "ethereum_chain_scanner", config)
+        captured = {}
+
+        class _Response:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return False
+
+            def read(self):
+                return b'{"jsonrpc":"2.0","id":1,"result":"0x1"}'
+
+        def fake_urlopen(request, timeout=0):
+            captured["headers"] = dict(request.header_items())
+            captured["timeout"] = timeout
+            return _Response()
+
+        with patch("sentinel.chain_scanner.urllib.request.urlopen", fake_urlopen):
+            result = scanner._rpc_call("https://rpc.example", "eth_blockNumber", [])
+
+        self.assertEqual(result, "0x1")
+        self.assertEqual(captured["timeout"], 20)
+        self.assertEqual(captured["headers"].get("User-agent"), "protocol-sentinel/0.1 defensive-research")
+        self.assertEqual(captured["headers"].get("Accept"), "application/json")
+
     def test_scanner_classifies_fresh_contract_surfaces(self):
         config = json.loads(Path("config/sentinel.json").read_text())
         config["sources"]["ethereum_chain_scanner"] = {

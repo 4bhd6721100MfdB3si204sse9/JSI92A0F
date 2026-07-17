@@ -168,6 +168,10 @@ def score_candidate(candidate: Candidate, config: dict[str, Any]) -> ScoredCandi
         weight = int(config.get("lending_oracle_liquidation_weight", 24))
         score += weight
         reasons.append(f"lending_oracle_liquidation:{weight}")
+    if _is_shadow_value_verified_target(candidate, tags, config):
+        weight = int(config.get("shadow_value_verified_contract_weight", 30))
+        score += weight
+        reasons.append(f"shadow_value_verified_contract:{weight}")
 
     spike_threshold = float(config.get("price_spike_24h_pct", 100))
     if candidate.price_change_24h_pct >= spike_threshold:
@@ -209,7 +213,9 @@ def score_candidate(candidate: Candidate, config: dict[str, Any]) -> ScoredCandi
         score = min(score, 19)
         reasons.append("low_value_score_cap")
 
-    if _has_proxy_change_live_funds(tags) and value >= min_value and score >= int(config.get("queue_threshold", 35)):
+    if _is_shadow_value_verified_target(candidate, tags, config) and value >= min_value and score >= int(config.get("queue_threshold", 35)):
+        next_action = "shadow_value_verified_contract_recon"
+    elif _has_proxy_change_live_funds(tags) and value >= min_value and score >= int(config.get("queue_threshold", 35)):
         next_action = "proxy_change_live_funds"
     elif _has_reward_pool_claimability(tags) and value >= min_value and score >= int(config.get("queue_threshold", 35)):
         next_action = "reward_pool_claimability_check"
@@ -320,6 +326,55 @@ def _has_unknown_chain_recon_signal(tags: set[str]) -> bool:
             "stale_oracle",
         }.intersection(tags)
     )
+
+
+def _is_shadow_value_verified_target(candidate: Candidate, tags: set[str], config: dict[str, Any]) -> bool:
+    if not bool(config.get("shadow_value_verified_contract_lane_enabled", True)):
+        return False
+    chain = candidate.chain.lower().strip()
+    if chain not in {"ethereum", "eth", "bsc", "binance"}:
+        return False
+    if candidate.verified_source is not True:
+        return False
+    value = candidate.value_at_risk()
+    if value < float(config.get("shadow_value_min_usd", config.get("min_value_usd", 50_000))):
+        return False
+    discovery_tags = {
+        "under_the_radar",
+        "low_public_attention",
+        "low_social_visibility",
+        "not_defillama_top",
+        "no_major_exchange_label",
+        "not_known_public_protocol",
+    }
+    audit_gap_tags = {
+        "no_audit_found",
+        "audit_not_found",
+        "weak_audit_signal",
+        "no_public_audit_report_found",
+        "standalone_bounty_program",
+        "project_site_bounty",
+    }
+    surface_tags = {
+        "vault",
+        "staking",
+        "reward_pool",
+        "treasury",
+        "bridge_escrow",
+        "approval_router",
+        "lending",
+        "oracle",
+        "router",
+        "strategy",
+        "farm",
+    }
+    has_discovery = bool(tags.intersection(discovery_tags))
+    has_audit_gap = bool(tags.intersection(audit_gap_tags))
+    has_surface = bool(tags.intersection(surface_tags)) or any(
+        word in " ".join([candidate.name, candidate.category]).lower()
+        for word in ["vault", "staking", "reward", "treasury", "bridge", "router", "lending", "oracle", "strategy", "farm"]
+    )
+    return has_discovery and has_audit_gap and has_surface
 
 
 def _has_known_public_name_or_source(candidate: Candidate, config: dict[str, Any]) -> bool:

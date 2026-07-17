@@ -20,6 +20,22 @@ TARGET_ACTIONS = {
     "recon_bravo_then_corecritical": 10,
 }
 
+EVM_LIVE_TARGET_CHAINS = {
+    "ethereum",
+    "eth",
+    "bsc",
+    "binance",
+    "base",
+    "arbitrum",
+    "optimism",
+    "polygon",
+    "avalanche",
+    "linea",
+    "scroll",
+    "mantle",
+    "blast",
+}
+
 
 def load_scored_rows(path: str | Path) -> list[dict[str, Any]]:
     payload = json.loads(Path(path).read_text())
@@ -39,6 +55,8 @@ def generate_live_targets(rows: list[dict[str, Any]], max_targets: int = 50) -> 
         chain = str(row.get("chain", "")).lower().strip()
         action = str(row.get("next_action", "")).strip()
         if not address or not chain or action not in TARGET_ACTIONS:
+            continue
+        if not _is_explorer_compatible_target(chain, address):
             continue
         if _is_low_priority(row):
             continue
@@ -107,6 +125,24 @@ def _sort_key(row: dict[str, Any]) -> tuple[int, int]:
 
 def _is_low_priority(row: dict[str, Any]) -> bool:
     return str(row.get("next_action", "")) in {"drop_low_value", "watch_mainstream", "watch", "watch_bot_contract", "watch_known_protocol"}
+
+
+def _is_explorer_compatible_target(chain: str, address: str) -> bool:
+    """Keep live explorer target files on EVM chains with hex addresses.
+
+    The downstream explorer pipeline uses Etherscan/BscScan-style source and
+    transaction APIs. Non-EVM rows from discovery feeds are useful for broad
+    market monitoring, but they cannot be resolved by this live target lane.
+    """
+    if chain not in EVM_LIVE_TARGET_CHAINS:
+        return False
+    if not address.startswith("0x") or len(address) != 42:
+        return False
+    try:
+        int(address[2:], 16)
+    except ValueError:
+        return False
+    return True
 
 
 def _target_row(row: dict[str, Any]) -> dict[str, Any]:

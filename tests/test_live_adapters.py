@@ -88,6 +88,45 @@ class LiveAdapterTest(unittest.TestCase):
         self.assertEqual(len(candidates), 1)
         self.assertEqual(candidates[0].entity_type, "unknown_protocol")
 
+    def test_default_explorer_urls_use_etherscan_v2_chainids(self):
+        ethereum = _chain_explorer_config(self.config, "ethereum")
+        bsc = _chain_explorer_config(self.config, "bsc")
+        base = _chain_explorer_config(self.config, "base")
+
+        self.assertIn("/v2/api?chainid=1&", ethereum["source_code_url"])
+        self.assertIn("/v2/api?chainid=56&", bsc["source_code_url"])
+        self.assertIn("/v2/api?chainid=8453&", base["source_code_url"])
+        self.assertIn("module=account&action=txlist", bsc["txlist_url"])
+        self.assertIn("module=account&action=tokentx", ethereum["tokentx_url"])
+
+    def test_build_snapshot_preserves_target_when_explorer_fetch_fails(self):
+        targets = [LiveTarget(chain="ethereum", address="0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", label="Failing")]
+
+        snapshot = build_explorer_snapshot(
+            targets,
+            self.config,
+            fetch_json=lambda _url: (_ for _ in ()).throw(RuntimeError("temporary explorer timeout")),
+            fetch_balance=lambda *_args: 0,
+        )
+
+        self.assertEqual(len(snapshot["contracts"]), 1)
+        self.assertEqual(snapshot["contracts"][0]["verified_source"], None)
+        self.assertEqual(snapshot["contracts"][0]["tx_count_24h"], 0)
+
+    def test_build_snapshot_preserves_target_when_optional_tx_fetch_fails(self):
+        targets = [LiveTarget(chain="ethereum", address="0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", label="Partial")]
+
+        def fetch_json(url: str):
+            if "getsourcecode" in url:
+                return {"result": [{"ContractName": "Partial", "SourceCode": "contract Partial {}", "ABI": "[]"}]}
+            raise RuntimeError("temporary explorer timeout")
+
+        snapshot = build_explorer_snapshot(targets, self.config, fetch_json=fetch_json, fetch_balance=lambda *_args: 0)
+
+        self.assertEqual(len(snapshot["contracts"]), 1)
+        self.assertEqual(snapshot["contracts"][0]["verified_source"], True)
+        self.assertEqual(snapshot["contracts"][0]["tx_count_24h"], 0)
+
     def test_chain_explorer_config_accepts_environment_overrides(self):
         old_env = dict(os.environ)
         os.environ["SENTINEL_BSC_EXPLORER_API_KEY"] = "bsc-key"

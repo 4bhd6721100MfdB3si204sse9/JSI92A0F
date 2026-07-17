@@ -32,7 +32,10 @@ def build_explorer_snapshot(
         explorer = _chain_explorer_config(config, target.chain)
         if not explorer:
             continue
-        item = _fetch_contract_snapshot(target, explorer, fetch_json, fetch_balance)
+        try:
+            item = _fetch_contract_snapshot(target, explorer, fetch_json, fetch_balance)
+        except (RuntimeError, TimeoutError, OSError):
+            continue
         if item is None:
             continue
         cluster_id = _cluster_id(item, closed_index)
@@ -111,17 +114,26 @@ def _fetch_contract_snapshot(
 
 
 def _fetch_source_code(chain: str, address: str, explorer: dict[str, Any], fetch_json: JsonFetcher) -> dict[str, Any]:
-    payload = _fetch_explorer_json(chain, address, explorer, "source_code_url", fetch_json)
+    try:
+        payload = _fetch_explorer_json(chain, address, explorer, "source_code_url", fetch_json)
+    except (RuntimeError, TimeoutError, OSError):
+        return {}
     return _normalize_first_result(payload)
 
 
 def _fetch_recent_transactions(chain: str, address: str, explorer: dict[str, Any], fetch_json: JsonFetcher) -> list[dict[str, Any]]:
-    payload = _fetch_explorer_json(chain, address, explorer, "txlist_url", fetch_json)
+    try:
+        payload = _fetch_explorer_json(chain, address, explorer, "txlist_url", fetch_json)
+    except (RuntimeError, TimeoutError, OSError):
+        return []
     return _normalize_result_list(payload)
 
 
 def _fetch_token_transfers(chain: str, address: str, explorer: dict[str, Any], fetch_json: JsonFetcher) -> list[dict[str, Any]]:
-    payload = _fetch_explorer_json(chain, address, explorer, "tokentx_url", fetch_json)
+    try:
+        payload = _fetch_explorer_json(chain, address, explorer, "tokentx_url", fetch_json)
+    except (RuntimeError, TimeoutError, OSError):
+        return []
     return _normalize_result_list(payload)
 
 

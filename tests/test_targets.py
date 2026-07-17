@@ -75,6 +75,30 @@ class TargetGeneratorTest(unittest.TestCase):
         ])
         self.assertEqual(targets[0]["metadata"]["next_action"], "proxy_change_live_funds")
 
+    def test_generate_live_targets_skips_non_evm_rows_for_explorer_pipeline(self):
+        rows = [
+            {
+                "score": 100,
+                "next_action": "price_spike_recon_then_source_check",
+                "name": "Solana Meme Spike",
+                "chain": "solana",
+                "address": "3xharh1nqiwgzlwad8yykhfzkvhag8t3vzsrsejzpump",
+            },
+            {
+                "score": 80,
+                "next_action": "trace_bot_contract_then_target_protocols",
+                "name": "BSC Executor",
+                "chain": "bsc",
+                "address": "0x4444444444444444444444444444444444444444",
+            },
+        ]
+
+        targets = generate_live_targets(rows, max_targets=10)
+
+        self.assertEqual(len(targets), 1)
+        self.assertEqual(targets[0]["chain"], "bsc")
+        self.assertEqual(targets[0]["label"], "BSC Executor")
+
     def test_refresh_live_targets_writes_json(self):
         rows = [
             {
