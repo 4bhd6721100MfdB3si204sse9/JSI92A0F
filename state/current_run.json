@@ -1,5 +1,5 @@
 {
-  "active_stage": "5",
+  "active_stage": "6",
   "manifest_paths": {
     "candidates_scored": [
       "runs/github-28803496787-1-stage-1/candidates_scored.json",
@@ -13,6 +13,10 @@
       "deepwiki_briefs/004-bsc-0x278d858f05b94576c1e6f73285886876ff6ef8d2.json",
       "deepwiki_briefs/005-bsc-0x519d281627c9f25636a041416707e6f1f4cf945f.json",
       "deepwiki_briefs/006-bsc-0x5faf1dfc1e933daaa92cfbd165cbf6acf2d42c3b.json"
+    ],
+    "deepwiki_candidates": [
+      "deepwiki_candidates/sentinel_d37b22ae60cb43f693830a031c3fccc4.md",
+      "deepwiki_candidates/sentinel_8cdad855861f4d0b9cf2877352749089.md"
     ],
     "deepwiki_pending": [
       "deepwiki_pending/001-ethereum-0xaa390a37006e22b5775a34f2147f81ebd6a63641.json",
@@ -32,6 +36,12 @@
     ],
     "live_targets": [
       "examples/live_targets.json"
+    ],
+    "needs_live_context": [
+      "needs_live_context/sentinel_1d43dbdbb9cc458db67f90c1b6202732.md",
+      "needs_live_context/sentinel_0d8a2587ef784c3c9878d08dc73eadf8.md",
+      "needs_live_context/sentinel_5763e182de6e4bfab09ed3bdb1cd9cf7.md",
+      "needs_live_context/sentinel_5d0378869b654d44af6a6279149d1980.md"
     ],
     "run_dirs": [
       "runs/github-28803496787-1-stage-1",
@@ -111,8 +121,23 @@
         ]
       },
       "updated_at": "2026-07-17T21:37:14.054795+00:00"
+    },
+    "6": {
+      "outputs": {
+        "deepwiki_candidates": [
+          "deepwiki_candidates/sentinel_d37b22ae60cb43f693830a031c3fccc4.md",
+          "deepwiki_candidates/sentinel_8cdad855861f4d0b9cf2877352749089.md"
+        ],
+        "needs_live_context": [
+          "needs_live_context/sentinel_1d43dbdbb9cc458db67f90c1b6202732.md",
+          "needs_live_context/sentinel_0d8a2587ef784c3c9878d08dc73eadf8.md",
+          "needs_live_context/sentinel_5763e182de6e4bfab09ed3bdb1cd9cf7.md",
+          "needs_live_context/sentinel_5d0378869b654d44af6a6279149d1980.md"
+        ]
+      },
+      "updated_at": "2026-07-17T21:38:01.310721+00:00"
     }
   },
   "started_at": "2026-07-06T15:35:22.177442+00:00",
-  "updated_at": "2026-07-17T21:37:14.054795+00:00"
+  "updated_at": "2026-07-17T21:38:01.310721+00:00"
 }
